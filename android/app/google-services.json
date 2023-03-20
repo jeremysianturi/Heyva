@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "622669316286",
+    "project_id": "heyva-151a4",
+    "storage_bucket": "heyva-151a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622669316286:android:20ddfd75c5d13923b49eef",
+        "android_client_info": {
+          "package_name": "com.example.heyva"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622669316286-phq10jg8arebv86oq0ie74ot1bv85rk1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa1BdCMy3FT6QHpoc2E1NEAdt13pGgwy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622669316286-phq10jg8arebv86oq0ie74ot1bv85rk1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,148 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:heyva/app/modules/login/views/login_google_apple.dart';
+import 'package:heyva/app/modules/login/views/login_view.dart';
+import 'package:heyva/app/modules/onboarding/views/onboarding_one_view.dart';
+import 'package:heyva/app/modules/register/views/register_view.dart';
+import '../../constant/colors.dart';
+import '../../constant/strings.dart';
+
+class ReusableBtnLoginGroup extends StatelessWidget {
+  ReusableBtnLoginGroup({
+    required this.orangeBtnText,
+    required this.detemineAction,
+  });
+
+  final String orangeBtnText;
+  final String detemineAction;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 42),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              if(detemineAction == Strings.continue_email){
+                Get.to(LoginView());
+              } else if (detemineAction == Strings.login){
+                Get.to(RegisterView());
+              } else if (detemineAction == Strings.register){
+                Get.to(OnBoardingOneView());
+              }
+            },
+            style: ButtonStyle(
+              backgroundColor:
+              MaterialStateProperty.all<Color>(ColorApp.btn_orange),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(14)),
+                  side: BorderSide(color: ColorApp.btn_orange),
+                ),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 20, top: 17, right: 20, bottom: 18),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(orangeBtnText),
+                  const ImageIcon(
+                    AssetImage("assets/icons/ic_arrow_right.png"),
+                    color: ColorApp.arrow_white,
+                  )
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          Row(children: const [
+            Expanded(child: Divider()),
+            SizedBox(
+              width: 24,
+            ),
+            Text(Strings.or),
+            SizedBox(
+              width: 24,
+            ),
+            Expanded(child: Divider()),
+          ]),
+          const SizedBox(
+            height: 25,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Get.to(LoginGoogleAppleView());
+            },
+            style: ButtonStyle(
+              backgroundColor:
+              MaterialStateProperty.all<Color>(ColorApp.white),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(14)),
+                  side: BorderSide(color: ColorApp.btn_orange),
+                ),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 20, top: 17, right: 20, bottom: 18),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset("assets/images/ic_google.png"),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  const Text(
+                    Strings.continue_google,
+                    style:
+                    TextStyle(color: ColorApp.black, fontSize: 14),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            style: ButtonStyle(
+              backgroundColor:
+              MaterialStateProperty.all<Color>(ColorApp.black),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(14)),
+                ),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 20, top: 17, right: 20, bottom: 18),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset("assets/images/ic_apple.png"),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  const Text(
+                    Strings.continue_apple,
+                    style:
+                    TextStyle(color: ColorApp.white, fontSize: 14),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
