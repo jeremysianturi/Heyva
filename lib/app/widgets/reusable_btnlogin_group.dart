@@ -11,10 +11,12 @@ class ReusableBtnLoginGroup extends StatelessWidget {
   ReusableBtnLoginGroup({
     required this.orangeBtnText,
     required this.detemineAction,
+     this.onTap,
   });
 
   final String orangeBtnText;
   final String detemineAction;
+  final Function?  onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +27,18 @@ class ReusableBtnLoginGroup extends StatelessWidget {
         children: [
           ElevatedButton(
             onPressed: () {
-              if(detemineAction == Strings.continue_email){
+              if (detemineAction == Strings.continue_email) {
                 Get.to(LoginView());
-              } else if (detemineAction == Strings.login){
-                Get.to(RegisterView());
-              } else if (detemineAction == Strings.register){
+              } else if (detemineAction == Strings.login) {
+                // Get.to(RegisterView());
+                onTap!();
+              } else if (detemineAction == Strings.register) {
                 Get.to(OnBoardingOneView());
               }
             },
             style: ButtonStyle(
               backgroundColor:
-              MaterialStateProperty.all<Color>(ColorApp.btn_orange),
+                  MaterialStateProperty.all<Color>(ColorApp.btn_orange),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(14)),
@@ -80,8 +83,7 @@ class ReusableBtnLoginGroup extends StatelessWidget {
               Get.to(LoginGoogleAppleView());
             },
             style: ButtonStyle(
-              backgroundColor:
-              MaterialStateProperty.all<Color>(ColorApp.white),
+              backgroundColor: MaterialStateProperty.all<Color>(ColorApp.white),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(14)),
@@ -101,8 +103,7 @@ class ReusableBtnLoginGroup extends StatelessWidget {
                   ),
                   const Text(
                     Strings.continue_google,
-                    style:
-                    TextStyle(color: ColorApp.black, fontSize: 14),
+                    style: TextStyle(color: ColorApp.black, fontSize: 14),
                   ),
                 ],
               ),
@@ -114,8 +115,7 @@ class ReusableBtnLoginGroup extends StatelessWidget {
           ElevatedButton(
             onPressed: () {},
             style: ButtonStyle(
-              backgroundColor:
-              MaterialStateProperty.all<Color>(ColorApp.black),
+              backgroundColor: MaterialStateProperty.all<Color>(ColorApp.black),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(14)),
@@ -134,8 +134,7 @@ class ReusableBtnLoginGroup extends StatelessWidget {
                   ),
                   const Text(
                     Strings.continue_apple,
-                    style:
-                    TextStyle(color: ColorApp.white, fontSize: 14),
+                    style: TextStyle(color: ColorApp.white, fontSize: 14),
                   ),
                 ],
               ),

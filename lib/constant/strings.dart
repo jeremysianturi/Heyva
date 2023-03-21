@@ -104,4 +104,7 @@ class Strings {
   static const String email_adress = "Email Address";
   static const String password = "Password";
 
+
+  static const String internetError = "Internet connection is currently experiencing problems. please try again in a moment.";
+
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/login/controllers/login_google_apple_controller.dart';
-import 'package:heyva/app/modules/onboarding/views/onboarding_one_view.dart';
+
 import '../../../../constant/colors.dart';
 import '../../../../constant/strings.dart';
 import '../../../widgets/reusable_orange_button_with_trailing_icon.dart';
