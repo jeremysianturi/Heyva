@@ -25,15 +25,4 @@ class SignUpController extends GetxController {
 
     super.onReady();
   }
-
-  void savedData(){
-    var box = GetStorage();
-    authToken = box.read(Keys.loginAccessToken).toString();
-    refreshToken = box.read(Keys.loginRefreshToken).toString();
-    debugPrint("auth token $authToken");
-    if (authToken.isNotEmpty && refreshToken.isNotEmpty) {
-      Future.delayed(1000.milliseconds);
-      Get.toNamed(Routes.BREATHING_ONE);
-    }
-  }
 }

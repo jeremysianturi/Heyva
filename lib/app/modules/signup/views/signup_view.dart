@@ -35,17 +35,12 @@ class SignUpView extends GetView<SignUpController> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SvgPicture.asset("assets/images/heyva_text_logo.svg"),
-                      InkWell(
-                        onTap: () {
-                          controller.savedData();
-                        },
-                        child: const Text(
-                          Strings.login,
-                          style: TextStyle(
-                              color: ColorApp.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600),
-                        ),
+                      const Text(
+                        Strings.login,
+                        style: TextStyle(
+                            color: ColorApp.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),

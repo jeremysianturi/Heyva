@@ -40,7 +40,18 @@ class MyApp extends StatelessWidget {
                 builder: (context, snapshot) {
                   authC.setLoginStatus(snapshot.data != null);
                   // print('snapshot data: ${snapshot.data}');
-
+                  var box = GetStorage();
+                  authToken = box.read(Keys.loginAccessToken).toString();
+                  refreshToken = box.read(Keys.loginRefreshToken).toString();
+                  debugPrint("auth token $authToken");
+                  if (authToken.isNotEmpty && refreshToken.isNotEmpty) {
+                    return GetMaterialApp(
+                      debugShowCheckedModeBanner: false,
+                      title: "HEYVA",
+                      initialRoute: Routes.BREATHING_ONE,
+                      getPages: AppPages.routes,
+                    );
+                  }
                   return GetMaterialApp(
                     debugShowCheckedModeBanner: false,
                     title: "HEYVA",
