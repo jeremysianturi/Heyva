@@ -106,5 +106,8 @@ class Strings {
 
 
   static const String internetError = "Internet connection is currently experiencing problems. please try again in a moment.";
+  static const String emptyForm = "Form cannot be empty";
+  static const String invalidEmail = "Invalid Email";
+
 
 }

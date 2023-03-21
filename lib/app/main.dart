@@ -3,8 +3,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/modules/splashscreen/splashscreen.dart';
 import 'package:heyva/app/routes/app_pages.dart';
+import 'package:heyva/constant/keys.dart';
+import 'package:heyva/constant/variabels.dart';
 
 import 'controllers/auth_controller.dart';
 
@@ -12,6 +15,7 @@ void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
   await Firebase.initializeApp();
+  await GetStorage.init();
   runApp(MyApp());
 }
 
@@ -36,16 +40,15 @@ class MyApp extends StatelessWidget {
                 builder: (context, snapshot) {
                   authC.setLoginStatus(snapshot.data != null);
                   // print('snapshot data: ${snapshot.data}');
+
                   return GetMaterialApp(
                     debugShowCheckedModeBanner: false,
                     title: "HEYVA",
                     initialRoute: Routes.SIGNUP,
                     getPages: AppPages.routes,
                   );
-                }
-            );
+                });
           }
-        }
-    );
+        });
   }
 }

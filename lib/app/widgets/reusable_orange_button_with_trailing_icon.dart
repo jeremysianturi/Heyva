@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import '../../constant/colors.dart';
 import '../../constant/strings.dart';
 import '../modules/onboarding/views/onboarding_one_view.dart';
@@ -12,10 +13,12 @@ class OrangeButtonWTrailingIcon extends StatelessWidget {
     Key? key,
     required this.determineAction,
     required this.text,
+    this.ontap,
   }) : super(key: key);
 
   final String determineAction;
   final String text;
+  final Function? ontap;
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +33,11 @@ class OrangeButtonWTrailingIcon extends StatelessWidget {
               } else if (determineAction == "from_onboarding_one") {
                 Get.to(OnBoardingTwoView());
               } else if (determineAction == "from_onboarding_two") {
-                Get.to(const OnBoardingThreeView());
+                // Get.to(const OnBoardingThreeView());
+                // Get.toNamed(Routes.ONBOARDING_THREE);
+                ontap!();
               } else if (determineAction == "from_onplanning_one") {
-                Get.to(TurnOnNotifView());
+                ontap!();
               }
             },
             style: ButtonStyle(

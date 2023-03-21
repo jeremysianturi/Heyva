@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/onboarding/views/onplanning/onplanning_one_view.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import '../../constant/colors.dart';
 
 class reusable_btn_wo_icon extends StatelessWidget {
-  const reusable_btn_wo_icon({
-    Key? key, required this.text, required this.color
-  }) : super(key: key);
+  const reusable_btn_wo_icon(
+      {Key? key, required this.text, required this.color, required this.ontap})
+      : super(key: key);
 
   final String text;
   final Color color;
+  final Function ontap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +21,10 @@ class reusable_btn_wo_icon extends StatelessWidget {
         children: [
           ElevatedButton(
             onPressed: () {
-              Get.to(OnPlanningOneView());
+              ontap();
             },
             style: ButtonStyle(
-              backgroundColor:
-              MaterialStateProperty.all<Color>(color),
+              backgroundColor: MaterialStateProperty.all<Color>(color),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                   borderRadius: const BorderRadius.all(Radius.circular(14)),
@@ -32,7 +33,7 @@ class reusable_btn_wo_icon extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 17,horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

@@ -37,7 +37,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.SIGNUP,
-      page: () => const SignUpView(),
+      page: () => SignUpView(),
       binding: SignupBinding(),
     ),
     GetPage(

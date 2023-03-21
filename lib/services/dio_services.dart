@@ -2,15 +2,12 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:heyva/constant/keys.dart';
+import 'package:heyva/constant/variabels.dart';
 import 'logging.dart';
 
 class DioClient {
   Dio init() {
-    String username = 'FE6zmxW4sX';
-    String password = 'VPvVHc25Mx';
-    String  basicAuth=
-        'Basic ' + base64.encode(utf8.encode('$username:$password'));
-
     Dio _dio = Dio();
     _dio.interceptors.add(Logging());
     _dio.options = BaseOptions(
@@ -18,7 +15,7 @@ class DioClient {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': basicAuth
+        'Authorization': authToken.isEmpty ? basicAuthToken : authToken,
       },
       connectTimeout: 20.seconds,
       receiveTimeout: 10.seconds,

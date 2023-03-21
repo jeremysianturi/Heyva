@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/breathing/breathingone/views/breathing_one_view.dart';
 import 'package:heyva/app/modules/login/controllers/login_controller.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
@@ -36,12 +37,17 @@ class LoginView extends GetView<LoginController> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Expanded(
+                  Expanded(
                     flex: 1,
                     child: Padding(
                       padding: EdgeInsets.only(top: 56),
-                      child: Header(
-                        rightText: Strings.register,
+                      child: InkWell(
+                        onTap: () {
+                          Get.toNamed(Routes.REGISTER);
+                        },
+                        child: Header(
+                          rightText: Strings.register,
+                        ),
                       ),
                     ),
                   ),
@@ -137,7 +143,7 @@ class LoginView extends GetView<LoginController> {
                         ReusableBtnLoginGroup(
                           orangeBtnText: Strings.login,
                           detemineAction: Strings.login,
-                          onTap: (){
+                          onTap: () {
                             controller.postLogin();
                           },
                         )

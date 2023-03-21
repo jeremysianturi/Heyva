@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:heyva/app/modules/onboarding/controllers/onboarding_one_controller.dart';
 import '../../../../constant/colors.dart';
@@ -10,7 +11,7 @@ class OnBoardingOneView extends GetView<OnBoardingOneController> {
 
   @override
   Widget build(BuildContext context) {
-    String name = "Priscilla";
+    // String name = "Priscilla";
     return Scaffold(
       body: Container(
         height: double.maxFinite,
@@ -23,24 +24,31 @@ class OnBoardingOneView extends GetView<OnBoardingOneController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(height: 50,),
+            const SizedBox(
+              height: 50,
+            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      Strings.glad_text + name,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.w700,
-                          color: ColorApp.black_font_underline),
+                    Container(
+                      width: Get.width,
+                      child: Text(
+                        Strings.glad_text + controller.fullName,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            fontSize: 28,
+                            fontWeight: FontWeight.w700,
+                            color: ColorApp.black_font_underline),
+                      ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 20,),
+                const SizedBox(
+                  height: 20,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
@@ -56,7 +64,10 @@ class OnBoardingOneView extends GetView<OnBoardingOneController> {
                 ),
               ],
             ),
-            const OrangeButtonWTrailingIcon(determineAction: "from_onboarding_one", text: Strings.next,),
+            const OrangeButtonWTrailingIcon(
+              determineAction: "from_onboarding_one",
+              text: Strings.next,
+            ),
           ],
         ),
       ),

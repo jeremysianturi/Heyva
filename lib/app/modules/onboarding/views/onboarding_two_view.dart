@@ -3,12 +3,11 @@ import 'package:bottom_picker/resources/arrays.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heyva/app/widgets/text_animation_countdown.dart';
 import 'package:heyva/constant/strings.dart';
+
 import '../../../../constant/colors.dart';
 import '../../../widgets/reusable_onboarding_header.dart';
 import '../../../widgets/reusable_orange_button_with_trailing_icon.dart';
-import '../../../widgets/text_animation_from_bottom.dart';
 import '../controllers/onboarding_two_controller.dart';
 
 class OnBoardingTwoView extends GetView<OnBoardingTwoController> {
@@ -49,10 +48,10 @@ class OnBoardingTwoView extends GetView<OnBoardingTwoController> {
                         _openDatePicker(context);
                       },
                       style: ButtonStyle(
-
                         backgroundColor: MaterialStateProperty.all<Color>(
                             ColorApp.text_input_bg),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
                           const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(14)),
                             side: BorderSide(color: ColorApp.text_input_bg),
@@ -60,7 +59,7 @@ class OnBoardingTwoView extends GetView<OnBoardingTwoController> {
                         ),
                       ),
                       child: Obx(
-                            () => Text(
+                        () => Text(
                           "${onBoardingTwoController.dateChosen.value}",
                           style: const TextStyle(
                               fontSize: 16.0,
@@ -71,9 +70,12 @@ class OnBoardingTwoView extends GetView<OnBoardingTwoController> {
                     ),
                   ],
                 ),
-                const OrangeButtonWTrailingIcon(
+                OrangeButtonWTrailingIcon(
                   determineAction: "from_onboarding_two",
                   text: Strings.next,
+                  ontap: () {
+                    controller.onTap();
+                  },
                 ),
               ],
             ),

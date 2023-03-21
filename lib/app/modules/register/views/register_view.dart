@@ -136,6 +136,9 @@ class RegisterView extends GetView<RegisterController>{
             ReusableBtnLoginGroup(
               orangeBtnText: Strings.continue_text,
               detemineAction: Strings.register,
+              onTap: (){
+                controller.saveToStorage();
+              },
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 40),

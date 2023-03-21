@@ -33,7 +33,8 @@ class ReusableBtnLoginGroup extends StatelessWidget {
                 // Get.to(RegisterView());
                 onTap!();
               } else if (detemineAction == Strings.register) {
-                Get.to(OnBoardingOneView());
+                // Get.to(OnBoardingOneView());
+                onTap!();
               }
             },
             style: ButtonStyle(
