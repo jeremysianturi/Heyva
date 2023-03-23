@@ -1,6 +1,8 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:heyva/app/modules/article/bindings/article_binding.dart';
 import 'package:heyva/app/modules/article/views/article_view.dart';
+import 'package:heyva/app/modules/breast_feeding/bindings/breast_feeding_binding.dart';
+import 'package:heyva/app/modules/breast_feeding/views/breast_feeding_view.dart';
 import 'package:heyva/app/modules/breathing/breathingone/bindings/breathing_one_binding.dart';
 import 'package:heyva/app/modules/breathing/breathingone/views/breathing_one_view.dart';
 import 'package:heyva/app/modules/login/bindings/login_binding.dart';
@@ -106,7 +108,11 @@ class AppPages {
       name: _Paths.ARTICLE,
       page: () => ArticleView(),
       binding: ArticleBinding(),
-    )
-
+    ),
+    GetPage(
+      name: _Paths.BREAST_FEEDING,
+      page: () => BreastFeedingView(),
+      binding: BreastFeedingBinding(),
+    ),
   ];
 }

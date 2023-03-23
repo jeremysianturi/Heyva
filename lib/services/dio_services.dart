@@ -15,7 +15,7 @@ class DioClient {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': authToken.isEmpty ? basicAuthToken : authToken,
+        'Authorization': authToken != "null" || authToken != "" ? basicAuthToken : authToken,
       },
       connectTimeout: 20.seconds,
       receiveTimeout: 10.seconds,

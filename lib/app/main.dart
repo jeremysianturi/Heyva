@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
                   authToken = box.read(Keys.loginAccessToken).toString();
                   refreshToken = box.read(Keys.loginRefreshToken).toString();
                   debugPrint("auth token $authToken");
-                  if (authToken.isNotEmpty && refreshToken.isNotEmpty) {
+                  if (authToken != "null" && refreshToken != "null") {
                     return GetMaterialApp(
                       debugShowCheckedModeBanner: false,
                       title: "HEYVA",

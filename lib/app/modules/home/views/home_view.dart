@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/modules/article/views/article_view.dart';
 import 'package:heyva/app/modules/detaildoctor/views/detail_doctor_view.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_timeline.dart';
 import 'package:heyva/constant/colors.dart';
+import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
+import 'package:heyva/constant/variabels.dart';
 import '../../../widgets/reusable_article_container.dart';
 import '../controllers/home_controller.dart';
 
@@ -133,17 +137,53 @@ class HomeView extends GetView<HomeController> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      Text(
+                    children: [
+                      const Text(
                         Strings.daily_refresh,
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 14,
                             color: ColorApp.grey_font),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Get.toNamed(Routes.BREAST_FEEDING);
+                        },
+                        child: Text(
+                          "Breaast Feeding",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: ColorApp.grey_font),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          var box = GetStorage();
+                          box.remove(Keys.loginAccessToken);
+                          box.remove(Keys.loginRefreshToken);
+                          Future.delayed(800.seconds);
+                          Get.offNamed(Routes.SIGNUP);
+                        },
+                        child: Text(
+                          "Logout",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: ColorApp.grey_font),
+                        ),
                       )
                     ],
                   ),
-                  const SizedBox(height: 12,),
+                  const SizedBox(
+                    height: 12,
+                  ),
                   // Obx(
                   //   () => Stepper(
                   //     type: StepperType.vertical,
@@ -188,7 +228,9 @@ class HomeView extends GetView<HomeController> {
                   //     },
                   //   ),
                   // ),
-                  TimelineView(from: "home",),
+                  TimelineView(
+                    from: "home",
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: const [
@@ -296,8 +338,8 @@ class HomeView extends GetView<HomeController> {
                                           color: ColorApp.blue_container,
                                         ),
                                         color: ColorApp.blue_container,
-                                        borderRadius:
-                                        const BorderRadius.all(Radius.circular(12))),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(12))),
                                   ),
                                   title: const Text(
                                     Strings.dr_allisa,
@@ -307,7 +349,8 @@ class HomeView extends GetView<HomeController> {
                                         color: ColorApp.black_font_underline),
                                   ),
                                   subtitle: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const Text(
                                         Strings.phycologist_specialist,
@@ -317,9 +360,11 @@ class HomeView extends GetView<HomeController> {
                                             color: ColorApp.black_font_40),
                                       ),
                                       Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         children: [
-                                          Image.asset("assets/images/ic_star.png"),
+                                          Image.asset(
+                                              "assets/images/ic_star.png"),
                                           const SizedBox(
                                             width: 4,
                                           ),
@@ -335,7 +380,8 @@ class HomeView extends GetView<HomeController> {
                                     ],
                                   ),
                                   trailing: RawMaterialButton(
-                                    constraints: BoxConstraints.tight(const Size(24, 24)),
+                                    constraints: BoxConstraints.tight(
+                                        const Size(24, 24)),
                                     padding: EdgeInsets.zero,
                                     onPressed: () {},
                                     elevation: 0,
@@ -352,7 +398,9 @@ class HomeView extends GetView<HomeController> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 10,),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           Card(
                             elevation: 0,
                             color: ColorApp.arrow_white,
@@ -370,8 +418,8 @@ class HomeView extends GetView<HomeController> {
                                         color: ColorApp.blue_container,
                                       ),
                                       color: ColorApp.blue_container,
-                                      borderRadius:
-                                      const BorderRadius.all(Radius.circular(12))),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(12))),
                                 ),
                                 title: const Text(
                                   Strings.dr_allisa,
@@ -391,9 +439,11 @@ class HomeView extends GetView<HomeController> {
                                           color: ColorApp.black_font_40),
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
-                                        Image.asset("assets/images/ic_star.png"),
+                                        Image.asset(
+                                            "assets/images/ic_star.png"),
                                         const SizedBox(
                                           width: 4,
                                         ),
@@ -409,7 +459,8 @@ class HomeView extends GetView<HomeController> {
                                   ],
                                 ),
                                 trailing: RawMaterialButton(
-                                  constraints: BoxConstraints.tight(const Size(24, 24)),
+                                  constraints:
+                                      BoxConstraints.tight(const Size(24, 24)),
                                   padding: EdgeInsets.zero,
                                   onPressed: () {},
                                   elevation: 0,
@@ -446,12 +497,14 @@ class HomeView extends GetView<HomeController> {
                             borderRadius: BorderRadius.circular(14.0),
                             image: const DecorationImage(
                               fit: BoxFit.cover,
-                              image: AssetImage("assets/images/bg_blue_container_medal.png"),
+                              image: AssetImage(
+                                  "assets/images/bg_blue_container_medal.png"),
                             ),
                           ),
                           child: const ListTile(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(14))),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(14))),
                             title: Padding(
                               padding: EdgeInsets.only(top: 20),
                               child: Text(
@@ -479,7 +532,9 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10,),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       Card(
                         elevation: 0,
                         shape: RoundedRectangleBorder(
@@ -490,12 +545,14 @@ class HomeView extends GetView<HomeController> {
                             borderRadius: BorderRadius.circular(14.0),
                             image: const DecorationImage(
                               fit: BoxFit.cover,
-                              image: AssetImage("assets/images/bg_blue_container_plane.png"),
+                              image: AssetImage(
+                                  "assets/images/bg_blue_container_plane.png"),
                             ),
                           ),
                           child: const ListTile(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(14))),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(14))),
                             title: Padding(
                               padding: EdgeInsets.only(top: 20),
                               child: Text(
@@ -525,7 +582,9 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 100,)
+                  const SizedBox(
+                    height: 100,
+                  )
                 ],
               ),
             ),
