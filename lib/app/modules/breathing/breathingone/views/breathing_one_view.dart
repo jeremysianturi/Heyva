@@ -4,6 +4,8 @@ import 'package:heyva/app/modules/breathing/breathingtwo/views/breathing_two_vie
 import '../../../../../constant/colors.dart';
 import '../../../../../constant/strings.dart';
 import '../controllers/breathing_one_controller.dart';
+import 'package:heyva/app/widgets/nav_screen.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class BreathingOneView extends GetView<BreathingOneController> {
   const BreathingOneView({Key? key}) : super(key: key);
@@ -23,14 +25,24 @@ class BreathingOneView extends GetView<BreathingOneController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 67),
-                    child: Text(
-                      Strings.skip,
-                      style: TextStyle(
-                          color: ColorApp.txt_white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16),
+                  InkWell(
+                    onTap: () {
+                      PersistentNavBarNavigator.pushNewScreen(
+                        context,
+                        screen: NavScreen(
+                          menuScreenContext: context,
+                        ),
+                      );
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.only(top: 67),
+                      child: Text(
+                        Strings.skip,
+                        style: TextStyle(
+                            color: ColorApp.txt_white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16),
+                      ),
                     ),
                   ),
                 ],
@@ -45,7 +57,9 @@ class BreathingOneView extends GetView<BreathingOneController> {
                         fontSize: 14,
                         fontWeight: FontWeight.w600),
                   ),
-                  const SizedBox(height: 12,),
+                  const SizedBox(
+                    height: 12,
+                  ),
                   const Text(
                     Strings.start_short_exercise,
                     style: TextStyle(
@@ -53,7 +67,9 @@ class BreathingOneView extends GetView<BreathingOneController> {
                         fontSize: 20,
                         fontWeight: FontWeight.w700),
                   ),
-                  const SizedBox(height: 24,),
+                  const SizedBox(
+                    height: 24,
+                  ),
                   Column(
                     children: [
                       ElevatedButton(

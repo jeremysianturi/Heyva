@@ -56,7 +56,7 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
                   child: Column(
                     children: [
                       Container(
-                        height: 500,
+                        // height: 500,
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: ColorApp.white,
