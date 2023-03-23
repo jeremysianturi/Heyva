@@ -135,4 +135,9 @@ class Strings {
   static const String recomendation = "Recommendation";
   static const String recomendationSelftCare =
       "Here are some other self-care activities that my psychologist has planned out for you. As a start, you can do at least one of the following to make you feel better";
+
+  static const String thankyouMood =
+      "Thank you for let us \nknow about your mood";
+  static const String notice = "Notice how it feels to make time for yourself.";
+  static const String thankYou = "Thank you";
 }

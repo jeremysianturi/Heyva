@@ -1,4 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:heyva/app/modules/mood_tracker/recomendation2/bindings/recomendation2_binding.dart';
+import 'package:heyva/app/modules/mood_tracker/recomendation2/views/recomendation2_view.dart';
 
 import '../modules/article/bindings/article_binding.dart';
 import '../modules/article/views/article_view.dart';
@@ -34,8 +36,6 @@ import '../modules/onboarding/views/onboarding_three_view.dart';
 import '../modules/onboarding/views/onboarding_two_view.dart';
 import '../modules/onboarding/views/onplanning/onplanning_one_view.dart';
 import '../modules/onboarding/views/turnon_notif/turnon_notif_view.dart';
-import '../modules/recomendation2/bindings/recomendation2_binding.dart';
-import '../modules/recomendation2/views/recomendation2_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';

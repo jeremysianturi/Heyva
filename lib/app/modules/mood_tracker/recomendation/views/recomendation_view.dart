@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
 import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/constant/colors.dart';
@@ -74,7 +75,9 @@ class RecomendationView extends GetView<RecomendationController> {
             OrangeButtonWTrailingIcon(
               determineAction: "ontap",
               text: Strings.lets_go,
-              ontap: () {},
+              ontap: () {
+                Get.toNamed(Routes.RECOMENDATION2);
+              },
             )
           ],
         ),
