@@ -18,6 +18,7 @@ abstract class Routes {
   static const DETAIL_DOCTOR = _Paths.DETAIL_DOCTOR;
   static const ARTICLE = _Paths.ARTICLE;
   static const BREAST_FEEDING = _Paths.BREAST_FEEDING;
+  static const MOOD_TRACKER = _Paths.MOOD_TRACKER;
 }
 
 abstract class _Paths {
@@ -38,4 +39,5 @@ abstract class _Paths {
   static const DETAIL_DOCTOR = '/detailDoctor';
   static const ARTICLE = '/article';
   static const BREAST_FEEDING = '/breast_feeding';
+  static const MOOD_TRACKER = '/mood-tracker';
 }

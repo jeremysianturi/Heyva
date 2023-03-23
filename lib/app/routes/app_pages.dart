@@ -16,6 +16,8 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/bindings/login_google_apple_binding.dart';
 import '../modules/login/views/login_google_apple.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/mood_tracker/bindings/mood_tracker_binding.dart';
+import '../modules/mood_tracker/views/mood_tracker_view.dart';
 import '../modules/onboarding/bindings/onboarding_one_binding.dart';
 import '../modules/onboarding/bindings/onboarding_three_binding.dart';
 import '../modules/onboarding/bindings/onboarding_two_binding.dart';
@@ -114,6 +116,11 @@ class AppPages {
       name: _Paths.BREAST_FEEDING,
       page: () => BreastFeedingView(),
       binding: BreastFeedingBinding(),
+    ),
+    GetPage(
+      name: _Paths.MOOD_TRACKER,
+      page: () => const MoodTrackerView(),
+      binding: MoodTrackerBinding(),
     ),
   ];
 }
