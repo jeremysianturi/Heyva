@@ -145,14 +145,14 @@ class HomeView extends GetView<HomeController> {
                             fontSize: 14,
                             color: ColorApp.grey_font),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       InkWell(
                         onTap: () {
                           Get.toNamed(Routes.BREAST_FEEDING);
                         },
-                        child: Text(
+                        child:const Text(
                           "Breaast Feeding",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -160,7 +160,7 @@ class HomeView extends GetView<HomeController> {
                               color: ColorApp.grey_font),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       InkWell(
@@ -171,7 +171,7 @@ class HomeView extends GetView<HomeController> {
                           Future.delayed(800.seconds);
                           Get.offNamed(Routes.SIGNUP);
                         },
-                        child: Text(
+                        child:  const Text(
                           "Logout",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -180,6 +180,21 @@ class HomeView extends GetView<HomeController> {
                         ),
                       )
                     ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed(Routes.MOOD_TRACKER);
+                    },
+                    child:  const Text(
+                      "Mood tracker",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                          color: ColorApp.grey_font),
+                    ),
                   ),
                   const SizedBox(
                     height: 12,

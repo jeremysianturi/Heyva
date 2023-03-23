@@ -119,6 +119,7 @@ class Strings {
       "like being responsive” (John Pekkanen in MD—Doctors Talk About Themselves).";
   static const String select_schedule = "Select Schedule";
   static const String email_adress = "Email Address";
+  static const String other = "Other";
   static const String password = "Password";
   static const String excercise = "Excercise";
 
@@ -126,4 +127,9 @@ class Strings {
       "Internet connection is currently experiencing problems. please try again in a moment.";
   static const String emptyForm = "Form cannot be empty";
   static const String invalidEmail = "Invalid Email";
+  static const String welcomeMoodChecking = "Welcome to mood \ncheck-in";
+  static const String welcomeMoodCheckingDesc =
+      "taking a minute to reflect on your emotions can help you build mindful reflection into your daily life";
+  static const String moodCheckIn = "Mood check-in";
+  static const String sleepCheckIn = "Sleep check-in";
 }

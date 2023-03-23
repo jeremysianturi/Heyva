@@ -9,7 +9,7 @@ import '../modules/onboarding/views/onboarding_two_view.dart';
 import '../modules/onboarding/views/turnon_notif/turnon_notif_view.dart';
 
 class OrangeButtonWTrailingIcon extends StatelessWidget {
-   OrangeButtonWTrailingIcon({
+  OrangeButtonWTrailingIcon({
     Key? key,
     required this.determineAction,
     required this.text,
@@ -39,6 +39,8 @@ class OrangeButtonWTrailingIcon extends StatelessWidget {
                 // Get.toNamed(Routes.ONBOARDING_THREE);
                 ontap!();
               } else if (determineAction == "from_onplanning_one") {
+                ontap!();
+              } else if (determineAction == "ontap") {
                 ontap!();
               }
             },
