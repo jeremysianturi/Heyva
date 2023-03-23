@@ -19,6 +19,8 @@ abstract class Routes {
   static const ARTICLE = _Paths.ARTICLE;
   static const BREAST_FEEDING = _Paths.BREAST_FEEDING;
   static const MOOD_TRACKER = _Paths.MOOD_TRACKER;
+  static const MOOD_TRACKER_FORM = _Paths.MOOD_TRACKER_FORM;
+  static const SLEEP_CHECK_IN = _Paths.SLEEP_CHECK_IN;
 }
 
 abstract class _Paths {
@@ -40,4 +42,6 @@ abstract class _Paths {
   static const ARTICLE = '/article';
   static const BREAST_FEEDING = '/breast_feeding';
   static const MOOD_TRACKER = '/mood-tracker';
+  static const MOOD_TRACKER_FORM = '/mood-tracker-form';
+  static const SLEEP_CHECK_IN = '/sleep-check-in';
 }

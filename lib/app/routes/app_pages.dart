@@ -17,6 +17,8 @@ import '../modules/login/bindings/login_google_apple_binding.dart';
 import '../modules/login/views/login_google_apple.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/mood_tracker/bindings/mood_tracker_binding.dart';
+import '../modules/mood_tracker/mood_tracker_form/bindings/mood_tracker_form_binding.dart';
+import '../modules/mood_tracker/mood_tracker_form/views/mood_tracker_form_view.dart';
 import '../modules/mood_tracker/views/mood_tracker_view.dart';
 import '../modules/onboarding/bindings/onboarding_one_binding.dart';
 import '../modules/onboarding/bindings/onboarding_three_binding.dart';
@@ -32,6 +34,8 @@ import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
+import '../modules/sleep_check-in/bindings/sleep_check_in_binding.dart';
+import '../modules/sleep_check-in/views/sleep_check_in_view.dart';
 
 part 'app_routes.dart';
 
@@ -121,6 +125,16 @@ class AppPages {
       name: _Paths.MOOD_TRACKER,
       page: () => const MoodTrackerView(),
       binding: MoodTrackerBinding(),
+    ),
+    GetPage(
+      name: _Paths.MOOD_TRACKER_FORM,
+      page: () => MoodTrackerFormView(),
+      binding: MoodTrackerFormBinding(),
+    ),
+    GetPage(
+      name: _Paths.SLEEP_CHECK_IN,
+      page: () => const SleepCheckInView(),
+      binding: SleepCheckInBinding(),
     ),
   ];
 }
