@@ -132,4 +132,5 @@ class Strings {
       "taking a minute to reflect on your emotions can help you build mindful reflection into your daily life";
   static const String moodCheckIn = "Mood check-in";
   static const String sleepCheckIn = "Sleep check-in";
+  static const String recomendation = "Recommendation";
 }

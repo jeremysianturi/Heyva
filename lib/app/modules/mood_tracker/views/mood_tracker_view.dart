@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
 import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
-
-import 'package:story_view/controller/story_controller.dart';
 
 import '../controllers/mood_tracker_controller.dart';
 

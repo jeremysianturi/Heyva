@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/mood_tracker/mood_tracker_form/widget/mood_check_form.dart';
-import 'package:heyva/app/widgets/reusable_header.dart';
-import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
-import 'package:heyva/constant/strings.dart';
 import 'package:story_view/controller/story_controller.dart';
-import 'package:story_view/widgets/story_view.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../controllers/mood_tracker_form_controller.dart';
 
@@ -17,8 +12,6 @@ class MoodTrackerFormView extends GetView<MoodTrackerFormController> {
 
   @override
   Widget build(BuildContext context) {
-    final storyController = StoryController();
-
     return Obx(() => Scaffold(
           body: Stack(
             children: [
@@ -47,7 +40,7 @@ class MoodTrackerFormView extends GetView<MoodTrackerFormController> {
                   controller: controller,
                   ontap: () {
                     FocusScope.of(context).requestFocus(new FocusNode());
-
+                    Get.toNamed(Routes.SLEEP_CHECK_IN);
                   },
                   title: 'Want to tell us \nmore about it?',
                   subtitle: '',

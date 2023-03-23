@@ -1,4 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:heyva/app/modules/mood_tracker/sleep_check-in/bindings/sleep_check_in_binding.dart';
+import 'package:heyva/app/modules/mood_tracker/sleep_check-in/views/sleep_check_in_view.dart';
 
 import '../modules/article/bindings/article_binding.dart';
 import '../modules/article/views/article_view.dart';
@@ -34,8 +36,6 @@ import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
-import '../modules/sleep_check-in/bindings/sleep_check_in_binding.dart';
-import '../modules/sleep_check-in/views/sleep_check_in_view.dart';
 
 part 'app_routes.dart';
 
