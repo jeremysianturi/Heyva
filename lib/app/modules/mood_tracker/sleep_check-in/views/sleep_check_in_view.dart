@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/mood_tracker/sleep_check-in/widget/sleep_check_form.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
 
 import '../controllers/sleep_check_in_controller.dart';
@@ -10,8 +11,7 @@ class SleepCheckInView extends GetView<SleepCheckInController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() =>
-        Scaffold(
+    return Obx(() => Scaffold(
           body: Stack(
             children: [
               if (controller.pagePosition.value == 0)
@@ -39,6 +39,7 @@ class SleepCheckInView extends GetView<SleepCheckInController> {
                   controller: controller,
                   ontap: () {
                     FocusScope.of(context).requestFocus(new FocusNode());
+                    Get.toNamed(Routes.RECOMENDATION);
                   },
                   title: 'Want to tell us \nmore about it?',
                   subtitle: '',
@@ -56,7 +57,7 @@ class SleepCheckInView extends GetView<SleepCheckInController> {
                                 ? ColorApp.btn_orange
                                 : ColorApp.black.withOpacity(0.3),
                             borderRadius:
-                            BorderRadius.all(Radius.circular(10))),
+                                BorderRadius.all(Radius.circular(10))),
                       ),
                     ),
                     const SizedBox(
@@ -71,7 +72,7 @@ class SleepCheckInView extends GetView<SleepCheckInController> {
                                 ? ColorApp.btn_orange
                                 : ColorApp.black.withOpacity(0.3),
                             borderRadius:
-                            BorderRadius.all(Radius.circular(10))),
+                                BorderRadius.all(Radius.circular(10))),
                       ),
                     ),
                     const SizedBox(
@@ -86,7 +87,7 @@ class SleepCheckInView extends GetView<SleepCheckInController> {
                                 ? ColorApp.btn_orange
                                 : ColorApp.black.withOpacity(0.3),
                             borderRadius:
-                            BorderRadius.all(Radius.circular(10))),
+                                BorderRadius.all(Radius.circular(10))),
                       ),
                     )
                   ],
@@ -95,5 +96,5 @@ class SleepCheckInView extends GetView<SleepCheckInController> {
             ],
           ),
         ));
-    }
+  }
 }

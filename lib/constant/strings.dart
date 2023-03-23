@@ -133,4 +133,6 @@ class Strings {
   static const String moodCheckIn = "Mood check-in";
   static const String sleepCheckIn = "Sleep check-in";
   static const String recomendation = "Recommendation";
+  static const String recomendationSelftCare =
+      "Here are some other self-care activities that my psychologist has planned out for you. As a start, you can do at least one of the following to make you feel better";
 }

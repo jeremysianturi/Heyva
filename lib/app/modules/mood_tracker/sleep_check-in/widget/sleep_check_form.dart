@@ -80,9 +80,6 @@ class SleepCheckForm1 extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // const SizedBox(
-              //   height: 94,
-              // ),
               if (controller.pagePosition.value != 2)
                 Obx(
                   () => Container(

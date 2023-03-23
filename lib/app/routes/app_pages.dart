@@ -1,6 +1,4 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:heyva/app/modules/mood_tracker/sleep_check-in/bindings/sleep_check_in_binding.dart';
-import 'package:heyva/app/modules/mood_tracker/sleep_check-in/views/sleep_check_in_view.dart';
 
 import '../modules/article/bindings/article_binding.dart';
 import '../modules/article/views/article_view.dart';
@@ -21,6 +19,10 @@ import '../modules/login/views/login_view.dart';
 import '../modules/mood_tracker/bindings/mood_tracker_binding.dart';
 import '../modules/mood_tracker/mood_tracker_form/bindings/mood_tracker_form_binding.dart';
 import '../modules/mood_tracker/mood_tracker_form/views/mood_tracker_form_view.dart';
+import '../modules/mood_tracker/recomendation/bindings/recomendation_binding.dart';
+import '../modules/mood_tracker/recomendation/views/recomendation_view.dart';
+import '../modules/mood_tracker/sleep_check-in/bindings/sleep_check_in_binding.dart';
+import '../modules/mood_tracker/sleep_check-in/views/sleep_check_in_view.dart';
 import '../modules/mood_tracker/views/mood_tracker_view.dart';
 import '../modules/onboarding/bindings/onboarding_one_binding.dart';
 import '../modules/onboarding/bindings/onboarding_three_binding.dart';
@@ -32,6 +34,8 @@ import '../modules/onboarding/views/onboarding_three_view.dart';
 import '../modules/onboarding/views/onboarding_two_view.dart';
 import '../modules/onboarding/views/onplanning/onplanning_one_view.dart';
 import '../modules/onboarding/views/turnon_notif/turnon_notif_view.dart';
+import '../modules/recomendation2/bindings/recomendation2_binding.dart';
+import '../modules/recomendation2/views/recomendation2_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
@@ -135,6 +139,16 @@ class AppPages {
       name: _Paths.SLEEP_CHECK_IN,
       page: () => const SleepCheckInView(),
       binding: SleepCheckInBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECOMENDATION,
+      page: () => const RecomendationView(),
+      binding: RecomendationBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECOMENDATION2,
+      page: () => const Recomendation2View(),
+      binding: Recomendation2Binding(),
     ),
   ];
 }
