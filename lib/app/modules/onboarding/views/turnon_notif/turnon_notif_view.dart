@@ -62,7 +62,7 @@ class TurnOnNotifView extends GetView<TurnOnNotifController> {
                 ),
               ],
             ),
-            const OrangeButtonWTrailingIcon(
+             OrangeButtonWTrailingIcon(
               determineAction: "from_turnon_notif",
               text: Strings.lets_go,
             ),

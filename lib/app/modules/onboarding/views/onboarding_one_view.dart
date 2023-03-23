@@ -64,7 +64,7 @@ class OnBoardingOneView extends GetView<OnBoardingOneController> {
                 ),
               ],
             ),
-            const OrangeButtonWTrailingIcon(
+             OrangeButtonWTrailingIcon(
               determineAction: "from_onboarding_one",
               text: Strings.next,
             ),

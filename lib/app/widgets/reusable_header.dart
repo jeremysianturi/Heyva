@@ -12,6 +12,7 @@ class Header extends StatelessWidget {
     this.ontapIcon,
     this.showCenterTitle = false,
     this.centerTitle,
+    this.titleColor = ColorApp.black_article_title,
   }) : super(key: key);
 
   final String? rightText;
@@ -19,6 +20,7 @@ class Header extends StatelessWidget {
   final Function? ontapIcon;
   final bool showCenterTitle;
   final String? centerTitle;
+  final Color titleColor;
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +48,9 @@ class Header extends StatelessWidget {
           if (showCenterTitle)
             Text(
               centerTitle ?? "",
-              style: const TextStyle(
-                  color: ColorApp.black_article_title,
+              style: TextStyle(
+                  decoration: TextDecoration.none,
+                  color: titleColor,
                   fontSize: 20,
                   fontWeight: FontWeight.w500),
             ),

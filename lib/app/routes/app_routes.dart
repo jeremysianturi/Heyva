@@ -2,6 +2,7 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   Routes._();
+
   static const SIGNUP = _Paths.SIGNUP;
   static const LOGIN = _Paths.LOGIN;
   static const REGISTER = _Paths.REGISTER;
@@ -21,6 +22,7 @@ abstract class Routes {
 
 abstract class _Paths {
   _Paths._();
+
   static const SIGNUP = '/signup';
   static const LOGIN = '/login';
   static const REGISTER = '/register';

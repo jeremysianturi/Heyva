@@ -9,21 +9,23 @@ import '../modules/onboarding/views/onboarding_two_view.dart';
 import '../modules/onboarding/views/turnon_notif/turnon_notif_view.dart';
 
 class OrangeButtonWTrailingIcon extends StatelessWidget {
-  const OrangeButtonWTrailingIcon({
+   OrangeButtonWTrailingIcon({
     Key? key,
     required this.determineAction,
     required this.text,
     this.ontap,
+    this.padding = 20,
   }) : super(key: key);
 
   final String determineAction;
   final String text;
   final Function? ontap;
+  double padding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: padding),
       child: Column(
         children: [
           ElevatedButton(
