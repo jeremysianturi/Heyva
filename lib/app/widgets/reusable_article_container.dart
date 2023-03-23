@@ -68,7 +68,7 @@ class ArticleContainer extends StatelessWidget {
             height: 12,
           ),
           SizedBox(
-            width: 70,
+            // width: 70,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [

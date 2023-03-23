@@ -240,7 +240,7 @@ class HomeView extends GetView<HomeController> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               SizedBox(
-                                width: 70,
+                                // width: 70,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
