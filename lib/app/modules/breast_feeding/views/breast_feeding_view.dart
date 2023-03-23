@@ -16,9 +16,32 @@ class BreastFeedingView extends GetView<BreastFeedingController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
+        child: Stack(
           children: [
-            const Header(rightText: Strings.login, showIcon: true),
+            AspectRatio(
+              aspectRatio: 375 / 390,
+              child: Container(
+                width: Get.width,
+                alignment: Alignment.topCenter,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(
+                          'assets/images/bg_breast_feeding.png',
+                        ),
+                        fit: BoxFit.fitWidth)),
+              ),
+            ),
+            Column(
+              children: [
+                Container(
+                    margin: const EdgeInsets.only(top: 8),
+                    child: const Header(
+                      showCenterTitle: true,
+                        centerTitle: Strings.excercise,
+                        rightText: Strings.login,
+                        showIcon: true)),
+              ],
+            ),
           ],
         ),
       ),

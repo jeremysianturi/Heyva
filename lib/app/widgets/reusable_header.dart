@@ -7,14 +7,18 @@ import '../../constant/strings.dart';
 class Header extends StatelessWidget {
   const Header({
     Key? key,
-    required this.rightText,
+    this.rightText,
     this.showIcon = false,
     this.ontapIcon,
+    this.showCenterTitle = false,
+    this.centerTitle,
   }) : super(key: key);
 
-  final String rightText;
+  final String? rightText;
   final bool showIcon;
   final Function? ontapIcon;
+  final bool showCenterTitle;
+  final String? centerTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +43,14 @@ class Header extends StatelessWidget {
               color: ColorApp.black_arrow_back,
             ),
           ),
+          if (showCenterTitle)
+            Text(
+              centerTitle ?? "",
+              style: const TextStyle(
+                  color: ColorApp.black_article_title,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500),
+            ),
           showIcon
               ? ElevatedButton(
                   onPressed: () {
@@ -59,7 +71,7 @@ class Header extends StatelessWidget {
                   ),
                 )
               : Text(
-                  rightText,
+                  rightText ?? "",
                   style: const TextStyle(
                       color: ColorApp.black,
                       fontSize: 16,
