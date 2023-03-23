@@ -1,4 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:heyva/app/modules/article/bindings/article_binding.dart';
+import 'package:heyva/app/modules/article/views/article_view.dart';
 import 'package:heyva/app/modules/breathing/breathingone/bindings/breathing_one_binding.dart';
 import 'package:heyva/app/modules/breathing/breathingone/views/breathing_one_view.dart';
 import 'package:heyva/app/modules/login/bindings/login_binding.dart';
@@ -99,6 +101,12 @@ class AppPages {
       name: _Paths.DETAIL_DOCTOR,
       page: () => DetailDoctorView(),
       binding: DetailDoctorBinding(),
+    ),
+    GetPage(
+      name: _Paths.ARTICLE,
+      page: () => ArticleView(),
+      binding: ArticleBinding(),
     )
+
   ];
 }

@@ -15,6 +15,7 @@ abstract class Routes {
   static const BREATHING_TWO = _Paths.BREATHING_TWO;
   static const BREATHING_TIMER = _Paths.BREATHING_TIMER;
   static const DETAIL_DOCTOR = _Paths.DETAIL_DOCTOR;
+  static const ARTICLE = _Paths.ARTICLE;
 }
 
 abstract class _Paths {
@@ -32,4 +33,5 @@ abstract class _Paths {
   static const BREATHING_TWO = '/BreathingTwo';
   static const BREATHING_TIMER = '/BreathingTimer';
   static const DETAIL_DOCTOR = '/detailDoctor';
+  static const ARTICLE = '/article';
 }
