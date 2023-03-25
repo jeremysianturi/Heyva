@@ -2,12 +2,15 @@ import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
 
 class myVidePlayer extends StatefulWidget {
-  const myVidePlayer({Key? key}) : super(key: key);
+  const myVidePlayer({Key? key, required this.videoUrl}) : super(key: key);
+
+  final String videoUrl;
 
   @override
   State<myVidePlayer> createState() => _MyVidePlayer();
@@ -22,7 +25,12 @@ class _MyVidePlayer extends State<myVidePlayer> {
   late CustomVideoPlayerWebController _customVideoPlayerWebController;
 
   final CustomVideoPlayerSettings _customVideoPlayerSettings =
-      const CustomVideoPlayerSettings();
+      const CustomVideoPlayerSettings(
+    alwaysShowThumbnailOnVideoPaused: false,
+    placeholderWidget: CircularProgressIndicator(),
+    controlBarAvailable: true,
+    playOnlyOnce: false,
+  );
 
   final CustomVideoPlayerWebSettings _customVideoPlayerWebSettings =
       CustomVideoPlayerWebSettings(
@@ -33,25 +41,40 @@ class _MyVidePlayer extends State<myVidePlayer> {
   void initState() {
     super.initState();
 
+
+
+
     _videoPlayerController = VideoPlayerController.network(
-      longVideo,
-    )..initialize().then((value) => setState(() {}));
-    _videoPlayerController2 = VideoPlayerController.network(video240);
-    _videoPlayerController3 = VideoPlayerController.network(video480);
+      'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4#1',
+    )..initialize().then((value) => _videoPlayerController.addListener(() {
+          //custom Listner
+          setState(() {
+            if (_videoPlayerController.value.position ==
+                _videoPlayerController.value.duration) {
+
+
+                // bottomSheetMessage(color: "red", desc: "stop");
+
+            }
+            // if (!_videoPlayerController.value.isPlaying &&
+            //     _videoPlayerController.value.isInitialized &&
+            //     (_videoPlayerController.value.duration ==
+            //         _videoPlayerController.value.position)) {
+            //
+            //
+            //
+            //   //checking the duration and position every time
+            //   setState(() {});
+            // }
+          });
+        }));
+
     _customVideoPlayerController = CustomVideoPlayerController(
       context: context,
       videoPlayerController: _videoPlayerController,
       customVideoPlayerSettings: _customVideoPlayerSettings,
-      // additionalVideoSources: {
-      //   "240p": _videoPlayerController2,
-      //   "480p": _videoPlayerController3,
-      //   "720p": _videoPlayerController,
-      // },
     );
-
-    _customVideoPlayerWebController = CustomVideoPlayerWebController(
-      webVideoPlayerSettings: _customVideoPlayerWebSettings,
-    );
+    _customVideoPlayerController.videoPlayerController.play();
   }
 
   @override

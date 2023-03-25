@@ -14,108 +14,110 @@ class Recomendation2View extends GetView<Recomendation2Controller> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: Get.height,
-        width: Get.width,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/bg_heyva.png"),
-            fit: BoxFit.fill,
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          height: Get.height,
+          width: Get.width,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/bg_heyva.png"),
+              fit: BoxFit.fill,
+            ),
           ),
-        ),
-        child: Column(
-          children: [
-            Container(
-                margin: const EdgeInsets.only(top: 38),
-                child: const Header(
-                    showCenterTitle: true,
-                    centerTitle: Strings.recomendation,
-                    rightText: Strings.skip,
-                    showIcon: true)),
-            const SizedBox(
-              height: 24,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                Strings.thankyouMood,
+          child: Column(
+            children: [
+              Container(
+                  margin: const EdgeInsets.only(top: 14),
+                  child: const Header(
+                      showCenterTitle: true,
+                      centerTitle: Strings.recomendation,
+                      rightText: Strings.skip,
+                      showIcon: true)),
+              const SizedBox(
+                height: 24,
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  Strings.thankyouMood,
+                  style: TextStyle(
+                      color: ColorApp.black,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 28),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  Strings.notice,
+                  style: TextStyle(
+                      color: ColorApp.grey_font,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                width: Get.width,
+                height: 1,
+                color: ColorApp.black.withOpacity(0.3),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              const Text(
+                Strings.recomendation,
                 style: TextStyle(
-                    color: ColorApp.black,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 28),
+                    color: ColorApp.black_article_title,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 24),
                 textAlign: TextAlign.center,
               ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                Strings.notice,
-                style: TextStyle(
-                    color: ColorApp.grey_font,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16),
-                textAlign: TextAlign.center,
+              const SizedBox(
+                height: 20,
               ),
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              width: Get.width,
-              height: 1,
-              color: ColorApp.black.withOpacity(0.3),
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            const Text(
-              Strings.recomendation,
-              style: TextStyle(
-                  color: ColorApp.black_article_title,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 24),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            RecomendationWidget(
-              bg: ColorApp.blue_container,
-              height: 140,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: RecomendationWidget(
-                    bg: ColorApp.btn_pink,
-                    height: 200,
-                    marRight: 5,
+              RecomendationWidget(
+                bg: ColorApp.blue_container,
+                height: 140,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: RecomendationWidget(
+                      bg: ColorApp.btn_pink,
+                      height: 200,
+                      marRight: 5,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: RecomendationWidget(
-                    bg: ColorApp.btn_maroon,
-                    height: 200,
-                    marleft: 5,
+                  Expanded(
+                    child: RecomendationWidget(
+                      bg: ColorApp.btn_maroon,
+                      height: 200,
+                      marleft: 5,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Expanded(child: Container()),
-            OrangeButtonWTrailingIcon(
-              determineAction: "ontap",
-              text: Strings.thankYou,
-              ontap: () {},
-            )
-          ],
+                ],
+              ),
+              Expanded(child: Container()),
+              OrangeButtonWTrailingIcon(
+                determineAction: "ontap",
+                text: Strings.thankYou,
+                ontap: () {},
+              )
+            ],
+          ),
         ),
       ),
     );

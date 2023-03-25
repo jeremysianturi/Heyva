@@ -46,6 +46,7 @@ dependencies:
   get_storage: ^2.1.1
   appinio_video_player: ^1.2.0
   flutter_staggered_grid_view: ^0.6.2
+  chewie: ^1.4.0
 
 dev_dependencies:
   flutter_lints: 2.0.1

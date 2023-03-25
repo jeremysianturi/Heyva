@@ -11,7 +11,6 @@ import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
 import 'package:heyva/constant/keys.dart';
 import '../../../../../model/interest.dart';
 import 'package:heyva/services/dio_services.dart';
-import 'package:get/get.dart';
 
 class OnPlanningOneController extends GetxController {
   RxBool isVisible = true.obs;

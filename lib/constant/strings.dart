@@ -122,6 +122,7 @@ class Strings {
   static const String other = "Other";
   static const String password = "Password";
   static const String excercise = "Excercise";
+  static const String playAll = "Play all";
 
   static const String internetError =
       "Internet connection is currently experiencing problems. please try again in a moment.";
