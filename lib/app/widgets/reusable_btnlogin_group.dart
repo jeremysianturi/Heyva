@@ -4,6 +4,7 @@ import 'package:heyva/app/modules/login/views/login_google_apple.dart';
 import 'package:heyva/app/modules/login/views/login_view.dart';
 import 'package:heyva/app/modules/onboarding/views/onboarding_one_view.dart';
 import 'package:heyva/app/modules/register/views/register_view.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../../constant/colors.dart';
 import '../../constant/strings.dart';
 
@@ -11,12 +12,12 @@ class ReusableBtnLoginGroup extends StatelessWidget {
   ReusableBtnLoginGroup({
     required this.orangeBtnText,
     required this.detemineAction,
-     this.onTap,
+    this.onTap,
   });
 
   final String orangeBtnText;
   final String detemineAction;
-  final Function?  onTap;
+  final Function? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +115,20 @@ class ReusableBtnLoginGroup extends StatelessWidget {
             height: 12,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () async {
+              final credential = await SignInWithApple.getAppleIDCredential(
+                scopes: [
+                  AppleIDAuthorizationScopes.email,
+                  AppleIDAuthorizationScopes.fullName,
+                ],
+              );
+
+              print(credential);
+
+              // Now send the credential (especially `credential.authorizationCode`) to your server to create a session
+              // after they have been validated with Apple (see `Integration` section for more information on how to do this)
+            },
+            // onPressed:(){},
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(ColorApp.black),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
