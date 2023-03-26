@@ -13,6 +13,10 @@ class RegisterController extends GetxController {
   TextEditingController pass = TextEditingController();
   RxBool isObscure = true.obs;
   final box = GetStorage();
+  var errorMessage = ''.obs;
+  var isFullnameError = false.obs;
+  var isEmailError = false.obs;
+  var isPassError = false.obs;
 
   saveToStorage() {
     if (validateData) {
@@ -33,11 +37,33 @@ class RegisterController extends GetxController {
   }
 
   bool get validateData {
-    if (email.text.isEmpty || pass.text.isEmpty || fullname.text.isEmpty) {
-      bottomSheetMessage(desc: Strings.emptyForm);
+    isFullnameError.value = false;
+    isEmailError.value = false;
+    isPassError.value = false;
+    errorMessage.value = "";
+    if (fullname.text.isEmpty) {
+      isFullnameError.value = true;
+      errorMessage.value = Strings.emptyForm;
       return false;
-    } else if (!GetUtils.isEmail(email.text)) {
-      bottomSheetMessage(desc: Strings.invalidEmail);
+    }
+    if (email.text.isEmpty) {
+      isEmailError.value = true;
+      errorMessage.value = Strings.emptyForm;
+      return false;
+    }
+    if (pass.text.isEmpty) {
+      isPassError.value = true;
+      errorMessage.value = Strings.emptyForm;
+      return false;
+    }
+    if (!GetUtils.isEmail(email.text)) {
+      isEmailError.value = true;
+      errorMessage.value = Strings.invalidEmail;
+      return false;
+    }
+    if (pass.text.toString().length < 8) {
+      isPassError.value = true;
+      errorMessage.value = Strings.atLeast8Char;
       return false;
     }
     return true;

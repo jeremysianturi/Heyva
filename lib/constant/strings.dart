@@ -126,8 +126,9 @@ class Strings {
 
   static const String internetError =
       "Internet connection is currently experiencing problems. please try again in a moment.";
-  static const String emptyForm = "Form cannot be empty";
+  static const String emptyForm = "Cannot be blank";
   static const String invalidEmail = "Invalid Email";
+  static const String atLeast8Char = "Password must be at least 8 characters";
   static const String welcomeMoodChecking = "Welcome to mood \ncheck-in";
   static const String welcomeMoodCheckingDesc =
       "taking a minute to reflect on your emotions can help you build mindful reflection into your daily life";

@@ -34,4 +34,5 @@ class ColorApp {
   static const Color container_pink = Color(0xFFFFE1DC);
   static const Color grey_tab_title = Color(0xFF646464);
   static const Color yellow_icon = Color(0xFFFFCA43);
+  static const Color red_error = Color(0xFFE53B3B);
 }

@@ -94,6 +94,17 @@ class LoginView extends GetView<LoginController> {
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(14),
                                     ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(14),
+                                      borderSide: const BorderSide(
+                                        color: ColorApp.red_error,
+                                        width: 2.0,
+                                      ),
+                                    ),
+                                    errorText: controller.isEmailError.isTrue
+                                        ? "error"
+                                        : null,
+                                    errorStyle: const TextStyle(fontSize: 0.01),
                                   ),
                                 ),
                                 const SizedBox(
@@ -122,6 +133,18 @@ class LoginView extends GetView<LoginController> {
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(14),
                                       ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(14),
+                                        borderSide: const BorderSide(
+                                          color: ColorApp.red_error,
+                                          width: 2.0,
+                                        ),
+                                      ),
+                                      errorText: controller.isPasserror.isTrue
+                                          ? "error"
+                                          : null,
+                                      errorStyle:
+                                          const TextStyle(fontSize: 0.01),
                                       suffixIcon: IconButton(
                                         icon: Icon(
                                             loginController.isObscure.value ==
@@ -136,6 +159,19 @@ class LoginView extends GetView<LoginController> {
                                     ),
                                   ),
                                 ),
+                                if (controller.errorMessage.value.isNotEmpty)
+                                  Container(
+                                    margin: EdgeInsets.only(top: 8),
+                                    width: Get.width,
+                                    child: Text(
+                                      controller.errorMessage.value,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 12,
+                                          color: ColorApp.red_error),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  )
                               ],
                             ),
                           ),
@@ -144,7 +180,11 @@ class LoginView extends GetView<LoginController> {
                           orangeBtnText: Strings.login,
                           detemineAction: Strings.login,
                           onTap: () {
-                            controller.postLogin();
+                            FocusScope.of(context)
+                                .requestFocus(new FocusNode());
+                            if (controller.validateData) {
+                              controller.postLogin();
+                            }
                           },
                         )
                       ],

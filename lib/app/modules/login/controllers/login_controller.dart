@@ -18,6 +18,9 @@ class LoginController extends GetxController {
   var isLoading = false.obs;
   late DioClient _client;
   late LoginProvider _provider;
+  var errorMessage = ''.obs;
+  var isEmailError = false.obs;
+  var isPasserror = false.obs;
 
   @override
   void onInit() {
@@ -27,11 +30,22 @@ class LoginController extends GetxController {
   }
 
   bool get validateData {
-    if (emailC.text.isEmpty || passC.text.isEmpty) {
-      bottomSheetMessage(desc: Strings.emptyForm);
+    isEmailError.value = false;
+    isPasserror.value = false;
+    errorMessage.value = "";
+    if (emailC.text.isEmpty) {
+      isEmailError.value = true;
+      errorMessage.value = Strings.emptyForm;
       return false;
-    } else if (!GetUtils.isEmail(emailC.text)) {
-      bottomSheetMessage(desc: Strings.invalidEmail);
+    }
+    if (passC.text.isEmpty) {
+      isPasserror.value = true;
+      errorMessage.value = Strings.emptyForm;
+      return false;
+    }
+    if (!GetUtils.isEmail(emailC.text)) {
+      isEmailError.value = true;
+      errorMessage.value = Strings.invalidEmail;
       return false;
     }
     return true;
@@ -41,6 +55,7 @@ class LoginController extends GetxController {
       LoginModel(success: "", data: null, message: "", error: "").obs;
 
   postLogin() async {
+    errorMessage.value = "";
     isLoading.value = true;
     try {
       loginResonse.value =
@@ -56,8 +71,13 @@ class LoginController extends GetxController {
         800.milliseconds;
         Get.toNamed(Routes.BREATHING_ONE);
       } else {
-        bottomSheetMessage(
-            color: "red", desc: loginResonse.value.message ?? "");
+        if (loginResonse.value.message.toString().toLowerCase().contains("pass")) {
+          isPasserror.value = true;
+        } else {
+          isEmailError.value = true;
+          isPasserror.value = true;
+        }
+        errorMessage.value = loginResonse.value.message ?? "Error Message";
       }
     } catch (e) {
       isLoading.value = false;
