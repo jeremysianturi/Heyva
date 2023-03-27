@@ -33,12 +33,10 @@ class BreastFeedingView extends GetView<BreastFeedingController> {
                     child: Container(
                       width: Get.width,
                       alignment: Alignment.topCenter,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage(
-                                'assets/images/bg_breast_feeding.png',
-                              ),
-                              fit: BoxFit.fitWidth)),
+                              image: NetworkImage(controller.bannerImg),
+                              fit: BoxFit.cover)),
                     ),
                   ),
                   Column(

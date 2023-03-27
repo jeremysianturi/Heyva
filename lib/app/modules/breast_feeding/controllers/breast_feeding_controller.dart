@@ -29,7 +29,7 @@ class BreastFeedingController extends GetxController {
     isLoading.value = true;
     try {
       videoContentResponse.value = (await _provider.getListVideo(
-          contentId: "2b942945-68b7-4437-bf6f-1bc65ff36d78"))!;
+          contentId: "b8f05ede-7f4f-4720-bc49-da00866097dc"))!;
       isLoading.value = false;
 
       if (videoContentResponse.value.success == "Success") {
@@ -67,5 +67,10 @@ class BreastFeedingController extends GetxController {
   String get body {
     var data = videoContentResponse.value.data;
     return data?.body ?? "";
+  }
+
+  String get bannerImg {
+    var data = videoContentResponse.value.data;
+    return data?.banner ?? "";
   }
 }

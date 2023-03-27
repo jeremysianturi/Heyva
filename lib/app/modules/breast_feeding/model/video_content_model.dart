@@ -13,13 +13,13 @@ class VideoContentModel {
 
   VideoContentModel.fromJson(Map<String, dynamic> json)
       : success = json['success'] as String?,
-        data = (json['data'] as Map<String, dynamic>?) != null ? Data.fromJson(
-            json['data'] as Map<String, dynamic>) : null,
+        data = (json['data'] as Map<String, dynamic>?) != null
+            ? Data.fromJson(json['data'] as Map<String, dynamic>)
+            : null,
         message = json['message'],
         error = json['error'];
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         'success': success,
         'data': data?.toJson(),
         'message': message,
@@ -35,6 +35,7 @@ class Data {
   final List<Tags>? tags;
   final List<Attachments>? attachments;
   final IsFinishedOuter? isFinished;
+  final String? banner;
 
   Data({
     this.id,
@@ -44,6 +45,7 @@ class Data {
     this.tags,
     this.attachments,
     this.isFinished,
+    this.banner,
   });
 
   Data.fromJson(Map<String, dynamic> json)
@@ -51,24 +53,27 @@ class Data {
         title = json['title'] as String?,
         body = json['body'] as String?,
         creator = json['creator'] as String?,
-        tags = (json['tags'] as List?)?.map((dynamic e) =>
-            Tags.fromJson(e as Map<String, dynamic>)).toList(),
-        attachments = (json['attachments'] as List?)?.map((dynamic e) =>
-            Attachments.fromJson(e as Map<String, dynamic>)).toList(),
+        tags = (json['tags'] as List?)
+            ?.map((dynamic e) => Tags.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        attachments = (json['attachments'] as List?)
+            ?.map(
+                (dynamic e) => Attachments.fromJson(e as Map<String, dynamic>))
+            .toList(),
         isFinished = (json['is_finished'] as Map<String, dynamic>?) != null
-            ? IsFinishedOuter.fromJson(
-            json['is_finished'] as Map<String, dynamic>)
-            : null;
+            ? IsFinishedOuter.fromJson(json['is_finished'] as Map<String, dynamic>)
+            : null,
+        banner = json['banner'] as String?;
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         'id': id,
         'title': title,
         'body': body,
         'creator': creator,
         'tags': tags?.map((e) => e.toJson()).toList(),
         'attachments': attachments?.map((e) => e.toJson()).toList(),
-        'is_finished': isFinished?.toJson()
+        'is_finished': isFinished?.toJson(),
+        'banner': banner
       };
 }
 
@@ -83,14 +88,11 @@ class Tags {
 
   Tags.fromJson(Map<String, dynamic> json)
       : id = json['id'] as String?,
-        tag = (json['tag'] as Map<String, dynamic>?) != null ? Tag.fromJson(
-            json['tag'] as Map<String, dynamic>) : null;
+        tag = (json['tag'] as Map<String, dynamic>?) != null
+            ? Tag.fromJson(json['tag'] as Map<String, dynamic>)
+            : null;
 
-  Map<String, dynamic> toJson() =>
-      {
-        'id': id,
-        'tag': tag?.toJson()
-      };
+  Map<String, dynamic> toJson() => {'id': id, 'tag': tag?.toJson()};
 }
 
 class Tag {
@@ -118,8 +120,7 @@ class Tag {
         icon = json['icon'],
         value = json['value'];
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         'id': id,
         'type': type,
         'name': name,
@@ -136,6 +137,7 @@ class Attachments {
   final String? attachmentTitle;
   final dynamic attachmentLength;
   final IsFinished? isFinished;
+  final String? thumbnail;
 
   Attachments({
     this.id,
@@ -144,6 +146,7 @@ class Attachments {
     this.attachmentTitle,
     this.attachmentLength,
     this.isFinished,
+    this.thumbnail,
   });
 
   Attachments.fromJson(Map<String, dynamic> json)
@@ -154,24 +157,25 @@ class Attachments {
         attachmentLength = json['attachment_length'],
         isFinished = (json['is_finished'] as Map<String, dynamic>?) != null
             ? IsFinished.fromJson(json['is_finished'] as Map<String, dynamic>)
-            : null;
+            : null,
+        thumbnail = json['thumbnail'] as String?;
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         'id': id,
         'attachment_order': attachmentOrder,
         'attachment': attachment,
         'attachment_title': attachmentTitle,
         'attachment_length': attachmentLength,
-        'is_finished': isFinished?.toJson()
+        'is_finished': isFinished?.toJson(),
+        'thumbnail': thumbnail
       };
 }
 
 class IsFinished {
   final String? id;
-  final String? profileCode;
-  final String? videoContent;
-  final String? videoContentAttachment;
+  final dynamic profileCode;
+  final dynamic videoContent;
+  final dynamic videoContentAttachment;
   final bool? isFinished;
 
   IsFinished({
@@ -184,13 +188,12 @@ class IsFinished {
 
   IsFinished.fromJson(Map<String, dynamic> json)
       : id = json['id'] as String?,
-        profileCode = json['profile_code'] as String?,
-        videoContent = json['video_content'] as String?,
-        videoContentAttachment = json['video_content_attachment'] as String?,
+        profileCode = json['profile_code'],
+        videoContent = json['video_content'],
+        videoContentAttachment = json['video_content_attachment'],
         isFinished = json['is_finished'] as bool?;
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         'id': id,
         'profile_code': profileCode,
         'video_content': videoContent,
@@ -201,7 +204,7 @@ class IsFinished {
 
 class IsFinishedOuter {
   final String? id;
-  final String? profileCode;
+  final dynamic profileCode;
   final bool? isFinished;
 
   IsFinishedOuter({
@@ -212,13 +215,9 @@ class IsFinishedOuter {
 
   IsFinishedOuter.fromJson(Map<String, dynamic> json)
       : id = json['id'] as String?,
-        profileCode = json['profile_code'] as String?,
+        profileCode = json['profile_code'],
         isFinished = json['is_finished'] as bool?;
 
   Map<String, dynamic> toJson() =>
-      {
-        'id': id,
-        'profile_code': profileCode,
-        'is_finished': isFinished
-      };
+      {'id': id, 'profile_code': profileCode, 'is_finished': isFinished};
 }
