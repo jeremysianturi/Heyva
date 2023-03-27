@@ -13,7 +13,7 @@ import 'package:heyva/services/dio_services.dart';
 class LoginController extends GetxController {
   TextEditingController emailC = TextEditingController();
   TextEditingController passC = TextEditingController();
-  RxBool isObscure = false.obs;
+  RxBool isObscure = true.obs;
 
   var isLoading = false.obs;
   late DioClient _client;

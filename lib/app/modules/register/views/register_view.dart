@@ -127,44 +127,58 @@ class RegisterView extends GetView<RegisterController> {
                             controller: registerController.pass,
                             obscureText: registerController.isObscure.value,
                             decoration: InputDecoration(
-                              hintText: Strings.password,
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 17, horizontal: 20),
-                              filled: true,
-                              fillColor: ColorApp.text_input_bg,
-                              hintStyle: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  color: ColorApp.grey_font),
-                              labelStyle: const TextStyle(
-                                  fontSize: 16,
-                                  color: ColorApp.black_font_underline,
-                                  fontWeight: FontWeight.w400),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(14),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(14),
-                                borderSide: const BorderSide(
-                                  color: ColorApp.red_error,
-                                  width: 2.0,
+                                hintText: Strings.password,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 17, horizontal: 20),
+                                filled: true,
+                                fillColor: ColorApp.text_input_bg,
+                                hintStyle: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorApp.grey_font),
+                                labelStyle: const TextStyle(
+                                    fontSize: 16,
+                                    color: ColorApp.black_font_underline,
+                                    fontWeight: FontWeight.w400),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(14),
                                 ),
-                              ),
-                              errorText: controller.isPassError.isTrue
-                                  ? "error"
-                                  : null,
-                              errorStyle: const TextStyle(fontSize: 0.01),
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                    registerController.isObscure.value == true
-                                        ? Icons.visibility
-                                        : Icons.visibility_off),
-                                onPressed: () {
-                                  registerController.isObscure.value =
-                                      !registerController.isObscure.value;
-                                },
-                              ),
-                            ),
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(14),
+                                  borderSide: const BorderSide(
+                                    color: ColorApp.red_error,
+                                    width: 2.0,
+                                  ),
+                                ),
+                                errorText: controller.isPassError.isTrue
+                                    ? "error"
+                                    : null,
+                                errorStyle: const TextStyle(fontSize: 0.01),
+                                suffixIcon: InkWell(
+                                  onTap: () {
+                                    registerController.isObscure.value =
+                                        !registerController.isObscure.value;
+                                  },
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 20.0),
+                                        child: Text(
+                                          registerController.isObscure.isTrue
+                                              ? "Show"
+                                              : "Hide",
+                                          style: const TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600,
+                                              color: ColorApp
+                                                  .black_font_underline),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )),
                           ),
                         ),
                         if (controller.errorMessage.value.isNotEmpty)
