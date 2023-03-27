@@ -152,7 +152,7 @@ class HomeView extends GetView<HomeController> {
                         onTap: () {
                           Get.toNamed(Routes.BREAST_FEEDING);
                         },
-                        child:const Text(
+                        child: const Text(
                           "Breaast Feeding",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -171,7 +171,7 @@ class HomeView extends GetView<HomeController> {
                           Future.delayed(800.seconds);
                           Get.offNamed(Routes.SIGNUP);
                         },
-                        child:  const Text(
+                        child: const Text(
                           "Logout",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -188,7 +188,7 @@ class HomeView extends GetView<HomeController> {
                     onTap: () {
                       Get.toNamed(Routes.MOOD_TRACKER);
                     },
-                    child:  const Text(
+                    child: const Text(
                       "Mood tracker",
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -334,7 +334,7 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Get.to(DetailDoctorView());
+                              Get.toNamed(Routes.DETAIL_DOCTOR);
                             },
                             child: Card(
                               elevation: 0,

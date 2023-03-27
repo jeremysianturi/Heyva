@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:heyva/app/modules/detaildoctor/widget/select_schedule.dart';
 import 'package:readmore/readmore.dart';
+
 import '../../../../constant/colors.dart';
 import '../../../../constant/strings.dart';
 import '../controllers/detail_doctor_controller.dart';
@@ -177,19 +179,9 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
                                   ),
                                 ],
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text(
-                                    Strings.select_schedule,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600,
-                                        color: ColorApp.black_font_underline),
-                                  ),
-                                  Container()
-                                ],
-                              )
+                              SelectScheduleWidget(
+                                controller: controller,
+                              ),
                             ],
                           ),
                         ),
