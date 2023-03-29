@@ -13,6 +13,8 @@ class Header extends StatelessWidget {
     this.showCenterTitle = false,
     this.centerTitle,
     this.titleColor = ColorApp.black_article_title,
+    this.onBack,
+    this.isCostomBackFucntion = false,
   }) : super(key: key);
 
   final String? rightText;
@@ -21,6 +23,8 @@ class Header extends StatelessWidget {
   final bool showCenterTitle;
   final String? centerTitle;
   final Color titleColor;
+  final Function? onBack;
+  final bool isCostomBackFucntion;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,11 @@ class Header extends StatelessWidget {
         children: [
           ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              if (isCostomBackFucntion) {
+                onBack!();
+              } else {
+                Navigator.of(context).pop();
+              }
             },
             style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
@@ -39,10 +47,19 @@ class Header extends StatelessWidget {
                 minimumSize: Size.zero,
                 primary: ColorApp.white,
                 elevation: 0),
-            child: const Icon(
-              Icons.arrow_back,
-              size: 18,
-              color: ColorApp.black_arrow_back,
+            child: InkWell(
+              onTap: (){
+                if (isCostomBackFucntion) {
+                  onBack!();
+                } else {
+                  Navigator.of(context).pop();
+                }
+              },
+              child: const Icon(
+                Icons.arrow_back,
+                size: 18,
+                color: ColorApp.black_arrow_back,
+              ),
             ),
           ),
           if (showCenterTitle)

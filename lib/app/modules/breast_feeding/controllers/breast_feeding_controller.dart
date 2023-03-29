@@ -1,21 +1,60 @@
+import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/breast_feeding/model/video_content_model.dart';
 import 'package:heyva/app/modules/breast_feeding/provider/breast_feeding_provider.dart';
 import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
 import 'package:heyva/services/dio_services.dart';
+import 'package:miniplayer/miniplayer.dart';
 
 class BreastFeedingController extends GetxController {
   var isLoading = false.obs;
   late DioClient _client;
   late BreastFeedingProvider _provider;
 
+  late VideoPlayerController videoPlayerController;
+  late CustomVideoPlayerController customVideoPlayerController;
+  var isShwoingVideo = false.obs;
+  late MiniplayerController? miniPlayerC;
+  var videoUrl =
+      'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+
+  var videoTitle = "Title all video".obs;
+
   @override
   void onInit() {
     _client = DioClient();
     _provider = BreastFeedingProvider(_client.init());
     getVideoContent();
+
+    miniPlayerC = MiniplayerController();
     super.onInit();
+  }
+
+  void initVideo() {
+    CustomVideoPlayerSettings _customVideoPlayerSettings =
+        const CustomVideoPlayerSettings(
+      alwaysShowThumbnailOnVideoPaused: false,
+      placeholderWidget: CircularProgressIndicator(),
+      controlBarAvailable: true,
+      playOnlyOnce: false,
+      customAspectRatio: 175/80,
+      autoFadeOutControls: true,
+      settingsButtonAvailable: false,
+    );
+
+    videoPlayerController = VideoPlayerController.network(videoUrl)
+      ..initialize().then((value) => videoPlayerController.addListener(() {
+            isShwoingVideo.value = true;
+            if (videoPlayerController.value.position ==
+                videoPlayerController.value.duration) {}
+          }));
+
+    customVideoPlayerController = CustomVideoPlayerController(
+      context: Get.context!,
+      videoPlayerController: videoPlayerController,
+      customVideoPlayerSettings: _customVideoPlayerSettings,
+    );
   }
 
   var videoContentResponse = VideoContentModel(

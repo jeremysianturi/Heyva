@@ -1,9 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:heyva/app/modules/breast_feeding/model/video_content_model.dart';
-import 'package:heyva/app/modules/login/model/login_model.dart';
-import 'package:heyva/app/modules/register/model/register_model.dart';
-import 'package:heyva/app/modules/register/model/register_storage_model.dart';
 
 class BreastFeedingProvider {
   final Dio _client;

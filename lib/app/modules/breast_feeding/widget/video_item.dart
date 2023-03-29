@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:heyva/app/modules/breast_feeding/model/video_content_model.dart';
-import 'package:heyva/app/modules/breast_feeding/widget/video_player_view.dart';
 import 'package:heyva/constant/colors.dart';
 
 class VideoItem extends StatelessWidget {
@@ -10,18 +8,18 @@ class VideoItem extends StatelessWidget {
     super.key,
     required this.index,
     required this.data,
+    required this.ontap,
   });
 
   final int index;
   final Attachments? data;
+  final Function ontap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(myVidePlayer(
-          videoUrl: data?.attachment ?? '',
-        ));
+        ontap();
       },
       child: Card(
         elevation: 2,
