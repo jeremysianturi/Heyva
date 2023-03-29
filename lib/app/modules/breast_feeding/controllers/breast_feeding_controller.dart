@@ -31,6 +31,12 @@ class BreastFeedingController extends GetxController {
     super.onInit();
   }
 
+  @override
+  void dispose() {
+    miniPlayerC?.dispose();
+    videoPlayerController.dispose();
+    super.dispose();
+  }
   void initVideo() {
     CustomVideoPlayerSettings _customVideoPlayerSettings =
         const CustomVideoPlayerSettings(
