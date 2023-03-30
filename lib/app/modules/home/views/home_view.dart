@@ -247,14 +247,26 @@ class HomeView extends GetView<HomeController> {
                     from: "home",
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      Text(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
                         Strings.related,
                         style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w600,
                             color: ColorApp.black_article_title),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Get.toNamed(Routes.RELATED_PROGRAM);
+                        },
+                        child: const Text(
+                          Strings.seeMore,
+                          style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: ColorApp.black_article_title),
+                        ),
                       ),
                     ],
                   ),

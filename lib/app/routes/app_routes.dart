@@ -23,6 +23,7 @@ abstract class Routes {
   static const SLEEP_CHECK_IN = _Paths.SLEEP_CHECK_IN;
   static const RECOMENDATION = _Paths.RECOMENDATION;
   static const RECOMENDATION2 = _Paths.RECOMENDATION2;
+  static const RELATED_PROGRAM = _Paths.RELATED_PROGRAM;
 }
 
 abstract class _Paths {
@@ -48,4 +49,5 @@ abstract class _Paths {
   static const SLEEP_CHECK_IN = '/sleep-check-in';
   static const RECOMENDATION = '/recomendation';
   static const RECOMENDATION2 = '/recomendation2';
+  static const RELATED_PROGRAM = '/related-program';
 }

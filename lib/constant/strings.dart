@@ -72,6 +72,7 @@ class Strings {
   static const String yes = "Yes";
   static const String no = "No";
   static const String related = "Related";
+  static const String seeMore = "See more";
   static const String managing_anxiety = "Managing anxiety";
   static const String articles = "Articles";
   static const String program = "Program";

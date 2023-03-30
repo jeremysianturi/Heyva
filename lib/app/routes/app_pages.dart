@@ -1,6 +1,4 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:heyva/app/modules/mood_tracker/recomendation2/bindings/recomendation2_binding.dart';
-import 'package:heyva/app/modules/mood_tracker/recomendation2/views/recomendation2_view.dart';
 
 import '../modules/article/bindings/article_binding.dart';
 import '../modules/article/views/article_view.dart';
@@ -23,6 +21,8 @@ import '../modules/mood_tracker/mood_tracker_form/bindings/mood_tracker_form_bin
 import '../modules/mood_tracker/mood_tracker_form/views/mood_tracker_form_view.dart';
 import '../modules/mood_tracker/recomendation/bindings/recomendation_binding.dart';
 import '../modules/mood_tracker/recomendation/views/recomendation_view.dart';
+import '../modules/mood_tracker/recomendation2/bindings/recomendation2_binding.dart';
+import '../modules/mood_tracker/recomendation2/views/recomendation2_view.dart';
 import '../modules/mood_tracker/sleep_check-in/bindings/sleep_check_in_binding.dart';
 import '../modules/mood_tracker/sleep_check-in/views/sleep_check_in_view.dart';
 import '../modules/mood_tracker/views/mood_tracker_view.dart';
@@ -38,6 +38,8 @@ import '../modules/onboarding/views/onplanning/onplanning_one_view.dart';
 import '../modules/onboarding/views/turnon_notif/turnon_notif_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
+import '../modules/related_program/bindings/related_program_binding.dart';
+import '../modules/related_program/views/related_program_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
 
@@ -149,6 +151,11 @@ class AppPages {
       name: _Paths.RECOMENDATION2,
       page: () => const Recomendation2View(),
       binding: Recomendation2Binding(),
+    ),
+    GetPage(
+      name: _Paths.RELATED_PROGRAM,
+      page: () => const RelatedProgramView(),
+      binding: RelatedProgramBinding(),
     ),
   ];
 }
