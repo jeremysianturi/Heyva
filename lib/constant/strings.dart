@@ -143,4 +143,5 @@ class Strings {
       "Thank you for let us \nknow about your mood";
   static const String notice = "Notice how it feels to make time for yourself.";
   static const String thankYou = "Thank you";
+  static const String upcomingProgram = "Upcoming program";
 }
