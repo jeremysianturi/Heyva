@@ -1,23 +1,30 @@
 import 'package:get/get.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 
 class ProfileController extends GetxController {
-  //TODO: Implement ProfileController
+  var profileSettings = [
+    "Change Password",
+    "Invite Friends",
+    "Privacy Policy",
+    "FAQ",
+    "Rate our App",
+    "Notification Settings",
+  ];
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  onTapSettings(int index) {
+    if (index == 0) {
+      Get.toNamed(Routes.CHANGE_PASSWORD);
+    }
+    if (index == 1) {}
+    if (index == 2) {
+      Get.toNamed(Routes.PRIVACY_POLICY);
+    }
+    if (index == 3) {
+      Get.toNamed(Routes.FAQ);
+    }
+    if (index == 4) {}
+    if (index == 5) {
+      Get.toNamed(Routes.NOTIFICATION_SETTINGS);
+    }
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

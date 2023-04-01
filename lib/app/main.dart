@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return FutureBuilder(
-        future: Future.delayed(const Duration(seconds: 5)),
+        future: Future.delayed(const Duration(seconds: 1)),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const SplashScreen();
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
                     return GetMaterialApp(
                       debugShowCheckedModeBanner: false,
                       title: "HEYVA",
-                      initialRoute: Routes.BREATHING_ONE,
+                      initialRoute: Routes.PROFILE,
                       getPages: AppPages.routes,
                     );
                   }

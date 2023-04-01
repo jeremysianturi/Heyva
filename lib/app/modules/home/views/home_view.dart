@@ -90,33 +90,43 @@ class HomeView extends GetView<HomeController> {
                   AppBar(
                     backgroundColor: Colors.transparent,
                     elevation: 0,
-                    leading: CircleAvatar(
-                      child: Image.asset("assets/images/img_pp_dummy.png"),
+                    leading: GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.PROFILE);
+                      },
+                      child: CircleAvatar(
+                        child: Image.asset("assets/images/img_pp_dummy.png"),
+                      ),
                     ),
-                    title: Column(
-                      children: const [
-                        Text(
-                          Strings.good_afternoon,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: ColorApp.black_greeting_color,
+                    title: GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.PROFILE);
+                      },
+                      child: Column(
+                        children: const [
+                          Text(
+                            Strings.good_afternoon,
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: ColorApp.black_greeting_color,
+                            ),
                           ),
-                        ),
-                        Text(
-                          Strings.priscilla,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: ColorApp.homepage_name_color,
+                          Text(
+                            Strings.priscilla,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: ColorApp.homepage_name_color,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     actions: [
                       GestureDetector(
                         onTap: () {
-                          Get.to(ArticleView());
+                          // Get.to(ArticleView());
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(

@@ -33,6 +33,7 @@ abstract class Routes {
   static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
   static const NOTIFICATION_SETTINGS = _Paths.NOTIFICATION_SETTINGS;
   static const PRIVACY_POLICY = _Paths.PRIVACY_POLICY;
+  static const FAQ = _Paths.FAQ;
 }
 
 abstract class _Paths {
@@ -68,4 +69,5 @@ abstract class _Paths {
   static const CHANGE_PASSWORD = '/change-password';
   static const NOTIFICATION_SETTINGS = '/notification-settings';
   static const PRIVACY_POLICY = '/privacy-policy';
+  static const FAQ = '/faq';
 }

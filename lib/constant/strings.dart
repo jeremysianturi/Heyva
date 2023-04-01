@@ -150,4 +150,5 @@ class Strings {
 
   static const String completeExercise = "Thank you for complete the exercise";
   static const String backToHome = "Back To Home";
+  static const String detailProfile = "Detail Profile";
 }
