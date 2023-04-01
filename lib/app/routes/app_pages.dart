@@ -1,6 +1,16 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:heyva/app/modules/breathing_exercise/breathing_finish/bindings/breathing_finish_binding.dart';
 import 'package:heyva/app/modules/breathing_exercise/breathing_finish/views/breathing_finish_view.dart';
+import 'package:heyva/app/modules/profile/bindings/profile_binding.dart';
+import 'package:heyva/app/modules/profile/change_password/bindings/change_password_binding.dart';
+import 'package:heyva/app/modules/profile/change_password/views/change_password_view.dart';
+import 'package:heyva/app/modules/profile/edit_profile/bindings/edit_profile_binding.dart';
+import 'package:heyva/app/modules/profile/edit_profile/views/edit_profile_view.dart';
+import 'package:heyva/app/modules/profile/notification_settings/bindings/notification_settings_binding.dart';
+import 'package:heyva/app/modules/profile/notification_settings/views/notification_settings_view.dart';
+import 'package:heyva/app/modules/profile/privacy_policy/bindings/privacy_policy_binding.dart';
+import 'package:heyva/app/modules/profile/privacy_policy/views/privacy_policy_view.dart';
+import 'package:heyva/app/modules/profile/views/profile_view.dart';
 
 import '../modules/article/bindings/article_binding.dart';
 import '../modules/article/views/article_view.dart';
@@ -17,9 +27,12 @@ import '../modules/breathing_exercise/breathin_voice/bindings/breathin_voice_bin
 import '../modules/breathing_exercise/breathin_voice/views/breathin_voice_view.dart';
 import '../modules/breathing_exercise/breathing_feelings/bindings/breathing_feelings_binding.dart';
 import '../modules/breathing_exercise/breathing_feelings/views/breathing_feelings_view.dart';
+
 import '../modules/breathing_exercise/views/breathing_exercise_view.dart';
+
 import '../modules/detaildoctor/bindings/detail_doctor_binding.dart';
 import '../modules/detaildoctor/views/detail_doctor_view.dart';
+
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/bindings/login_google_apple_binding.dart';
 import '../modules/login/views/login_google_apple.dart';
@@ -34,6 +47,7 @@ import '../modules/mood_tracker/recomendation2/views/recomendation2_view.dart';
 import '../modules/mood_tracker/sleep_check-in/bindings/sleep_check_in_binding.dart';
 import '../modules/mood_tracker/sleep_check-in/views/sleep_check_in_view.dart';
 import '../modules/mood_tracker/views/mood_tracker_view.dart';
+
 import '../modules/onboarding/bindings/onboarding_one_binding.dart';
 import '../modules/onboarding/bindings/onboarding_three_binding.dart';
 import '../modules/onboarding/bindings/onboarding_two_binding.dart';
@@ -184,6 +198,31 @@ class AppPages {
       name: _Paths.BREATHING_FINISH,
       page: () => const BreathingFinishView(),
       binding: BreathingFinishBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_PROFILE,
+      page: () => const EditProfileView(),
+      binding: EditProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHANGE_PASSWORD,
+      page: () => const ChangePasswordView(),
+      binding: ChangePasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOTIFICATION_SETTINGS,
+      page: () => const NotificationSettingsView(),
+      binding: NotificationSettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRIVACY_POLICY,
+      page: () => const PrivacyPolicyView(),
+      binding: PrivacyPolicyBinding(),
     ),
   ];
 }

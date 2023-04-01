@@ -28,6 +28,11 @@ abstract class Routes {
   static const BREATHIN_VOICE = _Paths.BREATHIN_VOICE;
   static const BREATHING_FEELINGS = _Paths.BREATHING_FEELINGS;
   static const BREATHING_FINISH = _Paths.BREATHING_FINISH;
+  static const PROFILE = _Paths.PROFILE;
+  static const EDIT_PROFILE = _Paths.EDIT_PROFILE;
+  static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
+  static const NOTIFICATION_SETTINGS = _Paths.NOTIFICATION_SETTINGS;
+  static const PRIVACY_POLICY = _Paths.PRIVACY_POLICY;
 }
 
 abstract class _Paths {
@@ -58,4 +63,9 @@ abstract class _Paths {
   static const BREATHIN_VOICE = '/breathin-voice';
   static const BREATHING_FEELINGS = '/breathing-feelings';
   static const BREATHING_FINISH = '/breathing-finish';
+  static const PROFILE = '/profile';
+  static const EDIT_PROFILE = '/edit-profile';
+  static const CHANGE_PASSWORD = '/change-password';
+  static const NOTIFICATION_SETTINGS = '/notification-settings';
+  static const PRIVACY_POLICY = '/privacy-policy';
 }

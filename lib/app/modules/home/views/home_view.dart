@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/modules/article/views/article_view.dart';
-import 'package:heyva/app/modules/detaildoctor/views/detail_doctor_view.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_timeline.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
-import 'package:heyva/constant/variabels.dart';
 import '../../../widgets/reusable_article_container.dart';
 import '../controllers/home_controller.dart';
 
@@ -198,6 +196,18 @@ class HomeView extends GetView<HomeController> {
                   ),
                   const SizedBox(
                     height: 12,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed(Routes.BREATHING_EXERCISE);
+                    },
+                    child: const Text(
+                      "Breathing exercize",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                          color: ColorApp.grey_font),
+                    ),
                   ),
                   // Obx(
                   //   () => Stepper(
