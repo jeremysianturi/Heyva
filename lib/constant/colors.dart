@@ -35,4 +35,5 @@ class ColorApp {
   static const Color grey_tab_title = Color(0xFF646464);
   static const Color yellow_icon = Color(0xFFFFCA43);
   static const Color red_error = Color(0xFFE53B3B);
+  static const Color gery_voice_over = Color(0xFF6C757D);
 }

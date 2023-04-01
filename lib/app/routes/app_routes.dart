@@ -24,6 +24,10 @@ abstract class Routes {
   static const RECOMENDATION = _Paths.RECOMENDATION;
   static const RECOMENDATION2 = _Paths.RECOMENDATION2;
   static const RELATED_PROGRAM = _Paths.RELATED_PROGRAM;
+  static const BREATHING_EXERCISE = _Paths.BREATHING_EXERCISE;
+  static const BREATHIN_VOICE = _Paths.BREATHIN_VOICE;
+  static const BREATHING_FEELINGS = _Paths.BREATHING_FEELINGS;
+  static const BREATHING_FINISH = _Paths.BREATHING_FINISH;
 }
 
 abstract class _Paths {
@@ -50,4 +54,8 @@ abstract class _Paths {
   static const RECOMENDATION = '/recomendation';
   static const RECOMENDATION2 = '/recomendation2';
   static const RELATED_PROGRAM = '/related-program';
+  static const BREATHING_EXERCISE = '/breathing-exercise';
+  static const BREATHIN_VOICE = '/breathin-voice';
+  static const BREATHING_FEELINGS = '/breathing-feelings';
+  static const BREATHING_FINISH = '/breathing-finish';
 }

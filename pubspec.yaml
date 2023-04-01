@@ -52,6 +52,8 @@ dependencies:
   month_picker_dialog: ^1.0.0
   intl: ^0.17.0
   flutter_switch: ^0.3.2
+  flutter_lyric: ^2.0.4+6
+  audioplayers: ^3.0.1
 
 dev_dependencies:
   flutter_lints: 2.0.1
@@ -67,6 +69,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/
 
 resources:
   - string.dart

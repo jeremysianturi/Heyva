@@ -1,4 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:heyva/app/modules/breathing_exercise/breathing_finish/bindings/breathing_finish_binding.dart';
+import 'package:heyva/app/modules/breathing_exercise/breathing_finish/views/breathing_finish_view.dart';
 
 import '../modules/article/bindings/article_binding.dart';
 import '../modules/article/views/article_view.dart';
@@ -10,6 +12,12 @@ import '../modules/breathing/breathingtimer/bindings/breathing_timer_binding.dar
 import '../modules/breathing/breathingtimer/views/breathing_timer_view.dart';
 import '../modules/breathing/breathingtwo/bindings/breathing_two_binding.dart';
 import '../modules/breathing/breathingtwo/views/breathing_two_view.dart';
+import '../modules/breathing_exercise/bindings/breathing_exercise_binding.dart';
+import '../modules/breathing_exercise/breathin_voice/bindings/breathin_voice_binding.dart';
+import '../modules/breathing_exercise/breathin_voice/views/breathin_voice_view.dart';
+import '../modules/breathing_exercise/breathing_feelings/bindings/breathing_feelings_binding.dart';
+import '../modules/breathing_exercise/breathing_feelings/views/breathing_feelings_view.dart';
+import '../modules/breathing_exercise/views/breathing_exercise_view.dart';
 import '../modules/detaildoctor/bindings/detail_doctor_binding.dart';
 import '../modules/detaildoctor/views/detail_doctor_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -156,6 +164,26 @@ class AppPages {
       name: _Paths.RELATED_PROGRAM,
       page: () => const RelatedProgramView(),
       binding: RelatedProgramBinding(),
+    ),
+    GetPage(
+      name: _Paths.BREATHING_EXERCISE,
+      page: () => const BreathingExerciseView(),
+      binding: BreathingExerciseBinding(),
+    ),
+    GetPage(
+      name: _Paths.BREATHIN_VOICE,
+      page: () => const BreathinVoiceView(),
+      binding: BreathinVoiceBinding(),
+    ),
+    GetPage(
+      name: _Paths.BREATHING_FEELINGS,
+      page: () => const BreathingFeelingsView(),
+      binding: BreathingFeelingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.BREATHING_FINISH,
+      page: () => const BreathingFinishView(),
+      binding: BreathingFinishBinding(),
     ),
   ];
 }
