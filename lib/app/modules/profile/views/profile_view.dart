@@ -28,10 +28,13 @@ class ProfileView extends GetView<ProfileController> {
               children: [
                 Container(
                     margin: const EdgeInsets.only(top: 14),
-                    child: const ProfileHeader(
+                    child:  ProfileHeader(
                       centerTitle: Strings.detailProfile,
                       showIcon: true,
                       showCenterTitle: true,
+                      ontapIcon: (){
+                        controller.logout();
+                      },
                     )),
                 const SizedBox(
                   height: 30,

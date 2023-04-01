@@ -36,7 +36,10 @@ class EditProfileView extends GetView<EditProfileController> {
                 const SizedBox(
                   height: 36,
                 ),
-                const ProfileAvatar(
+                ProfileAvatar(
+                  ontap: () {
+                    controller.changePicture();
+                  },
                   imgUrl:
                       "https://cdn06.pramborsfm.com/storage/app/media/Prambors/cropped-images/SpongeBob%20SquarePants-20210329062638.jpg?tr=w-800",
                 ),

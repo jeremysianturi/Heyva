@@ -166,4 +166,12 @@ class Strings {
       "We want you to know exactly how HEYVA services work and why we need your details. Reviewing our policy will help you continue using the app with peace of mind.";
 
   static const String faq = "FAQ";
+
+  static const String changeProfilePicture = "Change profile picture";
+  static const String doYouWanttoLogout = "Do you want to log out?";
+  static const String inviteYourFriends = "Invite your friend(s) via :";
+  static const String chooseFromGallery = "Choose from gallery";
+  static const String noTakeMeBack = "No, take me back!";
+  static const String yeSure = "Yes, sure";
+  static const String whatsapp = "Whatsapp";
 }
