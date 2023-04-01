@@ -21,6 +21,7 @@ class Strings {
   static const String continue_text = "Continue";
   static const String name_ques_text = "What is your name ?";
   static const String full_name = "Full Name";
+  static const String phone_number = "Phone Number";
   static const String next = "Next";
   static const String glad_text = "Glad to have you \n with us, ";
   static const String begin_journey_text = "Let your new journey begin!";
@@ -151,4 +152,12 @@ class Strings {
   static const String completeExercise = "Thank you for complete the exercise";
   static const String backToHome = "Back To Home";
   static const String detailProfile = "Detail Profile";
+  static const String profile = "Profile";
+  static const String changePassword = "Change Password";
+  static const String forgotPassword = "Forgot Password";
+  static const String save = "Save";
+
+  static const String pushNotif = "Push Notification";
+  static const String programNotification = "Program Notification";
+  static const String notifSetting = "Notification Settings";
 }
