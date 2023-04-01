@@ -28,8 +28,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
               children: [
                 Container(
                     margin: const EdgeInsets.only(top: 14),
-                    child:
-                        const Header(rightText: Strings.skip, showIcon: false)),
+                    child: const Header(rightText: "", showIcon: false)),
                 const SizedBox(
                   height: 24,
                 ),
@@ -59,7 +58,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                           isPassword: true,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 12,
                       ),
                       Obx(

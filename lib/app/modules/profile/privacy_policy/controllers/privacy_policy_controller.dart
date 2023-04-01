@@ -1,23 +1,20 @@
 import 'package:get/get.dart';
+import 'package:heyva/app/modules/profile/privacy_policy/model/privacy_policy_model.dart';
+import 'package:heyva/constant/strings.dart';
 
 class PrivacyPolicyController extends GetxController {
-  //TODO: Implement PrivacyPolicyController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  var list = <PrivacyPolicyModel>[
+    PrivacyPolicyModel(
+        title: 'What information do we collect about you?',
+        subTitle: Strings.dummy_doctordetail_text,
+        isSelected: RxBool(false)),
+    PrivacyPolicyModel(
+        title: 'What information do we collect about you?',
+        subTitle: Strings.dummy_doctordetail_text,
+        isSelected: RxBool(false)),
+    PrivacyPolicyModel(
+        title: 'What information do we collect about you?',
+        subTitle: Strings.dummy_doctordetail_text,
+        isSelected: RxBool(false)),
+  ].obs;
 }

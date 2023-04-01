@@ -160,4 +160,10 @@ class Strings {
   static const String pushNotif = "Push Notification";
   static const String programNotification = "Program Notification";
   static const String notifSetting = "Notification Settings";
+
+  static const String privacyPolicy = "Privacy & Policy";
+  static const String privacyPolicyDesc =
+      "We want you to know exactly how HEYVA services work and why we need your details. Reviewing our policy will help you continue using the app with peace of mind.";
+
+  static const String faq = "FAQ";
 }

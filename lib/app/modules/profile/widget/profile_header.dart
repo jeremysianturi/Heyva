@@ -43,6 +43,7 @@ class ProfileHeader extends StatelessWidget {
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(11),
                 minimumSize: Size.zero,
+                primary: ColorApp.white,
                 elevation: 0),
             child: InkWell(
               onTap: () {
@@ -79,6 +80,7 @@ class ProfileHeader extends StatelessWidget {
                       ),
                       padding: const EdgeInsets.all(8),
                       minimumSize: Size.zero,
+                      primary: ColorApp.bottom_nav_color,
                       elevation: 0),
                   child: SvgPicture.asset(
                     'assets/icons/ic_logout.svg',

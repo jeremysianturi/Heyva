@@ -1,6 +1,4 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:heyva/app/modules/profile/faq/bindings/faq_binding.dart';
-import 'package:heyva/app/modules/profile/faq/views/faq_view.dart';
 
 import '../modules/article/bindings/article_binding.dart';
 import '../modules/article/views/article_view.dart';
@@ -51,6 +49,8 @@ import '../modules/profile/change_password/bindings/change_password_binding.dart
 import '../modules/profile/change_password/views/change_password_view.dart';
 import '../modules/profile/edit_profile/bindings/edit_profile_binding.dart';
 import '../modules/profile/edit_profile/views/edit_profile_view.dart';
+import '../modules/profile/faq/bindings/faq_binding.dart';
+import '../modules/profile/faq/views/faq_view.dart';
 import '../modules/profile/notification_settings/bindings/notification_settings_binding.dart';
 import '../modules/profile/notification_settings/views/notification_settings_view.dart';
 import '../modules/profile/privacy_policy/bindings/privacy_policy_binding.dart';
