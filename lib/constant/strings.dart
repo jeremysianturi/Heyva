@@ -174,4 +174,15 @@ class Strings {
   static const String noTakeMeBack = "No, take me back!";
   static const String yeSure = "Yes, sure";
   static const String whatsapp = "Whatsapp";
+
+  static const String remmindertoYourself = "Reminder to yourself";
+  static const String congratsYourAchive =
+      "Congrats you achieve what your goals mom, keep it up";
+  static const String pospatrumWeek = "Postpartum week ";
+  static const String mood = "mood";
+  static const String sleep = "sleep";
+  static const String physical = "Physical";
+  static const String youFelt = "You felt :";
+  static const String thisImpactedYou = "This impacted you :";
+  static const String yourNotes = "Your notes :";
 }
