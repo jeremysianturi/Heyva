@@ -51,6 +51,7 @@ class Strings {
   static const String exclusive_events_promotion =
       "Exclusive events and\npromotions";
   static const String lets_go = "Let’s go";
+  static const String gotoWhatsapp = "Go to Whatsapp";
   static const String blue_sky =
       "Imagine a blue sky.It’s perfect\nmetaphor for the mind.";
   static const String clouds =
@@ -185,4 +186,5 @@ class Strings {
   static const String youFelt = "You felt :";
   static const String thisImpactedYou = "This impacted you :";
   static const String yourNotes = "Your notes :";
+  static const String service = "Service";
 }

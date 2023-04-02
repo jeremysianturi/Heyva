@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/detaildoctor/widget/select_schedule.dart';
+import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../../constant/colors.dart';
@@ -71,6 +73,7 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
                         child: Padding(
                           padding: const EdgeInsets.all(20),
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -182,6 +185,60 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
                               SelectScheduleWidget(
                                 controller: controller,
                               ),
+                              const SizedBox(
+                                height: 24,
+                              ),
+                              const Text(
+                                Strings.service,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: ColorApp.black_font_underline,
+                                    fontSize: 16),
+                              ),
+                              Obx(
+                                () => GridView.count(
+                                  shrinkWrap: true,
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 160 / 105,
+                                  crossAxisSpacing: 12,
+                                  mainAxisSpacing: 0,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  children: List.generate(
+                                      controller.listService.length, (index) {
+                                    var data = controller.listService[index];
+                                    return ServiceWidget(
+                                      imgUrl: data.imgUrl,
+                                      isSelected: data.isSelected.value,
+                                      title: data.title,
+                                      index: index,
+                                      ontap: () {
+                                        controller.listService
+                                            .firstWhereOrNull(
+                                                (e) => e.isSelected.isTrue)
+                                            ?.isSelected
+                                            .value = false;
+
+                                        controller.listService[index].isSelected
+                                            .value = true;
+                                      },
+                                    );
+                                  }),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 37,
+                              ),
+                              Obx(() => controller.buttonTitle != ""
+                                  ? Container(
+                                      alignment: Alignment.bottomCenter,
+                                      child: OrangeButtonWTrailingIcon(
+                                        padding: 0,
+                                        determineAction: "from_onplanning_one",
+                                        text: controller.buttonTitle,
+                                        ontap: () {},
+                                      ),
+                                    )
+                                  : const SizedBox()),
                             ],
                           ),
                         ),
@@ -198,9 +255,78 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
   }
 }
 
+class ServiceWidget extends StatelessWidget {
+  const ServiceWidget({
+    super.key,
+    required this.imgUrl,
+    required this.title,
+    required this.isSelected,
+    required this.index,
+    required this.ontap,
+  });
+
+  final String imgUrl, title;
+  final bool isSelected;
+  final int index;
+
+  final Function ontap;
+
+  Color get bg {
+    if (index == 0 && !isSelected) {
+      return ColorApp.btn_pink.withOpacity(0.5);
+    }
+    if (index == 0 && isSelected) {
+      return ColorApp.btn_pink;
+    }
+    if (index == 1 && !isSelected) {
+      return ColorApp.btn_maroon.withOpacity(0.5);
+    }
+    if (index == 1 && isSelected) {
+      return ColorApp.btn_maroon;
+    }
+    return Colors.red;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        ontap();
+      },
+      child: Container(
+        width: Get.width,
+        decoration: BoxDecoration(
+            color: bg,
+            borderRadius: const BorderRadius.all(Radius.circular(12))),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SvgPicture.asset(imgUrl),
+            SizedBox(
+              width: Get.width,
+              child: Text(
+                title,
+                style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                    color: ColorApp.white_font),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 Widget _buildChip(String label, Color color) {
   return Chip(
-    labelPadding: EdgeInsets.all(2.0),
+    labelPadding: const EdgeInsets.all(2.0),
     label: Text(
       label,
       style: const TextStyle(
