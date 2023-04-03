@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heyva/app/modules/breathing/breathingone/views/breathing_one_view.dart';
 import 'package:heyva/app/modules/login/controllers/login_controller.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
@@ -205,12 +204,6 @@ class LoginView extends GetView<LoginController> {
                         )
                       ],
                     ),
-                  ),
-                  GestureDetector(
-                    child: const Text("data"),
-                    onTap: () {
-                      Get.to(BreathingOneView());
-                    },
                   ),
                   Expanded(
                     flex: 1,
