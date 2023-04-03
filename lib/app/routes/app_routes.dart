@@ -34,6 +34,7 @@ abstract class Routes {
   static const NOTIFICATION_SETTINGS = _Paths.NOTIFICATION_SETTINGS;
   static const PRIVACY_POLICY = _Paths.PRIVACY_POLICY;
   static const FAQ = _Paths.FAQ;
+  static const JUST_BIRTH_OR_PREGNANT = _Paths.JUST_BIRTH_OR_PREGNANT;
 }
 
 abstract class _Paths {
@@ -70,4 +71,5 @@ abstract class _Paths {
   static const NOTIFICATION_SETTINGS = '/notification-settings';
   static const PRIVACY_POLICY = '/privacy-policy';
   static const FAQ = '/faq';
+  static const JUST_BIRTH_OR_PREGNANT = '/just-birth-or-pregnant';
 }

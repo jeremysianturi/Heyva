@@ -187,4 +187,7 @@ class Strings {
   static const String thisImpactedYou = "This impacted you :";
   static const String yourNotes = "Your notes :";
   static const String service = "Service";
+
+  static const String eddGues ="When is your EDD?";
+  static const String childBornGues ="When was your child born?";
 }

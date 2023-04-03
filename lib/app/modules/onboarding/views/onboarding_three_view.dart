@@ -50,33 +50,12 @@ class OnBoardingThreeView extends GetView<OnBoardingThreeController> {
                       ontap: () {
                         controller.onTap(
                             pregnancyStatusId:
-                                controller.statusList[index].id ?? "");
+                                controller.statusList[index].id ?? "",
+                            index: index);
                       },
                     ),
                   ),
-                )
-
-                    //     const [
-                    //     reusable_btn_wo_icon(
-                    //     text: Strings.no_but_im_planning,
-                    //     color: ColorApp.btn_orange,
-                    //   ),
-                    //   SizedBox(
-                    //     height: 12,
-                    //   ),
-                    //   reusable_btn_wo_icon(
-                    //     text: Strings.yes_i_am,
-                    //     color: ColorApp.btn_pink,
-                    //   ),
-                    //   SizedBox(
-                    //     height: 12,
-                    //   ),
-                    //   reusable_btn_wo_icon(
-                    //     text: Strings.no_but_im_planning,
-                    //     color: ColorApp.btn_maroon,
-                    //   ),
-                    // ],
-                    )
+                ))
               ],
             ),
           ),

@@ -1,4 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:heyva/app/modules/onboarding/just_birth_or_pregnant/bindings/just_birth_or_pregnant_binding.dart';
+import 'package:heyva/app/modules/onboarding/just_birth_or_pregnant/views/just_birth_or_pregnant_view.dart';
 
 import '../modules/article/bindings/article_binding.dart';
 import '../modules/article/views/article_view.dart';
@@ -226,6 +228,11 @@ class AppPages {
       name: _Paths.FAQ,
       page: () => const FaqView(),
       binding: FaqBinding(),
+    ),
+    GetPage(
+      name: _Paths.JUST_BIRTH_OR_PREGNANT,
+      page: () => const JustBirthOrPregnantView(),
+      binding: JustBirthOrPregnantBinding(),
     ),
   ];
 }

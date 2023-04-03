@@ -8,6 +8,7 @@ import 'package:heyva/app/modules/register/model/register_storage_model.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
 import 'package:heyva/constant/keys.dart';
+import 'package:heyva/constant/strings.dart';
 import 'package:heyva/services/dio_services.dart';
 
 class OnBoardingThreeController extends GetxController {
@@ -49,7 +50,7 @@ class OnBoardingThreeController extends GetxController {
     super.onInit();
   }
 
-  onTap({required String pregnancyStatusId}) {
+  onTap({required String pregnancyStatusId, required int index}) {
     final box = GetStorage();
     var data = box.read(Keys.registStorage) as RegisterStorageModel;
     debugPrint("data ${data.pregnancyStatus}");
@@ -64,10 +65,20 @@ class OnBoardingThreeController extends GetxController {
             pregnancyStatus: pregnancyStatusId,
             interests: data.interests));
 
-    var data2 = box.read(Keys.registStorage) as RegisterStorageModel;
-
-    debugPrint("data2 ${data2.pregnancyStatus}");
-    800.milliseconds;
-    Get.toNamed(Routes.ONPLANNING_ONE);
+    Future.delayed(800.milliseconds);
+    if (index == 0) {
+      //planning
+      Get.toNamed(Routes.ONPLANNING_ONE);
+    }
+    if (index == 1) {
+      //pregnant
+      Get.toNamed(Routes.JUST_BIRTH_OR_PREGNANT,
+          arguments: {Keys.titleArguments: Strings.eddGues});
+    }
+    if (index == 2) {
+      // just birth
+      Get.toNamed(Routes.JUST_BIRTH_OR_PREGNANT,
+          arguments: {Keys.titleArguments: Strings.childBornGues});
+    }
   }
 }
