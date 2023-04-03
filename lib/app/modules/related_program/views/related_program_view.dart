@@ -4,9 +4,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/related_program/model/program_model.dart';
-import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
-import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -82,11 +80,7 @@ class RelatedProgramView extends GetView<RelatedProgramController> {
                         inactiveToggleColor: ColorApp.white,
                         activeColor: ColorApp.btn_pink,
                         inactiveColor: ColorApp.btn_pink,
-                        activeIcon: const Icon(
-                          Icons.nightlight_round,
-                          color: Color(0xFFF8E3A1),
-                        ),
-                        inactiveIcon: Container(
+                        activeIcon: Container(
                           margin: const EdgeInsets.only(
                               left: 5, right: 3, top: 5, bottom: 3),
                           child: Center(
@@ -95,6 +89,11 @@ class RelatedProgramView extends GetView<RelatedProgramController> {
                             color: Colors.black,
                           )),
                         ),
+                        inactiveIcon: Center(
+                            child: SvgPicture.asset(
+                          "assets/icons/ic_list.svg",
+                          color: Colors.black,
+                        )),
                         onToggle: (val) {
                           controller.switchbutton.value = val;
                         },
