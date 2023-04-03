@@ -15,7 +15,7 @@ class OnPlanningOneView extends GetView<OnPlanningOneController> {
   Widget build(BuildContext context) {
     return Obx(() => LoadingOverlay(
         isLoading: controller.isLoading.value,
-        color: Colors.grey,
+        color: ColorApp.btn_orange,
         opacity: 0.3,
         child: Scaffold(
             body: Container(
