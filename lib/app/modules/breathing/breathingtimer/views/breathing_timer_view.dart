@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:lottie/lottie.dart';
+
 import '../../../../../constant/colors.dart';
 import '../../../../../constant/strings.dart';
-import '../../../../widgets/text_animation_from_bottom.dart';
 import '../../breathingfinish/views/breathing_finish_view.dart';
 import '../controllers/breathing_timer_controller.dart';
 

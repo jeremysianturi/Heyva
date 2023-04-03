@@ -9,8 +9,9 @@ import 'package:heyva/app/modules/register/provider/register_provider.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
 import 'package:heyva/constant/keys.dart';
-import '../../../../../model/interest.dart';
 import 'package:heyva/services/dio_services.dart';
+
+import '../../../../../model/interest.dart';
 
 class OnPlanningOneController extends GetxController {
   RxBool isVisible = true.obs;

@@ -1,16 +1,10 @@
-import 'dart:ui';
-
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lyric/lyrics_reader.dart';
-
 import 'package:get/get.dart';
 import 'package:heyva/app/routes/app_pages.dart';
-import 'package:heyva/app/widgets/reusable_header.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
 
-import '../../views/const.dart';
 import '../controllers/breathin_voice_controller.dart';
 
 class BreathinVoiceView extends GetView<BreathinVoiceController> {

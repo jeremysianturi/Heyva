@@ -1,13 +1,8 @@
-import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/breast_feeding/widget/main_body.dart';
 import 'package:heyva/app/modules/breast_feeding/widget/mini_player.dart';
-import 'package:heyva/app/widgets/reusable_header.dart';
-import 'package:heyva/constant/colors.dart';
-import 'package:heyva/constant/strings.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:miniplayer/miniplayer.dart';
 
 import '../controllers/breast_feeding_controller.dart';
 

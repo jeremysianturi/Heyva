@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 import '../../../../constant/colors.dart';
 import '../../../../constant/strings.dart';
 import '../../../widgets/reusable_btn_wo_icon.dart';
 import '../../../widgets/reusable_onboarding_header.dart';
 import '../controllers/onboarding_three_controller.dart';
-import 'package:loading_overlay/loading_overlay.dart';
 
 class OnBoardingThreeView extends GetView<OnBoardingThreeController> {
   const OnBoardingThreeView({Key? key}) : super(key: key);

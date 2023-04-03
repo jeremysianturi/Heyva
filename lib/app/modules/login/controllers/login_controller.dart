@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:heyva/app/modules/breathing/breathingone/views/breathing_one_view.dart';
 import 'package:heyva/app/modules/login/model/login_model.dart';
 import 'package:heyva/app/modules/login/provider/login_provider.dart';
 import 'package:heyva/app/routes/app_pages.dart';
-import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:heyva/services/dio_services.dart';

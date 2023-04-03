@@ -2,7 +2,6 @@ import 'package:bottom_picker/bottom_picker.dart';
 import 'package:bottom_picker/resources/arrays.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:heyva/app/widgets/reusable_onboarding_header.dart';
 import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';

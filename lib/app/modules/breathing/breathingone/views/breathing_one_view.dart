@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heyva/app/modules/breathing/breathingtwo/views/breathing_two_view.dart';
+import 'package:heyva/app/widgets/nav_screen.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
 import '../../../../../constant/colors.dart';
 import '../../../../../constant/strings.dart';
 import '../controllers/breathing_one_controller.dart';
-import 'package:heyva/app/widgets/nav_screen.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class BreathingOneView extends GetView<BreathingOneController> {
   const BreathingOneView({Key? key}) : super(key: key);
@@ -74,7 +74,7 @@ class BreathingOneView extends GetView<BreathingOneController> {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          Get.to(const BreathingTwoView());
+                          controller.getPelvic();
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(

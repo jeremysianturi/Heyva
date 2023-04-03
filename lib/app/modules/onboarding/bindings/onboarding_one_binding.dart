@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../controllers/onboarding_one_controller.dart';
 
 class OnBoardingOneBinding extends Bindings {

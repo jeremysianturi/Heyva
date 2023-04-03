@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:heyva/app/modules/signup/controllers/signup_controller.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
+
 import '../../../widgets/reusable_btnlogin_group.dart';
 
 class SignUpView extends GetView<SignUpController> {

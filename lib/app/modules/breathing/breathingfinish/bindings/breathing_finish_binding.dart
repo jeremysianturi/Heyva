@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../controllers/breathing_finish_controller.dart';
 
 class BreathingFinishBinding extends Bindings {
