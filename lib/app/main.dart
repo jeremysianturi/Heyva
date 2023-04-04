@@ -14,7 +14,9 @@ import '../firebase_options.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
+  await Firebase.initializeApp(
+    name: "heyva-b10f5",
+    options: DefaultFirebaseOptions.currentPlatform,);
   await Firebase.initializeApp();
   await GetStorage.init();
   runApp(MyApp());
