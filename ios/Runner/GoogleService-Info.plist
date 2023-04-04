@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>622669316286-a12nm6lceeqmjtfnl7db2qf5ibc1qtde.apps.googleusercontent.com</string>
+	<string>159265582817-fdfn285gh53e1jtrhn6dtmb13q2dsib5.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.622669316286-a12nm6lceeqmjtfnl7db2qf5ibc1qtde</string>
+	<string>com.googleusercontent.apps.159265582817-fdfn285gh53e1jtrhn6dtmb13q2dsib5</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDs9rfny1317KZnK0jOKkQHUrqYfxBtFbk</string>
+	<string>AIzaSyB3pQdYBR5_e9ODk_bjUR35XacRp_oda64</string>
 	<key>GCM_SENDER_ID</key>
-	<string>622669316286</string>
+	<string>159265582817</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.heyva</string>
+	<string>com.heyva.health</string>
 	<key>PROJECT_ID</key>
-	<string>heyva-151a4</string>
+	<string>heyva-b10f5</string>
 	<key>STORAGE_BUCKET</key>
-	<string>heyva-151a4.appspot.com</string>
+	<string>heyva-b10f5.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:622669316286:ios:115ced4334ba38ddb49eef</string>
+	<string>1:159265582817:ios:fc04596e3713a036fa51a0</string>
 </dict>
 </plist>
