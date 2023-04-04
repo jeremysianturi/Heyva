@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:heyva/app/modules/onboarding/controllers/onboarding_one_controller.dart';
+
 import '../../../../constant/colors.dart';
 import '../../../../constant/strings.dart';
 import '../../../widgets/reusable_orange_button_with_trailing_icon.dart';

@@ -1,5 +1,6 @@
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:get/get.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/model/timeline.dart';
 import 'package:timelines/timelines.dart';
 import '../../constant/colors.dart';
@@ -44,79 +45,88 @@ class TimelineView extends StatelessWidget {
                   ),
                 );
               } else {
-                return Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
+                return GestureDetector(
+                  onTap: () {
+                    data[index].ontap();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              color: ColorApp.btn_pink,
+                            ),
                             color: ColorApp.btn_pink,
-                          ),
-                          color: ColorApp.btn_pink,
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(16))),
-                      height: 136,
-                      width: double.infinity,
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.only(top: 16, bottom: 16, right: 12),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 12),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    data[index].title,
-                                    style: const TextStyle(
-                                        color: ColorApp.text_input_bg,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                  const SizedBox(height: 6,),
-                                  Text(
-                                    data[index].subtitle,
-                                    style: const TextStyle(
-                                        color: ColorApp.txt_white,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  const SizedBox(height: 6,),
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        "assets/images/ic_time.png",
-                                        height: 11,
-                                        width: 11,
-                                      ),
-                                      Text(
-                                        data[index].time,
-                                        style: const TextStyle(
-                                            color: ColorApp.txt_white,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                    ],
-                                  )
-                                ],
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(16))),
+                        height: 136,
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              top: 16, bottom: 16, right: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 12),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      data[index].title,
+                                      style: const TextStyle(
+                                          color: ColorApp.text_input_bg,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    const SizedBox(
+                                      height: 6,
+                                    ),
+                                    Text(
+                                      data[index].subtitle,
+                                      style: const TextStyle(
+                                          color: ColorApp.txt_white,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    const SizedBox(
+                                      height: 6,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Image.asset(
+                                          "assets/images/ic_time.png",
+                                          height: 11,
+                                          width: 11,
+                                        ),
+                                        Text(
+                                          data[index].time,
+                                          style: const TextStyle(
+                                              color: ColorApp.txt_white,
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                            Container(
-                              width: 115,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
+                              Container(
+                                width: 115,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: ColorApp.grey_container,
+                                    ),
                                     color: ColorApp.grey_container,
-                                  ),
-                                  color: ColorApp.grey_container,
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(16))),
-                            ),
-                          ],
-                        ),
-                      )),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(16))),
+                              ),
+                            ],
+                          ),
+                        )),
+                  ),
                 );
               }
             },
@@ -153,21 +163,28 @@ class TimelineView extends StatelessWidget {
         subtitle: "",
         time: "",
         image: "",
-        isSelected: true.obs),
+        isSelected: true.obs,
+        ontap: () {}),
     TimelineModel(
         quote: "",
         title: Strings.breathing_exercise,
         subtitle: Strings.welcome_heyva,
         time: Strings.minute,
         image: "",
-        isSelected: true.obs),
+        isSelected: true.obs,
+        ontap: () {
+          Get.toNamed(Routes.BREATHING_EXERCISE);
+        }),
     TimelineModel(
         quote: "",
         title: Strings.track_my_mood,
         subtitle: Strings.rhythm_of_health,
         time: Strings.minute,
         image: "",
-        isSelected: false.obs)
+        isSelected: false.obs,
+        ontap: () {
+          Get.toNamed(Routes.MOOD_TRACKER);
+        }),
   ];
 
   List<TimelineModel> list2 = [
@@ -177,14 +194,18 @@ class TimelineView extends StatelessWidget {
         subtitle: "",
         time: "",
         image: "",
-        isSelected: true.obs),
+        isSelected: true.obs,
+        ontap: () {}),
     TimelineModel(
         quote: "",
         title: Strings.identification_exercise,
         subtitle: Strings.pelvic_floor,
         time: Strings.one_minute,
         image: "",
-        isSelected: false.obs),
+        isSelected: false.obs,
+        ontap: () {
+          Get.toNamed(Routes.BREATHING_ONE);
+        }),
   ];
 }
 

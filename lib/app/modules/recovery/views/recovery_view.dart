@@ -2,9 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:heyva/app/modules/recovery/views/program_recovery_view.dart';
+
 import '../../../../constant/colors.dart';
 import '../../../../constant/strings.dart';
-import '../../../widgets/reusable_article_container.dart';
 import '../../../widgets/reusable_timeline.dart';
 import '../controllers/recovery_controller.dart';
 

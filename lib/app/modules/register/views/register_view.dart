@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/register/controllers/register_controller.dart';
+
 import '../../../../constant/colors.dart';
 import '../../../../constant/strings.dart';
 import '../../../controllers/auth_controller.dart';

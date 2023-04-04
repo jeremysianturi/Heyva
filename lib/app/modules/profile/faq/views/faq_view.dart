@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../controllers/faq_controller.dart';
 import 'package:heyva/app/widgets/requsable_privacy_policy_item.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
+
+import '../controllers/faq_controller.dart';
 
 class FaqView extends GetView<FaqController> {
   const FaqView({Key? key}) : super(key: key);

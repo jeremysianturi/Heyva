@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:heyva/app/modules/mood_tracker/mood_tracker_form/widget/mood_check_form.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
-import 'package:story_view/controller/story_controller.dart';
 
 import '../controllers/mood_tracker_form_controller.dart';
 

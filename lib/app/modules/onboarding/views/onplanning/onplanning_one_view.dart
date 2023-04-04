@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
-import '../../../../widgets/reusable_onboarding_header.dart';
-import '../../controllers/onplanning/onplanning_one_controller.dart';
 import 'package:loading_overlay/loading_overlay.dart';
+
+import '../../controllers/onplanning/onplanning_one_controller.dart';
 
 class OnPlanningOneView extends GetView<OnPlanningOneController> {
   OnPlanningOneView({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class OnPlanningOneView extends GetView<OnPlanningOneController> {
   Widget build(BuildContext context) {
     return Obx(() => LoadingOverlay(
         isLoading: controller.isLoading.value,
-        color: Colors.grey,
+        color: ColorApp.btn_orange,
         opacity: 0.3,
         child: Scaffold(
             body: Container(

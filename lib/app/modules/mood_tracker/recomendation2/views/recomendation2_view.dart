@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:get/get.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
 import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';

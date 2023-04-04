@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:heyva/app/widgets/nav_screen.dart';
 import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';

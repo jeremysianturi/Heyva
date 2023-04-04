@@ -7,8 +7,11 @@ class TimelineModel {
   final String time;
   final String image;
   var isSelected = false.obs;
+  final Function ontap;
+
   TimelineModel(
-      {required this.quote,
+      {required this.ontap,
+      required this.quote,
       required this.title,
       required this.subtitle,
       required this.time,

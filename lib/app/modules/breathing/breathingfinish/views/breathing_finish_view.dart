@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:heyva/app/widgets/nav_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
 import '../../../../../constant/colors.dart';
 import '../../../../../constant/strings.dart';
 import '../controllers/breathing_finish_controller.dart';
@@ -12,6 +12,7 @@ class BreathingFinishView extends GetView<BreathingFinishController> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(BreathingFinishController());
     return Scaffold(
       body: Container(
         height: double.maxFinite,
@@ -26,7 +27,7 @@ class BreathingFinishView extends GetView<BreathingFinishController> {
                   children: [
                     Container(),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         PersistentNavBarNavigator.pushNewScreen(
                           context,
                           screen: NavScreen(
@@ -47,17 +48,17 @@ class BreathingFinishView extends GetView<BreathingFinishController> {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      Strings.remember_blue_sky,
-                      style: TextStyle(
-                          color: ColorApp.txt_white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w700),
+                SizedBox(
+                  width: Get.width,
+                  child: Text(
+                    controller.pelvic6,
+                    style: const TextStyle(
+                      color: ColorApp.txt_white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
                     ),
-                  ],
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 Container(),
               ]),
@@ -66,4 +67,3 @@ class BreathingFinishView extends GetView<BreathingFinishController> {
     );
   }
 }
-

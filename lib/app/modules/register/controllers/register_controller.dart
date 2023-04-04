@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/modules/register/model/register_storage_model.dart';
 import 'package:heyva/app/routes/app_pages.dart';
-import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
 
