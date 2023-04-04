@@ -25,7 +25,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -44,40 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBLDhfnx08-emolWs-SYg6xFKalPFwcBdA',
-    appId: '1:622669316286:web:5eb8aedd08ddb131b49eef',
-    messagingSenderId: '622669316286',
-    projectId: 'heyva-151a4',
-    authDomain: 'heyva-151a4.firebaseapp.com',
-    storageBucket: 'heyva-151a4.appspot.com',
-    measurementId: 'G-E8QBPYB4HQ',
+    apiKey: 'AIzaSyDoedJmzm4LcBiTwP-SXPw7FNt8ksAen6o',
+    appId: '1:159265582817:web:86b1d68141a965cafa51a0',
+    messagingSenderId: '159265582817',
+    projectId: 'heyva-b10f5',
+    authDomain: 'heyva-b10f5.firebaseapp.com',
+    storageBucket: 'heyva-b10f5.appspot.com',
+    measurementId: 'G-GFNP2ZQDRF',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDa1BdCMy3FT6QHpoc2E1NEAdt13pGgwy0',
-    appId: '1:622669316286:android:20ddfd75c5d13923b49eef',
-    messagingSenderId: '622669316286',
-    projectId: 'heyva-151a4',
-    storageBucket: 'heyva-151a4.appspot.com',
+    apiKey: 'AIzaSyB7nq_3tkceIpVVgdQU4fNU4omfO-lXOaM',
+    appId: '1:159265582817:android:76475a397e2616ddfa51a0',
+    messagingSenderId: '159265582817',
+    projectId: 'heyva-b10f5',
+    storageBucket: 'heyva-b10f5.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDs9rfny1317KZnK0jOKkQHUrqYfxBtFbk',
-    appId: '1:622669316286:ios:115ced4334ba38ddb49eef',
-    messagingSenderId: '622669316286',
-    projectId: 'heyva-151a4',
-    storageBucket: 'heyva-151a4.appspot.com',
-    iosClientId: '622669316286-a12nm6lceeqmjtfnl7db2qf5ibc1qtde.apps.googleusercontent.com',
-    iosBundleId: 'com.example.heyva',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDs9rfny1317KZnK0jOKkQHUrqYfxBtFbk',
-    appId: '1:622669316286:ios:115ced4334ba38ddb49eef',
-    messagingSenderId: '622669316286',
-    projectId: 'heyva-151a4',
-    storageBucket: 'heyva-151a4.appspot.com',
-    iosClientId: '622669316286-a12nm6lceeqmjtfnl7db2qf5ibc1qtde.apps.googleusercontent.com',
-    iosBundleId: 'com.example.heyva',
+    apiKey: 'AIzaSyB3pQdYBR5_e9ODk_bjUR35XacRp_oda64',
+    appId: '1:159265582817:ios:fc04596e3713a036fa51a0',
+    messagingSenderId: '159265582817',
+    projectId: 'heyva-b10f5',
+    storageBucket: 'heyva-b10f5.appspot.com',
+    iosClientId: '159265582817-fdfn285gh53e1jtrhn6dtmb13q2dsib5.apps.googleusercontent.com',
+    iosBundleId: 'com.heyva.health',
   );
 }

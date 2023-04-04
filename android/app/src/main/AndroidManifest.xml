@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.heyva">
+    package="com.heyva.health">
    <application
         android:label="heyva"
         android:name="${applicationName}"

@@ -10,10 +10,11 @@ import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/variabels.dart';
 
 import 'controllers/auth_controller.dart';
+import '../firebase_options.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
   await Firebase.initializeApp();
   await GetStorage.init();
   runApp(MyApp());

@@ -14,9 +14,9 @@ dependencies:
   provider: any
   flutter_spinkit: ^5.1.0
   # firebase_core: 1.24.0
-  firebase_core: ^2.7.0
-  # firebase_auth: 3.11.2
-  firebase_auth: ^4.2.9
+  firebase_core: ^2.9.0
+#  firebase_auth: ^3.11.2
+  firebase_auth: ^4.4.0
   bottom_picker: ^2.0.1
   # untuk timer 321
   animated_text_kit: ^4.2.2

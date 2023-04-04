@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "622669316286",
-    "project_id": "heyva-151a4",
-    "storage_bucket": "heyva-151a4.appspot.com"
+    "project_number": "159265582817",
+    "project_id": "heyva-b10f5",
+    "storage_bucket": "heyva-b10f5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:622669316286:android:20ddfd75c5d13923b49eef",
+        "mobilesdk_app_id": "1:159265582817:android:76475a397e2616ddfa51a0",
         "android_client_info": {
-          "package_name": "com.example.heyva"
+          "package_name": "com.heyva.health"
         }
       },
       "oauth_client": [
         {
-          "client_id": "622669316286-phq10jg8arebv86oq0ie74ot1bv85rk1.apps.googleusercontent.com",
+          "client_id": "159265582817-pnq1r4n4epm2bibaduvsi2v59cghgke6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDa1BdCMy3FT6QHpoc2E1NEAdt13pGgwy0"
+          "current_key": "AIzaSyB7nq_3tkceIpVVgdQU4fNU4omfO-lXOaM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "622669316286-phq10jg8arebv86oq0ie74ot1bv85rk1.apps.googleusercontent.com",
+              "client_id": "159265582817-pnq1r4n4epm2bibaduvsi2v59cghgke6.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "159265582817-fdfn285gh53e1jtrhn6dtmb13q2dsib5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.heyva.health"
+              }
             }
           ]
         }
