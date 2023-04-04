@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lyric/lyrics_reader.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
+import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
 
 import '../controllers/breathin_voice_controller.dart';
@@ -74,6 +76,8 @@ class ImportantNotes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var box = GetStorage();
+    var text = box.read(Keys.breathing2Storage);
     return SafeArea(
       child: Container(
         height: Get.height,
@@ -144,8 +148,8 @@ class ImportantNotes extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      const Text(
-                        "This breathing program can be done for as little as five minutes or as long as you like. The key is to make it a regular practice, incorporating it into your daily routine whenever possible to help promote relaxation, and emotional well-being.",
+                      Text(
+                        text,
                         style: TextStyle(
                             decoration: TextDecoration.none,
                             color: ColorApp.black_view_all,

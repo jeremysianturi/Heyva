@@ -21,7 +21,8 @@ class LoginView extends GetView<LoginController> {
     return Obx(
       () => LoadingOverlay(
           isLoading: controller.isLoading.value,
-          color: ColorApp.btn_orange,
+          color: Colors.grey,
+          progressIndicator: const CircularProgressIndicator(color: ColorApp.btn_orange,),
           opacity: 0.3,
           child: Scaffold(
             resizeToAvoidBottomInset: false,

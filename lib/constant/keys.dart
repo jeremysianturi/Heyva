@@ -16,6 +16,11 @@ class Keys {
   static const String pelvic6Storage = "PELVIC6_STORAGE";
 
 
+  ///breathing
+  static const String breathing1Storage = "BREATHING1_STORAGE";
+  static const String breathing2Storage = "BREATHING2_STORAGE";
+
+
   ///arguments
   static const String fullNameArguments = "FULLNAME_ARGUMENTS";
   static const String titleArguments ="TITLE_ARGUMENTS";

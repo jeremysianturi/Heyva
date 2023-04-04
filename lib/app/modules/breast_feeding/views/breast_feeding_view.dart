@@ -15,7 +15,8 @@ class BreastFeedingView extends GetView<BreastFeedingController> {
     return Obx(
       () => LoadingOverlay(
         isLoading: controller.isLoading.value,
-        color: ColorApp.btn_orange,
+        color: Colors.grey,
+        progressIndicator: const CircularProgressIndicator(color: ColorApp.btn_orange,),
         opacity: 0.3,
         child: Scaffold(
           body: Stack(
@@ -24,7 +25,8 @@ class BreastFeedingView extends GetView<BreastFeedingController> {
                 controller: controller,
               ),
               if (controller.isShwoingVideo.isTrue)
-                MiniPlayer(controller: controller, title: controller.videoTitle.value)
+                MiniPlayer(
+                    controller: controller, title: controller.videoTitle.value)
             ],
           ),
         ),
