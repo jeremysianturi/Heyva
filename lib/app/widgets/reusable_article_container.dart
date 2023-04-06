@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/routes/app_pages.dart';
+import 'package:heyva/constant/keys.dart';
 import '../../constant/colors.dart';
 
 class ArticleContainer extends StatelessWidget {
@@ -12,6 +13,8 @@ class ArticleContainer extends StatelessWidget {
     required this.title,
     required this.tagIcon,
     required this.desc,
+    required this.contentId,
+    required this.contentType,
   }) : super(key: key);
 
   final Color containerColor;
@@ -19,12 +22,21 @@ class ArticleContainer extends StatelessWidget {
   final String tag;
   final String tagIcon;
   final String desc;
+  final String contentId;
+  final String contentType;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed(Routes.ARTICLE);
+        if (contentType.toLowerCase() == "video") {
+          Get.toNamed(Routes.BREAST_FEEDING,
+              arguments: {Keys.videoIdBreastFeedingArgumets: contentId});
+        }
+        if (contentType.toLowerCase() == "article") {
+          Get.toNamed(Routes.ARTICLE,
+              arguments: {Keys.contentIDArticleArguments: contentId});
+        }
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

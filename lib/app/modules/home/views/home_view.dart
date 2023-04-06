@@ -319,6 +319,8 @@ class HomeView extends GetView<HomeController> {
                             desc: data?.contents?.body.toString() == "null"
                                 ? data?.contents?.renderedBody ?? ""
                                 : data?.contents?.body ?? "",
+                            contentId: data?.contents?.id ?? "",
+                            contentType: data?.contentType?.name ?? "",
                           );
                         }),
                       ),
