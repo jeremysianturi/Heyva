@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import '../../constant/colors.dart';
-import '../../constant/strings.dart';
 
 class ArticleContainer extends StatelessWidget {
   const ArticleContainer({
@@ -89,18 +89,26 @@ class ArticleContainer extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 18,
+            height: 16,
           ),
-          SizedBox(
-            width: 130,
-            child: Text(
-              desc,
-              style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: ColorApp.grey_font),
-            ),
-          ),
+          Container(
+            height: 30,
+            width: Get.width,
+            padding: const EdgeInsets.only(right: 20),
+            child: desc.contains("<")
+                ? Html(data: desc)
+                : SizedBox(
+                    width: Get.width,
+                    child: Text(
+                      desc,
+                      style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: ColorApp.grey_font),
+                      maxLines: 2,
+                    ),
+                  ),
+          )
         ],
       ),
     );

@@ -24,4 +24,8 @@ class Keys {
   ///arguments
   static const String fullNameArguments = "FULLNAME_ARGUMENTS";
   static const String titleArguments ="TITLE_ARGUMENTS";
+
+
+  ///doctor
+  static const String doctorIdArguments = "DOCTOR_ID_ARGUMENTS";
 }

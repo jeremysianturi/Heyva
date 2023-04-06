@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:heyva/app/modules/home/widget/doctor_card.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_timeline.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 import '../../../widgets/reusable_article_container.dart';
 import '../controllers/home_controller.dart';
@@ -24,144 +26,188 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.asset(
-          "assets/images/bg_heyva.png",
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          fit: BoxFit.fill,
+    return Obx(() => LoadingOverlay(
+        isLoading: controller.isLoading.value,
+        color: Colors.grey,
+        progressIndicator: const CircularProgressIndicator(
+          color: ColorApp.btn_orange,
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            extendBodyBehindAppBar: false,
-            // appBar: AppBar(
-            //   backgroundColor: Colors.transparent,
-            //   elevation: 0,
-            //   leading: CircleAvatar(
-            //     child: Image.asset("assets/images/img_pp_dummy.png"),
-            //   ),
-            //   title: Column(
-            //     children: const [
-            //       Text(
-            //         Strings.good_afternoon,
-            //         style: TextStyle(
-            //           fontSize: 14,
-            //           fontWeight: FontWeight.w400,
-            //           color: ColorApp.black_greeting_color,
-            //         ),
-            //       ),
-            //       Text(
-            //         Strings.priscilla,
-            //         style: TextStyle(
-            //           fontSize: 18,
-            //           fontWeight: FontWeight.w600,
-            //           color: ColorApp.homepage_name_color,
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            //   actions: [
-            //     GestureDetector(
-            //       onTap: () {
-            //         Get.to(ArticleView());
-            //       },
-            //       child: Container(
-            //         padding: const EdgeInsets.symmetric(
-            //             horizontal: 12.5, vertical: 10.5),
-            //         decoration: BoxDecoration(
-            //           color: ColorApp.bottom_nav_color,
-            //           borderRadius: BorderRadius.circular(12),
-            //         ),
-            //         child: const ImageIcon(
-            //           AssetImage("assets/images/ic_notification.png"),
-            //           color: ColorApp.ic_notif_color,
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            body: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  AppBar(
-                    backgroundColor: Colors.transparent,
-                    elevation: 0,
-                    leading: GestureDetector(
-                      onTap: () {
-                        Get.toNamed(Routes.PROFILE);
-                      },
-                      child: CircleAvatar(
-                        child: Image.asset("assets/images/img_pp_dummy.png"),
-                      ),
-                    ),
-                    title: GestureDetector(
-                      onTap: () {
-                        Get.toNamed(Routes.PROFILE);
-                      },
-                      child: Column(
-                        children: const [
-                          Text(
-                            Strings.good_afternoon,
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: ColorApp.black_greeting_color,
-                            ),
+        opacity: 0.3,
+        child: Stack(
+          children: [
+            Image.asset(
+              "assets/images/bg_heyva.png",
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.fill,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Scaffold(
+                backgroundColor: Colors.transparent,
+                extendBodyBehindAppBar: false,
+                // appBar: AppBar(
+                //   backgroundColor: Colors.transparent,
+                //   elevation: 0,
+                //   leading: CircleAvatar(
+                //     child: Image.asset("assets/images/img_pp_dummy.png"),
+                //   ),
+                //   title: Column(
+                //     children: const [
+                //       Text(
+                //         Strings.good_afternoon,
+                //         style: TextStyle(
+                //           fontSize: 14,
+                //           fontWeight: FontWeight.w400,
+                //           color: ColorApp.black_greeting_color,
+                //         ),
+                //       ),
+                //       Text(
+                //         Strings.priscilla,
+                //         style: TextStyle(
+                //           fontSize: 18,
+                //           fontWeight: FontWeight.w600,
+                //           color: ColorApp.homepage_name_color,
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                //   actions: [
+                //     GestureDetector(
+                //       onTap: () {
+                //         Get.to(ArticleView());
+                //       },
+                //       child: Container(
+                //         padding: const EdgeInsets.symmetric(
+                //             horizontal: 12.5, vertical: 10.5),
+                //         decoration: BoxDecoration(
+                //           color: ColorApp.bottom_nav_color,
+                //           borderRadius: BorderRadius.circular(12),
+                //         ),
+                //         child: const ImageIcon(
+                //           AssetImage("assets/images/ic_notification.png"),
+                //           color: ColorApp.ic_notif_color,
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                body: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      AppBar(
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        leading: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(Routes.PROFILE);
+                          },
+                          child: CircleAvatar(
+                            child:
+                                Image.asset("assets/images/img_pp_dummy.png"),
                           ),
-                          Text(
-                            Strings.priscilla,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: ColorApp.homepage_name_color,
+                        ),
+                        title: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(Routes.PROFILE);
+                          },
+                          child: Column(
+                            children: const [
+                              Text(
+                                Strings.good_afternoon,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: ColorApp.black_greeting_color,
+                                ),
+                              ),
+                              Text(
+                                Strings.priscilla,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: ColorApp.homepage_name_color,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        actions: [
+                          GestureDetector(
+                            onTap: () {
+                              // Get.to(ArticleView());
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12.5, vertical: 10.5),
+                              decoration: BoxDecoration(
+                                color: ColorApp.bottom_nav_color,
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: const ImageIcon(
+                                AssetImage("assets/images/ic_notification.png"),
+                                color: ColorApp.ic_notif_color,
+                              ),
                             ),
                           ),
                         ],
                       ),
-                    ),
-                    actions: [
-                      GestureDetector(
-                        onTap: () {
-                          // Get.to(ArticleView());
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12.5, vertical: 10.5),
-                          decoration: BoxDecoration(
-                            color: ColorApp.bottom_nav_color,
-                            borderRadius: BorderRadius.circular(12),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const Text(
+                            Strings.daily_refresh,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                color: ColorApp.grey_font),
                           ),
-                          child: const ImageIcon(
-                            AssetImage("assets/images/ic_notification.png"),
-                            color: ColorApp.ic_notif_color,
+                          const SizedBox(
+                            width: 20,
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Text(
-                        Strings.daily_refresh,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
-                            color: ColorApp.grey_font),
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed(Routes.BREAST_FEEDING);
+                            },
+                            child: const Text(
+                              "Breaast Feeding",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  color: ColorApp.grey_font),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              var box = GetStorage();
+                              box.remove(Keys.loginAccessToken);
+                              box.remove(Keys.loginRefreshToken);
+                              Future.delayed(800.seconds);
+                              Get.offNamed(Routes.SIGNUP);
+                            },
+                            child: const Text(
+                              "Logout",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  color: ColorApp.grey_font),
+                            ),
+                          )
+                        ],
                       ),
                       const SizedBox(
-                        width: 20,
+                        height: 20,
                       ),
                       InkWell(
                         onTap: () {
-                          Get.toNamed(Routes.BREAST_FEEDING);
+                          Get.toNamed(Routes.MOOD_TRACKER);
                         },
                         child: const Text(
-                          "Breaast Feeding",
+                          "Mood tracker",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
@@ -169,278 +215,250 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ),
                       const SizedBox(
-                        width: 20,
+                        height: 12,
                       ),
                       InkWell(
                         onTap: () {
-                          var box = GetStorage();
-                          box.remove(Keys.loginAccessToken);
-                          box.remove(Keys.loginRefreshToken);
-                          Future.delayed(800.seconds);
-                          Get.offNamed(Routes.SIGNUP);
+                          Get.toNamed(Routes.BREATHING_EXERCISE);
                         },
                         child: const Text(
-                          "Logout",
+                          "Breathing exercize",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
                               color: ColorApp.grey_font),
                         ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.toNamed(Routes.MOOD_TRACKER);
-                    },
-                    child: const Text(
-                      "Mood tracker",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                          color: ColorApp.grey_font),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.toNamed(Routes.BREATHING_EXERCISE);
-                    },
-                    child: const Text(
-                      "Breathing exercize",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                          color: ColorApp.grey_font),
-                    ),
-                  ),
-                  // Obx(
-                  //   () => Stepper(
-                  //     type: StepperType.vertical,
-                  //     steps: buildStep(),
-                  //     currentStep: homeController.currentSteps.value,
-                  //     onStepContinue: () {
-                  //       if (homeController.currentSteps.value ==
-                  //           buildStep().length - 1) {
-                  //       } else {
-                  //         homeController.currentSteps.value++;
-                  //       }
-                  //     },
-                  //     onStepCancel: () {
-                  //       if (homeController.currentSteps.value == 0) {
-                  //       } else {
-                  //         homeController.currentSteps.value--;
-                  //       }
-                  //     },
-                  //     onStepTapped: (index) {
-                  //       homeController.currentSteps.value = index;
-                  //     },
-                  //     controlsBuilder:
-                  //         (BuildContext context, ControlsDetails details) {
-                  //       return Row(
-                  //         children: <Widget>[
-                  //           TextButton(
-                  //             onPressed: details.onStepContinue,
-                  //             child: const Text(
-                  //               '',
-                  //               style: TextStyle(color: Colors.transparent),
-                  //             ),
-                  //           ),
-                  //           TextButton(
-                  //             onPressed: details.onStepCancel,
-                  //             child: const Text(
-                  //               '',
-                  //               style: TextStyle(color: Colors.transparent),
-                  //             ),
-                  //           ),
-                  //         ],
-                  //       );
-                  //     },
-                  //   ),
-                  // ),
-                  TimelineView(
-                    from: "home",
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        Strings.related,
-                        style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w600,
-                            color: ColorApp.black_article_title),
                       ),
-                      InkWell(
-                        onTap: () {
-                          Get.toNamed(Routes.RELATED_PROGRAM);
-                        },
-                        child: const Text(
-                          Strings.seeMore,
-                          style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: ColorApp.black_article_title),
-                        ),
+                      // Obx(
+                      //   () => Stepper(
+                      //     type: StepperType.vertical,
+                      //     steps: buildStep(),
+                      //     currentStep: homeController.currentSteps.value,
+                      //     onStepContinue: () {
+                      //       if (homeController.currentSteps.value ==
+                      //           buildStep().length - 1) {
+                      //       } else {
+                      //         homeController.currentSteps.value++;
+                      //       }
+                      //     },
+                      //     onStepCancel: () {
+                      //       if (homeController.currentSteps.value == 0) {
+                      //       } else {
+                      //         homeController.currentSteps.value--;
+                      //       }
+                      //     },
+                      //     onStepTapped: (index) {
+                      //       homeController.currentSteps.value = index;
+                      //     },
+                      //     controlsBuilder:
+                      //         (BuildContext context, ControlsDetails details) {
+                      //       return Row(
+                      //         children: <Widget>[
+                      //           TextButton(
+                      //             onPressed: details.onStepContinue,
+                      //             child: const Text(
+                      //               '',
+                      //               style: TextStyle(color: Colors.transparent),
+                      //             ),
+                      //           ),
+                      //           TextButton(
+                      //             onPressed: details.onStepCancel,
+                      //             child: const Text(
+                      //               '',
+                      //               style: TextStyle(color: Colors.transparent),
+                      //             ),
+                      //           ),
+                      //         ],
+                      //       );
+                      //     },
+                      //   ),
+                      // ),
+                      TimelineView(
+                        from: "home",
                       ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const ArticleContainer(
-                        containerColor: ColorApp.blue_container,
-                        title: Strings.managing_anxiety,
-                        tag: Strings.articles,
-                        tagIcon: "assets/images/ic_bookmark.png",
-                        desc: Strings.desc_related_article,
-                      ),
-                      Container(),
-                      const ArticleContainer(
-                        containerColor: ColorApp.btn_maroon,
-                        title: Strings.managing_anxiety,
-                        tag: Strings.program,
-                        tagIcon: "assets/images/ic_program.png",
-                        desc: Strings.desc_related_article,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Column(
-                    children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text(
-                            Strings.recommendation,
+                            Strings.related,
                             style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w600,
                                 color: ColorApp.black_article_title),
                           ),
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed(Routes.RELATED_PROGRAM);
+                            },
+                            child: const Text(
+                              Strings.seeMore,
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  color: ColorApp.black_article_title),
+                            ),
+                          ),
+                        ],
+                      ),
+                      GridView.count(
+                        shrinkWrap: true,
+                        crossAxisCount: 2,
+                        childAspectRatio: 162 / 260,
+                        crossAxisSpacing: 11,
+                        mainAxisSpacing: 0,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: List.generate(controller.programLength, (i) {
+                          var data =
+                              controller.contentListResponse.value.data?[i];
+                          debugPrint("body ${data?.contents?.body}");
+                          return ArticleContainer(
+                            containerColor: ColorApp.blue_container,
+                            title: data?.contents?.title ?? "",
+                            tag: data?.contentType?.name ?? "",
+                            tagIcon: "assets/images/ic_bookmark.png",
+                            desc: data?.contents?.body.toString() == "null"
+                                ? data?.contents?.renderedBody ?? ""
+                                : data?.contents?.body ?? "",
+                          );
+                        }),
+                      ),
+
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //   children: [
+                      //     const ArticleContainer(
+                      //       containerColor: ColorApp.blue_container,
+                      //       title: Strings.managing_anxiety,
+                      //       tag: Strings.articles,
+                      //       tagIcon: "assets/images/ic_bookmark.png",
+                      //       desc: Strings.desc_related_article,
+                      //     ),
+                      //     Container(),
+                      //     const ArticleContainer(
+                      //       containerColor: ColorApp.btn_maroon,
+                      //       title: Strings.managing_anxiety,
+                      //       tag: Strings.program,
+                      //       tagIcon: "assets/images/ic_program.png",
+                      //       desc: Strings.desc_related_article,
+                      //     ),
+                      //   ],
+                      // ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Column(
+                        children: [
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(
-                                // width: 70,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      Strings.view_all,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                          color: ColorApp.black_view_all),
+                              const Text(
+                                Strings.recommendation,
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w600,
+                                    color: ColorApp.black_article_title),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  SizedBox(
+                                    // width: 70,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        const Text(
+                                          Strings.view_all,
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400,
+                                              color: ColorApp.black_view_all),
+                                        ),
+                                        IconButton(
+                                          // icon: Image.asset(tagIcon),
+                                          icon: const Icon(
+                                            Icons.arrow_forward_ios,
+                                            size: 12,
+                                          ),
+                                          padding: EdgeInsets.zero,
+                                          constraints: const BoxConstraints(),
+                                          onPressed: () {},
+                                        ),
+                                      ],
                                     ),
-                                    IconButton(
-                                      // icon: Image.asset(tagIcon),
-                                      icon: const Icon(
-                                        Icons.arrow_forward_ios,
-                                        size: 12,
-                                      ),
-                                      padding: EdgeInsets.zero,
-                                      constraints: const BoxConstraints(),
-                                      onPressed: () {},
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ],
+                          ),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          Obx(
+                            () => ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              padding: EdgeInsets.zero,
+                              itemCount: controller.doctorLength,
+                              itemBuilder: (c, i) {
+                                var data = controller
+                                    .doctorListResponse.value.data?[i];
+                                return DoctorCard(
+                                  data: data,
+                                );
+                              },
+                            ),
                           ),
                         ],
                       ),
                       const SizedBox(
-                        height: 24,
+                        height: 28,
                       ),
                       ListView(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
-                          GestureDetector(
-                            onTap: () {
-                              Get.toNamed(Routes.DETAIL_DOCTOR);
-                            },
-                            child: Card(
-                              elevation: 0,
-                              color: ColorApp.arrow_white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
+                          Card(
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14.0),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(14.0),
+                                image: const DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      "assets/images/bg_blue_container_medal.png"),
+                                ),
                               ),
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(vertical: 10),
-                                child: ListTile(
-                                  leading: Container(
-                                    height: 68,
-                                    width: 62,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: ColorApp.blue_container,
-                                        ),
-                                        color: ColorApp.blue_container,
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(12))),
-                                  ),
-                                  title: const Text(
-                                    Strings.dr_allisa,
+                              child: const ListTile(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(14))),
+                                title: Padding(
+                                  padding: EdgeInsets.only(top: 20),
+                                  child: Text(
+                                    Strings.get_your_premium,
                                     style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.w500,
-                                        color: ColorApp.black_font_underline),
+                                        color: ColorApp.white_font),
                                   ),
-                                  subtitle: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        Strings.phycologist_specialist,
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w400,
-                                            color: ColorApp.black_font_40),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Image.asset(
-                                              "assets/images/ic_star.png"),
-                                          const SizedBox(
-                                            width: 4,
-                                          ),
-                                          const Text(
-                                            "4",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
-                                                color: ColorApp.black),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                ),
+                                subtitle: Padding(
+                                  padding: EdgeInsets.only(bottom: 20),
+                                  child: Text(
+                                    Strings.get_unlimited_access,
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400,
+                                        color: ColorApp.grey_card_font),
                                   ),
-                                  trailing: RawMaterialButton(
-                                    constraints: BoxConstraints.tight(
-                                        const Size(24, 24)),
-                                    padding: EdgeInsets.zero,
-                                    onPressed: () {},
-                                    elevation: 0,
-                                    fillColor: ColorApp.txt_white,
-                                    shape: const CircleBorder(),
-                                    child: IconButton(
-                                      padding: EdgeInsets.zero,
-                                      constraints: const BoxConstraints(),
-                                      icon: const Icon(Icons.arrow_forward_ios),
-                                      onPressed: () {},
-                                    ),
-                                  ),
+                                ),
+                                trailing: Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: ColorApp.white_font,
                                 ),
                               ),
                             ),
@@ -450,195 +468,61 @@ class HomeView extends GetView<HomeController> {
                           ),
                           Card(
                             elevation: 0,
-                            color: ColorApp.arrow_white,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(14.0),
                             ),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 10),
-                              child: ListTile(
-                                leading: Container(
-                                  height: 68,
-                                  width: 62,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: ColorApp.blue_container,
-                                      ),
-                                      color: ColorApp.blue_container,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(12))),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(14.0),
+                                image: const DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      "assets/images/bg_blue_container_plane.png"),
                                 ),
-                                title: const Text(
-                                  Strings.dr_allisa,
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: ColorApp.black_font_underline),
-                                ),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      Strings.phycologist_specialist,
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w400,
-                                          color: ColorApp.black_font_40),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Image.asset(
-                                            "assets/images/ic_star.png"),
-                                        const SizedBox(
-                                          width: 4,
-                                        ),
-                                        const Text(
-                                          "4",
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w500,
-                                              color: ColorApp.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                trailing: RawMaterialButton(
-                                  constraints:
-                                      BoxConstraints.tight(const Size(24, 24)),
-                                  padding: EdgeInsets.zero,
-                                  onPressed: () {},
-                                  elevation: 0,
-                                  fillColor: ColorApp.txt_white,
-                                  shape: const CircleBorder(),
-                                  child: IconButton(
-                                    padding: EdgeInsets.zero,
-                                    constraints: const BoxConstraints(),
-                                    icon: const Icon(Icons.arrow_forward_ios),
-                                    onPressed: () {},
+                              ),
+                              child: const ListTile(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(14))),
+                                title: Padding(
+                                  padding: EdgeInsets.only(top: 20),
+                                  child: Text(
+                                    Strings.share_to_friends,
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500,
+                                        color: ColorApp.white_font),
                                   ),
+                                ),
+                                subtitle: Padding(
+                                  padding: EdgeInsets.only(bottom: 20),
+                                  child: Text(
+                                    Strings.invite_your_friends,
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400,
+                                        color: ColorApp.grey_card_font),
+                                  ),
+                                ),
+                                trailing: Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: ColorApp.white_font,
                                 ),
                               ),
                             ),
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 44,
-                  ),
-                  ListView(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: [
-                      Card(
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14.0),
-                        ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14.0),
-                            image: const DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage(
-                                  "assets/images/bg_blue_container_medal.png"),
-                            ),
-                          ),
-                          child: const ListTile(
-                            shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(14))),
-                            title: Padding(
-                              padding: EdgeInsets.only(top: 20),
-                              child: Text(
-                                Strings.get_your_premium,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500,
-                                    color: ColorApp.white_font),
-                              ),
-                            ),
-                            subtitle: Padding(
-                              padding: EdgeInsets.only(bottom: 20),
-                              child: Text(
-                                Strings.get_unlimited_access,
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: ColorApp.grey_card_font),
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios,
-                              color: ColorApp.white_font,
-                            ),
-                          ),
-                        ),
-                      ),
                       const SizedBox(
-                        height: 10,
-                      ),
-                      Card(
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14.0),
-                        ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14.0),
-                            image: const DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage(
-                                  "assets/images/bg_blue_container_plane.png"),
-                            ),
-                          ),
-                          child: const ListTile(
-                            shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(14))),
-                            title: Padding(
-                              padding: EdgeInsets.only(top: 20),
-                              child: Text(
-                                Strings.share_to_friends,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500,
-                                    color: ColorApp.white_font),
-                              ),
-                            ),
-                            subtitle: Padding(
-                              padding: EdgeInsets.only(bottom: 20),
-                              child: Text(
-                                Strings.invite_your_friends,
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: ColorApp.grey_card_font),
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios,
-                              color: ColorApp.white_font,
-                            ),
-                          ),
-                        ),
-                      ),
+                        height: 100,
+                      )
                     ],
                   ),
-                  const SizedBox(
-                    height: 100,
-                  )
-                ],
+                ),
               ),
             ),
-          ),
-        ),
-      ],
-    );
+          ],
+        )));
   }
 
   List<Step> buildStep() {
