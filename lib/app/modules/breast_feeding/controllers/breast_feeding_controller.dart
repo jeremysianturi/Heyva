@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:heyva/app/modules/breast_feeding/model/video_content_model.dart';
 import 'package:heyva/app/modules/breast_feeding/provider/breast_feeding_provider.dart';
 import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
+import 'package:heyva/constant/keys.dart';
 import 'package:heyva/services/dio_services.dart';
 import 'package:miniplayer/miniplayer.dart';
 
@@ -21,12 +22,17 @@ class BreastFeedingController extends GetxController {
 
   var videoTitle = "Title all video".obs;
 
+  dynamic argumentData = Get.arguments;
+
+  String get videoId {
+    return argumentData[Keys.videoIdBreastFeedingArgumets].toString();
+  }
+
   @override
   void onInit() {
     _client = DioClient();
     _provider = BreastFeedingProvider(_client.init());
     getVideoContent();
-
     miniPlayerC = MiniplayerController();
     super.onInit();
   }
@@ -37,6 +43,7 @@ class BreastFeedingController extends GetxController {
     videoPlayerController.dispose();
     super.dispose();
   }
+
   void initVideo() {
     CustomVideoPlayerSettings _customVideoPlayerSettings =
         const CustomVideoPlayerSettings(
@@ -44,7 +51,7 @@ class BreastFeedingController extends GetxController {
       placeholderWidget: CircularProgressIndicator(),
       controlBarAvailable: true,
       playOnlyOnce: false,
-      customAspectRatio: 175/80,
+      customAspectRatio: 175 / 80,
       autoFadeOutControls: true,
       settingsButtonAvailable: false,
     );
@@ -73,8 +80,8 @@ class BreastFeedingController extends GetxController {
   getVideoContent() async {
     isLoading.value = true;
     try {
-      videoContentResponse.value = (await _provider.getListVideo(
-          contentId: "b8f05ede-7f4f-4720-bc49-da00866097dc"))!;
+      videoContentResponse.value =
+          (await _provider.getListVideo(contentId: videoId))!;
       isLoading.value = false;
 
       if (videoContentResponse.value.success == "Success") {
