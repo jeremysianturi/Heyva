@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:heyva/app/modules/home/views/home_view.dart';
 import 'package:heyva/app/modules/insights/views/insights_view.dart';
 import 'package:heyva/app/modules/learn/views/learn_view.dart';
 import 'package:heyva/app/modules/recovery/views/recovery_view.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../constant/colors.dart';
@@ -107,6 +109,9 @@ class _NavScreenState extends State<NavScreen> {
           ),
           activeColorPrimary: ColorApp.btn_orange,
           inactiveColorPrimary: ColorApp.btn_orange,
+          onPressed: (val){
+            Get.toNamed(Routes.MOOD_TRACKER);
+          },
           routeAndNavigatorSettings: RouteAndNavigatorSettings(
             initialRoute: "/",
             routes: {
