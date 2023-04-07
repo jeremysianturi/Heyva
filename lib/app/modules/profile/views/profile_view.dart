@@ -28,18 +28,20 @@ class ProfileView extends GetView<ProfileController> {
               children: [
                 Container(
                     margin: const EdgeInsets.only(top: 14),
-                    child:  ProfileHeader(
+                    child: ProfileHeader(
                       centerTitle: Strings.detailProfile,
                       showIcon: true,
                       showCenterTitle: true,
-                      ontapIcon: (){
+                      ontapIcon: () {
                         controller.logout();
                       },
                     )),
                 const SizedBox(
                   height: 30,
                 ),
-                const ProfileDetail(),
+                ProfileDetail(
+                  controller: controller,
+                ),
                 ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),

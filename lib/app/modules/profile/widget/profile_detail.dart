@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:heyva/app/modules/profile/controllers/profile_controller.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
 
 class ProfileDetail extends StatelessWidget {
   const ProfileDetail({
     super.key,
+    required this.controller,
   });
+
+  final ProfileController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +22,11 @@ class ProfileDetail extends StatelessWidget {
       child: Container(
         height: 80,
         width: Get.width,
-        margin: EdgeInsets.symmetric(horizontal: 20),
+        margin: const EdgeInsets.symmetric(horizontal: 20),
         child: Row(
           children: [
             ProfileAvatar(
-              imgUrl:
-                  "https://cdn06.pramborsfm.com/storage/app/media/Prambors/cropped-images/SpongeBob%20SquarePants-20210329062638.jpg?tr=w-800",
+              imgUrl: controller.profileAvatar,
               ontap: () {
                 Get.toNamed(Routes.EDIT_PROFILE);
               },
@@ -33,28 +36,28 @@ class ProfileDetail extends StatelessWidget {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
-                  "Priscilla",
-                  style: TextStyle(
+                  controller.profileName,
+                  style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
                       color: ColorApp.black_font_underline),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 4,
                 ),
-                Text(
+                const Text(
                   "+62 87785191978",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
                       color: ColorApp.black_font_underline),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text(
+                const Text(
                   "priscilla@gmail.com",
                   style: TextStyle(
                       fontSize: 16,

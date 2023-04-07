@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/modules/home/widget/doctor_card.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_timeline.dart';
 import 'package:heyva/constant/colors.dart';
-import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
@@ -104,8 +102,7 @@ class HomeView extends GetView<HomeController> {
                             Get.toNamed(Routes.PROFILE);
                           },
                           child: CircleAvatar(
-                            child:
-                                Image.asset("assets/images/img_pp_dummy.png"),
+                            child: Image.network(controller.profileAvatar),
                           ),
                         ),
                         title: GestureDetector(
@@ -113,18 +110,18 @@ class HomeView extends GetView<HomeController> {
                             Get.toNamed(Routes.PROFILE);
                           },
                           child: Column(
-                            children: const [
+                            children: [
                               Text(
-                                Strings.good_afternoon,
-                                style: TextStyle(
+                                controller.greeting,
+                                style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                   color: ColorApp.black_greeting_color,
                                 ),
                               ),
                               Text(
-                                Strings.priscilla,
-                                style: TextStyle(
+                                controller.profileName,
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
                                   color: ColorApp.homepage_name_color,
@@ -183,11 +180,7 @@ class HomeView extends GetView<HomeController> {
                           ),
                           InkWell(
                             onTap: () {
-                              var box = GetStorage();
-                              box.remove(Keys.loginAccessToken);
-                              box.remove(Keys.loginRefreshToken);
-                              Future.delayed(800.seconds);
-                              Get.offNamed(Routes.SIGNUP);
+
                             },
                             child: const Text(
                               "Logout",
@@ -310,7 +303,6 @@ class HomeView extends GetView<HomeController> {
                         children: List.generate(controller.programLength, (i) {
                           var data =
                               controller.contentListResponse.value.data?[i];
-                          debugPrint("body ${data?.contents?.body}");
                           return ArticleContainer(
                             containerColor: ColorApp.blue_container,
                             title: data?.contents?.title ?? "",

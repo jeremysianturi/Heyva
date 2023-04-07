@@ -47,7 +47,7 @@ class InsightsView extends GetView<InsightsController> {
                         Get.toNamed(Routes.PROFILE);
                       },
                       child: CircleAvatar(
-                        child: Image.asset("assets/images/img_pp_dummy.png"),
+                        child: Image.network(controller.profileAvatar),
                       ),
                     ),
                     title: GestureDetector(
@@ -55,18 +55,18 @@ class InsightsView extends GetView<InsightsController> {
                         Get.toNamed(Routes.PROFILE);
                       },
                       child: Column(
-                        children: const [
+                        children: [
                           Text(
-                            Strings.good_afternoon,
-                            style: TextStyle(
+                            controller.greeting,
+                            style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: ColorApp.black_greeting_color,
                             ),
                           ),
                           Text(
-                            Strings.priscilla,
-                            style: TextStyle(
+                            controller.profileName,
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
                               color: ColorApp.homepage_name_color,
@@ -78,7 +78,6 @@ class InsightsView extends GetView<InsightsController> {
                     actions: [
                       GestureDetector(
                         onTap: () {
-                          // Get.to(ArticleView());
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(

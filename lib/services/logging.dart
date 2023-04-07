@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart' as gt;
+import 'package:heyva/app/modules/login/controllers/login_controller.dart';
 import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
 import 'package:heyva/constant/strings.dart';
 
@@ -24,6 +26,10 @@ class Logging extends Interceptor {
     debugPrint(
       'RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}',
     );
+    if (response.statusCode == 401) {
+      var loginC = gt.Get.put(LoginController());
+      loginC.refresh();
+    }
     debugPrint(
       'RESPONSE[${response.data}] ',
     );
@@ -39,11 +45,8 @@ class Logging extends Interceptor {
     debugPrint(
       'ERROR[${err.response?.data}] ',
     );
-    if(err.response.toString() == "null"){
-      bottomSheetMessage(
-          color: "red",
-         desc: Strings.internetError
-      );
+    if (err.response.toString() == "null") {
+      bottomSheetMessage(color: "red", desc: Strings.internetError);
     }
     return super.onError(err, handler);
   }

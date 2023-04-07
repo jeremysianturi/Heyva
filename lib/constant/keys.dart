@@ -5,6 +5,7 @@ class Keys {
   static const String registStorage = "REGISTRATION_STORAGE";
   static const String loginAccessToken = "REGIST_ACCESS_TOKEN_STORAGE";
   static const String loginRefreshToken = "REGIST_REFRESH_TOKEN_STORAGE";
+  static const String loginID = "REGIST_USER_ID";
 
   ///pelvic
   static const String pelvic1Storage = "PELVIC1_STORAGE";
@@ -31,4 +32,11 @@ class Keys {
 
   ///article
   static const String contentIDArticleArguments = "CONTENT_ID_ARGUMENTS";
+
+
+  ///profile
+  static const String profileName = "PROFILE_NAME";
+  static const String profileImgUrl = "PROFILE_IMG_URL";
+  static const String profilePhone = "PROFILE_PHONE";
+  static const String profileEmail = "PROFILE_EMAIL";
 }

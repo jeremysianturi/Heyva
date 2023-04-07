@@ -6,6 +6,7 @@ import 'package:heyva/app/modules/login/provider/login_provider.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
+import 'package:heyva/constant/variabels.dart';
 import 'package:heyva/services/dio_services.dart';
 
 class LoginController extends GetxController {
@@ -19,6 +20,7 @@ class LoginController extends GetxController {
   var errorMessage = ''.obs;
   var isEmailError = false.obs;
   var isPasserror = false.obs;
+  var box = GetStorage();
 
   @override
   void onInit() {
@@ -66,15 +68,52 @@ class LoginController extends GetxController {
             Keys.loginAccessToken, loginResonse.value.data?.accessToken ?? "");
         box.write(Keys.loginRefreshToken,
             loginResonse.value.data?.refreshToken ?? "");
-        800.milliseconds;
+        box.write(Keys.loginID, loginResonse.value.data?.id ?? "");
+        Future.delayed(800.milliseconds);
         Get.toNamed(Routes.BREATHING_ONE);
       } else {
-        if (loginResonse.value.message.toString().toLowerCase().contains("pass")) {
+        if (loginResonse.value.message
+            .toString()
+            .toLowerCase()
+            .contains("pass")) {
           isPasserror.value = true;
         } else {
           isEmailError.value = true;
           isPasserror.value = true;
         }
+        errorMessage.value = loginResonse.value.message ?? "Error Message";
+      }
+    } catch (e) {
+      isLoading.value = false;
+
+      debugPrint("error  $e");
+    }
+  }
+
+  var response =
+      LoginModel(success: "", data: null, message: "", error: "").obs;
+
+  refresh() async {
+    errorMessage.value = "";
+    isLoading.value = true;
+    var userId = box.read(Keys.loginID);
+    var refres = box.read(Keys.loginRefreshToken);
+    try {
+      response.value =
+          (await _provider.refreshToken(refreshToken: refres, userId: userId))!;
+      isLoading.value = false;
+
+      if (response.value.success == "Success") {
+        box.write(
+            Keys.loginAccessToken, response.value.data?.accessToken ?? "");
+        box.write(
+            Keys.loginRefreshToken, response.value.data?.refreshToken ?? "");
+        box.write(Keys.loginID, response.value.data?.id ?? "");
+        authToken = box.read(Keys.loginAccessToken).toString();
+        refreshToken = box.read(Keys.loginRefreshToken).toString();
+        Future.delayed(800.milliseconds);
+        Get.toNamed(Routes.BREATHING_ONE);
+      } else {
         errorMessage.value = loginResonse.value.message ?? "Error Message";
       }
     } catch (e) {
