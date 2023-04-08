@@ -47,7 +47,7 @@ class InsightsView extends GetView<InsightsController> {
                         Get.toNamed(Routes.PROFILE);
                       },
                       child: CircleAvatar(
-                        child: Image.network(controller.profileAvatar),
+                        backgroundImage: NetworkImage(controller.profileAvatar),
                       ),
                     ),
                     title: GestureDetector(

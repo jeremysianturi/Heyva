@@ -102,7 +102,8 @@ class HomeView extends GetView<HomeController> {
                             Get.toNamed(Routes.PROFILE);
                           },
                           child: CircleAvatar(
-                            child: Image.network(controller.profileAvatar),
+                            backgroundImage:
+                                NetworkImage(controller.profileAvatar),
                           ),
                         ),
                         title: GestureDetector(
@@ -179,9 +180,7 @@ class HomeView extends GetView<HomeController> {
                             width: 20,
                           ),
                           InkWell(
-                            onTap: () {
-
-                            },
+                            onTap: () {},
                             child: const Text(
                               "Logout",
                               style: TextStyle(

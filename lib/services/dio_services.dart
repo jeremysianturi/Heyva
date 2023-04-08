@@ -1,10 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/variabels.dart';
 import 'logging.dart';
 
 class DioClient {
   Dio init() {
+    var box = GetStorage();
     Dio _dio = Dio();
     _dio.interceptors.add(Logging());
     _dio.options = BaseOptions(
@@ -12,7 +15,9 @@ class DioClient {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': authToken.isNotEmpty ? authToken : basicAuthToken,
+        'Authorization': box.read(Keys.loginAccessToken).toString() != "null"
+            ? "Bearer ${box.read(Keys.loginAccessToken)}"
+            : basicAuthToken,
       },
       connectTimeout: 20.seconds,
       receiveTimeout: 10.seconds,

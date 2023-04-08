@@ -43,7 +43,7 @@ class MoodTrackerView extends GetView<MoodTrackerController> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Image.asset("assets/images/mood_tracker_banner.png"),
+                  child: Image.asset("assets/images/bg_mood_tracker.png"),
                 ),
                 const SizedBox(
                   height: 24,

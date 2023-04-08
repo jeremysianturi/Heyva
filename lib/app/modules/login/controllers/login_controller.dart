@@ -57,6 +57,8 @@ class LoginController extends GetxController {
   postLogin() async {
     errorMessage.value = "";
     isLoading.value = true;
+    token = basicAuthToken;
+    debugPrint("token $token");
     try {
       loginResonse.value =
           (await _provider.Login(username: emailC.text, password: passC.text))!;
@@ -69,6 +71,10 @@ class LoginController extends GetxController {
         box.write(Keys.loginRefreshToken,
             loginResonse.value.data?.refreshToken ?? "");
         box.write(Keys.loginID, loginResonse.value.data?.id ?? "");
+        authToken = "Bearer ${loginResonse.value.data!.accessToken}";
+        refreshToken = loginResonse.value.data?.refreshToken ?? "";
+        userId = loginResonse.value.data?.id ?? "";
+        token = authToken;
         Future.delayed(800.milliseconds);
         Get.toNamed(Routes.BREATHING_ONE);
       } else {
@@ -98,6 +104,7 @@ class LoginController extends GetxController {
     isLoading.value = true;
     var userId = box.read(Keys.loginID);
     var refres = box.read(Keys.loginRefreshToken);
+    token = basicAuthToken;
     try {
       response.value =
           (await _provider.refreshToken(refreshToken: refres, userId: userId))!;
@@ -105,14 +112,14 @@ class LoginController extends GetxController {
 
       if (response.value.success == "Success") {
         box.write(
-            Keys.loginAccessToken, response.value.data?.accessToken ?? "");
-        box.write(
-            Keys.loginRefreshToken, response.value.data?.refreshToken ?? "");
-        box.write(Keys.loginID, response.value.data?.id ?? "");
-        authToken = box.read(Keys.loginAccessToken).toString();
-        refreshToken = box.read(Keys.loginRefreshToken).toString();
-        Future.delayed(800.milliseconds);
-        Get.toNamed(Routes.BREATHING_ONE);
+            Keys.loginAccessToken, loginResonse.value.data?.accessToken ?? "");
+        box.write(Keys.loginRefreshToken,
+            loginResonse.value.data?.refreshToken ?? "");
+        box.write(Keys.loginID, loginResonse.value.data?.id ?? "");
+        authToken = "Bearer ${loginResonse.value.data?.accessToken}";
+        refreshToken = loginResonse.value.data?.refreshToken ?? "";
+        userId = loginResonse.value.data?.id ?? "";
+        token = authToken;
       } else {
         errorMessage.value = loginResonse.value.message ?? "Error Message";
       }

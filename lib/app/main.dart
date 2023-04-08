@@ -16,7 +16,8 @@ void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     name: "heyva-b10f5",
-    options: DefaultFirebaseOptions.currentPlatform,);
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await Firebase.initializeApp();
   await GetStorage.init();
   runApp(MyApp());
@@ -46,8 +47,9 @@ class MyApp extends StatelessWidget {
                   var box = GetStorage();
                   authToken = box.read(Keys.loginAccessToken).toString();
                   refreshToken = box.read(Keys.loginRefreshToken).toString();
+                  token = authToken;
                   debugPrint("auth token $authToken");
-                  if (authToken != "null" && refreshToken != "null") {
+                  if (token != "null") {
                     return GetMaterialApp(
                       debugShowCheckedModeBanner: false,
                       title: "HEYVA",
