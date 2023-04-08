@@ -2,5 +2,5 @@
 var basicAuthToken = "Basic RkU2em14VzRzWDpWUHZWSGMyNU14";
 var authToken = "";
 var refreshToken = "";
-var token = "";
 var userId = "";
+var isRefresh = false;

@@ -16,7 +16,9 @@ class LoginController extends GetxController {
 
   var isLoading = false.obs;
   late DioClient _client;
+  late RefreshDioClient _clientRefresh;
   late LoginProvider _provider;
+  late LoginProvider _refreshprovider;
   var errorMessage = ''.obs;
   var isEmailError = false.obs;
   var isPasserror = false.obs;
@@ -25,7 +27,11 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     _client = DioClient();
+    _clientRefresh = RefreshDioClient();
     _provider = LoginProvider(_client.init());
+    _refreshprovider = LoginProvider(_clientRefresh.init());
+    emailC.text = "kang-bakso@harakirimail.com";
+    passC.text = "minimal8";
     super.onInit();
   }
 
@@ -57,11 +63,9 @@ class LoginController extends GetxController {
   postLogin() async {
     errorMessage.value = "";
     isLoading.value = true;
-    token = basicAuthToken;
-    debugPrint("token $token");
     try {
       loginResonse.value =
-          (await _provider.Login(username: emailC.text, password: passC.text))!;
+      (await _provider.Login(username: emailC.text, password: passC.text))!;
       isLoading.value = false;
 
       if (loginResonse.value.success == "Success") {
@@ -74,7 +78,6 @@ class LoginController extends GetxController {
         authToken = "Bearer ${loginResonse.value.data!.accessToken}";
         refreshToken = loginResonse.value.data?.refreshToken ?? "";
         userId = loginResonse.value.data?.id ?? "";
-        token = authToken;
         Future.delayed(800.milliseconds);
         Get.toNamed(Routes.BREATHING_ONE);
       } else {
@@ -104,24 +107,30 @@ class LoginController extends GetxController {
     isLoading.value = true;
     var userId = box.read(Keys.loginID);
     var refres = box.read(Keys.loginRefreshToken);
-    token = basicAuthToken;
+    box.write(Keys.loginAccessToken, "");
+    isRefresh = true;
+    Future.delayed(800.milliseconds);
     try {
-      response.value =
-          (await _provider.refreshToken(refreshToken: refres, userId: userId))!;
+      response.value = (await _refreshprovider.refreshToken(
+          refreshToken: refres, userId: userId))!;
       isLoading.value = false;
 
       if (response.value.success == "Success") {
+        debugPrint("refresh cusess -----------------------");
+        Future.delayed(800.milliseconds);
+        debugPrint("old token ${box.read(Keys.loginAccessToken)}");
+            box.write(
+            Keys.loginAccessToken, response.value.data?.accessToken ?? "");
         box.write(
-            Keys.loginAccessToken, loginResonse.value.data?.accessToken ?? "");
-        box.write(Keys.loginRefreshToken,
-            loginResonse.value.data?.refreshToken ?? "");
-        box.write(Keys.loginID, loginResonse.value.data?.id ?? "");
-        authToken = "Bearer ${loginResonse.value.data?.accessToken}";
-        refreshToken = loginResonse.value.data?.refreshToken ?? "";
-        userId = loginResonse.value.data?.id ?? "";
-        token = authToken;
+            Keys.loginRefreshToken, response.value.data?.refreshToken ?? "");
+        box.write(Keys.loginID, response.value.data?.id ?? "");
+        authToken = "Bearer ${response.value.data?.accessToken}";
+        refreshToken = response.value.data?.refreshToken ?? "";
+        userId = response.value.data?.id ?? "";
+        onInit();
+        debugPrint("new token ${box.read(Keys.loginAccessToken)}");
       } else {
-        errorMessage.value = loginResonse.value.message ?? "Error Message";
+        errorMessage.value = response.value.message ?? "Error Message";
       }
     } catch (e) {
       isLoading.value = false;

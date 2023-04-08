@@ -45,11 +45,16 @@ class MyApp extends StatelessWidget {
                   authC.setLoginStatus(snapshot.data != null);
                   // print('snapshot data: ${snapshot.data}');
                   var box = GetStorage();
+                  // box.write(Keys.loginAccessToken,
+                  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkZW50aWZpZXIiOiJhMDM1YTEzOS05MjU4LTQ2NWEtODVmYS1lZjZhMGJhM2E1MzIiLCJleHAiOjE2ODA5Mzc3NDEsImlhdCI6MTY4MDkzNDE0MS42MTk5MjQsInNjb3BlIjoiQUNDRVNTIiwidXNlcm5hbWUiOm51bGwsImVtYWlsIjoia2FuZy1iYWtzb0BoYXJha2lyaW1haWwuY29tIiwicGhvbmVfbnVtYmVyIjpudWxsLCJwcm9maWxlX2NvZGUiOiIyMDIzMDMxNjAwMDAwMDE0Iiwicm9sZXMiOlsiNzYzOWViODktNWM3Ni00MDI4LWE5YmYtNzBkMDAwOGY3MTRlIl19.orOGcIi71g_S-TJSffIdSSU_rFVAgF4jnS2FIuWrZhQ");
+                  // box.write(Keys.loginRefreshToken,
+                  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkZW50aWZpZXIiOiJhMDM1YTEzOS05MjU4LTQ2NWEtODVmYS1lZjZhMGJhM2E1MzIiLCJleHAiOjE2ODE1Mzg5NDEsImlhdCI6MTY4MDkzNDE0MS42MjIzNjMsInNjb3BlIjoiUkVGUkVTSCIsInVzZXJuYW1lIjpudWxsLCJlbWFpbCI6ImthbmctYmFrc29AaGFyYWtpcmltYWlsLmNvbSIsInBob25lX251bWJlciI6bnVsbCwicm9sZXMiOlsiNzYzOWViODktNWM3Ni00MDI4LWE5YmYtNzBkMDAwOGY3MTRlIl19.QtRqC7F4oIx8JThu3IyAS6L6n72_0mhqFOz4YIyF8HA");
+                  // box.write(
+                  //     Keys.loginID, "a035a139-9258-465a-85fa-ef6a0ba3a532");
                   authToken = box.read(Keys.loginAccessToken).toString();
                   refreshToken = box.read(Keys.loginRefreshToken).toString();
-                  token = authToken;
                   debugPrint("auth token $authToken");
-                  if (token != "null") {
+                  if (authToken != "null" && refreshToken != "null") {
                     return GetMaterialApp(
                       debugShowCheckedModeBanner: false,
                       title: "HEYVA",

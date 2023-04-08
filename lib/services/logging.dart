@@ -1,7 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart' as gt;
+import 'package:get_storage/get_storage.dart';
+import 'package:heyva/app/modules/login/controllers/login_controller.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
+import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
+import 'package:heyva/constant/variabels.dart';
 
 class Logging extends Interceptor {
   @override
@@ -36,6 +42,23 @@ class Logging extends Interceptor {
     debugPrint(
       'ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}',
     );
+
+    debugPrint("status code${(err.response?.statusCode == 401)}");
+    if (err.response?.statusCode == 401 &&
+        err.requestOptions.path != "/api/v1/users/refresh-token") {
+      var loginC = gt.Get.put(LoginController());
+      loginC.refresh();
+    } else if (err.response?.statusCode == 401 &&
+        err.requestOptions.path == "/api/v1/users/refresh-token") {
+      var box = GetStorage();
+      box.remove(Keys.loginAccessToken);
+      box.remove(Keys.loginRefreshToken);
+      box.remove(Keys.loginID);
+      authToken = "";
+      refreshToken = "";
+      Future.delayed(800.seconds);
+      gt.Get.offNamed(Routes.SIGNUP);
+    }
     debugPrint(
       'ERROR[${err.response?.data}] ',
     );
