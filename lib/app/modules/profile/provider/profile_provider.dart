@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:heyva/app/modules/profile/model/change_password_model.dart';
 import 'package:heyva/app/modules/profile/model/profile_model.dart';
 
 class ProfileProvider {
@@ -20,6 +21,29 @@ class ProfileProvider {
       var error = e.response?.data['error'];
       res =
           ProfileModel(success: "", data: null, message: message, error: error);
+    }
+    return res;
+  }
+
+  Future<ChangePasswordModel?> changePassword(
+      {required oldPassword,
+      required newPassword,
+      required confPassword}) async {
+    ChangePasswordModel? res;
+    try {
+      Response response =
+          await _client.put('/api/v1/users/change-password', data: {
+        "old_password": oldPassword,
+        "new_password": newPassword,
+        "confirm_new_password": confPassword,
+      });
+      debugPrint('response data: ${response.data}');
+      res = ChangePasswordModel.fromJson(response.data);
+    } on DioError catch (e) {
+      var message = e.response?.data['message'];
+      var error = e.response?.data['error'];
+      res = ChangePasswordModel(
+          success: "", data: null, message: message, error: error);
     }
     return res;
   }

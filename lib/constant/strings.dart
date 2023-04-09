@@ -192,4 +192,12 @@ class Strings {
 
   static const String eddGues = "When is your EDD?";
   static const String childBornGues = "When was your child born?";
+
+
+  static const String typeYourOldPass = "Type your old password";
+  static const String typeYourNewPass = "Type your new password";
+  static const String newPassConfrim = "new password confirmation";
+
+
+
 }
