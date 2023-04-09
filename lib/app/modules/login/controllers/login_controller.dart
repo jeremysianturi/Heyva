@@ -15,7 +15,7 @@ class LoginController extends GetxController {
   RxBool isObscure = true.obs;
 
   var isLoading = false.obs;
-  late DioClient _client;
+  late RefreshDioClient _client;
   late RefreshDioClient _clientRefresh;
   late LoginProvider _provider;
   late LoginProvider _refreshprovider;
@@ -26,7 +26,7 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-    _client = DioClient();
+    _client = RefreshDioClient();
     _clientRefresh = RefreshDioClient();
     _provider = LoginProvider(_client.init());
     _refreshprovider = LoginProvider(_clientRefresh.init());
@@ -65,7 +65,7 @@ class LoginController extends GetxController {
     isLoading.value = true;
     try {
       loginResonse.value =
-      (await _provider.Login(username: emailC.text, password: passC.text))!;
+          (await _provider.Login(username: emailC.text, password: passC.text))!;
       isLoading.value = false;
 
       if (loginResonse.value.success == "Success") {
@@ -119,7 +119,7 @@ class LoginController extends GetxController {
         debugPrint("refresh cusess -----------------------");
         Future.delayed(800.milliseconds);
         debugPrint("old token ${box.read(Keys.loginAccessToken)}");
-            box.write(
+        box.write(
             Keys.loginAccessToken, response.value.data?.accessToken ?? "");
         box.write(
             Keys.loginRefreshToken, response.value.data?.refreshToken ?? "");

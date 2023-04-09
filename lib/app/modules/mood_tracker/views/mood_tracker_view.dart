@@ -66,7 +66,7 @@ class MoodTrackerView extends GetView<MoodTrackerController> {
                     determineAction: "from_onplanning_one",
                     text: Strings.lets_go,
                     ontap: () {
-                      Get.toNamed(Routes.MOOD_TRACKER_FORM);
+                      Get.toNamed(Routes.PHYSICAL_CHECK);
                     },
                   ),
                 ),

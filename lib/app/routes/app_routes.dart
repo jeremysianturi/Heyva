@@ -35,6 +35,9 @@ abstract class Routes {
   static const PRIVACY_POLICY = _Paths.PRIVACY_POLICY;
   static const FAQ = _Paths.FAQ;
   static const JUST_BIRTH_OR_PREGNANT = _Paths.JUST_BIRTH_OR_PREGNANT;
+  static const PHYSICAL_CHECK = _Paths.PHYSICAL_CHECK;
+  static const FRONT_BODY_CHECK = _Paths.FRONT_BODY_CHECK;
+  static const BACK_BODY_CHECK = _Paths.BACK_BODY_CHECK;
 }
 
 abstract class _Paths {
@@ -72,4 +75,7 @@ abstract class _Paths {
   static const PRIVACY_POLICY = '/privacy-policy';
   static const FAQ = '/faq';
   static const JUST_BIRTH_OR_PREGNANT = '/just-birth-or-pregnant';
+  static const PHYSICAL_CHECK = '/physical-check';
+  static const FRONT_BODY_CHECK = '/front-body-check';
+  static const BACK_BODY_CHECK = '/back-body-check';
 }

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 class ColorApp {
   ColorApp._();
+
   static const Color btn_orange = Color(0xFFF18A6D);
   static const Color btn_pink = Color(0xFFEC9BAD);
   static const Color btn_maroon = Color(0xFF9F2241);
@@ -36,4 +37,5 @@ class ColorApp {
   static const Color yellow_icon = Color(0xFFFFCA43);
   static const Color red_error = Color(0xFFE53B3B);
   static const Color gery_voice_over = Color(0xFF6C757D);
+  static const Color physical_done = Color(0xFF43C680);
 }

@@ -33,10 +33,25 @@ class Keys {
   ///article
   static const String contentIDArticleArguments = "CONTENT_ID_ARGUMENTS";
 
-
   ///profile
   static const String profileName = "PROFILE_NAME";
   static const String profileImgUrl = "PROFILE_IMG_URL";
   static const String profilePhone = "PROFILE_PHONE";
   static const String profileEmail = "PROFILE_EMAIL";
+
+  /// physical checkin
+
+  static const String physicalCheckFrontBodyResponse =
+      "PHYSICAL_CHECK_FRONT_BODY_RESPONSE";
+  static const String physicalCheckBackBodyResponse =
+      "PHYSICAL_CHECK_BACK_BODY_RESPONSE";
+  static const String moodTrackerResponse =
+      "MOOD_TRACKER_RESPONSE";
+  static const String sleepTrackerResponse =
+      "SLEEP_TRACKER_RESPONSE";
+
+
+
+  /// back result
+  static const String backResult = "GET_BACK_RESULT";
 }

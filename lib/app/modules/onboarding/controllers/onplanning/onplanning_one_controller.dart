@@ -36,7 +36,7 @@ class OnPlanningOneController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _client = DioClient();
+    _client = RefreshDioClient();
     _provider = OnboardingProviders(_client.init());
     _registerProvider = RegisterProvider(_client.init());
     getInterest();
@@ -44,7 +44,7 @@ class OnPlanningOneController extends GetxController {
   }
 
   var isLoading = false.obs;
-  late DioClient _client;
+  late RefreshDioClient _client;
   late OnboardingProviders _provider;
   late RegisterProvider _registerProvider;
 

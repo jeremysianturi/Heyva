@@ -1,6 +1,10 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:heyva/app/modules/onboarding/just_birth_or_pregnant/bindings/just_birth_or_pregnant_binding.dart';
-import 'package:heyva/app/modules/onboarding/just_birth_or_pregnant/views/just_birth_or_pregnant_view.dart';
+import 'package:heyva/app/modules/mood_tracker/back_body_check/bindings/back_body_check_binding.dart';
+import 'package:heyva/app/modules/mood_tracker/back_body_check/views/back_body_check_view.dart';
+import 'package:heyva/app/modules/mood_tracker/front_body_check/bindings/front_body_check_binding.dart';
+import 'package:heyva/app/modules/mood_tracker/front_body_check/views/front_body_check_view.dart';
+import 'package:heyva/app/modules/mood_tracker/physical_check/bindings/physical_check_binding.dart';
+import 'package:heyva/app/modules/mood_tracker/physical_check/views/physical_check_view.dart';
 
 import '../modules/article/bindings/article_binding.dart';
 import '../modules/article/views/article_view.dart';
@@ -41,6 +45,8 @@ import '../modules/onboarding/bindings/onboarding_three_binding.dart';
 import '../modules/onboarding/bindings/onboarding_two_binding.dart';
 import '../modules/onboarding/bindings/onplanning/onplanning_one_binding.dart';
 import '../modules/onboarding/bindings/turnon_notif/turnon_notif_binding.dart';
+import '../modules/onboarding/just_birth_or_pregnant/bindings/just_birth_or_pregnant_binding.dart';
+import '../modules/onboarding/just_birth_or_pregnant/views/just_birth_or_pregnant_view.dart';
 import '../modules/onboarding/views/onboarding_one_view.dart';
 import '../modules/onboarding/views/onboarding_three_view.dart';
 import '../modules/onboarding/views/onboarding_two_view.dart';
@@ -233,6 +239,21 @@ class AppPages {
       name: _Paths.JUST_BIRTH_OR_PREGNANT,
       page: () => const JustBirthOrPregnantView(),
       binding: JustBirthOrPregnantBinding(),
+    ),
+    GetPage(
+      name: _Paths.PHYSICAL_CHECK,
+      page: () => const PhysicalCheckView(),
+      binding: PhysicalCheckBinding(),
+    ),
+    GetPage(
+      name: _Paths.FRONT_BODY_CHECK,
+      page: () => const FrontBodyCheckView(),
+      binding: FrontBodyCheckBinding(),
+    ),
+    GetPage(
+      name: _Paths.BACK_BODY_CHECK,
+      page: () => const BackBodyCheckView(),
+      binding: BackBodyCheckBinding(),
     ),
   ];
 }

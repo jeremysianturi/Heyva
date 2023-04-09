@@ -141,6 +141,8 @@ class Strings {
   static const String recomendationSelftCare =
       "Here are some other self-care activities that my psychologist has planned out for you. As a start, you can do at least one of the following to make you feel better";
 
+  static const String physicalCheckIn = "Physical check-in";
+  static const String frontBodyCheckin = "Front Body check-in";
   static const String thankyouMood =
       "Thank you for let us \nknow about your mood";
   static const String notice = "Notice how it feels to make time for yourself.";
@@ -188,6 +190,6 @@ class Strings {
   static const String yourNotes = "Your notes :";
   static const String service = "Service";
 
-  static const String eddGues ="When is your EDD?";
-  static const String childBornGues ="When was your child born?";
+  static const String eddGues = "When is your EDD?";
+  static const String childBornGues = "When was your child born?";
 }

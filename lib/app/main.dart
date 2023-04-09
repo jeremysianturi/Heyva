@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:heyva/app/modules/login/controllers/login_controller.dart';
 import 'package:heyva/app/modules/splashscreen/splashscreen.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/keys.dart';
@@ -54,6 +55,8 @@ class MyApp extends StatelessWidget {
                   authToken = box.read(Keys.loginAccessToken).toString();
                   refreshToken = box.read(Keys.loginRefreshToken).toString();
                   debugPrint("auth token $authToken");
+                  var loginC = Get.put(LoginController());
+                  loginC.refresh();
                   if (authToken != "null" && refreshToken != "null") {
                     return GetMaterialApp(
                       debugShowCheckedModeBanner: false,

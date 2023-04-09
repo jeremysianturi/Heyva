@@ -1,63 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heyva/app/modules/mood_tracker/model/mood_list_model.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:heyva/constant/keys.dart';
+
+import '../model/tracker_type_sleep_model.dart';
 
 class SleepCheckInController extends GetxController {
-  var list = <MoodListModel>[].obs;
   var pagePosition = 0.obs;
+  var box = GetStorage();
+
+  var sleepList = <TrackerDetail>[].obs;
 
   @override
   void onInit() {
-    initDummyData();
-    super.onInit();
-  }
+    sleepList
+        .assignAll(box.read(Keys.sleepTrackerResponse) as List<TrackerDetail>);
 
-  initDummyData() {
-    list.addAll([
-      MoodListModel(
-        name: 'Happy',
-        isSelected: false.obs,
-      ),
-      MoodListModel(
-        name: 'Sad',
-        isSelected: false.obs,
-      ),
-      MoodListModel(
-        name: 'Joy',
-        isSelected: false.obs,
-      ),
-      MoodListModel(
-        name: 'Afraid',
-        isSelected: false.obs,
-      ),
-      MoodListModel(
-        name: 'Gratefull',
-        isSelected: false.obs,
-      ),
-      MoodListModel(
-        name: 'Doublt',
-        isSelected: false.obs,
-      ),
-      MoodListModel(
-        name: 'Relaxed',
-        isSelected: false.obs,
-      ),
-      MoodListModel(
-        name: 'Angry',
-        isSelected: false.obs,
-      ),
-    ]);
+    var read = box.read(Keys.sleepTrackerResponse) as List<TrackerDetail>;
+    debugPrint("data ${read.length}");
+
+    super.onInit();
   }
 
   TextEditingController otherC = TextEditingController();
 
   onSelectFeeling(int index) {
-    //force false all
-    list.firstWhereOrNull((e) => e.isSelected.isTrue)?.isSelected.value = false;
+    sleepList[pagePosition.value].jsonContent?[index].isSelected =
+        !sleepList[pagePosition.value].jsonContent![index].isSelected;
+    sleepList.refresh();
+  }
 
-    //change to true salected indes
-    list[index].isSelected.value = true;
-    debugPrint("list is selected ${list[index].isSelected.value}");
-    list.refresh();
+  bool get isShowButton {
+    if (sleepList[pagePosition.value].jsonContent.toString() == "null") {
+      return true;
+    }
+    var loop = 0;
+    sleepList[pagePosition.value].jsonContent?.forEach((e) {
+      if (e.isSelected == true) {
+        loop = loop + 1;
+      }
+    });
+
+    return loop <= 3 && loop > 0 ? true : false;
+  }
+
+  onOther(val) {
+    var jsonContentLength =
+        sleepList[pagePosition.value].jsonContent?.length ?? 0;
+    if (val.toString().length > 1) {
+      sleepList[pagePosition.value]
+          .jsonContent?[jsonContentLength - 1]
+          .isSelected = true;
+
+      sleepList[pagePosition.value].jsonContent?[jsonContentLength - 1].notes =
+          val;
+      debugPrint(
+          "notes ${sleepList[pagePosition.value].jsonContent?[jsonContentLength - 1].notes}");
+
+      sleepList.refresh();
+    } else {
+      sleepList[pagePosition.value]
+          .jsonContent?[jsonContentLength - 1]
+          .isSelected = false;
+      sleepList[pagePosition.value].jsonContent?[jsonContentLength - 1].notes =
+          "";
+    }
   }
 }

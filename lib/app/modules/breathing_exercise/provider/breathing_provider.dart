@@ -11,7 +11,7 @@ class BreathingProvider {
     BreathingModel? res;
     try {
       Response response = await _client.get(
-        '/api/v1/program/f0d2695f-2877-4e41-920d-dbd73dda0b8b',
+        '/api/v1/program/122c9171-7d1b-4643-8093-86380f893bb7',
       );
       debugPrint('response data: ${response.data}');
       res = BreathingModel.fromJson(response.data);
