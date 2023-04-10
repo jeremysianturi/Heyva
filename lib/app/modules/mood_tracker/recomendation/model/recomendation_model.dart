@@ -1,17 +1,17 @@
-class TrackerTypeSleepModel {
+class RecomendationModel {
   final String? success;
   final List<Data>? data;
   final dynamic message;
   final dynamic error;
 
-  TrackerTypeSleepModel({
+  RecomendationModel({
     this.success,
     this.data,
     this.message,
     this.error,
   });
 
-  TrackerTypeSleepModel.fromJson(Map<String, dynamic> json)
+  RecomendationModel.fromJson(Map<String, dynamic> json)
       : success = json['success'] as String?,
         data = (json['data'] as List?)
             ?.map((dynamic e) => Data.fromJson(e as Map<String, dynamic>))
@@ -68,7 +68,6 @@ class TrackerDetail {
   final String? contentType;
   final List<JsonContent>? jsonContent;
   final int? order;
-  String notes = "";
 
   TrackerDetail({
     this.id,
@@ -77,7 +76,6 @@ class TrackerDetail {
     this.contentType,
     this.jsonContent,
     this.order,
-    this.notes = "",
   });
 
   TrackerDetail.fromJson(Map<String, dynamic> json)
@@ -104,34 +102,32 @@ class TrackerDetail {
 class JsonContent {
   final String? id;
   final String? name;
+  final String? emoji;
   final int? value;
   final List<dynamic>? relatedTag;
   bool isSelected = false;
-  String notes = "";
-  final String? emoji;
 
   JsonContent({
     this.id,
     this.name,
+    this.emoji,
     this.value,
     this.relatedTag,
     this.isSelected = false,
-    this.notes = "",
-    this.emoji,
   });
 
   JsonContent.fromJson(Map<String, dynamic> json)
       : id = json['id'] as String?,
         name = json['name'] as String?,
-        value = json['value'] as int?,
         emoji = json['emoji'] as String?,
+        value = json['value'] as int?,
         relatedTag = json['related_tag'] as List?;
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
-        'value': value,
-        'related_tag': relatedTag,
         'emoji': emoji,
+        'value': value,
+        'related_tag': relatedTag
       };
 }

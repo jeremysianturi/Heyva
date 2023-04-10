@@ -8,14 +8,18 @@ class FeelingItem extends StatelessWidget {
     required this.name,
     required this.ontap,
     required this.isSelected,
+    this.emoji,
   });
 
   final String name;
   final Function ontap;
   final bool isSelected;
+  final String? emoji;
 
   @override
   Widget build(BuildContext context) {
+    var emo = "\u{1f44c}";
+
     return InkWell(
       onTap: () {
         ontap();
@@ -31,7 +35,14 @@ class FeelingItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/images/smile.png"),
+            // Image.asset("assets/images/smile.png"),
+            Text(
+              emo,
+              style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  color: isSelected ? ColorApp.white : ColorApp.black,
+                  fontSize: 16),
+            ),
             SizedBox(
               width: 10,
             ),

@@ -65,10 +65,24 @@ class ArticleView extends GetView<ArticleController> {
                             color: ColorApp.purple_article_dummy,
                             width: MediaQuery.of(context).size.width,
                             height: 320,
-                            child: Image.asset(
-                              "assets/images/dummy_article_image.png",
-                              fit: BoxFit.cover,
-                            ),
+                            child: controller.imgUrl != ""
+                                ? Image.network(
+                                    controller.imgUrl,
+                                    fit: BoxFit.cover,
+                                  )
+                                : const SizedBox(),
+
+                            // FadeInImage.assetNetwork(
+                            //   placeholder:
+                            //       "assets/images/dummy_article_image.png",
+                            //   image: controller.imgUrl,
+                            //   fit: BoxFit.cover,
+                            // ),
+
+                            // Image.asset(
+                            //   "assets/images/dummy_article_image.png",
+                            //   fit: BoxFit.cover,
+                            // ),
                           ),
                           const SizedBox(
                             height: 22,

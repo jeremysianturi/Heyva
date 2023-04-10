@@ -68,7 +68,7 @@ class MoodCheckForm1 extends StatelessWidget {
     return SingleChildScrollView(
       child: SafeArea(
         child: Container(
-          height: Get.height,
+          height: Get.height - 50,
           width: Get.width,
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -124,6 +124,9 @@ class MoodCheckForm1 extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
+                  const SizedBox(
+                    height: 50,
+                  ),
                   Obx(() {
                     var item =
                         controller.moodList[controller.pagePosition.value];
@@ -147,6 +150,7 @@ class MoodCheckForm1 extends StatelessWidget {
                                     isSelected:
                                         item.jsonContent?[index].isSelected ??
                                             false,
+                                    emoji: item.jsonContent?[index].emoji ?? "",
                                   ),
                                   gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(
@@ -213,15 +217,18 @@ class MoodCheckForm1 extends StatelessWidget {
                   if (controller.isShowButton)
                     OrangeButtonWTrailingIcon(
                       determineAction: "ontap",
-                      text: Strings.lets_go,
+                      text: Strings.continue_text,
                       ontap: () {
                         if (controller.moodList.length !=
                             controller.pagePosition.value + 1) {
                           controller.otherC.text = "";
-                          FocusScope.of(context).requestFocus( FocusNode());
+                          FocusScope.of(context).requestFocus(FocusNode());
                           controller.pagePosition.value =
                               controller.pagePosition.value + 1;
                         } else {
+                          controller.moodList[index].notes =
+                              controller.otherC.text;
+                          controller.moodList.refresh();
                           Get.toNamed(Routes.SLEEP_CHECK_IN);
                         }
                       },

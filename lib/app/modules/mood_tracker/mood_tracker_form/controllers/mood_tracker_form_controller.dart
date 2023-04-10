@@ -24,6 +24,14 @@ class MoodTrackerFormController extends GetxController {
   TextEditingController otherC = TextEditingController();
 
   onSelectFeeling(int index) {
+    FocusScope.of(Get.context!).unfocus();
+    if (pagePosition.value != 0) {
+      debugPrint("page position ${pagePosition.value}");
+      moodList[pagePosition.value]
+          .jsonContent
+          ?.firstWhereOrNull((e) => e.isSelected == true)
+          ?.isSelected = false;
+    }
     moodList[pagePosition.value].jsonContent?[index].isSelected =
         !moodList[pagePosition.value].jsonContent![index].isSelected;
     moodList.refresh();
@@ -46,7 +54,7 @@ class MoodTrackerFormController extends GetxController {
   onOther(val) {
     var jsonContentLength =
         moodList[pagePosition.value].jsonContent?.length ?? 0;
-    if (val.toString().length > 1) {
+    if (val.toString().length > 0) {
       moodList[pagePosition.value]
           .jsonContent?[jsonContentLength - 1]
           .isSelected = true;

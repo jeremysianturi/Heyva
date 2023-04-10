@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:heyva/app/modules/onboarding/views/onplanning/onplanning_one_view.dart';
-import 'package:heyva/app/routes/app_pages.dart';
+
 import '../../constant/colors.dart';
 
 class reusable_btn_wo_icon extends StatelessWidget {

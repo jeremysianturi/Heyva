@@ -30,25 +30,37 @@ class Data {
   final String? title;
   final List<Tags>? tags;
   final String? renderedBody;
+  final String? creator;
+  final String? banner;
+  final String? thumbnail;
 
   Data({
     this.id,
     this.title,
     this.tags,
     this.renderedBody,
+    this.creator,
+    this.banner,
+    this.thumbnail,
   });
 
   Data.fromJson(Map<String, dynamic> json)
       : id = json['id'] as String?,
         title = json['title'] as String?,
         tags = (json['tags'] as List?)?.map((dynamic e) => Tags.fromJson(e as Map<String,dynamic>)).toList(),
-        renderedBody = json['rendered_body'] as String?;
+        renderedBody = json['rendered_body'] as String?,
+        creator = json['creator'] as String?,
+        banner = json['banner'] as String?,
+        thumbnail = json['thumbnail'] as String?;
 
   Map<String, dynamic> toJson() => {
     'id' : id,
     'title' : title,
     'tags' : tags?.map((e) => e.toJson()).toList(),
-    'rendered_body' : renderedBody
+    'rendered_body' : renderedBody,
+    'creator' : creator,
+    'banner' : banner,
+    'thumbnail' : thumbnail
   };
 }
 

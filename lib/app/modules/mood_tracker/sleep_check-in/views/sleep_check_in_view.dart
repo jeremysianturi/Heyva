@@ -15,7 +15,7 @@ class SleepCheckInView extends GetView<SleepCheckInController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Scaffold(
+    return Obx(() =>  Scaffold(
           body: Stack(
             children: [
               (controller.pagePosition.value == 0)
@@ -130,6 +130,9 @@ class MoodCheckForm1 extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
+                  const SizedBox(
+                    height: 100,
+                  ),
                   Obx(() {
                     var item =
                         controller.sleepList[controller.pagePosition.value];
@@ -219,7 +222,7 @@ class MoodCheckForm1 extends StatelessWidget {
                   if (controller.isShowButton)
                     OrangeButtonWTrailingIcon(
                       determineAction: "ontap",
-                      text: Strings.lets_go,
+                      text: Strings.continue_text,
                       ontap: () {
                         if (controller.sleepList.length !=
                             controller.pagePosition.value + 1) {
@@ -228,7 +231,11 @@ class MoodCheckForm1 extends StatelessWidget {
                           controller.pagePosition.value =
                               controller.pagePosition.value + 1;
                         } else {
-                          Get.toNamed(Routes.SLEEP_CHECK_IN);
+                          controller.sleepList[index].notes =
+                              controller.otherC.text;
+                          controller.sleepList.refresh();
+                          // controller.generateRawJson();
+                          Get.toNamed(Routes.RECOMENDATION);
                         }
                       },
                     )
@@ -259,7 +266,7 @@ class MoodCheckForm2 extends StatelessWidget {
     return SingleChildScrollView(
       child: SafeArea(
         child: Container(
-          height: Get.height,
+          height: Get.height - 50,
           width: Get.width,
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -315,54 +322,55 @@ class MoodCheckForm2 extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  Obx(() {
-                    return Column(
-                      children:
-                          List.generate(data.jsonContent?.length ?? 0, (i) {
-                        var item = data.jsonContent?[i];
-                        return GestureDetector(
-                          onTap: () {
-                            controller.sleepList[index].jsonContent
-                                ?.firstWhereOrNull((e) => e.isSelected == true)
-                                ?.isSelected = false;
-                            controller.sleepList[index].jsonContent?[i]
-                                .isSelected = true;
-                            if (controller.sleepList.length !=
-                                controller.pagePosition.value + 1) {
-                              controller.pagePosition.value =
-                                  controller.pagePosition.value + 1;
-                            }
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            width: Get.width,
-                            margin: const EdgeInsets.only(
-                                bottom: 10, left: 20, right: 20),
-                            padding: const EdgeInsets.symmetric(vertical: 15),
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(12)),
-                                border: Border.all(
-                                    color: ColorApp.btn_orange, width: 1)),
-                            child: Text(
-                              item?.name ?? "",
-                              style: const TextStyle(
-                                  fontSize: 14,
-                                  color: ColorApp.black_font_underline,
-                                  fontWeight: FontWeight.w700),
-                            ),
+                  const SizedBox(
+                    height: 100,
+                  ),
+                  Column(
+                    children: List.generate(data.jsonContent?.length ?? 0, (i) {
+                      var item = data.jsonContent?[i];
+                      return GestureDetector(
+                        onTap: () {
+                          controller.sleepList[index].jsonContent
+                              ?.firstWhereOrNull((e) => e.isSelected == true)
+                              ?.isSelected = false;
+                          controller.sleepList[index].jsonContent?[i]
+                              .isSelected = true;
+                          controller.sleepList.refresh();
+                        },
+                        child: Container(
+                          width: Get.width,
+                          margin: const EdgeInsets.only(
+                              bottom: 24, left: 20, right: 20),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 18, horizontal: 20),
+                          decoration: BoxDecoration(
+                              color: item?.isSelected == true
+                                  ? ColorApp.btn_orange
+                                  : Colors.transparent,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(14)),
+                              border: Border.all(
+                                  color: ColorApp.btn_orange, width: 1)),
+                          child: Text(
+                            item?.name ?? "",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: item?.isSelected == true
+                                    ? ColorApp.white_font
+                                    : ColorApp.black_font_underline,
+                                fontWeight: FontWeight.w700),
                           ),
-                        );
-                      }),
-                    );
-                  }),
+                        ),
+                      );
+                    }),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
                   if (controller.isShowButton)
                     OrangeButtonWTrailingIcon(
                       determineAction: "ontap",
-                      text: Strings.lets_go,
+                      text: Strings.continue_text,
                       ontap: () {
                         if (controller.sleepList.length !=
                             controller.pagePosition.value + 1) {

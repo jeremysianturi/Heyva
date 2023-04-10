@@ -68,6 +68,7 @@ class TrackerDetail {
   final String? contentType;
   final List<JsonContent>? jsonContent;
   final int? order;
+  String notes = "";
 
   TrackerDetail({
     this.id,
@@ -76,6 +77,7 @@ class TrackerDetail {
     this.contentType,
     this.jsonContent,
     this.order,
+    this.notes = "",
   });
 
   TrackerDetail.fromJson(Map<String, dynamic> json)
@@ -106,6 +108,7 @@ class JsonContent {
   final List<dynamic>? relatedTag;
   bool isSelected = false;
   String notes = "";
+  final String? emoji;
 
   JsonContent({
     this.id,
@@ -114,14 +117,21 @@ class JsonContent {
     this.relatedTag,
     this.isSelected = false,
     this.notes = "",
+    this.emoji,
   });
 
   JsonContent.fromJson(Map<String, dynamic> json)
       : id = json['id'] as String?,
         name = json['name'] as String?,
         value = json['value'] as int?,
+        emoji = json['emoji'] as String?,
         relatedTag = json['related_tag'] as List?;
 
-  Map<String, dynamic> toJson() =>
-      {'id': id, 'name': name, 'value': value, 'related_tag': relatedTag};
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'value': value,
+        'related_tag': relatedTag,
+        'emoji': emoji,
+      };
 }

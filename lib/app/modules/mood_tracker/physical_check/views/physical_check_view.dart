@@ -25,42 +25,42 @@ class PhysicalCheckView extends GetView<PhysicalCheckController> {
         child: Scaffold(
           body: Stack(
             children: [
-              if (controller.pagePosition.value == 0)
-                MoodCheckForm1(
-                  controller: controller,
-                ),
-              if (controller.pagePosition.value > 0)
-                InputForm(
-                  controller: controller,
-                  ontap: () {
-                    FocusScope.of(context).requestFocus(new FocusNode());
-                    Get.toNamed(Routes.MOOD_TRACKER_FORM);
-                  },
-                  title: 'Want to tell us \nmore about it?',
-                  subtitle: '',
-                ),
+              // if (controller.pagePosition.value == 0)
+              MoodCheckForm1(
+                controller: controller,
+              ),
+              // if (controller.pagePosition.value > 0)
+              //   InputForm(
+              //     controller: controller,
+              //     ontap: () {
+              //       FocusScope.of(context).requestFocus(new FocusNode());
+              //       Get.toNamed(Routes.MOOD_TRACKER_FORM);
+              //     },
+              //     title: 'Want to tell us \nmore about it?',
+              //     subtitle: '',
+              //   ),
 
-              Container(
-                  height: 2,
-                  margin: const EdgeInsets.only(top: 30, left: 20, right: 20),
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    childAspectRatio: 165 / 2,
-                    crossAxisSpacing: 5,
-                    padding: EdgeInsets.zero,
-                    children: List.generate(2, (index) {
-                      return Container(
-                        height: 20,
-                        width: Get.width,
-                        decoration: BoxDecoration(
-                            color: controller.pagePosition.value >= index
-                                ? ColorApp.btn_orange
-                                : ColorApp.black.withOpacity(0.3),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10))),
-                      );
-                    }),
-                  )),
+              // Container(
+              //     height: 2,
+              //     margin: const EdgeInsets.only(top: 30, left: 20, right: 20),
+              //     child: GridView.count(
+              //       crossAxisCount: 2,
+              //       childAspectRatio: 165 / 2,
+              //       crossAxisSpacing: 5,
+              //       padding: EdgeInsets.zero,
+              //       children: List.generate(2, (index) {
+              //         return Container(
+              //           height: 20,
+              //           width: Get.width,
+              //           decoration: BoxDecoration(
+              //               color: controller.pagePosition.value >= index
+              //                   ? ColorApp.btn_orange
+              //                   : ColorApp.black.withOpacity(0.3),
+              //               borderRadius:
+              //                   const BorderRadius.all(Radius.circular(10))),
+              //         );
+              //       }),
+              //     )),
 
               // Container(
               //   margin: const EdgeInsets.only(top: 30, left: 20, right: 20),
@@ -152,6 +152,7 @@ class MoodCheckForm1 extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.center,
                     child: CarouselSlider(
+                      carouselController: controller.carouselC,
                       options: CarouselOptions(
                         height: 136,
                         aspectRatio: 327 / 136,
@@ -192,7 +193,12 @@ class MoodCheckForm1 extends StatelessWidget {
                           determineAction: "ontap",
                           text: Strings.continue_text,
                           ontap: () {
-                            controller.pagePosition + 1;
+                            // controller.pagePosition + 1;
+
+                            FocusScope.of(context)
+                                .requestFocus(new FocusNode());
+                            Get.toNamed(Routes.MOOD_TRACKER_FORM);
+
                           },
                         )
                       : SizedBox();

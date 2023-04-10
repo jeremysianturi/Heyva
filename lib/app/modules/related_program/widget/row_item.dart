@@ -21,7 +21,7 @@ class RowItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var desc = data?.contents?.body.toString() == "null"
-        ? data?.contents?.renderedBody ?? ""
+        ? data?.contents?.body ?? ""
         : data?.contents?.body ?? "";
 
     return GestureDetector(
@@ -32,12 +32,9 @@ class RowItem extends StatelessWidget {
           });
         }
         if (data?.contentType?.name?.toLowerCase() == "article") {
-          Get.toNamed(Routes.ARTICLE, arguments: {
-            Keys.contentIDArticleArguments: data?.contents?.id
-          });
+          Get.toNamed(Routes.ARTICLE,
+              arguments: {Keys.contentIDArticleArguments: data?.contents?.id});
         }
-
-
       },
       child: Container(
         margin: EdgeInsets.only(top: index == 0 ? 20 : 16),
@@ -48,8 +45,8 @@ class RowItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
               child: Image.network(
-                "https://i.pinimg.com/564x/14/a0/10/14a0109b597cee31ce9980b35f62f837.jpg",
-                fit: BoxFit.fill,
+                data?.contents?.thumbnail ?? "",
+                fit: BoxFit.cover,
                 alignment: Alignment.centerLeft,
                 width: 104,
                 height: 104,

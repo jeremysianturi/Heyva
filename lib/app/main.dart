@@ -10,8 +10,8 @@ import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/variabels.dart';
 
-import 'controllers/auth_controller.dart';
 import '../firebase_options.dart';
+import 'controllers/auth_controller.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return FutureBuilder(
-        future: Future.delayed(const Duration(seconds: 1)),
+        future: Future.delayed(const Duration(seconds: 5)),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const SplashScreen();

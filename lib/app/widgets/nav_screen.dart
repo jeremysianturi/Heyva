@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/home/views/home_view.dart';
 import 'package:heyva/app/modules/insights/views/insights_view.dart';
@@ -7,8 +8,8 @@ import 'package:heyva/app/modules/recovery/views/recovery_view.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
 import '../../constant/colors.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 BuildContext? testContext;
 

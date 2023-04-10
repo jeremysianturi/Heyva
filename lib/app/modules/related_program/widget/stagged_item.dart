@@ -21,7 +21,7 @@ class Staggered extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var desc = data?.contents?.body.toString() == "null"
-        ? data?.contents?.renderedBody ?? ""
+        ? data?.contents?.body ?? ""
         : data?.contents?.body ?? "";
     return GestureDetector(
       onTap: () {
@@ -47,10 +47,9 @@ class Staggered extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  image: const DecorationImage(
-                    image: NetworkImage(
-                        "https://png.pngtree.com/background/20210714/original/pngtree-solid-dark-blue-background-picture-image_1219005.jpg"),
-                    fit: BoxFit.fill,
+                  image: DecorationImage(
+                    image: NetworkImage(data?.contents?.thumbnail ?? ""),
+                    fit: BoxFit.cover,
                     alignment: Alignment.centerLeft,
                   ),
                 ),

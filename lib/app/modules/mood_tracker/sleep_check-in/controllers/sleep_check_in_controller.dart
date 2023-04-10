@@ -13,6 +13,7 @@ class SleepCheckInController extends GetxController {
 
   @override
   void onInit() {
+
     sleepList
         .assignAll(box.read(Keys.sleepTrackerResponse) as List<TrackerDetail>);
 
@@ -25,6 +26,10 @@ class SleepCheckInController extends GetxController {
   TextEditingController otherC = TextEditingController();
 
   onSelectFeeling(int index) {
+    sleepList[pagePosition.value]
+        .jsonContent
+        ?.firstWhereOrNull((e) => e.isSelected == true)
+        ?.isSelected = false;
     sleepList[pagePosition.value].jsonContent?[index].isSelected =
         !sleepList[pagePosition.value].jsonContent![index].isSelected;
     sleepList.refresh();
@@ -66,4 +71,5 @@ class SleepCheckInController extends GetxController {
           "";
     }
   }
+
 }

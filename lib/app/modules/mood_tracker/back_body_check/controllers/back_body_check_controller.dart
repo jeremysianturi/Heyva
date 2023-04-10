@@ -7,6 +7,7 @@ import 'package:heyva/constant/keys.dart';
 class BackBodyCheckController extends GetxController {
   var pagePosition = 0.obs;
   var box = GetStorage();
+  var otherC = TextEditingController();
 
   var frontList = <TrackerDetail>[].obs;
 

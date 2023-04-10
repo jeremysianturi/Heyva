@@ -49,6 +49,8 @@ class Keys {
       "MOOD_TRACKER_RESPONSE";
   static const String sleepTrackerResponse =
       "SLEEP_TRACKER_RESPONSE";
+  static const String recomendationTrackerResponse =
+      "RECOMENDATION_TRACKER_RESPONSE";
 
 
 

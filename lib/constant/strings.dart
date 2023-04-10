@@ -143,6 +143,7 @@ class Strings {
 
   static const String physicalCheckIn = "Physical check-in";
   static const String frontBodyCheckin = "Front Body check-in";
+  static const String backBodyCheckin = "Back Body check-in";
   static const String thankyouMood =
       "Thank you for let us \nknow about your mood";
   static const String notice = "Notice how it feels to make time for yourself.";
@@ -198,6 +199,7 @@ class Strings {
   static const String typeYourNewPass = "Type your new password";
   static const String newPassConfrim = "new password confirmation";
 
+  static const String updateInsights ="Update Insights";
 
 
 }

@@ -1,23 +1,47 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:heyva/app/modules/mood_tracker/recomendation2/model/recomendation_model.dart';
+import 'package:heyva/app/modules/mood_tracker/recomendation2/provider/recomendation_provider.dart';
+import 'package:heyva/services/dio_services.dart';
+import 'package:intl/intl.dart';
 
 class Recomendation2Controller extends GetxController {
-  //TODO: Implement Recomendation2Controller
+  var isLoading = false.obs;
+  late DioClient _client;
+  late RecomendationProvider _recomendationProvider;
+  var errorMessage = ''.obs;
+  var box = GetStorage();
 
-  final count = 0.obs;
   @override
   void onInit() {
+    _client = DioClient();
+    _recomendationProvider = RecomendationProvider(_client.init());
+    getRecomendation();
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  var recomendationResponse =
+      RecomendationModel(success: "", data: null, message: "", error: "").obs;
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
+  getRecomendation() async {
+    errorMessage.value = "";
+    isLoading.value = true;
+    var now = DateTime.now();
+    var formatter = DateFormat('yyyy-MM-dd');
+    try {
+      recomendationResponse.value = (await _recomendationProvider
+          .getRecomendation(date: formatter.format(now).toString()))!;
+      isLoading.value = false;
 
-  void increment() => count.value++;
+      if (recomendationResponse.value.success == "Success") {
+      } else {
+        errorMessage.value =
+            recomendationResponse.value.message ?? "Error Message";
+      }
+    } catch (e) {
+      isLoading.value = false;
+      debugPrint("error  $e");
+    }
+  }
 }

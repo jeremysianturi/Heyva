@@ -255,10 +255,11 @@ class RecoveryView extends GetView<RecoveryController> {
                               tag: data?.contentType?.name ?? "",
                               tagIcon: "assets/images/ic_bookmark.png",
                               desc: data?.contents?.body.toString() == "null"
-                                  ? data?.contents?.renderedBody ?? ""
+                                  ? data?.contents?.body ?? ""
                                   : data?.contents?.body ?? "",
                               contentId: data?.contents?.id ?? "",
                               contentType: data?.contentType?.name ?? "",
+                              thumbnailUrl: data?.contents?.thumbnail ?? "",
                             );
                           }),
                         ),

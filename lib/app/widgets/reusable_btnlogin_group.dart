@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/login/views/login_google_apple.dart';
 import 'package:heyva/app/modules/login/views/login_view.dart';
-import 'package:heyva/app/modules/onboarding/views/onboarding_one_view.dart';
-import 'package:heyva/app/modules/register/views/register_view.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+
 import '../../constant/colors.dart';
 import '../../constant/strings.dart';
 

@@ -3,6 +3,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/keys.dart';
+
 import '../../constant/colors.dart';
 
 class ArticleContainer extends StatelessWidget {
@@ -15,6 +16,7 @@ class ArticleContainer extends StatelessWidget {
     required this.desc,
     required this.contentId,
     required this.contentType,
+    required this.thumbnailUrl,
   }) : super(key: key);
 
   final Color containerColor;
@@ -24,6 +26,7 @@ class ArticleContainer extends StatelessWidget {
   final String desc;
   final String contentId;
   final String contentType;
+  final String thumbnailUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +50,8 @@ class ArticleContainer extends StatelessWidget {
                   color: containerColor,
                 ),
                 color: containerColor,
+                image: DecorationImage(
+                    image: NetworkImage(thumbnailUrl), fit: BoxFit.cover),
                 borderRadius: const BorderRadius.all(Radius.circular(12))),
             height: 120,
             width: (MediaQuery.of(context).size.width - 51) / 2,

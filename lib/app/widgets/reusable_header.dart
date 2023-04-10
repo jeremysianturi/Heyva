@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+
 import '../../constant/colors.dart';
-import '../../constant/strings.dart';
 
 class Header extends StatelessWidget {
   const Header({

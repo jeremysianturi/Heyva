@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/detaildoctor/model/doctor_list_model.dart'
-as doctor;
+    as doctor;
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/keys.dart';
-
 
 class DoctorCard extends StatelessWidget {
   const DoctorCard({
@@ -40,6 +39,9 @@ class DoctorCard extends StatelessWidget {
                     color: ColorApp.blue_container,
                   ),
                   color: ColorApp.blue_container,
+                  image: DecorationImage(
+                      image: NetworkImage(data?.avatar ?? ""),
+                      fit: BoxFit.cover),
                   borderRadius: const BorderRadius.all(Radius.circular(12))),
             ),
             title: Text(

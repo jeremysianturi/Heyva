@@ -180,9 +180,11 @@ class HomeView extends GetView<HomeController> {
                             width: 20,
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Get.toNamed(Routes.RECOMENDATION2);
+                            },
                             child: const Text(
-                              "Logout",
+                              "recomendation",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14,
@@ -308,10 +310,11 @@ class HomeView extends GetView<HomeController> {
                             tag: data?.contentType?.name ?? "",
                             tagIcon: "assets/images/ic_bookmark.png",
                             desc: data?.contents?.body.toString() == "null"
-                                ? data?.contents?.renderedBody ?? ""
+                                ? data?.contents?.body ?? ""
                                 : data?.contents?.body ?? "",
                             contentId: data?.contents?.id ?? "",
                             contentType: data?.contentType?.name ?? "",
+                            thumbnailUrl: data?.contents?.thumbnail ?? "",
                           );
                         }),
                       ),

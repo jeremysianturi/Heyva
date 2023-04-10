@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/model/timeline.dart';
 import 'package:timelines/timelines.dart';
+
 import '../../constant/colors.dart';
 import '../../constant/strings.dart';
 

@@ -1,4 +1,4 @@
-class ContentListModel {
+class RecomendationModel {
   final String? success;
   final List<Data>? data;
   final dynamic message;
@@ -6,7 +6,7 @@ class ContentListModel {
   final Links? links;
   final int? count;
 
-  ContentListModel({
+  RecomendationModel({
     this.success,
     this.data,
     this.message,
@@ -15,7 +15,7 @@ class ContentListModel {
     this.count,
   });
 
-  ContentListModel.fromJson(Map<String, dynamic> json)
+  RecomendationModel.fromJson(Map<String, dynamic> json)
       : success = json['success'] as String?,
         data = (json['data'] as List?)?.map((dynamic e) => Data.fromJson(e as Map<String,dynamic>)).toList(),
         message = json['message'],

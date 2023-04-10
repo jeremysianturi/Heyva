@@ -200,6 +200,8 @@ class ProfileController extends GetxController {
                           box.remove(Keys.loginAccessToken);
                           box.remove(Keys.loginRefreshToken);
                           box.remove(Keys.loginID);
+                          box.remove(Keys.profileName);
+                          box.remove(Keys.profileImgUrl);
                           authToken = "";
                           refreshToken = "";
                           Future.delayed(800.seconds);

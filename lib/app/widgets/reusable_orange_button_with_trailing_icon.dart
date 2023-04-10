@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heyva/app/routes/app_pages.dart';
+
 import '../../constant/colors.dart';
-import '../../constant/strings.dart';
 import '../modules/onboarding/views/onboarding_one_view.dart';
-import '../modules/onboarding/views/onboarding_three_view.dart';
 import '../modules/onboarding/views/onboarding_two_view.dart';
-import '../modules/onboarding/views/turnon_notif/turnon_notif_view.dart';
 
 class OrangeButtonWTrailingIcon extends StatelessWidget {
   OrangeButtonWTrailingIcon({

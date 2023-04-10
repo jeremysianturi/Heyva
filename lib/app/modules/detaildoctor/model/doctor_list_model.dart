@@ -41,8 +41,9 @@ class Data {
   final dynamic specialist;
   final String? about;
   final dynamic rate;
-  final dynamic domicile;
-  final dynamic phoneNumber;
+  final String? domicile;
+  final String? phoneNumber;
+  final String? avatar;
   final List<Tags>? tags;
 
   Data({
@@ -55,6 +56,7 @@ class Data {
     this.rate,
     this.domicile,
     this.phoneNumber,
+    this.avatar,
     this.tags,
   });
 
@@ -66,8 +68,9 @@ class Data {
         specialist = json['specialist'],
         about = json['about'] as String?,
         rate = json['rate'],
-        domicile = json['domicile'],
-        phoneNumber = json['phone_number'],
+        domicile = json['domicile'] as String?,
+        phoneNumber = json['phone_number'] as String?,
+        avatar = json['avatar'] as String?,
         tags = (json['tags'] as List?)?.map((dynamic e) => Tags.fromJson(e as Map<String,dynamic>)).toList();
 
   Map<String, dynamic> toJson() => {
@@ -80,6 +83,7 @@ class Data {
     'rate' : rate,
     'domicile' : domicile,
     'phone_number' : phoneNumber,
+    'avatar' : avatar,
     'tags' : tags?.map((e) => e.toJson()).toList()
   };
 }

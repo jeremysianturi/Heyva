@@ -70,6 +70,7 @@ class TrackerDetail {
   final String? contentType;
   final List<JsonContent>? jsonContent;
   final int? order;
+  String? notes = "";
 
   TrackerDetail({
     this.id,
@@ -78,6 +79,7 @@ class TrackerDetail {
     this.contentType,
     this.jsonContent,
     this.order,
+    this.notes = "",
   });
 
   TrackerDetail.fromJson(Map<String, dynamic> json)

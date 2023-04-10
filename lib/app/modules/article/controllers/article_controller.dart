@@ -40,6 +40,11 @@ class ArticleController extends GetxController {
     return data?.renderedBody ?? "";
   }
 
+  String get imgUrl {
+    var data = detailArticleResponse.value.data?[0];
+    return data?.banner ?? "";
+  }
+
   @override
   void onInit() {
     scrollController = ScrollController();
