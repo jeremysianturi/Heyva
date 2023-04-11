@@ -79,9 +79,6 @@ class ProfileController extends GetxController {
       ProfileModel(success: "", data: null, message: "", error: "").obs;
 
   getProfile() async {
-    if (box.read(Keys.profileName) != "") {
-      return null;
-    }
     errorMessage.value = "";
     isLoading.value = true;
     try {

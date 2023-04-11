@@ -112,12 +112,6 @@ class HomeController extends GetxController {
       ProfileModel(success: "", data: null, message: "", error: "").obs;
 
   getProfile() async {
-    debugPrint("read profile name ${box.read(Keys.profileName)}");
-    debugPrint(
-        "read profile name ${(box.read(Keys.profileName).toString() != "null")}");
-    if (box.read(Keys.profileName).toString() != "null") {
-      return null;
-    }
     errorMessage.value = "";
     isLoading.value = true;
     try {

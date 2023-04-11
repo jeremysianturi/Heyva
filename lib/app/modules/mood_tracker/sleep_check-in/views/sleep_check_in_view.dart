@@ -15,7 +15,7 @@ class SleepCheckInView extends GetView<SleepCheckInController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() =>  Scaffold(
+    return Obx(() => Scaffold(
           body: Stack(
             children: [
               (controller.pagePosition.value == 0)
@@ -156,6 +156,7 @@ class MoodCheckForm1 extends StatelessWidget {
                                     isSelected:
                                         item.jsonContent?[index].isSelected ??
                                             false,
+                                    emoji: item.jsonContent?[index].emoji ?? "",
                                   ),
                                   gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(

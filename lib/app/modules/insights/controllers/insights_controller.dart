@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:heyva/app/modules/insights/model/Insight_model.dart';
+import 'package:heyva/app/modules/insights/provider/insight_provider.dart';
 import 'package:heyva/app/modules/profile/model/profile_model.dart';
 import 'package:heyva/app/modules/profile/provider/profile_provider.dart';
 import 'package:heyva/constant/keys.dart';
@@ -12,6 +14,7 @@ class InsightsController extends GetxController {
   var isLoading = false.obs;
   late DioClient _client;
   late ProfileProvider _profileProvider;
+  late InsightProvider _insightProvider;
   var errorMessage = ''.obs;
   var box = GetStorage();
 
@@ -37,7 +40,9 @@ class InsightsController extends GetxController {
   void onInit() {
     _client = DioClient();
     _profileProvider = ProfileProvider(_client.init());
+    _insightProvider = InsightProvider(_client.init());
     getProfile();
+    getInsight();
     super.onInit();
   }
 
@@ -45,9 +50,6 @@ class InsightsController extends GetxController {
       ProfileModel(success: "", data: null, message: "", error: "").obs;
 
   getProfile() async {
-    if (box.read(Keys.profileName) != "") {
-      return null;
-    }
     errorMessage.value = "";
     isLoading.value = true;
     try {
@@ -78,5 +80,36 @@ class InsightsController extends GetxController {
       return 'Good Afternoon';
     }
     return 'Good Evening';
+  }
+
+  var insightResponse =
+      InsightModel(success: "", data: null, message: "", error: "").obs;
+
+  getInsight() async {
+    errorMessage.value = "";
+    isLoading.value = true;
+    try {
+      var data = (await _insightProvider.getInsight())!;
+      isLoading.value = false;
+
+      if (data.success == "Success") {
+        data.data?.forEach((e) {
+          e.insight?.forEach((el) {
+            el.response
+                ?.firstWhereOrNull((elm) =>
+                    elm.trackerDetail?.title == "What do you experience?")
+                ?.trackerDetail
+                ?.title = "You experience :";
+          });
+        });
+        insightResponse.value = data;
+        insightResponse.refresh();
+      } else {
+        errorMessage.value = insightResponse.value.message ?? "Error Message";
+      }
+    } catch (e) {
+      isLoading.value = false;
+      debugPrint("error  $e");
+    }
   }
 }

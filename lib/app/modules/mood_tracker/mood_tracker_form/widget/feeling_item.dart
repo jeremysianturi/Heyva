@@ -18,7 +18,7 @@ class FeelingItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var emo = "\u{1f44c}";
+    // var emo = "\u{1f44c}";
 
     return InkWell(
       onTap: () {
@@ -37,7 +37,7 @@ class FeelingItem extends StatelessWidget {
           children: [
             // Image.asset("assets/images/smile.png"),
             Text(
-              emo,
+              emoji ?? "",
               style: TextStyle(
                   fontWeight: FontWeight.w700,
                   color: isSelected ? ColorApp.white : ColorApp.black,

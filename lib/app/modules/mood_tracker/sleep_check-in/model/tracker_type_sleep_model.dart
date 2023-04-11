@@ -128,10 +128,10 @@ class JsonContent {
         relatedTag = json['related_tag'] as List?;
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'value': value,
-        'related_tag': relatedTag,
-        'emoji': emoji,
-      };
+    'id': id,
+    'name': name,
+    'value': value,
+    'related_tag': relatedTag,
+    'emoji': emoji,
+  };
 }
