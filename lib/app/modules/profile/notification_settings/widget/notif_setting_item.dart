@@ -27,7 +27,7 @@ class NotifSettingItem extends StatelessWidget {
               style: const TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 18,
-                  color: ColorApp.black_font_underline),
+                  color: ColorApp.blue_container),
             ),
             FlutterSwitch(
               value: status,

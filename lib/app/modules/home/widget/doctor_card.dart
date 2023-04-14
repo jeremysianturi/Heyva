@@ -49,7 +49,7 @@ class DoctorCard extends StatelessWidget {
               style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
-                  color: ColorApp.black_font_underline),
+                  color: ColorApp.blue_container),
             ),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

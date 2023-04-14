@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heyva/constant/colors.dart';
 import 'package:heyva/app/modules/insights/model/Insight_model.dart' as insight;
+import 'package:heyva/constant/colors.dart';
 
 class InsightMoodWidget extends StatelessWidget {
   const InsightMoodWidget({
@@ -54,7 +54,7 @@ class InsightMoodWidget extends StatelessWidget {
                       style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 16,
-                          color: ColorApp.black_font_underline),
+                          color: ColorApp.blue_container),
                     ),
                     const SizedBox(
                       height: 20,
@@ -157,7 +157,7 @@ class InsightMoodWidget extends StatelessWidget {
                               style: const TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16,
-                                  color: ColorApp.black_font_underline),
+                                  color: ColorApp.blue_container),
                             ),
                           ),
                     const SizedBox(
@@ -178,7 +178,7 @@ class InsightMoodWidget extends StatelessWidget {
           //         style: TextStyle(
           //             fontWeight: FontWeight.w500,
           //             fontSize: 16,
-          //             color: ColorApp.black_font_underline),
+          //             color: ColorApp.blue_container),
           //       ),
           //       const SizedBox(
           //         height: 20,
@@ -201,7 +201,7 @@ class InsightMoodWidget extends StatelessWidget {
           //                 "Joy",
           //                 style: TextStyle(
           //                     fontWeight: FontWeight.w400,
-          //                     color: ColorApp.black_font_underline,
+          //                     color: ColorApp.blue_container,
           //                     fontSize: 14),
           //               )
           //             ],
@@ -214,7 +214,7 @@ class InsightMoodWidget extends StatelessWidget {
           //         style: TextStyle(
           //             fontWeight: FontWeight.w500,
           //             fontSize: 16,
-          //             color: ColorApp.black_font_underline),
+          //             color: ColorApp.blue_container),
           //       ),
           //       const SizedBox(
           //         height: 20,
@@ -237,7 +237,7 @@ class InsightMoodWidget extends StatelessWidget {
           //                 "Joy",
           //                 style: TextStyle(
           //                     fontWeight: FontWeight.w400,
-          //                     color: ColorApp.black_font_underline,
+          //                     color: ColorApp.blue_container,
           //                     fontSize: 14),
           //               )
           //             ],
@@ -252,7 +252,7 @@ class InsightMoodWidget extends StatelessWidget {
           //     style: TextStyle(
           //         fontWeight: FontWeight.w500,
           //         fontSize: 16,
-          //         color: ColorApp.black_font_underline),
+          //         color: ColorApp.blue_container),
           //   ),
           // ),
           // const SizedBox(
@@ -270,7 +270,7 @@ class InsightMoodWidget extends StatelessWidget {
           //     style: TextStyle(
           //         fontWeight: FontWeight.w500,
           //         fontSize: 16,
-          //         color: ColorApp.black_font_underline),
+          //         color: ColorApp.blue_container),
           //   ),
           // ),
           // const SizedBox(

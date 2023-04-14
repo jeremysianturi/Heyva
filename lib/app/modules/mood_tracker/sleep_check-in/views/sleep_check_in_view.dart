@@ -112,7 +112,7 @@ class MoodCheckForm1 extends StatelessWidget {
                       style: const TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 28,
-                          color: ColorApp.black_font_underline),
+                          color: ColorApp.blue_container),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -189,7 +189,7 @@ class MoodCheckForm1 extends StatelessWidget {
                                   color: ColorApp.grey_font),
                               labelStyle: const TextStyle(
                                   fontSize: 16,
-                                  color: ColorApp.black_font_underline,
+                                  color: ColorApp.blue_container,
                                   fontWeight: FontWeight.w400),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(14),
@@ -305,7 +305,7 @@ class MoodCheckForm2 extends StatelessWidget {
                       style: const TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 28,
-                          color: ColorApp.black_font_underline),
+                          color: ColorApp.blue_container),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -358,7 +358,7 @@ class MoodCheckForm2 extends StatelessWidget {
                                 fontSize: 14,
                                 color: item?.isSelected == true
                                     ? ColorApp.white_font
-                                    : ColorApp.black_font_underline,
+                                    : ColorApp.blue_container,
                                 fontWeight: FontWeight.w700),
                           ),
                         ),

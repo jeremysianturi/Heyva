@@ -13,7 +13,7 @@ import 'package:heyva/services/dio_services.dart';
 
 class OnBoardingThreeController extends GetxController {
   var isLoading = false.obs;
-  late DioClient _client;
+  late RefreshDioClient _client;
   late OnboardingProviders _provider;
 
   var pregnancyStatusResonse = pregnancyModel.PregnancyStatusModel(
@@ -44,7 +44,7 @@ class OnBoardingThreeController extends GetxController {
 
   @override
   void onInit() {
-    _client = DioClient();
+    _client = RefreshDioClient();
     _provider = OnboardingProviders(_client.init());
     getPregnancyStatus();
     super.onInit();
@@ -63,7 +63,9 @@ class OnBoardingThreeController extends GetxController {
             fullName: data.fullName,
             birthDate: data.birthDate,
             pregnancyStatus: pregnancyStatusId,
-            interests: data.interests));
+            interests: data.interests,
+            childBirthDate: data.childBirthDate,
+            estimateDueDate: data.estimateDueDate));
 
     Future.delayed(800.milliseconds);
     if (index == 0) {

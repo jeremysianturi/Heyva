@@ -147,10 +147,22 @@ class MoodCheckForm1 extends StatelessWidget {
                         showCenterTitle: true,
                         centerTitle: Strings.physicalCheckIn,
                         rightText: Strings.skip,
+                        titleColor: ColorApp.blue_container,
                         showIcon: false)),
+                const SizedBox(
+                  height: 40,
+                ),
+                SizedBox(
+                  width: 250,
+                  height: 250,
+                  child: Image.asset("assets/images/img_orange_woman.png"),
+                ),
+                const SizedBox(
+                  height: 100,
+                ),
                 Expanded(
                   child: Align(
-                    alignment: Alignment.center,
+                    alignment: Alignment.topCenter,
                     child: CarouselSlider(
                       carouselController: controller.carouselC,
                       options: CarouselOptions(
@@ -198,7 +210,6 @@ class MoodCheckForm1 extends StatelessWidget {
                             FocusScope.of(context)
                                 .requestFocus(new FocusNode());
                             Get.toNamed(Routes.MOOD_TRACKER_FORM);
-
                           },
                         )
                       : SizedBox();
@@ -244,8 +255,8 @@ class PhysicalCheckSlideItem extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(16)),
                   color: data?.isDone == true
-                      ? ColorApp.physical_done
-                      : ColorApp.btn_pink),
+                      ? ColorApp.btn_maroon
+                      : ColorApp.btn_orange),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -370,7 +381,7 @@ class InputForm extends StatelessWidget {
                           color: ColorApp.grey_font),
                       labelStyle: const TextStyle(
                           fontSize: 16,
-                          color: ColorApp.black_font_underline,
+                          color: ColorApp.blue_container,
                           fontWeight: FontWeight.w400),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(14),

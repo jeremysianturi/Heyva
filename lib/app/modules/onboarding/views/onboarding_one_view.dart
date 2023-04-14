@@ -14,7 +14,7 @@ class OnBoardingOneView extends GetView<OnBoardingOneController> {
     // String name = "Priscilla";
     return Scaffold(
       body: Container(
-        height: double.maxFinite,
+        height: Get.height,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/bg_heyva.png"),
@@ -22,11 +22,11 @@ class OnBoardingOneView extends GetView<OnBoardingOneController> {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(
-              height: 50,
-            ),
+            Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+                child: Image.asset("assets/images/img_oboarding.png")),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -36,12 +36,12 @@ class OnBoardingOneView extends GetView<OnBoardingOneController> {
                     Container(
                       width: Get.width,
                       child: Text(
-                        Strings.glad_text + controller.fullName,
+                        "${Strings.welcomeTo}\n${controller.fullName}",
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.w700,
-                            color: ColorApp.black_font_underline),
+                            color: ColorApp.blue_container),
                       ),
                     ),
                   ],
@@ -49,22 +49,22 @@ class OnBoardingOneView extends GetView<OnBoardingOneController> {
                 const SizedBox(
                   height: 20,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      Strings.begin_journey_text,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: ColorApp.grey_font),
-                    ),
-                  ],
+                Container(
+                  width: Get.width,
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Text(
+                    Strings.haveUsAssist,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: ColorApp.grey_font),
+                  ),
                 ),
               ],
             ),
-             OrangeButtonWTrailingIcon(
+            Expanded(child: SizedBox()),
+            OrangeButtonWTrailingIcon(
               determineAction: "from_onboarding_one",
               text: Strings.next,
             ),

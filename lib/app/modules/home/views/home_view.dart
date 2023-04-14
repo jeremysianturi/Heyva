@@ -20,10 +20,10 @@ class HomeView extends GetView<HomeController> {
   final BuildContext menuScreenContext;
   final VoidCallback onScreenHideButtonPressed;
   final bool hideStatus;
-  final homeController = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
+    Get.put(HomeController());
     return Obx(() => LoadingOverlay(
         isLoading: controller.isLoading.value,
         color: Colors.grey,
@@ -92,14 +92,16 @@ class HomeView extends GetView<HomeController> {
                 // ),
                 body: SingleChildScrollView(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       AppBar(
                         backgroundColor: Colors.transparent,
                         elevation: 0,
                         leading: GestureDetector(
-                          onTap: () {
-                            Get.toNamed(Routes.PROFILE);
+                          onTap: () async {
+                            await Get.toNamed(Routes.PROFILE);
+                            controller.onInit();
                           },
                           child: CircleAvatar(
                             backgroundImage:
@@ -107,8 +109,9 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ),
                         title: GestureDetector(
-                          onTap: () {
-                            Get.toNamed(Routes.PROFILE);
+                          onTap: () async {
+                            await Get.toNamed(Routes.PROFILE);
+                            controller.onInit();
                           },
                           child: Column(
                             children: [
@@ -145,83 +148,21 @@ class HomeView extends GetView<HomeController> {
                               ),
                               child: const ImageIcon(
                                 AssetImage("assets/images/ic_notification.png"),
-                                color: ColorApp.ic_notif_color,
+                                color: ColorApp.blue_container,
                               ),
                             ),
                           ),
                         ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const Text(
-                            Strings.daily_refresh,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14,
-                                color: ColorApp.grey_font),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Get.toNamed(Routes.BREAST_FEEDING);
-                            },
-                            child: const Text(
-                              "Breaast Feeding",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14,
-                                  color: ColorApp.grey_font),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Get.toNamed(Routes.RECOMENDATION2);
-                            },
-                            child: const Text(
-                              "recomendation",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14,
-                                  color: ColorApp.grey_font),
-                            ),
-                          )
-                        ],
-                      ),
                       const SizedBox(
-                        height: 20,
+                        height: 24,
                       ),
-                      InkWell(
-                        onTap: () {
-                          Get.toNamed(Routes.MOOD_TRACKER);
-                        },
-                        child: const Text(
-                          "Mood tracker",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: ColorApp.grey_font),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Get.toNamed(Routes.BREATHING_EXERCISE);
-                        },
-                        child: const Text(
-                          "Breathing exercize",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: ColorApp.grey_font),
-                        ),
+                      const Text(
+                        Strings.daily_refresh,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            color: ColorApp.grey_font),
                       ),
                       // Obx(
                       //   () => Stepper(
@@ -278,7 +219,7 @@ class HomeView extends GetView<HomeController> {
                             style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w600,
-                                color: ColorApp.black_article_title),
+                                color: ColorApp.blue_container),
                           ),
                           InkWell(
                             onTap: () {
@@ -289,7 +230,7 @@ class HomeView extends GetView<HomeController> {
                               style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
-                                  color: ColorApp.black_article_title),
+                                  color: ColorApp.blue_container),
                             ),
                           ),
                         ],
@@ -346,45 +287,45 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
+                            children: const [
+                              Text(
                                 Strings.recommendation,
                                 style: TextStyle(
                                     fontSize: 24,
                                     fontWeight: FontWeight.w600,
-                                    color: ColorApp.black_article_title),
+                                    color: ColorApp.blue_container),
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  SizedBox(
-                                    // width: 70,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        const Text(
-                                          Strings.view_all,
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w400,
-                                              color: ColorApp.black_view_all),
-                                        ),
-                                        IconButton(
-                                          // icon: Image.asset(tagIcon),
-                                          icon: const Icon(
-                                            Icons.arrow_forward_ios,
-                                            size: 12,
-                                          ),
-                                          padding: EdgeInsets.zero,
-                                          constraints: const BoxConstraints(),
-                                          onPressed: () {},
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.end,
+                              //   children: [
+                              //     SizedBox(
+                              //       // width: 70,
+                              //       child: Row(
+                              //         mainAxisAlignment:
+                              //             MainAxisAlignment.start,
+                              //         children: [
+                              //           const Text(
+                              //             Strings.view_all,
+                              //             style: TextStyle(
+                              //                 fontSize: 14,
+                              //                 fontWeight: FontWeight.w400,
+                              //                 color: ColorApp.black_view_all),
+                              //           ),
+                              //           IconButton(
+                              //             // icon: Image.asset(tagIcon),
+                              //             icon: const Icon(
+                              //               Icons.arrow_forward_ios,
+                              //               size: 12,
+                              //             ),
+                              //             padding: EdgeInsets.zero,
+                              //             constraints: const BoxConstraints(),
+                              //             onPressed: () {},
+                              //           ),
+                              //         ],
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
                             ],
                           ),
                           const SizedBox(
@@ -428,11 +369,11 @@ class HomeView extends GetView<HomeController> {
                                       "assets/images/bg_blue_container_medal.png"),
                                 ),
                               ),
-                              child: const ListTile(
-                                shape: RoundedRectangleBorder(
+                              child: ListTile(
+                                shape: const RoundedRectangleBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(14))),
-                                title: Padding(
+                                title: const Padding(
                                   padding: EdgeInsets.only(top: 20),
                                   child: Text(
                                     Strings.get_your_premium,
@@ -443,16 +384,17 @@ class HomeView extends GetView<HomeController> {
                                   ),
                                 ),
                                 subtitle: Padding(
-                                  padding: EdgeInsets.only(bottom: 20),
+                                  padding: const EdgeInsets.only(bottom: 20),
                                   child: Text(
                                     Strings.get_unlimited_access,
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w400,
-                                        color: ColorApp.grey_card_font),
+                                        color: ColorApp.grey_card_font
+                                            .withOpacity(0.6)),
                                   ),
                                 ),
-                                trailing: Icon(
+                                trailing: const Icon(
                                   Icons.arrow_forward_ios,
                                   color: ColorApp.white_font,
                                 ),
@@ -476,11 +418,11 @@ class HomeView extends GetView<HomeController> {
                                       "assets/images/bg_blue_container_plane.png"),
                                 ),
                               ),
-                              child: const ListTile(
-                                shape: RoundedRectangleBorder(
+                              child: ListTile(
+                                shape: const RoundedRectangleBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(14))),
-                                title: Padding(
+                                title: const Padding(
                                   padding: EdgeInsets.only(top: 20),
                                   child: Text(
                                     Strings.share_to_friends,
@@ -491,16 +433,17 @@ class HomeView extends GetView<HomeController> {
                                   ),
                                 ),
                                 subtitle: Padding(
-                                  padding: EdgeInsets.only(bottom: 20),
+                                  padding: const EdgeInsets.only(bottom: 20),
                                   child: Text(
                                     Strings.invite_your_friends,
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w400,
-                                        color: ColorApp.grey_card_font),
+                                        color: ColorApp.grey_card_font
+                                            .withOpacity(0.6)),
                                   ),
                                 ),
-                                trailing: Icon(
+                                trailing: const Icon(
                                   Icons.arrow_forward_ios,
                                   color: ColorApp.white_font,
                                 ),
@@ -537,8 +480,8 @@ class HomeView extends GetView<HomeController> {
                 )),
           ),
           content: Container(),
-          isActive: homeController.currentSteps.value >= 0,
-          state: homeController.currentSteps.value > 0
+          isActive: controller.currentSteps.value >= 0,
+          state: controller.currentSteps.value > 0
               ? StepState.complete
               : StepState.indexed),
       Step(
@@ -555,8 +498,8 @@ class HomeView extends GetView<HomeController> {
                 )),
           ),
           content: Container(),
-          isActive: homeController.currentSteps.value >= 1,
-          state: homeController.currentSteps.value > 1
+          isActive: controller.currentSteps.value >= 1,
+          state: controller.currentSteps.value > 1
               ? StepState.complete
               : StepState.indexed),
       Step(
@@ -573,8 +516,8 @@ class HomeView extends GetView<HomeController> {
                 )),
           ),
           content: Container(),
-          isActive: homeController.currentSteps.value >= 2,
-          state: homeController.currentSteps.value > 2
+          isActive: controller.currentSteps.value >= 2,
+          state: controller.currentSteps.value > 2
               ? StepState.complete
               : StepState.indexed),
     ];

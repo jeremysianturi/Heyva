@@ -12,7 +12,7 @@ class RelatedProgramController extends GetxController {
 
   @override
   void onInit() {
-    _client = DioClient();
+    _client = RefreshDioClient();
     _programProvider = RelatedProgramProvider(_client.init());
     getListContent(tags: "");
     getTagList();
@@ -28,7 +28,7 @@ class RelatedProgramController extends GetxController {
   }
 
   var isLoading = false.obs;
-  late DioClient _client;
+  late RefreshDioClient _client;
   late RelatedProgramProvider _programProvider;
   var errorMessage = ''.obs;
   var isEmailError = false.obs;

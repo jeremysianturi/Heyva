@@ -111,7 +111,7 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
                                           textAlign: TextAlign.center,
                                           style: const TextStyle(
                                             color:
-                                                ColorApp.black_font_underline,
+                                                ColorApp.blue_container,
                                             fontSize: 24,
                                             fontWeight: FontWeight.w700,
                                           ),
@@ -217,7 +217,7 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
                                       Strings.service,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600,
-                                          color: ColorApp.black_font_underline,
+                                          color: ColorApp.blue_container,
                                           fontSize: 16),
                                     ),
                                     Obx(

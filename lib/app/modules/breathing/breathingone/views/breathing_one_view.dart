@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/widgets/nav_screen.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import '../../../../../constant/colors.dart';
 import '../../../../../constant/strings.dart';
@@ -27,7 +27,8 @@ class BreathingOneView extends GetView<BreathingOneController> {
                   Container(),
                   InkWell(
                     onTap: () {
-                      PersistentNavBarNavigator.pushNewScreen(
+                      Get.deleteAll();
+                      pushNewScreen(
                         context,
                         screen: NavScreen(
                           menuScreenContext: context,

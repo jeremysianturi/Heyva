@@ -17,7 +17,9 @@ class OnBoardingThreeView extends GetView<OnBoardingThreeController> {
       () => LoadingOverlay(
         isLoading: controller.isLoading.value,
         color: Colors.grey,
-        progressIndicator: const CircularProgressIndicator(color: ColorApp.btn_orange,),
+        progressIndicator: const CircularProgressIndicator(
+          color: ColorApp.btn_orange,
+        ),
         opacity: 0.3,
         child: Scaffold(
           body: Container(
@@ -29,32 +31,44 @@ class OnBoardingThreeView extends GetView<OnBoardingThreeController> {
               ),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const OnBoardingHeader(
+                const SizedBox(
+                  height: 40,
+                ),
+                OnBoardingHeader(
                   indicatorColor1: ColorApp.btn_orange,
                   indicatorColor2: ColorApp.btn_orange,
                   indicatorColor3: ColorApp.grey_divider,
                   title: Strings.pregnant_ques_text,
                   subtitle: Strings.curating_journey_text,
                 ),
-                Column(
-                    children: List.generate(
-                  controller.statusList.length,
-                  (index) => Container(
-                    margin: EdgeInsets.only(top: index == 0 ? 0 : 12),
-                    child: reusable_btn_wo_icon(
-                      text: controller.statusList[index].name ?? "",
-                      color: ColorApp.btn_orange,
-                      ontap: () {
-                        controller.onTap(
-                            pregnancyStatusId:
-                                controller.statusList[index].id ?? "",
-                            index: index);
-                      },
+                const SizedBox(
+                  height: 56,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                      children: List.generate(
+                    controller.statusList.length,
+                    (index) => Container(
+                      margin: EdgeInsets.only(top: index == 0 ? 0 : 12),
+                      child: reusable_btn_wo_icon(
+                        text: controller.statusList[index].name ?? "",
+                        color: index == 0
+                            ? ColorApp.btn_orange
+                            : index == 1
+                                ? ColorApp.btn_pink
+                                : ColorApp.btn_maroon,
+                        ontap: () {
+                          controller.onTap(
+                              pregnancyStatusId:
+                                  controller.statusList[index].id ?? "",
+                              index: index);
+                        },
+                      ),
                     ),
-                  ),
-                ))
+                  )),
+                )
               ],
             ),
           ),

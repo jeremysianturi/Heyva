@@ -38,6 +38,12 @@ abstract class Routes {
   static const PHYSICAL_CHECK = _Paths.PHYSICAL_CHECK;
   static const FRONT_BODY_CHECK = _Paths.FRONT_BODY_CHECK;
   static const BACK_BODY_CHECK = _Paths.BACK_BODY_CHECK;
+  static const ONBOARDING_FINISH = _Paths.ONBOARDING_FINISH;
+  static const INITIAL_PAGE = _Paths.INITIAL_PAGE;
+  static const REGIST_VERIFICATION = _Paths.REGIST_VERIFICATION;
+  static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
+  static const RESET_PASSWORD_VERIFICATION = _Paths.RESET_PASSWORD_VERIFICATION;
+  static const RESET_PASSWORD_INPUT = _Paths.RESET_PASSWORD_INPUT;
 }
 
 abstract class _Paths {
@@ -78,4 +84,10 @@ abstract class _Paths {
   static const PHYSICAL_CHECK = '/physical-check';
   static const FRONT_BODY_CHECK = '/front-body-check';
   static const BACK_BODY_CHECK = '/back-body-check';
+  static const ONBOARDING_FINISH = '/onboarding-finish';
+  static const INITIAL_PAGE = '/initial-page';
+  static const REGIST_VERIFICATION = '/regist-verification';
+  static const RESET_PASSWORD = '/reset-password';
+  static const RESET_PASSWORD_VERIFICATION = '/reset-password-verification';
+  static const RESET_PASSWORD_INPUT = '/reset-password-input';
 }

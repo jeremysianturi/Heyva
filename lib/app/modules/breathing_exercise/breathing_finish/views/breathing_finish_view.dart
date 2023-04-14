@@ -4,7 +4,7 @@ import 'package:heyva/app/widgets/nav_screen.dart';
 import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import '../controllers/breathing_finish_controller.dart';
 
@@ -69,7 +69,7 @@ class BreathingFinishView extends GetView<BreathingFinishController> {
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 24,
-                          color: ColorApp.black_font_underline),
+                          color: ColorApp.blue_container),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(
@@ -92,7 +92,8 @@ class BreathingFinishView extends GetView<BreathingFinishController> {
                   determineAction: "from_onplanning_one",
                   text: Strings.lets_go,
                   ontap: () {
-                    PersistentNavBarNavigator.pushNewScreen(
+                    Get.deleteAll();
+                    pushNewScreen(
                       context,
                       screen: NavScreen(
                         menuScreenContext: context,

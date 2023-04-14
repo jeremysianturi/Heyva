@@ -52,8 +52,9 @@ class InsightsView extends GetView<InsightsController> {
                         backgroundColor: Colors.transparent,
                         elevation: 0,
                         leading: GestureDetector(
-                          onTap: () {
-                            Get.toNamed(Routes.PROFILE);
+                          onTap: () async {
+                            await Get.toNamed(Routes.PROFILE);
+                            controller.onInit();
                           },
                           child: CircleAvatar(
                             backgroundImage:
@@ -61,8 +62,9 @@ class InsightsView extends GetView<InsightsController> {
                           ),
                         ),
                         title: GestureDetector(
-                          onTap: () {
-                            Get.toNamed(Routes.PROFILE);
+                          onTap: () async {
+                            await Get.toNamed(Routes.PROFILE);
+                            controller.onInit();
                           },
                           child: Column(
                             children: [
@@ -97,7 +99,7 @@ class InsightsView extends GetView<InsightsController> {
                               ),
                               child: const ImageIcon(
                                 AssetImage("assets/images/ic_notification.png"),
-                                color: ColorApp.ic_notif_color,
+                                color: ColorApp.blue_container,
                               ),
                             ),
                           ),
@@ -121,7 +123,7 @@ class InsightsView extends GetView<InsightsController> {
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 20,
-                            color: ColorApp.black_font_underline),
+                            color: ColorApp.blue_container),
                       ),
                       const SizedBox(
                         height: 24,
@@ -183,7 +185,7 @@ class insightItem extends StatelessWidget {
           //         style: TextStyle(
           //             fontWeight: FontWeight.w400,
           //             fontSize: 12,
-          //             color: ColorApp.black_font_underline),
+          //             color: ColorApp.blue_container),
           //       ),
           //       const SizedBox(
           //         width: 17,
@@ -203,12 +205,12 @@ class insightItem extends StatelessWidget {
           ),
           Text(
             data?.insightDate ?? "",
-            style: TextStyle(
+            style: const TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 20,
-                color: ColorApp.black_font_underline),
+                color: ColorApp.blue_container),
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
           CarouselSlider(
@@ -220,8 +222,8 @@ class insightItem extends StatelessWidget {
               enableInfiniteScroll: true,
               reverse: false,
               autoPlay: false,
-              autoPlayInterval: Duration(seconds: 3),
-              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              autoPlayInterval: const Duration(seconds: 3),
+              autoPlayAnimationDuration: const Duration(milliseconds: 800),
               // autoPlayCurve: Curves.fastOutSlowIn,
               // enlargeCenterPage: true,
               enlargeFactor: 0.3,
@@ -232,10 +234,9 @@ class insightItem extends StatelessWidget {
             ),
             // options: CarouselOptions(height: 400.0),
             items: data?.insight?.map((i) {
-              return
-                  Opacity(
+              return Opacity(
                   // opacity: controller.currentIndex.value == i ? 1 : 0.5,
-                 opacity: 1,
+                  opacity: 1,
                   child: InsightMoodWidget(
                     data: i,
                   ));

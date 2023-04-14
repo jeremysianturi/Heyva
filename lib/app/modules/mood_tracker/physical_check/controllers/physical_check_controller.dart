@@ -39,6 +39,7 @@ class PhysicalCheckController extends GetxController {
     _moodTrackerProvider = MoodTrackerProvider(_client.init());
     _sleepTrackerProvider = SleepTrackerProvider(_client.init());
     _recomendationProvider = RecomendationProvider(_client.init());
+    debugPrint("init");
     initData();
     super.onInit();
   }
@@ -216,5 +217,11 @@ class PhysicalCheckController extends GetxController {
       return true;
     }
     return false;
+  }
+
+  @override
+  void onClose() {
+    dispose();
+    super.onClose();
   }
 }

@@ -3,20 +3,22 @@ import 'package:flutter/material.dart';
 import '../../constant/colors.dart';
 
 class OnBoardingHeader extends StatelessWidget {
-  const OnBoardingHeader({
-    Key? key,
-    required this.title,
-    required this.subtitle,
-    required this.indicatorColor1,
-    required this.indicatorColor2,
-    required this.indicatorColor3,
-  }) : super(key: key);
+  OnBoardingHeader(
+      {Key? key,
+      required this.title,
+      required this.subtitle,
+      required this.indicatorColor1,
+      required this.indicatorColor2,
+      required this.indicatorColor3,
+      this.showBackIcon = true})
+      : super(key: key);
 
   final Color indicatorColor1;
   final Color indicatorColor2;
   final Color indicatorColor3;
   final String title;
   final String subtitle;
+  bool showBackIcon = false;
 
   @override
   Widget build(BuildContext context) {
@@ -54,43 +56,51 @@ class OnBoardingHeader extends StatelessWidget {
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(),
-                  padding: const EdgeInsets.all(11),
-                  minimumSize: Size.zero,
-                  primary: ColorApp.white,
+        if (showBackIcon)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(11),
+                    minimumSize: Size.zero,
+                    primary: ColorApp.white,
+                  ),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    size: 18,
+                    color: ColorApp.black_arrow_back,
+                  ),
                 ),
-                child: const Icon(
-                  Icons.arrow_back,
-                  size: 18,
-                  color: ColorApp.black_arrow_back,
-                ),
-              ),
-              Container()
-            ],
+                Container()
+              ],
+            ),
           ),
-        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SizedBox(
+                height: 50,
+              ),
               Text(
                 title,
                 style: const TextStyle(
                   fontSize: 28,
-                  color: ColorApp.black_font_underline,
+                  color: ColorApp.blue_container,
                   fontWeight: FontWeight.w700,
                 ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 12,
               ),
               Text(
                 subtitle,

@@ -1,10 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:heyva/app/modules/mood_tracker/back_body_check/bindings/back_body_check_binding.dart';
-import 'package:heyva/app/modules/mood_tracker/back_body_check/views/back_body_check_view.dart';
-import 'package:heyva/app/modules/mood_tracker/front_body_check/bindings/front_body_check_binding.dart';
-import 'package:heyva/app/modules/mood_tracker/front_body_check/views/front_body_check_view.dart';
-import 'package:heyva/app/modules/mood_tracker/physical_check/bindings/physical_check_binding.dart';
-import 'package:heyva/app/modules/mood_tracker/physical_check/views/physical_check_view.dart';
+import 'package:heyva/app/modules/reset_password/reset_password_input/bindings/reset_password_input_binding.dart';
+import 'package:heyva/app/modules/reset_password/reset_password_input/views/reset_password_input_view.dart';
 
 import '../modules/article/bindings/article_binding.dart';
 import '../modules/article/views/article_view.dart';
@@ -26,13 +22,21 @@ import '../modules/breathing_exercise/breathing_finish/views/breathing_finish_vi
 import '../modules/breathing_exercise/views/breathing_exercise_view.dart';
 import '../modules/detaildoctor/bindings/detail_doctor_binding.dart';
 import '../modules/detaildoctor/views/detail_doctor_view.dart';
+import '../modules/initialPage/bindings/initial_page_binding.dart';
+import '../modules/initialPage/views/initial_page_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/bindings/login_google_apple_binding.dart';
 import '../modules/login/views/login_google_apple.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/mood_tracker/back_body_check/bindings/back_body_check_binding.dart';
+import '../modules/mood_tracker/back_body_check/views/back_body_check_view.dart';
 import '../modules/mood_tracker/bindings/mood_tracker_binding.dart';
+import '../modules/mood_tracker/front_body_check/bindings/front_body_check_binding.dart';
+import '../modules/mood_tracker/front_body_check/views/front_body_check_view.dart';
 import '../modules/mood_tracker/mood_tracker_form/bindings/mood_tracker_form_binding.dart';
 import '../modules/mood_tracker/mood_tracker_form/views/mood_tracker_form_view.dart';
+import '../modules/mood_tracker/physical_check/bindings/physical_check_binding.dart';
+import '../modules/mood_tracker/physical_check/views/physical_check_view.dart';
 import '../modules/mood_tracker/recomendation/bindings/recomendation_binding.dart';
 import '../modules/mood_tracker/recomendation/views/recomendation_view.dart';
 import '../modules/mood_tracker/recomendation2/bindings/recomendation2_binding.dart';
@@ -47,6 +51,8 @@ import '../modules/onboarding/bindings/onplanning/onplanning_one_binding.dart';
 import '../modules/onboarding/bindings/turnon_notif/turnon_notif_binding.dart';
 import '../modules/onboarding/just_birth_or_pregnant/bindings/just_birth_or_pregnant_binding.dart';
 import '../modules/onboarding/just_birth_or_pregnant/views/just_birth_or_pregnant_view.dart';
+import '../modules/onboarding/onboarding_finish/bindings/onboarding_finish_binding.dart';
+import '../modules/onboarding/onboarding_finish/views/onboarding_finish_view.dart';
 import '../modules/onboarding/views/onboarding_one_view.dart';
 import '../modules/onboarding/views/onboarding_three_view.dart';
 import '../modules/onboarding/views/onboarding_two_view.dart';
@@ -65,9 +71,15 @@ import '../modules/profile/privacy_policy/bindings/privacy_policy_binding.dart';
 import '../modules/profile/privacy_policy/views/privacy_policy_view.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/register/bindings/register_binding.dart';
+import '../modules/register/regist_verification/bindings/regist_verification_binding.dart';
+import '../modules/register/regist_verification/views/regist_verification_view.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/related_program/bindings/related_program_binding.dart';
 import '../modules/related_program/views/related_program_view.dart';
+import '../modules/reset_password/bindings/reset_password_binding.dart';
+import '../modules/reset_password/reset_password_verification/bindings/reset_password_verification_binding.dart';
+import '../modules/reset_password/reset_password_verification/views/reset_password_verification_view.dart';
+import '../modules/reset_password/views/reset_password_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
 
@@ -254,6 +266,36 @@ class AppPages {
       name: _Paths.BACK_BODY_CHECK,
       page: () => const BackBodyCheckView(),
       binding: BackBodyCheckBinding(),
+    ),
+    GetPage(
+      name: _Paths.ONBOARDING_FINISH,
+      page: () => const OnboardingFinishView(),
+      binding: OnboardingFinishBinding(),
+    ),
+    GetPage(
+      name: _Paths.INITIAL_PAGE,
+      page: () => const InitialPageView(),
+      binding: InitialPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGIST_VERIFICATION,
+      page: () => const RegistVerificationView(),
+      binding: RegistVerificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.RESET_PASSWORD,
+      page: () => const ResetPasswordView(),
+      binding: ResetPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.RESET_PASSWORD_VERIFICATION,
+      page: () => const ResetPasswordVerificationView(),
+      binding: ResetPasswordVerificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.RESET_PASSWORD_INPUT,
+      page: () => const ResetPasswordInputView(),
+      binding: ResetPasswordInputBinding(),
     ),
   ];
 }

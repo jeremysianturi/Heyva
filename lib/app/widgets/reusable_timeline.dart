@@ -40,7 +40,7 @@ class TimelineView extends StatelessWidget {
                   child: Text(
                     data[index].quote,
                     style: const TextStyle(
-                        color: ColorApp.black_font_underline,
+                        color: ColorApp.blue_container,
                         fontSize: 20,
                         fontWeight: FontWeight.w500),
                   ),
@@ -55,9 +55,9 @@ class TimelineView extends StatelessWidget {
                     child: Container(
                         decoration: BoxDecoration(
                             border: Border.all(
-                              color: ColorApp.btn_pink,
+                              color: ColorApp.blue_container,
                             ),
-                            color: ColorApp.btn_pink,
+                            color: ColorApp.blue_container,
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(16))),
                         height: 136,
@@ -117,12 +117,14 @@ class TimelineView extends StatelessWidget {
                               Container(
                                 width: 115,
                                 decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: ColorApp.grey_container,
-                                    ),
-                                    color: ColorApp.grey_container,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(16))),
+                                  color: ColorApp.grey_container,
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(16)),
+                                  image: DecorationImage(
+                                    image: AssetImage(data[index].image),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -139,7 +141,7 @@ class TimelineView extends StatelessWidget {
             indicatorBuilder: (_, index) {
               if (data[index].isSelected.value == true) {
                 return const DotIndicator(
-                  color: ColorApp.btn_orange,
+                  color: ColorApp.blue_container,
                 );
               } else if (data[index].isSelected.value == false) {
                 return const OutlinedDotIndicator(
@@ -171,7 +173,7 @@ class TimelineView extends StatelessWidget {
         title: Strings.breathing_exercise,
         subtitle: Strings.welcome_heyva,
         time: Strings.minute,
-        image: "",
+        image: "assets/images/img_dummy_yoga.png",
         isSelected: true.obs,
         ontap: () {
           Get.toNamed(Routes.BREATHING_EXERCISE);
@@ -181,7 +183,7 @@ class TimelineView extends StatelessWidget {
         title: Strings.track_my_mood,
         subtitle: Strings.rhythm_of_health,
         time: Strings.minute,
-        image: "",
+        image: "assets/images/img_dummy_mood.png",
         isSelected: false.obs,
         ontap: () {
           Get.toNamed(Routes.MOOD_TRACKER);
@@ -202,7 +204,7 @@ class TimelineView extends StatelessWidget {
         title: Strings.identification_exercise,
         subtitle: Strings.pelvic_floor,
         time: Strings.one_minute,
-        image: "",
+        image: "assets/images/img_dummy_yoga.png",
         isSelected: false.obs,
         ontap: () {
           Get.toNamed(Routes.BREATHING_ONE);

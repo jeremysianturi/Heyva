@@ -45,7 +45,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 28,
-                          color: ColorApp.black_font_underline),
+                          color: ColorApp.blue_container),
                     ),
                     Expanded(
                         child: Padding(
@@ -138,7 +138,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
-                          color: ColorApp.black_font_underline),
+                          color: ColorApp.blue_container),
                     ),
                     const SizedBox(
                       height: 60,

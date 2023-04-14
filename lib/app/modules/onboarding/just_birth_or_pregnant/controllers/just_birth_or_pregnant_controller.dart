@@ -20,7 +20,23 @@ class JustBirthOrPregnantController extends GetxController {
     return '';
   }
 
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
   onTap() {
+    var eddDate = "";
+    var childBirth = "";
+    if (argumentData[Keys.titleArguments]
+        .toString()
+        .toLowerCase()
+        .contains("edd")) {
+      eddDate = dateChosen.value.toString();
+    } else {
+      childBirth = dateChosen.value.toString();
+    }
+
     final box = GetStorage();
     var data = box.read(Keys.registStorage) as RegisterStorageModel;
     box.write(
@@ -31,7 +47,9 @@ class JustBirthOrPregnantController extends GetxController {
             fullName: data.fullName,
             birthDate: dateChosen.value.toString(),
             pregnancyStatus: data.pregnancyStatus,
-            interests: data.interests));
+            interests: data.interests,
+            childBirthDate: childBirth,
+            estimateDueDate: eddDate));
     800.milliseconds;
     Get.toNamed(Routes.ONPLANNING_ONE);
   }

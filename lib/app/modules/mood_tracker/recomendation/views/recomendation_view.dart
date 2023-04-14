@@ -48,7 +48,7 @@ class RecomendationView extends GetView<RecomendationController> {
                     child: Text(
                       Strings.recomendationSelftCare,
                       style: TextStyle(
-                          color: ColorApp.black,
+                          color: ColorApp.blue_container,
                           fontWeight: FontWeight.w700,
                           fontSize: 20),
                     ),

@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
                     return GetMaterialApp(
                       debugShowCheckedModeBanner: false,
                       title: "HEYVA",
-                      initialRoute: Routes.BREATHING_ONE,
+                      initialRoute: Routes.INITIAL_PAGE,
                       getPages: AppPages.routes,
                     );
                   }

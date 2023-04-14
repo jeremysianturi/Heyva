@@ -67,7 +67,7 @@ class BreathingFeelingsView extends GetView<BreathingFeelingsController> {
                       Strings.wasThisSessiOneEfective,
                       style: TextStyle(
                           decoration: TextDecoration.none,
-                          color: ColorApp.black_font_underline,
+                          color: ColorApp.blue_container,
                           fontSize: 24,
                           fontWeight: FontWeight.w700),
                       textAlign: TextAlign.center,

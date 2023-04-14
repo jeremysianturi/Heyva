@@ -44,7 +44,7 @@ class FaqView extends GetView<FaqController> {
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 28,
-                              color: ColorApp.black_font_underline),
+                              color: ColorApp.blue_container),
                         ),
                         const SizedBox(
                           height: 23,
@@ -56,7 +56,7 @@ class FaqView extends GetView<FaqController> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 14,
-                                color: ColorApp.black_font_underline),
+                                color: ColorApp.blue_container),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -89,7 +89,7 @@ class FaqView extends GetView<FaqController> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 14,
-                                color: ColorApp.black_font_underline),
+                                color: ColorApp.blue_container),
                             textAlign: TextAlign.start,
                           ),
                         )

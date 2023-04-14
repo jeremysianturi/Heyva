@@ -40,7 +40,7 @@ class NotificationSettingsView extends GetView<NotificationSettingsController> {
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 28,
-                      color: ColorApp.black_font_underline),
+                      color: ColorApp.blue_container),
                 ),
                 const SizedBox(
                   height: 65,

@@ -61,7 +61,7 @@ class BreathingExerciseView extends GetView<BreathingExerciseController> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 20,
-                                    color: ColorApp.black_font_underline),
+                                    color: ColorApp.blue_container),
                                 textAlign: TextAlign.center,
                               ),
                               const SizedBox(

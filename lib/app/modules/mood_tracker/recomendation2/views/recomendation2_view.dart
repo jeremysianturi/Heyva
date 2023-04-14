@@ -10,7 +10,7 @@ import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import '../controllers/recomendation2_controller.dart';
 
@@ -119,7 +119,8 @@ class Recomendation2View extends GetView<Recomendation2Controller> {
                     determineAction: "ontap",
                     text: Strings.thankYou,
                     ontap: () {
-                      PersistentNavBarNavigator.pushNewScreen(
+                      Get.deleteAll();
+                      pushNewScreen(
                         context,
                         screen: NavScreen(
                           menuScreenContext: context,

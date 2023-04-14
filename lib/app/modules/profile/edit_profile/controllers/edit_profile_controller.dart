@@ -1,10 +1,17 @@
+import 'dart:io';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:heyva/app/modules/profile/model/update_profile_model.dart';
+import 'package:heyva/app/modules/profile/provider/profile_provider.dart';
 import 'package:heyva/constant/colors.dart';
+import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
+import 'package:heyva/services/dio_services.dart';
+import 'package:image_picker/image_picker.dart';
 
 class EditProfileController extends GetxController {
   TextEditingController fullnameC = TextEditingController();
@@ -12,6 +19,83 @@ class EditProfileController extends GetxController {
   TextEditingController emailC = TextEditingController();
 
   var errorMessage = "".obs;
+
+  File? image;
+  var filePath = "".obs;
+
+  final _picker = ImagePicker();
+
+  Future<void> openImagePicker() async {
+    final XFile? pickedImage =
+        await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      image = File(pickedImage.path);
+      filePath.value = pickedImage.path;
+    }
+  }
+
+  var isLoading = false.obs;
+  late DioClient _client;
+  late ProfileProvider _profileProvider;
+
+  @override
+  void onInit() {
+    _client = DioClient();
+    _profileProvider = ProfileProvider(_client.init());
+
+    fullnameC.text = profileName;
+    phoneC.text = phone;
+    emailC.text = email;
+
+    super.onInit();
+  }
+
+  var updateProfileResponse =
+      UpdateProfileModel(success: "", data: null, message: "", error: "").obs;
+
+  updateProfile() async {
+    errorMessage.value = "";
+    isLoading.value = true;
+    try {
+      var isEmpty = filePath.value == "";
+
+      updateProfileResponse.value = (await _profileProvider.updateProfile(
+          isEmptyFile: isEmpty,
+          file: File(filePath.value),
+          fullName: fullnameC.text.toString()))!;
+
+      if (updateProfileResponse.value.success == "Success") {
+        Future.delayed(2.seconds, () {
+          isLoading.value = false;
+          Get.back(result: "true");
+        });
+      } else {
+        errorMessage.value =
+            updateProfileResponse.value.message ?? "Error Message";
+      }
+    } catch (e) {
+      isLoading.value = false;
+      debugPrint("error  $e");
+    }
+  }
+
+  var box = GetStorage();
+
+  String get profileName {
+    return box.read(Keys.profileName) ?? "";
+  }
+
+  String get email {
+    return box.read(Keys.profileEmail) ?? "";
+  }
+
+  String get phone {
+    return box.read(Keys.profilePhone) ?? "";
+  }
+
+  String get profileAvatar {
+    return box.read(Keys.profileImgUrl) ?? "";
+  }
 
   changePicture() {
     Get.bottomSheet(
@@ -29,7 +113,7 @@ class EditProfileController extends GetxController {
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
-                        color: ColorApp.black_font_underline),
+                        color: ColorApp.blue_container),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -79,6 +163,7 @@ class EditProfileController extends GetxController {
                     ),
                     onPressed: () {
                       Get.back();
+                      openImagePicker();
                     },
                   ),
                 ),

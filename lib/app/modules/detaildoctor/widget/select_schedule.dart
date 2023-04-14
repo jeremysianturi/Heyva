@@ -27,7 +27,7 @@ class SelectScheduleWidget extends StatelessWidget {
           style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
-              color: ColorApp.black_font_underline),
+              color: ColorApp.blue_container),
         ),
         const SizedBox(
           height: 16,
