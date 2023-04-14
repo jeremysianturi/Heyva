@@ -82,7 +82,7 @@ class MainBody extends StatelessWidget {
                             Text(
                               controller.title,
                               style: const TextStyle(
-                                color: ColorApp.black_font_underline,
+                                color: ColorApp.blue_container,
                                 fontSize: 24,
                                 fontWeight: FontWeight.w700,
                               ),

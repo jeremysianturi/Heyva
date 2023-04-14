@@ -39,6 +39,7 @@ class Data {
   final dynamic aboutMe;
   final Pregnancy? pregnancy;
   final List<Interests>? interests;
+  final User? user;
 
   Data({
     this.id,
@@ -52,6 +53,7 @@ class Data {
     this.aboutMe,
     this.pregnancy,
     this.interests,
+    this.user,
   });
 
   Data.fromJson(Map<String, dynamic> json)
@@ -69,7 +71,10 @@ class Data {
             : null,
         interests = (json['interests'] as List?)
             ?.map((dynamic e) => Interests.fromJson(e as Map<String, dynamic>))
-            .toList();
+            .toList(),
+        user = (json['user'] as Map<String, dynamic>?) != null
+            ? User.fromJson(json['user'] as Map<String, dynamic>)
+            : null;
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -82,7 +87,8 @@ class Data {
         'slug_name': slugName,
         'about_me': aboutMe,
         'pregnancy': pregnancy?.toJson(),
-        'interests': interests?.map((e) => e.toJson()).toList()
+        'interests': interests?.map((e) => e.toJson()).toList(),
+        'user': user?.toJson()
       };
 }
 
@@ -200,5 +206,40 @@ class InterestsInner {
         'parent': parent,
         'icon': icon,
         'value': value
+      };
+}
+
+class User {
+  final String? id;
+  final dynamic username;
+  final String? email;
+  final dynamic phoneNumber;
+  final bool? isVerified;
+  final String? lastLogin;
+
+  User({
+    this.id,
+    this.username,
+    this.email,
+    this.phoneNumber,
+    this.isVerified,
+    this.lastLogin,
+  });
+
+  User.fromJson(Map<String, dynamic> json)
+      : id = json['id'] as String?,
+        username = json['username'],
+        email = json['email'] as String?,
+        phoneNumber = json['phone_number'],
+        isVerified = json['is_verified'] as bool?,
+        lastLogin = json['last_login'] as String?;
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'username': username,
+        'email': email,
+        'phone_number': phoneNumber,
+        'is_verified': isVerified,
+        'last_login': lastLogin
       };
 }

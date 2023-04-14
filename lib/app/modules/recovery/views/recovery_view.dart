@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/related_program/widget/program_tab.dart';
 import 'package:heyva/app/routes/app_pages.dart';
@@ -45,12 +46,14 @@ class RecoveryView extends GetView<RecoveryController> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            Strings.heyva_capital,
-                            style: TextStyle(
-                              color: ColorApp.black_font,
-                            ),
-                          ),
+                          SvgPicture.asset(
+                              "assets/images/heyva_text_logo.svg"),
+                          // const Text(
+                          //   Strings.heyva_capital,
+                          //   style: TextStyle(
+                          //     color: ColorApp.black_font,
+                          //   ),
+                          // ),
                           GestureDetector(
                             onTap: () {
                               // Get.to(ArticleView());
@@ -96,7 +99,7 @@ class RecoveryView extends GetView<RecoveryController> {
                             style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w600,
-                                color: ColorApp.black_article_title),
+                                color: ColorApp.blue_container),
                           ),
                         ],
                       ),
@@ -147,6 +150,7 @@ class RecoveryView extends GetView<RecoveryController> {
                                                 IconButton(
                                                   icon: Image.asset(
                                                       "assets/images/ic_program.png"),
+                                                  color: ColorApp.blue_container,
                                                   padding: EdgeInsets.zero,
                                                   constraints:
                                                       const BoxConstraints(),
@@ -162,7 +166,7 @@ class RecoveryView extends GetView<RecoveryController> {
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: ColorApp
-                                                          .black_font_underline),
+                                                          .blue_container),
                                                 ),
                                               ],
                                             ),
@@ -171,14 +175,14 @@ class RecoveryView extends GetView<RecoveryController> {
                                               style: TextStyle(
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.w700,
-                                                  color: ColorApp.black),
+                                                  color: ColorApp.blue_container),
                                             ),
                                             const Text(
                                               Strings.one_ninety_days,
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.w400,
-                                                  color: ColorApp.black),
+                                                  color: ColorApp.blue_container),
                                             ),
                                           ],
                                         ),
@@ -200,18 +204,18 @@ class RecoveryView extends GetView<RecoveryController> {
                             style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w600,
-                                color: ColorApp.black_article_title),
+                                color: ColorApp.blue_container),
                           ),
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(Routes.RELATED_PROGRAM);
                             },
                             child: const Text(
-                              Strings.more,
+                              Strings.seeMore,
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
-                                  color: ColorApp.black_article_title),
+                                  color: ColorApp.blue_container),
                             ),
                           ),
                         ],
@@ -281,21 +285,21 @@ class RecoveryView extends GetView<RecoveryController> {
                                       "assets/images/bg_blue_container_medal.png"),
                                 ),
                               ),
-                              child: const ListTile(
-                                shape: RoundedRectangleBorder(
+                              child:  ListTile(
+                                shape: const RoundedRectangleBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(14))),
                                 title: Padding(
-                                  padding: EdgeInsets.only(top: 20),
+                                  padding: const EdgeInsets.only(top: 20),
                                   child: Text(
                                     Strings.to_keep_you_entertain,
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w500,
-                                        color: ColorApp.white_font),
+                                        color: ColorApp.white_font.withOpacity(0.6)),
                                   ),
                                 ),
-                                subtitle: Padding(
+                                subtitle: const Padding(
                                   padding: EdgeInsets.only(bottom: 20),
                                   child: Text(
                                     Strings.invite_your_friends,
@@ -305,7 +309,7 @@ class RecoveryView extends GetView<RecoveryController> {
                                         color: ColorApp.grey_card_font),
                                   ),
                                 ),
-                                trailing: Icon(
+                                trailing: const Icon(
                                   Icons.arrow_forward_ios,
                                   color: ColorApp.white_font,
                                 ),

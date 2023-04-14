@@ -25,7 +25,9 @@ class RegisterController extends GetxController {
           fullName: fullname.text,
           birthDate: "",
           pregnancyStatus: "",
-          interests: []);
+          interests: [],
+          childBirthDate: "",
+          estimateDueDate: "");
       box.write(Keys.registStorage, data);
       debugPrint("read data ${box.read(Keys.registStorage)}");
       800.seconds;
@@ -66,6 +68,14 @@ class RegisterController extends GetxController {
       return false;
     }
     return true;
+  }
+
+  @override
+  void onInit() {
+    // fullname.text = "testing";
+    // email.text = "testing@gmail.com";
+    // pass.text = "minimal88";
+    super.onInit();
   }
 
   @override

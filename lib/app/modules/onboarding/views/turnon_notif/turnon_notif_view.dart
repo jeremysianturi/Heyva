@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 
 import '../../../../../constant/colors.dart';
 import '../../../../../constant/strings.dart';
@@ -24,27 +25,40 @@ class TurnOnNotifView extends GetView<TurnOnNotifController> {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 67),
+            Padding(
+              padding: const EdgeInsets.only(top: 67),
               child: Header(
-                rightText: "",
+                rightText: Strings.skip,
+                ontapIcon: () {
+                  Get.toNamed(Routes.ONBOARDING_FINISH);
+                },
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  Strings.turn_on_notif_text,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: ColorApp.black_font_underline,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700,
-                  ),
-                )
-              ],
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+                width: 141,
+                height: 151,
+                child: Image.asset(
+                  "assets/images/img_flower.png",
+                  fit: BoxFit.cover,
+                )),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(
+              Strings.turn_on_notif_text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: ColorApp.blue_container,
+                fontSize: 28,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(
+              height: 36,
             ),
             Column(
               children: [
@@ -54,7 +68,9 @@ class TurnOnNotifView extends GetView<TurnOnNotifController> {
                   desc: Strings.proactive_support,
                   switchCount: 1,
                 ),
-                const SizedBox(height: 20,),
+                const SizedBox(
+                  height: 20,
+                ),
                 ReusableSwitchButton(
                   controller: turnOnController,
                   title: Strings.you_first,
@@ -63,7 +79,8 @@ class TurnOnNotifView extends GetView<TurnOnNotifController> {
                 ),
               ],
             ),
-             OrangeButtonWTrailingIcon(
+            const Expanded(child: SizedBox()),
+            OrangeButtonWTrailingIcon(
               determineAction: "from_turnon_notif",
               text: Strings.lets_go,
             ),

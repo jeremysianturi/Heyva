@@ -4,6 +4,7 @@ class Strings {
   static const String tagline_splash = "Empowering women through health";
   static const String heyva = "Heyva";
   static const String heyva_capital = "HEYVA";
+  static const String heyvaCourse = "Heyva’s Course";
   static const String login = "Login";
   static const String new_acc_text = "Create New\nAccount";
   static const String continue_email = "Continue with Email";
@@ -17,14 +18,20 @@ class Strings {
   static const String privacy_policy_text3 = "understood the ";
   static const String privacy_policy_underline = "Privacy Policy";
   static const String cant_login = "Can't Login?";
+  static const String forgotPassword = "Forgot Password";
   static const String register = "Register";
+  static const String registration = "Registration";
+  static const String resetPassword = "Reset Password";
   static const String continue_text = "Continue";
   static const String name_ques_text = "What is your name ?";
   static const String full_name = "Full Name";
   static const String phone_number = "Phone Number";
   static const String next = "Next";
+  static const String welcomeTo = "Welcome to Heyva,";
   static const String glad_text = "Glad to have you \n with us, ";
   static const String begin_journey_text = "Let your new journey begin!";
+  static const String haveUsAssist =
+      "Now, you have us to assist on your\n journey as a mother";
   static const String birthday_ques_text = "When's your birthday";
   static const String relevant_text =
       "This help us find you more relevant content";
@@ -34,7 +41,7 @@ class Strings {
   static const String no_but_im_planning = "No, but I am planning";
   static const String yes_i_am = "Yes, I am";
   static const String just_gave_birth = "No, I just gave birth";
-  static const String interest_ques_text = "What are you interested in?";
+  static const String interest_ques_text = "What are you\n interested in?";
   static const String choose_as_many = "choose as many as you want";
   static const String turn_on_notif_text =
       "Turn on notifications to\nget the most of Heyva.";
@@ -57,6 +64,7 @@ class Strings {
   static const String clouds =
       "Sometimes there might be\nclouds. But the blue sky is\nalways there.";
   static const String breath = "Let’s take a breath together";
+  static const String letsStart ="Let's start with a simple\n breathing exercise!";
   static const String remember_blue_sky = "Remember the blue sky.";
   static const String home = "Home";
   static const String recovery = "Recovery";
@@ -158,7 +166,6 @@ class Strings {
   static const String detailProfile = "Detail Profile";
   static const String profile = "Profile";
   static const String changePassword = "Change Password";
-  static const String forgotPassword = "Forgot Password";
   static const String save = "Save";
 
   static const String pushNotif = "Push Notification";
@@ -194,12 +201,16 @@ class Strings {
   static const String eddGues = "When is your EDD?";
   static const String childBornGues = "When was your child born?";
 
-
   static const String typeYourOldPass = "Type your old password";
   static const String typeYourNewPass = "Type your new password";
   static const String newPassConfrim = "new password confirmation";
 
-  static const String updateInsights ="Update Insights";
+  static const String updateInsights = "Update Insights";
+  static const String checkYourEnauk = "Check your email!";
+  static const String confirmEmail = "To confirm your email address, tap the\n button in the email we sent to\n";
+  static const String opemMailApps = "Open email app";
+  static const String thankYoutForYourConfirm = "Thank you for your confirmation.";
 
-
+  static const String enterYourEmailResetPass = "Enter your email address and we will send you a link to reset your password";
+  static const String resetYourPassword = "Reset Your Password";
 }

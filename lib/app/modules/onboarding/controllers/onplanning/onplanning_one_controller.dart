@@ -95,7 +95,9 @@ class OnPlanningOneController extends GetxController {
             fullName: data.fullName,
             birthDate: data.birthDate,
             pregnancyStatus: data.pregnancyStatus,
-            interests: interestsList));
+            interests: interestsList,
+            childBirthDate: data.childBirthDate,
+            estimateDueDate: data.estimateDueDate));
 
     var data2 = box.read(Keys.registStorage) as RegisterStorageModel;
 
@@ -116,7 +118,8 @@ class OnPlanningOneController extends GetxController {
 
       if (registResonse.value.success == "Success") {
         800.milliseconds;
-        Get.toNamed(Routes.TURNON_NOTIF);
+        Get.toNamed(Routes.REGIST_VERIFICATION);
+        // Get.toNamed(Routes.TURNON_NOTIF);
       } else {
         bottomSheetMessage(
             color: "red", desc: registResonse.value.message ?? "");

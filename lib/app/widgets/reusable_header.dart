@@ -11,7 +11,7 @@ class Header extends StatelessWidget {
     this.ontapIcon,
     this.showCenterTitle = false,
     this.centerTitle,
-    this.titleColor = ColorApp.black_article_title,
+    this.titleColor = ColorApp.blue_container,
     this.onBack,
     this.isCostomBackFucntion = false,
   }) : super(key: key);
@@ -47,7 +47,7 @@ class Header extends StatelessWidget {
                 primary: ColorApp.white,
                 elevation: 0),
             child: InkWell(
-              onTap: (){
+              onTap: () {
                 if (isCostomBackFucntion) {
                   onBack!();
                 } else {
@@ -89,12 +89,17 @@ class Header extends StatelessWidget {
                     height: 18,
                   ),
                 )
-              : Text(
-                  rightText ?? "",
-                  style: const TextStyle(
-                      color: ColorApp.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600),
+              : GestureDetector(
+                  onTap: () {
+                    ontapIcon!();
+                  },
+                  child: Text(
+                    rightText ?? "",
+                    style: const TextStyle(
+                        color: ColorApp.blue_container,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600),
+                  ),
                 ),
         ],
       ),

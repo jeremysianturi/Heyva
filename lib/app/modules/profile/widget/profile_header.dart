@@ -85,6 +85,7 @@ class ProfileHeader extends StatelessWidget {
                   child: SvgPicture.asset(
                     'assets/icons/ic_logout.svg',
                     fit: BoxFit.fill,
+                    color: ColorApp.blue_container,
                     alignment: Alignment.centerLeft,
                     width: 24,
                     height: 24,

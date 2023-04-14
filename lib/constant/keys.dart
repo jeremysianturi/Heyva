@@ -45,15 +45,14 @@ class Keys {
       "PHYSICAL_CHECK_FRONT_BODY_RESPONSE";
   static const String physicalCheckBackBodyResponse =
       "PHYSICAL_CHECK_BACK_BODY_RESPONSE";
-  static const String moodTrackerResponse =
-      "MOOD_TRACKER_RESPONSE";
-  static const String sleepTrackerResponse =
-      "SLEEP_TRACKER_RESPONSE";
+  static const String moodTrackerResponse = "MOOD_TRACKER_RESPONSE";
+  static const String sleepTrackerResponse = "SLEEP_TRACKER_RESPONSE";
   static const String recomendationTrackerResponse =
       "RECOMENDATION_TRACKER_RESPONSE";
 
-
-
   /// back result
   static const String backResult = "GET_BACK_RESULT";
+
+  /// reset password
+  static const String resetPasswordEmail = "RESET_PASSWORD_EMAIL";
 }

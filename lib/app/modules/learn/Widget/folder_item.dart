@@ -23,6 +23,7 @@ class FolderItem extends StatelessWidget {
           SvgPicture.asset(
             'assets/icons/ic_folder.svg',
             fit: BoxFit.fill,
+            color: ColorApp.blue_container,
             alignment: Alignment.centerLeft,
             width: 60,
             height: 20,
@@ -35,7 +36,7 @@ class FolderItem extends StatelessWidget {
             style: const TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 18,
-                color: ColorApp.black_font_underline),
+                color: ColorApp.blue_container),
           )
         ],
       ),

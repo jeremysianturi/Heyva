@@ -16,7 +16,9 @@ class OnPlanningOneView extends GetView<OnPlanningOneController> {
     return Obx(() => LoadingOverlay(
         isLoading: controller.isLoading.value,
         color: Colors.grey,
-        progressIndicator: const CircularProgressIndicator(color: ColorApp.btn_orange,),
+        progressIndicator: const CircularProgressIndicator(
+          color: ColorApp.btn_orange,
+        ),
         opacity: 0.3,
         child: Scaffold(
             body: Container(
@@ -30,7 +32,7 @@ class OnPlanningOneView extends GetView<OnPlanningOneController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 100,
+                height: 40,
               ),
               // const OnBoardingHeader(
               //   indicatorColor1: ColorApp.btn_orange,
@@ -96,6 +98,9 @@ class OnPlanningOneView extends GetView<OnPlanningOneController> {
                   ],
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
               Expanded(
                 child: Column(
                   children: [
@@ -108,9 +113,12 @@ class OnPlanningOneView extends GetView<OnPlanningOneController> {
                             Strings.interest_ques_text,
                             style: TextStyle(
                               fontSize: 28,
-                              color: ColorApp.black_font_underline,
+                              color: ColorApp.blue_container,
                               fontWeight: FontWeight.w700,
                             ),
+                          ),
+                          SizedBox(
+                            height: 12,
                           ),
                           Text(
                             Strings.choose_as_many,
@@ -122,6 +130,9 @@ class OnPlanningOneView extends GetView<OnPlanningOneController> {
                           ),
                         ],
                       ),
+                    ),
+                    const SizedBox(
+                      height: 21,
                     ),
                     Expanded(
                       child: SingleChildScrollView(
@@ -196,9 +207,15 @@ class OnPlanningOneView extends GetView<OnPlanningOneController> {
                                                 Text(
                                                   onPlanningOneController
                                                       .list[index].subject,
-                                                  style: const TextStyle(
-                                                      color: ColorApp
-                                                          .black_font_underline,
+                                                  style: TextStyle(
+                                                      color:
+                                                          onPlanningOneController
+                                                                  .list[index]
+                                                                  .isSelected
+                                                                  .value
+                                                              ? ColorApp.white
+                                                              : ColorApp
+                                                                  .blue_container,
                                                       fontSize: 16,
                                                       fontWeight:
                                                           FontWeight.w700),
@@ -264,7 +281,7 @@ class OnPlanningOneView extends GetView<OnPlanningOneController> {
                           //                     Text(
                           //                       onPlanningOneController.list[index].subject,
                           //                       style: const TextStyle(
-                          //                           color: ColorApp.black_font_underline,
+                          //                           color: ColorApp.blue_container,
                           //                           fontSize: 16,
                           //                           fontWeight: FontWeight.w700),
                           //                     ),
@@ -291,10 +308,10 @@ class OnPlanningOneView extends GetView<OnPlanningOneController> {
                     visible: onPlanningOneController.selectedBtnRemaining > 0
                         ? true
                         : false,
-                    child:  OrangeButtonWTrailingIcon(
+                    child: OrangeButtonWTrailingIcon(
                       determineAction: "from_onplanning_one",
                       text: Strings.lets_go,
-                      ontap: (){
+                      ontap: () {
                         controller.onTap();
                       },
                     )),

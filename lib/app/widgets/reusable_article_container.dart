@@ -79,7 +79,7 @@ class ArticleContainer extends StatelessWidget {
             style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: ColorApp.black_font_underline),
+                color: ColorApp.blue_container),
           ),
           const SizedBox(
             height: 12,
@@ -100,7 +100,7 @@ class ArticleContainer extends StatelessWidget {
                   style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: ColorApp.black_font_underline),
+                      color: ColorApp.blue_container),
                 ),
               ],
             ),

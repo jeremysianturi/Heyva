@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:heyva/app/modules/login/controllers/login_controller.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
+import 'package:heyva/app/widgets/reusable_regular_textfield.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
 import '../../../../constant/colors.dart';
@@ -22,7 +23,9 @@ class LoginView extends GetView<LoginController> {
       () => LoadingOverlay(
           isLoading: controller.isLoading.value,
           color: Colors.grey,
-          progressIndicator: const CircularProgressIndicator(color: ColorApp.btn_orange,),
+          progressIndicator: const CircularProgressIndicator(
+            color: ColorApp.btn_orange,
+          ),
           opacity: 0.3,
           child: Scaffold(
             resizeToAvoidBottomInset: false,
@@ -41,13 +44,12 @@ class LoginView extends GetView<LoginController> {
                     flex: 1,
                     child: Padding(
                       padding: EdgeInsets.only(top: 56),
-                      child: InkWell(
-                        onTap: () {
+                      child: Header(
+                        rightText: Strings.register,
+                        ontapIcon: () {
                           Get.toNamed(Routes.REGISTER);
+                          // Get.toNamed(Routes.TURNON_NOTIF);
                         },
-                        child: Header(
-                          rightText: Strings.register,
-                        ),
                       ),
                     ),
                   ),
@@ -63,9 +65,9 @@ class LoginView extends GetView<LoginController> {
                               Strings.login,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 28,
-                                fontWeight: FontWeight.w700,
-                              ),
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.w700,
+                                  color: ColorApp.blue_container),
                             )
                           ],
                         ),
@@ -75,104 +77,30 @@ class LoginView extends GetView<LoginController> {
                             key: _formKey,
                             child: Column(
                               children: [
-                                TextFormField(
-                                  controller: loginController.emailC,
-                                  decoration: InputDecoration(
-                                    hintText: Strings.email_adress,
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        vertical: 17, horizontal: 20),
-                                    filled: true,
-                                    fillColor: ColorApp.text_input_bg,
-                                    hintStyle: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                        color: ColorApp.grey_font),
-                                    labelStyle: const TextStyle(
-                                        fontSize: 16,
-                                        color: ColorApp.black_font_underline,
-                                        fontWeight: FontWeight.w400),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(14),
-                                      borderSide: const BorderSide(
-                                        color: ColorApp.red_error,
-                                        width: 2.0,
-                                      ),
-                                    ),
-                                    errorText: controller.isEmailError.isTrue
-                                        ? "error"
-                                        : null,
-                                    errorStyle: const TextStyle(fontSize: 0.01),
+                                Obx(
+                                  () => RegularTextField(
+                                    controller: controller.emailC,
+                                    isObsecure: false,
+                                    isError: controller.isEmailError.isTrue,
+                                    hint: Strings.email_adress,
+                                    ontap: () {},
+                                    isPassword: false,
                                   ),
                                 ),
                                 const SizedBox(
                                   height: 12,
                                 ),
                                 Obx(
-                                  () => TextField(
-                                    controller: loginController.passC,
-                                    obscureText:
-                                        loginController.isObscure.value,
-                                    decoration: InputDecoration(
-                                        hintText: Strings.password,
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 17, horizontal: 20),
-                                        filled: true,
-                                        fillColor: ColorApp.text_input_bg,
-                                        hintStyle: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            color: ColorApp.grey_font),
-                                        labelStyle: const TextStyle(
-                                            fontSize: 16,
-                                            color:
-                                                ColorApp.black_font_underline,
-                                            fontWeight: FontWeight.w400),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(14),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(14),
-                                          borderSide: const BorderSide(
-                                            color: ColorApp.red_error,
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                        errorText: controller.isPasserror.isTrue
-                                            ? "error"
-                                            : null,
-                                        errorStyle:
-                                            const TextStyle(fontSize: 0.01),
-                                        suffixIcon: InkWell(
-                                          onTap: () {
-                                            loginController.isObscure.value =
-                                                !loginController
-                                                    .isObscure.value;
-                                          },
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(right: 20.0),
-                                                child: Text(
-                                                  loginController.isObscure.isTrue
-                                                      ? "Show"
-                                                      : "Hide",
-                                                  style: const TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight: FontWeight.w600,
-                                                      color: ColorApp
-                                                          .black_font_underline),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        )),
+                                  () => RegularTextField(
+                                    controller: controller.passC,
+                                    isObsecure: loginController.isObscure.value,
+                                    isError: controller.isPasserror.isTrue,
+                                    hint: Strings.password,
+                                    ontap: () {
+                                      loginController.isObscure.value =
+                                          !loginController.isObscure.value;
+                                    },
+                                    isPassword: true,
                                   ),
                                 ),
                                 if (controller.errorMessage.value.isNotEmpty)
@@ -208,20 +136,25 @@ class LoginView extends GetView<LoginController> {
                   ),
                   Expanded(
                     flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 55),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            Strings.cant_login,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: ColorApp.black_font_underline,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600),
-                          )
-                        ],
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.RESET_PASSWORD);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 55),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text(
+                              Strings.forgotPassword,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: ColorApp.blue_container,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),

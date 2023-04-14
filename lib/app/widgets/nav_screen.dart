@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -7,7 +8,7 @@ import 'package:heyva/app/modules/learn/views/learn_view.dart';
 import 'package:heyva/app/modules/recovery/views/recovery_view.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/strings.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import '../../constant/colors.dart';
 
@@ -83,17 +84,33 @@ class _NavScreenState extends State<NavScreen> {
 
   List<PersistentBottomNavBarItem> _navBarsItems() => [
         PersistentBottomNavBarItem(
-            icon: SvgPicture.asset("assets/images/ic_home_fill.svg"),
-            inactiveIcon: SvgPicture.asset("assets/images/ic_home.svg"),
+            icon: SvgPicture.asset(
+              "assets/images/ic_home_fill.svg",
+              width: 20,
+              height: 20,
+            ),
+            inactiveIcon: SvgPicture.asset(
+              "assets/images/ic_home.svg",
+              width: 20,
+              height: 20,
+            ),
             title: Strings.home,
-            activeColorPrimary: ColorApp.black,
+            activeColorPrimary: ColorApp.blue_container,
             inactiveColorPrimary: Colors.grey,
             inactiveColorSecondary: Colors.purple),
         PersistentBottomNavBarItem(
-          icon: SvgPicture.asset("assets/images/ic_recovery_fill.svg"),
-          inactiveIcon: SvgPicture.asset("assets/images/ic_recovery.svg"),
+          icon: SvgPicture.asset(
+            "assets/images/ic_recovery_fill.svg",
+            width: 20,
+            height: 20,
+          ),
+          inactiveIcon: SvgPicture.asset(
+            "assets/images/ic_recovery.svg",
+            width: 20,
+            height: 20,
+          ),
           title: Strings.recovery,
-          activeColorPrimary: ColorApp.black,
+          activeColorPrimary: ColorApp.blue_container,
           inactiveColorPrimary: Colors.grey,
           // routeAndNavigatorSettings: RouteAndNavigatorSettings(
           //   initialRoute: "/",
@@ -110,7 +127,7 @@ class _NavScreenState extends State<NavScreen> {
           ),
           activeColorPrimary: ColorApp.btn_orange,
           inactiveColorPrimary: ColorApp.btn_orange,
-          onPressed: (val){
+          onPressed: (val) {
             Get.toNamed(Routes.MOOD_TRACKER);
           },
           routeAndNavigatorSettings: RouteAndNavigatorSettings(
@@ -122,10 +139,18 @@ class _NavScreenState extends State<NavScreen> {
           ),
         ),
         PersistentBottomNavBarItem(
-          icon: SvgPicture.asset("assets/images/ic_learn_fill.svg"),
-          inactiveIcon: SvgPicture.asset("assets/images/ic_learn.svg"),
+          icon: SvgPicture.asset(
+            "assets/images/ic_learn_fill.svg",
+            width: 20,
+            height: 20,
+          ),
+          inactiveIcon: SvgPicture.asset(
+            "assets/images/ic_learn.svg",
+            width: 20,
+            height: 20,
+          ),
           title: Strings.learn,
-          activeColorPrimary: ColorApp.black,
+          activeColorPrimary: ColorApp.blue_container,
           inactiveColorPrimary: Colors.grey,
           routeAndNavigatorSettings: RouteAndNavigatorSettings(
             initialRoute: "/",
@@ -136,10 +161,18 @@ class _NavScreenState extends State<NavScreen> {
           ),
         ),
         PersistentBottomNavBarItem(
-          icon: SvgPicture.asset("assets/images/ic_insight_fill.svg"),
-          inactiveIcon: SvgPicture.asset("assets/images/ic_insight.svg"),
+          icon: SvgPicture.asset(
+            "assets/images/ic_insight_fill.svg",
+            width: 20,
+            height: 20,
+          ),
+          inactiveIcon: SvgPicture.asset(
+            "assets/images/ic_insight.svg",
+            width: 20,
+            height: 20,
+          ),
           title: Strings.insights,
-          activeColorPrimary: Colors.black,
+          activeColorPrimary: ColorApp.blue_container,
           inactiveColorPrimary: Colors.grey,
           routeAndNavigatorSettings: RouteAndNavigatorSettings(
             initialRoute: "/",
@@ -152,8 +185,7 @@ class _NavScreenState extends State<NavScreen> {
       ];
 
   @override
-  Widget build(final BuildContext context) =>
-      Scaffold(
+  Widget build(final BuildContext context) => Scaffold(
         drawer: Drawer(
           child: Center(
             child: Column(
@@ -180,11 +212,11 @@ class _NavScreenState extends State<NavScreen> {
           backgroundColor: ColorApp.bottom_nav_color,
           hideNavigationBar: _hideNavBar,
           decoration: const NavBarDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(14),
-                topRight: Radius.circular(14),
-              ),
-              ),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(14),
+              topRight: Radius.circular(14),
+            ),
+          ),
           itemAnimationProperties: const ItemAnimationProperties(
             duration: Duration(milliseconds: 400),
             curve: Curves.ease,
@@ -210,8 +242,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => SingleChildScrollView(
-        child:
-        SizedBox(),
+        child: SizedBox(),
 
         // SizedBox(
         //   height: MediaQuery.of(context).size.height,
@@ -352,8 +383,7 @@ class MainScreen2 extends StatelessWidget {
             children: <Widget>[
               ElevatedButton(
                 onPressed: () {
-                  PersistentNavBarNavigator.pushNewScreen(context,
-                      screen: const MainScreen3());
+                  pushNewScreen(context, screen: const MainScreen3());
                 },
                 child: const Text(
                   "Go to Third Screen",

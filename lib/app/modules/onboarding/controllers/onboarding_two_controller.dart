@@ -27,7 +27,9 @@ class OnBoardingTwoController extends GetxController {
             fullName: data.fullName,
             birthDate: dateChosen.value.toString(),
             pregnancyStatus: data.pregnancyStatus,
-            interests: data.interests));
+            interests: data.interests,
+            childBirthDate: data.childBirthDate,
+            estimateDueDate: data.estimateDueDate));
     800.milliseconds;
     Get.toNamed(Routes.ONBOARDING_THREE);
   }

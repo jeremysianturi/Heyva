@@ -39,46 +39,50 @@ class JustBirthOrPregnantView extends GetView<JustBirthOrPregnantController> {
             ),
             Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        _openDatePicker(context, controller);
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            ColorApp.text_input_bg),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(14)),
-                            side: BorderSide(color: ColorApp.text_input_bg),
-                          ),
-                        ),
-                      ),
-                      child: Obx(
-                        () => Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 17),
-                          child: Text(
-                            "${controller.dateChosen.value}",
-                            style: const TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w400,
-                                color: ColorApp.black_font_underline),
-                          ),
+                Container(
+                  width: Get.width,
+                  margin: EdgeInsets.symmetric(horizontal: 40),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _openDatePicker(context, controller);
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          ColorApp.text_input_bg),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(14)),
+                          side: BorderSide(color: ColorApp.text_input_bg),
                         ),
                       ),
                     ),
-                  ],
+                    child: Obx(
+                      () => Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 17),
+                        child: Text(
+                          "${controller.dateChosen.value}",
+                          style: const TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w400,
+                              color: ColorApp.blue_container),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-                OrangeButtonWTrailingIcon(
-                  determineAction: "from_onboarding_two",
-                  text: Strings.next,
-                  ontap: () {
-                    controller.onTap();
-                  },
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: OrangeButtonWTrailingIcon(
+                    determineAction: "from_onboarding_two",
+                    text: Strings.next,
+                    ontap: () {
+                      controller.onTap();
+                    },
+                  ),
                 ),
               ],
             ),

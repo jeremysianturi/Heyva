@@ -59,9 +59,9 @@ class InsightsController extends GetxController {
       if (profileResponse.value.success == "Success") {
         var data = profileResponse.value.data;
         box.write(Keys.profileName, data?.fullName);
-        // box.write(Keys.profileEmail, data?.e);
+        box.write(Keys.profileEmail, data?.user?.email);
         box.write(Keys.profileImgUrl, data?.avatar);
-        // box.write(Keys.profilePhone, data?.fullName);
+        box.write(Keys.profilePhone, data?.user?.phoneNumber);
       } else {
         errorMessage.value = profileResponse.value.message ?? "Error Message";
       }

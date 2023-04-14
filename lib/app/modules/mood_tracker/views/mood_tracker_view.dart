@@ -35,7 +35,10 @@ class MoodTrackerView extends GetView<MoodTrackerController> {
                 ),
                 const Text(
                   Strings.welcomeMoodChecking,
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 28,
+                      color: ColorApp.blue_container),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(

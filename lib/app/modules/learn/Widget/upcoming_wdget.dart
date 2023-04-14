@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/constant/colors.dart';
@@ -12,6 +11,7 @@ class UpcomingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
           Strings.upcomingProgram,
@@ -25,13 +25,12 @@ class UpcomingWidget extends StatelessWidget {
         ),
         Container(
             width: Get.width,
-            padding: EdgeInsets.symmetric(horizontal: 14),
+            padding: const EdgeInsets.symmetric(horizontal: 14),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14.0),
               image: const DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage(
-                    "assets/images/bg_blue_container_medal.png"),
+                image: AssetImage("assets/images/bg_blue_container_medal.png"),
               ),
             ),
             child: Row(
@@ -39,18 +38,18 @@ class UpcomingWidget extends StatelessWidget {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      SizedBox(
+                    children: [
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text(
+                      const Text(
                         "Dui massa malesuada",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
                             color: ColorApp.white_font),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Text(
@@ -58,9 +57,9 @@ class UpcomingWidget extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            color: ColorApp.grey_card_font),
+                            color: ColorApp.grey_card_font.withOpacity(0.6)),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                     ],
@@ -79,13 +78,12 @@ class UpcomingWidget extends StatelessWidget {
         ),
         Container(
             width: Get.width,
-            padding: EdgeInsets.symmetric(horizontal: 14),
+            padding: const EdgeInsets.symmetric(horizontal: 14),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14.0),
               image: const DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage(
-                    "assets/images/bg_blue_container_medal.png"),
+                image: AssetImage("assets/images/bg_blue_container_medal.png"),
               ),
             ),
             child: Row(
@@ -93,18 +91,18 @@ class UpcomingWidget extends StatelessWidget {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      SizedBox(
+                    children: [
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text(
+                      const Text(
                         "Dui massa malesuada",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
                             color: ColorApp.white_font),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Text(
@@ -112,9 +110,9 @@ class UpcomingWidget extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            color: ColorApp.grey_card_font),
+                            color: ColorApp.grey_card_font.withOpacity(0.6)),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                     ],

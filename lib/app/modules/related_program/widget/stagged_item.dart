@@ -94,7 +94,7 @@ class Staggered extends StatelessWidget {
                 style: const TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 18,
-                    color: ColorApp.black_font_underline),
+                    color: ColorApp.blue_container),
               ),
               const SizedBox(
                 height: 10,

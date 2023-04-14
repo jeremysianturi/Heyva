@@ -33,7 +33,7 @@ class LoginGoogleAppleView extends GetView<LoginGoogleAppleController> {
                     children: const [
                       Text(
                         Strings.name_ques_text,
-                        style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700, color: ColorApp.black_font_underline ),
+                        style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700, color: ColorApp.blue_container ),
                       )
                     ],
                   ),

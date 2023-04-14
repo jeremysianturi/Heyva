@@ -21,22 +21,19 @@ class ProfileController extends GetxController {
   var box = GetStorage();
 
   String get profileName {
-    var read = box.read(Keys.profileName) ?? "";
-    if (read.toString().isNotEmpty) {
-      return box.read(Keys.profileName) ?? "";
-    } else {
-      return profileResponse.value.data?.fullName ?? "";
-    }
+    return profileResponse.value.data?.fullName ?? "";
+  }
+
+  String get email {
+    return profileResponse.value.data?.user?.email ?? "";
+  }
+
+  String get phone {
+    return profileResponse.value.data?.user?.phoneNumber ?? "";
   }
 
   String get profileAvatar {
-    var read = box.read(Keys.profileImgUrl) ?? "";
-    if (read.toString().isNotEmpty) {
-      debugPrint("read profile urel $read");
-      return box.read(Keys.profileImgUrl) ?? "";
-    } else {
-      return profileResponse.value.data?.avatar ?? "";
-    }
+    return profileResponse.value.data?.avatar ?? "";
   }
 
   var profileSettings = [
@@ -84,13 +81,12 @@ class ProfileController extends GetxController {
     try {
       profileResponse.value = (await _profileProvider.getProfile())!;
       isLoading.value = false;
-
       if (profileResponse.value.success == "Success") {
         var data = profileResponse.value.data;
         box.write(Keys.profileName, data?.fullName);
-        // box.write(Keys.profileEmail, data?.e);
+        box.write(Keys.profileEmail, data?.user?.email);
         box.write(Keys.profileImgUrl, data?.avatar);
-        // box.write(Keys.profilePhone, data?.fullName);
+        box.write(Keys.profilePhone, data?.user?.phoneNumber);
       } else {
         errorMessage.value = profileResponse.value.message ?? "Error Message";
       }
@@ -128,7 +124,7 @@ class ProfileController extends GetxController {
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
-                        color: ColorApp.black_font_underline),
+                        color: ColorApp.blue_container),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -237,7 +233,7 @@ class ProfileController extends GetxController {
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
-                        color: ColorApp.black_font_underline),
+                        color: ColorApp.blue_container),
                   ),
                   GestureDetector(
                     onTap: () {

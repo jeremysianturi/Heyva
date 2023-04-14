@@ -33,9 +33,9 @@ class ProfileSettingsItem extends StatelessWidget {
                   style: const TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 18,
-                      color: ColorApp.black),
+                      color: ColorApp.blue_container),
                 ),
-                SvgPicture.asset("assets/icons/ic_chevron_right.svg")
+                SvgPicture.asset("assets/icons/ic_chevron_right.svg",color: ColorApp.blue_container,)
               ],
             ),
             const SizedBox(
@@ -44,7 +44,7 @@ class ProfileSettingsItem extends StatelessWidget {
             Container(
               width: Get.width,
               height: 1,
-              color: ColorApp.black.withOpacity(0.3),
+              color: ColorApp.blue_container.withOpacity(0.3),
             )
           ],
         ),

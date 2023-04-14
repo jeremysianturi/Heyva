@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 
 import '../../constant/colors.dart';
 import '../modules/onboarding/views/onboarding_one_view.dart';
@@ -39,6 +40,8 @@ class OrangeButtonWTrailingIcon extends StatelessWidget {
                 ontap!();
               } else if (determineAction == "ontap") {
                 ontap!();
+              } else if (determineAction == "from_turnon_notif") {
+                Get.toNamed(Routes.ONBOARDING_FINISH);
               }
             },
             style: ButtonStyle(

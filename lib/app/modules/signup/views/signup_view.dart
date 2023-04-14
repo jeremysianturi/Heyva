@@ -39,7 +39,7 @@ class SignUpView extends GetView<SignUpController> {
                       const Text(
                         Strings.login,
                         style: TextStyle(
-                            color: ColorApp.black,
+                            color: ColorApp.blue_container,
                             fontSize: 16,
                             fontWeight: FontWeight.w600),
                       ),
@@ -56,7 +56,7 @@ class SignUpView extends GetView<SignUpController> {
                       Strings.new_acc_text,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: ColorApp.black_font_underline,
+                        color: ColorApp.blue_container,
                         fontSize: 28,
                         fontWeight: FontWeight.w700,
                       ),
@@ -88,7 +88,7 @@ class SignUpView extends GetView<SignUpController> {
                       TextSpan(
                         text: Strings.terms_service_underline,
                         style: TextStyle(
-                            color: ColorApp.black_font_underline,
+                            color: ColorApp.blue_container,
                             decoration: TextDecoration.underline,
                             fontSize: 14,
                             fontWeight: FontWeight.w700),
@@ -104,7 +104,7 @@ class SignUpView extends GetView<SignUpController> {
                       TextSpan(
                         text: Strings.privacy_policy_underline,
                         style: TextStyle(
-                            color: ColorApp.black_font_underline,
+                            color: ColorApp.blue_container,
                             decoration: TextDecoration.underline,
                             fontSize: 14,
                             fontWeight: FontWeight.w700),

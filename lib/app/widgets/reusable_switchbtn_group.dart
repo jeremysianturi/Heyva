@@ -36,7 +36,7 @@ class ReusableSwitchButton extends StatelessWidget {
                       title,
                       textAlign: TextAlign.start,
                       style: const TextStyle(
-                        color: ColorApp.black,
+                        color: ColorApp.grey_font,
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
@@ -48,7 +48,7 @@ class ReusableSwitchButton extends StatelessWidget {
                       desc,
                       textAlign: TextAlign.start,
                       style: const TextStyle(
-                        color: ColorApp.black,
+                        color: ColorApp.blue_container,
                         fontSize: 20,
                         fontWeight: FontWeight.w400,
                       ),

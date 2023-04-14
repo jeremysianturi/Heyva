@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:heyva/constant/colors.dart';
 
 class RegularTextField extends StatelessWidget {
-  const RegularTextField({
+   RegularTextField({
     super.key,
     required this.controller,
     required this.isObsecure,
@@ -11,6 +11,7 @@ class RegularTextField extends StatelessWidget {
     required this.hint,
     required this.isPassword,
     this.isNumber = false,
+    this.isEnable = true,
   });
 
   final TextEditingController controller;
@@ -20,17 +21,23 @@ class RegularTextField extends StatelessWidget {
   final String hint;
   final bool isNumber;
   final bool isPassword;
+  bool isEnable;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      enabled:isEnable,
       controller: controller,
       obscureText: isPassword ? isObsecure : false,
       keyboardType: isNumber ? TextInputType.number : TextInputType.text,
+      style: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: ColorApp.blue_container),
       decoration: InputDecoration(
           hintText: hint,
           contentPadding:
-              const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
+          const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
           filled: true,
           fillColor: ColorApp.text_input_bg,
           hintStyle: const TextStyle(
@@ -62,25 +69,25 @@ class RegularTextField extends StatelessWidget {
           errorStyle: const TextStyle(fontSize: 0.01),
           suffixIcon: isPassword
               ? InkWell(
-                  onTap: () {
-                    ontap();
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20.0),
-                        child: Text(
-                          isObsecure ? "Show" : "Hide",
-                          style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: ColorApp.black_font_underline),
-                        ),
-                      ),
-                    ],
+            onTap: () {
+              ontap();
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 20.0),
+                  child: Text(
+                    isObsecure ? "Show" : "Hide",
+                    style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: ColorApp.blue_container),
                   ),
-                )
+                ),
+              ],
+            ),
+          )
               : null),
     );
   }

@@ -118,7 +118,7 @@ class ArticleView extends GetView<ArticleController> {
                                       child: Text(
                                         controller.title,
                                         style: const TextStyle(
-                                          color: ColorApp.black_font_underline,
+                                          color: ColorApp.blue_container,
                                           fontSize: 24,
                                           fontWeight: FontWeight.w700,
                                         ),
@@ -193,7 +193,7 @@ class ArticleView extends GetView<ArticleController> {
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600,
                                             color:
-                                                ColorApp.black_font_underline),
+                                                ColorApp.blue_container),
                                       ),
                                     ),
                                     TextButton.icon(
@@ -208,7 +208,7 @@ class ArticleView extends GetView<ArticleController> {
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600,
                                             color:
-                                                ColorApp.black_font_underline),
+                                                ColorApp.blue_container),
                                       ),
                                     ),
                                   ],

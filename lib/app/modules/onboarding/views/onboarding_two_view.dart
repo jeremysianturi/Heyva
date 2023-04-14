@@ -28,7 +28,7 @@ class OnBoardingTwoView extends GetView<OnBoardingTwoController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Padding(
+             Padding(
               padding: EdgeInsets.only(top: 48),
               child: OnBoardingHeader(
                 indicatorColor1: ColorApp.btn_orange,
@@ -36,46 +36,54 @@ class OnBoardingTwoView extends GetView<OnBoardingTwoController> {
                 indicatorColor3: ColorApp.grey_divider,
                 title: Strings.birthday_ques_text,
                 subtitle: Strings.relevant_text,
+                showBackIcon: false,
               ),
             ),
             Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        _openDatePicker(context);
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            ColorApp.text_input_bg),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(14)),
-                            side: BorderSide(color: ColorApp.text_input_bg),
-                          ),
+                Container(
+                  width: Get.width,
+                  margin: EdgeInsets.symmetric(horizontal: 40),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _openDatePicker(context);
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          ColorApp.text_input_bg),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(14)),
+                          side: BorderSide(color: ColorApp.text_input_bg),
                         ),
                       ),
-                      child: Obx(
-                        () => Text(
+                    ),
+                    child: Obx(
+                      () => Container(
+                        padding: EdgeInsets.symmetric(vertical: 18),
+                        child: Text(
                           "${onBoardingTwoController.dateChosen.value}",
                           style: const TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.w400,
-                              color: ColorApp.black_font_underline),
+                              color: ColorApp.blue_container),
                         ),
                       ),
                     ),
-                  ],
+                  ),
                 ),
-                OrangeButtonWTrailingIcon(
-                  determineAction: "from_onboarding_two",
-                  text: Strings.next,
-                  ontap: () {
-                    controller.onTap();
-                  },
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: OrangeButtonWTrailingIcon(
+                    determineAction: "from_onboarding_two",
+                    text: Strings.next,
+                    ontap: () {
+                      controller.onTap();
+                    },
+                  ),
                 ),
               ],
             ),
