@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/login/views/login_google_apple.dart';
-import 'package:heyva/app/modules/login/views/login_view.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../constant/colors.dart';
@@ -28,7 +28,7 @@ class ReusableBtnLoginGroup extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               if (detemineAction == Strings.continue_email) {
-                Get.to(LoginView());
+                Get.toNamed(Routes.LOGIN);
               } else if (detemineAction == Strings.login) {
                 // Get.to(RegisterView());
                 onTap!();
