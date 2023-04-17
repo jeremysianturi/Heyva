@@ -14,65 +14,63 @@ class NotificationSettingsView extends GetView<NotificationSettingsController> {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        body: SafeArea(
-          child: Container(
-            height: Get.height,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/bg_heyva2.png"),
-                fit: BoxFit.fill,
+        body: Container(
+          height: Get.height,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/bg_heyva2.png"),
+              fit: BoxFit.fill,
+            ),
+          ),
+          child: Column(
+            children: [
+              Container(
+                  margin: const EdgeInsets.only(top: 60),
+                  child: const ProfileHeader(
+                    centerTitle: Strings.profile,
+                    showIcon: false,
+                    showCenterTitle: false,
+                  )),
+              const SizedBox(
+                height: 22,
               ),
-            ),
-            child: Column(
-              children: [
-                Container(
-                    margin: const EdgeInsets.only(top: 14),
-                    child: const ProfileHeader(
-                      centerTitle: Strings.profile,
-                      showIcon: false,
-                      showCenterTitle: false,
-                    )),
-                const SizedBox(
-                  height: 22,
+              const Text(
+                Strings.notifSetting,
+                style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 28,
+                    color: ColorApp.blue_container),
+              ),
+              const SizedBox(
+                height: 65,
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    Obx(() => NotifSettingItem(
+                          status: controller.pushNotifStatus.value,
+                          ontap: () {
+                            controller.pushNotifStatus.value =
+                                !controller.programNotifStatus.value;
+                          },
+                          title: Strings.pushNotif,
+                        )),
+                    const SizedBox(
+                      height: 19,
+                    ),
+                    Obx(() => NotifSettingItem(
+                          status: controller.programNotifStatus.value,
+                          ontap: () {
+                            controller.programNotifStatus.value =
+                                !controller.programNotifStatus.value;
+                          },
+                          title: Strings.programNotification,
+                        ))
+                  ],
                 ),
-                const Text(
-                  Strings.notifSetting,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 28,
-                      color: ColorApp.blue_container),
-                ),
-                const SizedBox(
-                  height: 65,
-                ),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    children: [
-                      Obx(() => NotifSettingItem(
-                            status: controller.pushNotifStatus.value,
-                            ontap: () {
-                              controller.pushNotifStatus.value =
-                                  !controller.programNotifStatus.value;
-                            },
-                            title: Strings.pushNotif,
-                          )),
-                      const SizedBox(
-                        height: 19,
-                      ),
-                      Obx(() => NotifSettingItem(
-                            status: controller.programNotifStatus.value,
-                            ontap: () {
-                              controller.programNotifStatus.value =
-                                  !controller.programNotifStatus.value;
-                            },
-                            title: Strings.programNotification,
-                          ))
-                    ],
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ));
   }

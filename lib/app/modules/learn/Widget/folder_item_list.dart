@@ -19,6 +19,7 @@ class FolderItemList extends StatelessWidget {
       childAspectRatio: 162 / 60,
       crossAxisSpacing: 11,
       mainAxisSpacing: 12,
+      padding: EdgeInsets.zero,
       children: List.generate(controller.folderList.length, (index) {
         return Container(
             child: FolderItem(

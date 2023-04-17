@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/register/controllers/register_controller.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_regular_textfield.dart';
 
 import '../../../../constant/colors.dart';
@@ -31,23 +32,21 @@ class RegisterView extends GetView<RegisterController> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const SizedBox(
-                  height: 56,
+                  height: 15,
                 ),
-                const Header(
+                Header(
                   rightText: Strings.login,
+                  ontapIcon: () {
+                    Get.toNamed(Routes.LOGIN);
+                  },
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      Strings.register,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.w700,
-                          color: ColorApp.blue_container),
-                    )
-                  ],
+                const Text(
+                  Strings.register,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                      color: ColorApp.blue_container),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 42.5),

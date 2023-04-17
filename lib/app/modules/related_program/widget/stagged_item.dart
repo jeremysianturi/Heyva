@@ -34,6 +34,15 @@ class Staggered extends StatelessWidget {
           Get.toNamed(Routes.ARTICLE,
               arguments: {Keys.contentIDArticleArguments: data?.contents?.id});
         }
+        var title = data?.contents?.title ?? "";
+        if (data?.contentType?.name?.toLowerCase() == "program" &&
+            title.toLowerCase().contains("breathin")) {
+          Get.toNamed(Routes.BREATHING_EXERCISE);
+        }
+        if (data?.contentType?.name?.toLowerCase() == "program" &&
+            title.toLowerCase().contains("pelvic")) {
+          Get.toNamed(Routes.BREATHING_ONE);
+        }
       },
       child: Container(
           width: Get.width,

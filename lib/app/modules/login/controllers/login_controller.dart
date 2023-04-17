@@ -30,8 +30,8 @@ class LoginController extends GetxController {
     _clientRefresh = RefreshDioClient();
     _provider = LoginProvider(_client.init());
     _refreshprovider = LoginProvider(_clientRefresh.init());
-    // emailC.text = "kang-bakso@harakirimail.com";
-    // passC.text = "minimal8";
+    emailC.text = "kang-bakso@harakirimail.com";
+    passC.text = "minimal8";
     super.onInit();
   }
 
@@ -79,7 +79,7 @@ class LoginController extends GetxController {
         refreshToken = loginResonse.value.data?.refreshToken ?? "";
         userId = loginResonse.value.data?.id ?? "";
         Future.delayed(800.milliseconds);
-        Get.toNamed(Routes.BREATHING_ONE);
+        Get.toNamed(Routes.BREATHING_EXERCISE);
       } else {
         if (loginResonse.value.message
             .toString()

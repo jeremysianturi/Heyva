@@ -53,7 +53,7 @@ class OnboardingFinishController extends GetxController {
         userId = loginResonse.value.data?.id ?? "";
         Future.delayed(800.milliseconds, () {
           isLoading.value = false;
-          Get.toNamed(Routes.BREATHING_ONE);
+          Get.toNamed(Routes.BREATHING_EXERCISE);
         });
       } else {
         isLoading.value = false;

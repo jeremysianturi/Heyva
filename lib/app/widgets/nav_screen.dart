@@ -86,13 +86,13 @@ class _NavScreenState extends State<NavScreen> {
         PersistentBottomNavBarItem(
             icon: SvgPicture.asset(
               "assets/images/ic_home_fill.svg",
-              width: 20,
-              height: 20,
+              width: 24,
+              height: 24,
             ),
             inactiveIcon: SvgPicture.asset(
               "assets/images/ic_home.svg",
-              width: 20,
-              height: 20,
+              width: 24,
+              height: 24,
             ),
             title: Strings.home,
             activeColorPrimary: ColorApp.blue_container,
@@ -101,13 +101,13 @@ class _NavScreenState extends State<NavScreen> {
         PersistentBottomNavBarItem(
           icon: SvgPicture.asset(
             "assets/images/ic_recovery_fill.svg",
-            width: 20,
-            height: 20,
+            width: 24,
+            height: 24,
           ),
           inactiveIcon: SvgPicture.asset(
             "assets/images/ic_recovery.svg",
-            width: 20,
-            height: 20,
+            width: 24,
+            height: 24,
           ),
           title: Strings.recovery,
           activeColorPrimary: ColorApp.blue_container,
@@ -141,13 +141,13 @@ class _NavScreenState extends State<NavScreen> {
         PersistentBottomNavBarItem(
           icon: SvgPicture.asset(
             "assets/images/ic_learn_fill.svg",
-            width: 20,
-            height: 20,
+            width: 24,
+            height: 24,
           ),
           inactiveIcon: SvgPicture.asset(
             "assets/images/ic_learn.svg",
-            width: 20,
-            height: 20,
+            width: 24,
+            height: 24,
           ),
           title: Strings.learn,
           activeColorPrimary: ColorApp.blue_container,
@@ -163,13 +163,13 @@ class _NavScreenState extends State<NavScreen> {
         PersistentBottomNavBarItem(
           icon: SvgPicture.asset(
             "assets/images/ic_insight_fill.svg",
-            width: 20,
-            height: 20,
+            width: 24,
+            height: 24,
           ),
           inactiveIcon: SvgPicture.asset(
             "assets/images/ic_insight.svg",
-            width: 20,
-            height: 20,
+            width: 24,
+            height: 24,
           ),
           title: Strings.insights,
           activeColorPrimary: ColorApp.blue_container,

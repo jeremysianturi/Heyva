@@ -179,18 +179,19 @@ class PhysicalCheckController extends GetxController {
     } else {
       await Get.toNamed(Routes.BACK_BODY_CHECK);
       var box = GetStorage();
-      var checkFront =
+      var cekBack =
           box.read(Keys.physicalCheckBackBodyResponse) as List<TrackerDetail>;
       var loop = 0;
-      checkFront.forEach((e) {
+      cekBack.forEach((e) {
         var isselected =
             e.jsonContent?.firstWhereOrNull((e) => e.isSelected == true)?.name;
-        if (isselected != "") {
+        if (isselected != "" && isselected.toString() != "null") {
           debugPrint("isselected $isselected");
           loop++;
         }
       });
-      if (loop == checkFront.length) {
+
+      if (loop == cekBack.length - 1) {
         trackerResponse.value.data?[index].isDone = true;
         trackerResponse.refresh();
         debugPrint("done ${trackerResponse.value.data?[index].isDone}");

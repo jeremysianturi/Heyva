@@ -25,7 +25,7 @@ class MoodTrackerFormView extends GetView<MoodTrackerFormController> {
               ),
               Container(
                   height: 2,
-                  margin: const EdgeInsets.only(top: 30, left: 20, right: 20),
+                  margin: const EdgeInsets.only(top: 60, left: 20, right: 20),
                   child: GridView.count(
                     crossAxisCount: controller.moodList.length,
                     childAspectRatio: 165 / 2,
@@ -66,177 +66,175 @@ class MoodCheckForm1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: SafeArea(
-        child: Container(
-          height: Get.height - 50,
-          width: Get.width,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/bg_heyva.png"),
-              fit: BoxFit.fill,
-            ),
+      child: Container(
+        height: Get.height - 50,
+        width: Get.width,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/bg_heyva.png"),
+            fit: BoxFit.fill,
           ),
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  Container(
-                      margin: const EdgeInsets.only(top: 14),
-                      child: Header(
-                          showCenterTitle: true,
-                          centerTitle: Strings.moodCheckIn,
-                          rightText: Strings.skip,
-                          isCostomBackFucntion: true,
-                          onBack: () {
-                            if (controller.pagePosition.value != 0) {
-                              controller.pagePosition.value =
-                                  controller.pagePosition.value - 1;
-                            } else {
-                              Get.back();
-                            }
-                          },
-                          showIcon: false)),
-                  const SizedBox(
-                    height: 100,
+        ),
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                Container(
+                    margin: const EdgeInsets.only(top: 80),
+                    child: Header(
+                        showCenterTitle: true,
+                        centerTitle: Strings.moodCheckIn,
+                        rightText: Strings.skip,
+                        isCostomBackFucntion: true,
+                        onBack: () {
+                          if (controller.pagePosition.value != 0) {
+                            controller.pagePosition.value =
+                                controller.pagePosition.value - 1;
+                          } else {
+                            Get.back();
+                          }
+                        },
+                        showIcon: false)),
+                const SizedBox(
+                  height: 100,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Text(
+                    data.title ?? "",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 28,
+                        color: ColorApp.blue_container),
+                    textAlign: TextAlign.center,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: Text(
-                      data.title ?? "",
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 28,
-                          color: ColorApp.blue_container),
-                      textAlign: TextAlign.center,
-                    ),
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: Text(
+                    data.body ?? "",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                        color: ColorApp.black.withOpacity(0.3)),
+                    textAlign: TextAlign.center,
                   ),
-                  const SizedBox(
-                    height: 4,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
-                    child: Text(
-                      data.body ?? "",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                          color: ColorApp.black.withOpacity(0.3)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Obx(() {
-                    var item =
-                        controller.moodList[controller.pagePosition.value];
-                    var itemLength = item.jsonContent?.length ?? 0;
-                    return Column(
-                      children: [
-                        item.jsonContent.toString() != "null"
-                            ? Container(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: GridView.builder(
-                                  physics: const ClampingScrollPhysics(),
-                                  shrinkWrap: true,
-                                  padding: EdgeInsets.zero,
-                                  itemCount: itemLength - 1,
-                                  itemBuilder: (context, index) => FeelingItem(
-                                    ontap: () {
-                                      controller.onSelectFeeling(index);
-                                    },
-                                    name: item.jsonContent?[index].name ?? "",
-                                    isSelected:
-                                        item.jsonContent?[index].isSelected ??
-                                            false,
-                                    emoji: item.jsonContent?[index].emoji ?? "",
-                                  ),
-                                  gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 2,
-                                          childAspectRatio: 162 / 46,
-                                          crossAxisSpacing: 11,
-                                          mainAxisSpacing: 10),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Obx(() {
+                  var item =
+                      controller.moodList[controller.pagePosition.value];
+                  var itemLength = item.jsonContent?.length ?? 0;
+                  return Column(
+                    children: [
+                      item.jsonContent.toString() != "null"
+                          ? Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: GridView.builder(
+                                physics: const ClampingScrollPhysics(),
+                                shrinkWrap: true,
+                                padding: EdgeInsets.zero,
+                                itemCount: itemLength - 1,
+                                itemBuilder: (context, index) => FeelingItem(
+                                  ontap: () {
+                                    controller.onSelectFeeling(index);
+                                  },
+                                  name: item.jsonContent?[index].name ?? "",
+                                  isSelected:
+                                      item.jsonContent?[index].isSelected ??
+                                          false,
+                                  emoji: item.jsonContent?[index].emoji ?? "",
                                 ),
-                              )
-                            : const SizedBox(),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 20),
-                          child: TextFormField(
-                            maxLines: null,
-                            minLines:
-                                item.jsonContent.toString() != "null" ? 1 : 9,
-                            controller: controller.otherC,
-                            decoration: InputDecoration(
-                              hintText: Strings.other,
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 17, horizontal: 20),
-                              filled: true,
-                              fillColor: ColorApp.white,
-                              hintStyle: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  color: ColorApp.grey_font),
-                              labelStyle: const TextStyle(
-                                  fontSize: 16,
-                                  color: ColorApp.blue_container,
-                                  fontWeight: FontWeight.w400),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(14),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        childAspectRatio: 162 / 46,
+                                        crossAxisSpacing: 11,
+                                        mainAxisSpacing: 10),
                               ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(14.0),
-                                borderSide: const BorderSide(
-                                  color: Colors.red,
-                                  width: 0.8,
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(14.0),
-                                borderSide: const BorderSide(
-                                  color: Colors.red,
-                                  width: 0.8,
-                                ),
+                            )
+                          : const SizedBox(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 20),
+                        child: TextFormField(
+                          maxLines: null,
+                          minLines:
+                              item.jsonContent.toString() != "null" ? 1 : 9,
+                          controller: controller.otherC,
+                          decoration: InputDecoration(
+                            hintText: Strings.other,
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 17, horizontal: 20),
+                            filled: true,
+                            fillColor: ColorApp.white,
+                            hintStyle: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: ColorApp.grey_font),
+                            labelStyle: const TextStyle(
+                                fontSize: 16,
+                                color: ColorApp.blue_container,
+                                fontWeight: FontWeight.w400),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(14.0),
+                              borderSide: const BorderSide(
+                                color: Colors.red,
+                                width: 0.8,
                               ),
                             ),
-                            onChanged: (val) {
-                              controller.onOther(val);
-                            },
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(14.0),
+                              borderSide: const BorderSide(
+                                color: Colors.red,
+                                width: 0.8,
+                              ),
+                            ),
                           ),
+                          onChanged: (val) {
+                            controller.onOther(val);
+                          },
                         ),
-                      ],
-                    );
-                  }),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  if (controller.isShowButton)
-                    OrangeButtonWTrailingIcon(
-                      determineAction: "ontap",
-                      text: Strings.continue_text,
-                      ontap: () {
-                        if (controller.moodList.length !=
-                            controller.pagePosition.value + 1) {
-                          controller.otherC.text = "";
-                          FocusScope.of(context).requestFocus(FocusNode());
-                          controller.pagePosition.value =
-                              controller.pagePosition.value + 1;
-                        } else {
-                          controller.moodList[index].notes =
-                              controller.otherC.text;
-                          controller.moodList.refresh();
-                          Get.toNamed(Routes.SLEEP_CHECK_IN);
-                        }
-                      },
-                    )
-                ],
-              ),
-            ],
-          ),
+                      ),
+                    ],
+                  );
+                }),
+                const SizedBox(
+                  height: 10,
+                ),
+                if (controller.isShowButton)
+                  OrangeButtonWTrailingIcon(
+                    determineAction: "ontap",
+                    text: Strings.continue_text,
+                    ontap: () {
+                      if (controller.moodList.length !=
+                          controller.pagePosition.value + 1) {
+                        controller.otherC.text = "";
+                        FocusScope.of(context).requestFocus(FocusNode());
+                        controller.pagePosition.value =
+                            controller.pagePosition.value + 1;
+                      } else {
+                        controller.moodList[index].notes =
+                            controller.otherC.text;
+                        controller.moodList.refresh();
+                        Get.toNamed(Routes.SLEEP_CHECK_IN);
+                      }
+                    },
+                  )
+              ],
+            ),
+          ],
         ),
       ),
     );

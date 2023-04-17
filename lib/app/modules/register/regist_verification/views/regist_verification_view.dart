@@ -118,6 +118,7 @@ class RegistVerificationView extends GetView<RegistVerificationController> {
                           const ImageIcon(
                             AssetImage("assets/icons/ic_arrow_right.png"),
                             color: ColorApp.arrow_white,
+
                           )
                         ],
                       ),

@@ -26,110 +26,108 @@ class Recomendation2View extends GetView<Recomendation2Controller> {
           color: ColorApp.btn_orange,
         ),
         opacity: 0.3,
-        child: SafeArea(
-          child: Scaffold(
-            body: Container(
-              height: Get.height,
-              width: Get.width,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/bg_heyva.png"),
-                  fit: BoxFit.fill,
+        child: Scaffold(
+          body: Container(
+            height: Get.height,
+            width: Get.width,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/bg_heyva.png"),
+                fit: BoxFit.fill,
+              ),
+            ),
+            child: Column(
+              children: [
+                Container(
+                    margin: const EdgeInsets.only(top: 60),
+                    child: const Header(
+                        showCenterTitle: true,
+                        centerTitle: Strings.recomendation,
+                        rightText: Strings.skip,
+                        showIcon: true)),
+                const SizedBox(
+                  height: 24,
                 ),
-              ),
-              child: Column(
-                children: [
-                  Container(
-                      margin: const EdgeInsets.only(top: 14),
-                      child: const Header(
-                          showCenterTitle: true,
-                          centerTitle: Strings.recomendation,
-                          rightText: Strings.skip,
-                          showIcon: true)),
-                  const SizedBox(
-                    height: 24,
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "More relevant articles",
+                    style: TextStyle(
+                        color: ColorApp.black,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 28),
+                    textAlign: TextAlign.center,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(
-                      "More relevant articles",
-                      style: TextStyle(
-                          color: ColorApp.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 28),
-                      textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  child: Text(
+                    "Based on your result, here are some recommendations our healthcare professionals have curated for you.",
+                    style: TextStyle(
+                        color: ColorApp.grey_font,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                Expanded(
+                    child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: GridView.custom(
+                    shrinkWrap: true,
+                    gridDelegate: SliverQuiltedGridDelegate(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      repeatPattern: QuiltedGridRepeatPattern.inverted,
+                      pattern: [
+                        const QuiltedGridTile(1, 2),
+                        const QuiltedGridTile(1, 1),
+                      ],
                     ),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40),
-                    child: Text(
-                      "Based on your result, here are some recommendations our healthcare professionals have curated for you.",
-                      style: TextStyle(
-                          color: ColorApp.grey_font,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  Expanded(
-                      child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: GridView.custom(
-                      shrinkWrap: true,
-                      gridDelegate: SliverQuiltedGridDelegate(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
-                        repeatPattern: QuiltedGridRepeatPattern.inverted,
-                        pattern: [
-                          const QuiltedGridTile(1, 2),
-                          const QuiltedGridTile(1, 1),
-                        ],
-                      ),
-                      childrenDelegate: SliverChildBuilderDelegate(
-                          childCount: controller
-                                  .recomendationResponse.value.data?.length ??
-                              0, (context, index) {
-                        debugPrint(
-                            "recomendation response length ${controller.recomendationResponse.value.data?.length}");
+                    childrenDelegate: SliverChildBuilderDelegate(
+                        childCount: controller
+                                .recomendationResponse.value.data?.length ??
+                            0, (context, index) {
+                      debugPrint(
+                          "recomendation response length ${controller.recomendationResponse.value.data?.length}");
 
-                        var data =
-                            controller.recomendationResponse.value.data?[index];
-                        return RecomendationWidget(
-                          bg: ColorApp.btn_pink,
-                          height: 200,
-                          marRight: 0,
-                          marleft: 0,
-                          title: data?.contents?.title ?? "",
-                          subtitle: data?.contents?.body ?? "",
-                          contentType: data?.contentType?.name ?? "",
-                          imgUrl: data?.contents?.thumbnail ?? "",
-                          contentId: data?.contents?.id ?? "",
-                        );
-                      }),
-                    ),
-                  )),
-                  OrangeButtonWTrailingIcon(
-                    determineAction: "ontap",
-                    text: Strings.thankYou,
-                    ontap: () {
-                      Get.deleteAll();
-                      pushNewScreen(
-                        context,
-                        screen: NavScreen(
-                          menuScreenContext: context,
-                        ),
+                      var data =
+                          controller.recomendationResponse.value.data?[index];
+                      return RecomendationWidget(
+                        bg: ColorApp.btn_pink,
+                        height: 200,
+                        marRight: 0,
+                        marleft: 0,
+                        title: data?.contents?.title ?? "",
+                        subtitle: data?.contents?.body ?? "",
+                        contentType: data?.contentType?.name ?? "",
+                        imgUrl: data?.contents?.thumbnail ?? "",
+                        contentId: data?.contents?.id ?? "",
                       );
-                    },
-                  )
-                ],
-              ),
+                    }),
+                  ),
+                )),
+                OrangeButtonWTrailingIcon(
+                  determineAction: "ontap",
+                  text: Strings.thankYou,
+                  ontap: () {
+                    Get.deleteAll();
+                    pushNewScreen(
+                      context,
+                      screen: NavScreen(
+                        menuScreenContext: context,
+                      ),
+                    );
+                  },
+                )
+              ],
             ),
           ),
         )));
