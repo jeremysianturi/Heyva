@@ -72,9 +72,9 @@ class RegisterController extends GetxController {
 
   @override
   void onInit() {
-    fullname.text = "testing";
-    email.text = "testing@gmail.com";
-    pass.text = "minimal88";
+    // fullname.text = "testing";
+    // email.text = "testing@gmail.com";
+    // pass.text = "minimal88";
     super.onInit();
   }
 

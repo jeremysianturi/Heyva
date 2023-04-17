@@ -8,7 +8,8 @@ import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:heyva/services/dio_services.dart';
 
-class RegistVerificationController extends FullLifeCycleController {
+
+class RegistVerificationController extends GetxController {
   var box = GetStorage();
   var errorMessage = ''.obs;
   var isLoading = false.obs;
@@ -31,14 +32,6 @@ class RegistVerificationController extends FullLifeCycleController {
     _client = RefreshDioClient();
     _registerProvider = RegisterProvider(_client.init());
     boxData.value = box.read(Keys.registStorage) as RegisterStorageModel;
-    WidgetsBinding.instance.addObserver(this);
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-
-    super.dispose();
   }
 
   var checkVeriviedResonse =
@@ -84,14 +77,6 @@ class RegistVerificationController extends FullLifeCycleController {
     } catch (e) {
       isLoading.value = false;
       debugPrint("error  $e");
-    }
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) {
-      debugPrint("Onresume ------ ");
-      cekVerified();
     }
   }
 }

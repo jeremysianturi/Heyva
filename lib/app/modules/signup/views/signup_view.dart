@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/signup/controllers/signup_controller.dart';
-import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
 
@@ -37,17 +36,12 @@ class SignUpView extends GetView<SignUpController> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SvgPicture.asset("assets/images/heyva_text_logo.svg"),
-                      GestureDetector(
-                        onTap: () {
-                          Get.toNamed(Routes.LOGIN);
-                        },
-                        child: const Text(
-                          Strings.login,
-                          style: TextStyle(
-                              color: ColorApp.blue_container,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600),
-                        ),
+                      const Text(
+                        Strings.login,
+                        style: TextStyle(
+                            color: ColorApp.blue_container,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
