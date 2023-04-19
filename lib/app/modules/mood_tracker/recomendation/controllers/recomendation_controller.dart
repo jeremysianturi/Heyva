@@ -62,13 +62,6 @@ class RecomendationController extends GetxController {
   var backlist = <front.TrackerDetail>[].obs;
   var moodList = <mood.TrackerDetail>[].obs;
 
-  // isiannya bisa diambil dari sini.
-  // type :
-  // physical : efaa63ea-4beb-4d86-aebd-b32cf0f635bb
-  // mood : 297433c8-0424-4ff7-8343-8d5a614d0b34
-  // sleep : ee96ab42-3400-4648-a469-2e479e9c19f9
-  // recommendation : 69d775c9-4f5b-45c0-93cc-f0b2a1502107
-
   generateRawJson() {
     sleepList.assignAll(
         box.read(Keys.sleepTrackerResponse) as List<sleep.TrackerDetail>);
@@ -101,7 +94,7 @@ class RecomendationController extends GetxController {
           answer: list, note: e.notes ?? "", trackerDetailId: e.id));
     }
     listdata.add(post.Data(
-        type: "efaa63ea-4beb-4d86-aebd-b32cf0f635bb", response: frontQuestion));
+        type:box.read(Keys.phycicalCheckFrontBodyId), response: frontQuestion));
 
     /// back
     var backQuestion = <post.Response>[];
@@ -116,7 +109,7 @@ class RecomendationController extends GetxController {
           answer: list, note: e.notes ?? "", trackerDetailId: e.id));
     }
     listdata.add(post.Data(
-        type: "efaa63ea-4beb-4d86-aebd-b32cf0f635bb", response: backQuestion));
+        type: box.read(Keys.phycicalCheckFrontBodyId), response: backQuestion));
 
     /// mood
     var moodQuestion = <post.Response>[];
@@ -138,7 +131,7 @@ class RecomendationController extends GetxController {
           .add(post.Response(answer: list, note: notes, trackerDetailId: e.id));
     }
     listdata.add(post.Data(
-        type: "297433c8-0424-4ff7-8343-8d5a614d0b34", response: moodQuestion));
+        type: box.read(Keys.moodTrackerId), response: moodQuestion));
 
     ///sleep
 
@@ -161,7 +154,7 @@ class RecomendationController extends GetxController {
           .add(post.Response(answer: list, note: notes, trackerDetailId: e.id));
     }
     listdata.add(post.Data(
-        type: "ee96ab42-3400-4648-a469-2e479e9c19f9", response: sleepQuestion));
+        type: box.read(Keys.sleepTrackerId), response: sleepQuestion));
 
     ///recomendation
 
@@ -178,7 +171,7 @@ class RecomendationController extends GetxController {
           .add(post.Response(answer: list, note: notes, trackerDetailId: e.id));
     }
     listdata.add(post.Data(
-        type: "69d775c9-4f5b-45c0-93cc-f0b2a1502107", response: recomQuestion));
+        type: box.read(Keys.recomendationID), response: recomQuestion));
 
     debugPrint("----------------");
     log("post data ${postData.toJson()}");

@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/insights/model/Insight_model.dart' as insight;
 import 'package:heyva/app/modules/insights/widget/insight_mood_widget.dart';
@@ -49,8 +50,14 @@ class InsightsView extends GetView<InsightsController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppBar(
+                        systemOverlayStyle: const SystemUiOverlayStyle(
+                          statusBarIconBrightness: Brightness.dark,
+                          statusBarBrightness:
+                          Brightness.light, // For iOS (dark icons)
+                        ),
                         backgroundColor: Colors.transparent,
                         elevation: 0,
+                        centerTitle: false,
                         leading: GestureDetector(
                           onTap: () async {
                             await Get.toNamed(Routes.PROFILE);
@@ -58,7 +65,7 @@ class InsightsView extends GetView<InsightsController> {
                           },
                           child: CircleAvatar(
                             backgroundImage:
-                                NetworkImage(controller.profileAvatar),
+                            NetworkImage(controller.profileAvatar),
                           ),
                         ),
                         title: GestureDetector(
@@ -67,6 +74,7 @@ class InsightsView extends GetView<InsightsController> {
                             controller.onInit();
                           },
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 controller.greeting,
@@ -89,7 +97,9 @@ class InsightsView extends GetView<InsightsController> {
                         ),
                         actions: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              // Get.to(ArticleView());
+                            },
                             child: Container(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 12.5, vertical: 10.5),

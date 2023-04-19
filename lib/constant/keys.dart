@@ -33,6 +33,11 @@ class Keys {
   ///article
   static const String contentIDArticleArguments = "CONTENT_ID_ARGUMENTS";
 
+
+  /// onboarding notif
+  static const String updatedNotificationArgumentsTermPrivacy = "UPDATED_NOTIFICATION_ARGUMENTS_TERM_PRIVACY";
+  static const String updatedNotificationArgumentsIsAgree = "UPDATED_NOTIFICATION_ARGUMENTS_IS_AGREE";
+
   ///profile
   static const String profileName = "PROFILE_NAME";
   static const String profileImgUrl = "PROFILE_IMG_URL";
@@ -49,6 +54,13 @@ class Keys {
   static const String sleepTrackerResponse = "SLEEP_TRACKER_RESPONSE";
   static const String recomendationTrackerResponse =
       "RECOMENDATION_TRACKER_RESPONSE";
+
+
+  static const String phycicalCheckFrontBodyId = "PHYSICAL_CHECK_FRONT_BODY_ID";
+  static const String phycicalCheckBackBodyId = "PHYSICAL_CHECK_BACK_BODY_ID";
+  static const String sleepTrackerId = "SLEEP_TRACKER_ID";
+  static const String moodTrackerId = "MOOD_TRACKER_ID";
+  static const String recomendationID = "RECOMENDATION_TRACKER_ID";
 
   /// back result
   static const String backResult = "GET_BACK_RESULT";

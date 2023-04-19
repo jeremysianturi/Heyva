@@ -13,7 +13,6 @@ class SleepCheckInController extends GetxController {
 
   @override
   void onInit() {
-
     sleepList
         .assignAll(box.read(Keys.sleepTrackerResponse) as List<TrackerDetail>);
 
@@ -33,6 +32,17 @@ class SleepCheckInController extends GetxController {
     sleepList[pagePosition.value].jsonContent?[index].isSelected =
         !sleepList[pagePosition.value].jsonContent![index].isSelected;
     sleepList.refresh();
+
+    ///reset edittext
+    otherC.text = "";
+    var jsonContentLength =
+        sleepList[pagePosition.value].jsonContent?.length ?? 0;
+    sleepList[pagePosition.value]
+        .jsonContent?[jsonContentLength - 1]
+        .isSelected = false;
+    sleepList[pagePosition.value].jsonContent?[jsonContentLength - 1].notes =
+    "";
+    sleepList.refresh();
   }
 
   bool get isShowButton {
@@ -46,13 +56,19 @@ class SleepCheckInController extends GetxController {
       }
     });
 
-    return loop <= 3 && loop > 0 ? true : false;
+    return loop == 0 && otherC.text.isEmpty ? false : true;
   }
 
   onOther(val) {
     var jsonContentLength =
         sleepList[pagePosition.value].jsonContent?.length ?? 0;
-    if (val.toString().length > 1) {
+    sleepList[pagePosition.value]
+        .jsonContent
+        ?.firstWhereOrNull((e) => e.isSelected == true)
+        ?.isSelected = false;
+    sleepList.refresh();
+
+    if (val.toString().isNotEmpty) {
       sleepList[pagePosition.value]
           .jsonContent?[jsonContentLength - 1]
           .isSelected = true;
@@ -71,5 +87,4 @@ class SleepCheckInController extends GetxController {
           "";
     }
   }
-
 }

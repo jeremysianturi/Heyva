@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heyva/app/modules/profile/notification_settings/widget/notif_setting_item.dart';
 import 'package:heyva/app/modules/profile/widget/profile_header.dart';
+import 'package:heyva/app/widgets/reusable_switchbtn_group.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 import '../controllers/notification_settings_controller.dart';
 
@@ -12,66 +13,67 @@ class NotificationSettingsView extends GetView<NotificationSettingsController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Container(
-          height: Get.height,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/bg_heyva2.png"),
-              fit: BoxFit.fill,
-            ),
-          ),
-          child: Column(
-            children: [
-              Container(
-                  margin: const EdgeInsets.only(top: 60),
-                  child: const ProfileHeader(
-                    centerTitle: Strings.profile,
-                    showIcon: false,
-                    showCenterTitle: false,
-                  )),
-              const SizedBox(
-                height: 22,
-              ),
-              const Text(
-                Strings.notifSetting,
-                style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 28,
-                    color: ColorApp.blue_container),
-              ),
-              const SizedBox(
-                height: 65,
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    Obx(() => NotifSettingItem(
-                          status: controller.pushNotifStatus.value,
-                          ontap: () {
-                            controller.pushNotifStatus.value =
-                                !controller.programNotifStatus.value;
-                          },
-                          title: Strings.pushNotif,
-                        )),
-                    const SizedBox(
-                      height: 19,
-                    ),
-                    Obx(() => NotifSettingItem(
-                          status: controller.programNotifStatus.value,
-                          ontap: () {
-                            controller.programNotifStatus.value =
-                                !controller.programNotifStatus.value;
-                          },
-                          title: Strings.programNotification,
-                        ))
-                  ],
+    return Obx(() => LoadingOverlay(
+        isLoading: controller.isLoading.value,
+        color: Colors.grey,
+        progressIndicator: const CircularProgressIndicator(
+          color: ColorApp.btn_orange,
+        ),
+        opacity: 0.3,
+        child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            body: Container(
+              height: Get.height,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/bg_heyva2.png"),
+                  fit: BoxFit.fill,
                 ),
-              )
-            ],
-          ),
-        ));
+              ),
+              child: Column(
+                children: [
+                  Container(
+                      margin: const EdgeInsets.only(top: 60),
+                      child: const ProfileHeader(
+                        centerTitle: Strings.profile,
+                        showIcon: false,
+                        showCenterTitle: false,
+                      )),
+                  const SizedBox(
+                    height: 22,
+                  ),
+                  const Text(
+                    Strings.notifSetting,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 28,
+                        color: ColorApp.blue_container),
+                  ),
+                  const SizedBox(
+                    height: 65,
+                  ),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: controller.length,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (c, i) {
+                        var data = controller.response.value.data?[i];
+                        return ReusableSwitchButton(
+                          title: data?.jsonContent?.title ?? "",
+                          desc: data?.jsonContent?.body ?? "",
+                          index: i,
+                          isActive: data?.isActive ?? false,
+                          onChange: (value) {
+                            controller.response.value.data?[i].isActive = value;
+                            controller.response.refresh();
+                            debugPrint("index $i value $value");
+                            controller.generateRawJson();
+                          },
+                        );
+                      }),
+                ],
+              ),
+            ))));
   }
 }

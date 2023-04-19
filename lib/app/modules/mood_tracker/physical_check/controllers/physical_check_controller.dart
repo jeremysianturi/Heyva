@@ -79,8 +79,12 @@ class PhysicalCheckController extends GetxController {
         Future.delayed(800.milliseconds);
         box.write(Keys.physicalCheckFrontBodyResponse,
             trackerResponse.value.data?[0].trackerDetail);
+        box.write(
+            Keys.phycicalCheckFrontBodyId, trackerResponse.value.data?[0].id);
         box.write(Keys.physicalCheckBackBodyResponse,
             trackerResponse.value.data?[1].trackerDetail);
+        box.write(
+            Keys.phycicalCheckBackBodyId, trackerResponse.value.data?[1].id);
       } else {
         errorMessage.value = trackerResponse.value.message ?? "Error Message";
       }
@@ -100,6 +104,7 @@ class PhysicalCheckController extends GetxController {
         Future.delayed(800.milliseconds);
         box.write(Keys.moodTrackerResponse,
             moodTrackerResponse.value.data?[0].trackerDetail);
+        box.write(Keys.moodTrackerId, moodTrackerResponse.value.data?[0].id);
       } else {
         errorMessage.value =
             moodTrackerResponse.value.message ?? "Error Message";
@@ -120,6 +125,7 @@ class PhysicalCheckController extends GetxController {
         Future.delayed(800.milliseconds);
         box.write(Keys.sleepTrackerResponse,
             sleepTrackerResponse.value.data?[0].trackerDetail);
+        box.write(Keys.sleepTrackerId, sleepTrackerResponse.value.data?[0].id);
       } else {
         errorMessage.value =
             sleepTrackerResponse.value.message ?? "Error Message";
@@ -140,6 +146,8 @@ class PhysicalCheckController extends GetxController {
         Future.delayed(800.milliseconds);
         box.write(Keys.recomendationTrackerResponse,
             recomendationResponse.value.data?[0].trackerDetail);
+        box.write(
+            Keys.recomendationID, recomendationResponse.value.data?[0].id);
       } else {
         errorMessage.value =
             recomendationResponse.value.message ?? "Error Message";

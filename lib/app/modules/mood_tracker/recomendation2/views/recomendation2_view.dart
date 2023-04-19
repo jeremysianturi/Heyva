@@ -165,6 +165,15 @@ class RecomendationWidget extends StatelessWidget {
           Get.toNamed(Routes.ARTICLE,
               arguments: {Keys.contentIDArticleArguments: contentId});
         }
+        if (contentType.toLowerCase() == "program" &&
+            title.toLowerCase().contains("breathin")) {
+          Get.toNamed(Routes.BREATHING_EXERCISE);
+        }
+        if (contentType.toLowerCase() == "program" &&
+            title.toLowerCase().contains("pelvic")) {
+          Get.toNamed(Routes.BREATHING_ONE);
+        }
+
       },
       child: Container(
         padding: const EdgeInsets.all(16),

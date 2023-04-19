@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 import '../../constant/colors.dart';
-import '../modules/onboarding/controllers/turnon_notif/turnon_notif_controller.dart';
 
 class ReusableSwitchButton extends StatelessWidget {
   const ReusableSwitchButton({
     Key? key,
-    required this.controller,
     required this.title,
     required this.desc,
-    required this.switchCount,
+    required this.index,
+    required this.isActive,
+    required this.onChange,
   }) : super(key: key);
 
-  final TurnOnNotifController controller;
   final String title;
   final String desc;
-  final int switchCount;
+  final int index;
+  final bool isActive;
+  final Function onChange;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      margin: EdgeInsets.only(top: index == 0 ? 0 : 20),
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
@@ -58,19 +60,13 @@ class ReusableSwitchButton extends StatelessWidget {
               ),
               Expanded(
                 flex: 1,
-                child: Obx(
-                  () => Switch(
-                    value: switchCount == 1
-                        ? controller.on.value
-                        : controller.on2.value,
-                    onChanged: (value) {
-                      switchCount == 1
-                          ? controller.toggle()
-                          : controller.toggle2();
-                    },
-                    activeTrackColor: ColorApp.btn_switch_green,
-                    activeColor: ColorApp.white,
-                  ),
+                child: FlutterSwitch(
+                  value: isActive,
+                  width: 51,
+                  activeColor: ColorApp.btn_switch_green,
+                  onToggle: (val) {
+                    onChange(val);
+                  },
                 ),
               ),
             ],
