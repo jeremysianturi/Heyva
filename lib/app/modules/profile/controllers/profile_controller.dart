@@ -40,7 +40,7 @@ class ProfileController extends GetxController {
     "Change Password",
     "Invite Friends",
     "Privacy Policy",
-    "FAQ",
+    "Terms of Service",
     "Rate our App",
     "Notification Settings",
   ];

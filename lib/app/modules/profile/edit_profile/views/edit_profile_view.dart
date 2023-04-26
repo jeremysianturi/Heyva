@@ -38,7 +38,7 @@ class EditProfileView extends GetView<EditProfileController> {
               ),
               child: Column(
                 children: [
-                  const SizedBox(height: 60,),
+                  const SizedBox(height: 40),
                   Container(
                       margin: const EdgeInsets.only(top: 14),
                       child: ProfileHeader(

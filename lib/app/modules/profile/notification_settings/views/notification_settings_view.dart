@@ -33,7 +33,7 @@ class NotificationSettingsView extends GetView<NotificationSettingsController> {
               child: Column(
                 children: [
                   Container(
-                      margin: const EdgeInsets.only(top: 60),
+                      margin: const EdgeInsets.only(top: 40),
                       child: const ProfileHeader(
                         centerTitle: Strings.profile,
                         showIcon: false,

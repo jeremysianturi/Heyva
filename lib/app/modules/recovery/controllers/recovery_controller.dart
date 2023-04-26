@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:heyva/app/modules/learn/model/program_list_model.dart';
+import 'package:heyva/app/modules/learn/provider/learn_provider.dart';
 import 'package:heyva/app/modules/related_program/model/content_list_model.dart';
 import 'package:heyva/app/modules/related_program/model/tags_model.dart'
     as tags;
@@ -10,6 +12,7 @@ class RecoveryController extends GetxController {
   var isLoading = false.obs;
   late DioClient _client;
   late RelatedProgramProvider _programProvider;
+  late LearnProvider _learnProvider;
   var errorMessage = ''.obs;
   var isEmailError = false.obs;
   var isPasserror = false.obs;
@@ -24,8 +27,10 @@ class RecoveryController extends GetxController {
   void onInit() {
     _client = DioClient();
     _programProvider = RelatedProgramProvider(_client.init());
+    _learnProvider = LearnProvider(_client.init());
     getTagList();
     getListContent(tags: "");
+    postLogin();
     super.onInit();
   }
 
@@ -90,6 +95,27 @@ class RecoveryController extends GetxController {
     } catch (e) {
       isLoading.value = false;
 
+      debugPrint("error  $e");
+    }
+  }
+
+  var programListResponse =
+      ProgramListModel(success: "", data: null, message: "", error: "").obs;
+
+  postLogin() async {
+    errorMessage.value = "";
+    isLoading.value = true;
+    try {
+      programListResponse.value = (await _learnProvider.getProgramList())!;
+      isLoading.value = false;
+
+      if (programListResponse.value.success == "Success") {
+      } else {
+        errorMessage.value =
+            programListResponse.value.message ?? "Error Message";
+      }
+    } catch (e) {
+      isLoading.value = false;
       debugPrint("error  $e");
     }
   }

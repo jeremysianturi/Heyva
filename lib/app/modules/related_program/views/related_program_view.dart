@@ -30,7 +30,7 @@ class RelatedProgramView extends GetView<RelatedProgramController> {
           child: Column(
             children: [
               Container(
-                  margin: const EdgeInsets.only(top: 60),
+                  margin: const EdgeInsets.only(top: 50),
                   child: const Header(
                       rightText: Strings.skip,
                       centerTitle: Strings.related_program,

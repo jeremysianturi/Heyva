@@ -109,7 +109,7 @@ class RecomendationController extends GetxController {
           answer: list, note: e.notes ?? "", trackerDetailId: e.id));
     }
     listdata.add(post.Data(
-        type: box.read(Keys.phycicalCheckFrontBodyId), response: backQuestion));
+        type: box.read(Keys.phycicalCheckBackBodyId), response: backQuestion));
 
     /// mood
     var moodQuestion = <post.Response>[];

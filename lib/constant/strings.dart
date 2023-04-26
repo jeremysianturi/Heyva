@@ -213,4 +213,6 @@ class Strings {
 
   static const String enterYourEmailResetPass = "Enter your email address and we will send you a link to reset your password";
   static const String resetYourPassword = "Reset Your Password";
+
+  static const String notificationCenter ="Notification Center";
 }

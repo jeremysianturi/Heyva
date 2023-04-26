@@ -186,16 +186,16 @@ class _NavScreenState extends State<NavScreen> {
 
   @override
   Widget build(final BuildContext context) => Scaffold(
-        drawer: Drawer(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                Text("This is the Drawer"),
-              ],
-            ),
-          ),
-        ),
+        // drawer: Drawer(
+        //   child: Center(
+        //     child: Column(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: const <Widget>[
+        //         Text("This is the Drawer"),
+        //       ],
+        //     ),
+        //   ),
+        // ),
         body: PersistentTabView(
           context,
           controller: _controller,

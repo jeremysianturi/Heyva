@@ -76,7 +76,7 @@ class _MyVidePlayer extends State<myVidePlayer> {
             ),
           ),
           Container(
-              margin: const EdgeInsets.only(top: 32),
+              margin: const EdgeInsets.only(top: 50),
               child: const Header(
                   titleColor: ColorApp.txt_white,
                   showCenterTitle: true,

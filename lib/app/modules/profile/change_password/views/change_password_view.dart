@@ -34,7 +34,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
               child: Column(
                 children: [
                   Container(
-                      margin: const EdgeInsets.only(top: 60),
+                      margin: const EdgeInsets.only(top: 50),
                       child: const Header(rightText: "", showIcon: false)),
                   const SizedBox(
                     height: 24,

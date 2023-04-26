@@ -33,7 +33,7 @@ class BreathingExerciseView extends GetView<BreathingExerciseController> {
                 child: Column(
                   children: [
                     Container(
-                        margin: const EdgeInsets.only(top: 60),
+                        margin: const EdgeInsets.only(top: 50),
                         child: const Header(
                           showIcon: false,
                           centerTitle: Strings.breathing_exercise,

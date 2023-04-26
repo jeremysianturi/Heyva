@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/breast_feeding/widget/video_list.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
-import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
-import 'package:miniplayer/miniplayer.dart';
 
 import '../controllers/breast_feeding_controller.dart';
 
@@ -36,7 +34,7 @@ class MainBody extends StatelessWidget {
           Column(
             children: [
               Container(
-                  margin: const EdgeInsets.only(top: 35),
+                  margin: const EdgeInsets.only(top: 50),
                   child: const Header(
                       showCenterTitle: true,
                       centerTitle: Strings.excercise,
@@ -132,41 +130,41 @@ class MainBody extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              Text(
-                                "Play all",
-                                style: TextStyle(
-                                  color: ColorApp.black,
-                                  fontSize: 14,
-                                  decoration: TextDecoration.underline,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
+                              // Text(
+                              //   "Play all",
+                              //   style: TextStyle(
+                              //     color: ColorApp.black,
+                              //     fontSize: 14,
+                              //     decoration: TextDecoration.underline,
+                              //     fontWeight: FontWeight.w400,
+                              //   ),
+                              // ),
                             ],
                           ),
                           VideoList(controller: controller),
-                          Container(
-                            margin: EdgeInsets.only(top: 30),
-                            width: Get.width,
-                            child: OrangeButtonWTrailingIcon(
-                              padding: 0,
-                              determineAction: "from_onplanning_one",
-                              text: Strings.playAll,
-                              ontap: () {
-                                if (controller.isShwoingVideo.isTrue) {
-                                  controller.miniPlayerC?.animateToHeight(
-                                      state: PanelState.MAX,
-                                      duration: 300.milliseconds);
-                                } else {
-                                  controller.initVideo();
-                                  controller.isShwoingVideo.value = true;
-                                  controller.customVideoPlayerController
-                                      .videoPlayerController
-                                      .play();
-                                  //
-                                }
-                              },
-                            ),
-                          ),
+                          // Container(
+                          //   margin: EdgeInsets.only(top: 30),
+                          //   width: Get.width,
+                          //   child: OrangeButtonWTrailingIcon(
+                          //     padding: 0,
+                          //     determineAction: "from_onplanning_one",
+                          //     text: Strings.playAll,
+                          //     ontap: () {
+                          //       if (controller.isShwoingVideo.isTrue) {
+                          //         controller.miniPlayerC?.animateToHeight(
+                          //             state: PanelState.MAX,
+                          //             duration: 300.milliseconds);
+                          //       } else {
+                          //         controller.initVideo();
+                          //         controller.isShwoingVideo.value = true;
+                          //         controller.customVideoPlayerController
+                          //             .videoPlayerController
+                          //             .play();
+                          //         //
+                          //       }
+                          //     },
+                          //   ),
+                          // ),
                           if (controller.isShwoingVideo.isTrue)
                             const SizedBox(
                               height: 70,

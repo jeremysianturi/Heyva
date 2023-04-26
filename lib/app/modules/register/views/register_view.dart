@@ -31,14 +31,14 @@ class RegisterView extends GetView<RegisterController> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const SizedBox(
-                  height: 15,
-                ),
-                Header(
-                  rightText: Strings.login,
-                  ontapIcon: () {
-                    Get.toNamed(Routes.LOGIN);
-                  },
+                Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: Header(
+                    rightText: Strings.login,
+                    ontapIcon: () {
+                      Get.toNamed(Routes.LOGIN);
+                    },
+                  ),
                 ),
                 const Text(
                   Strings.register,

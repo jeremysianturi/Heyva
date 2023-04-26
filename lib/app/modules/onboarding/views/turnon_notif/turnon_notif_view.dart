@@ -27,7 +27,7 @@ class TurnOnNotifView extends GetView<TurnOnNotifController> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 67),
+                  padding: const EdgeInsets.only(top: 50),
                   child: Header(
                     rightText: Strings.skip,
                     ontapIcon: () {

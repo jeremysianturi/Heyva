@@ -148,6 +148,7 @@ class HomeView extends GetView<HomeController> {
                           GestureDetector(
                             onTap: () {
                               // Get.to(ArticleView());
+                              Get.toNamed(Routes.NOTIFICATION_CENTER);
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(
