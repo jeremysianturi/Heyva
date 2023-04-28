@@ -35,7 +35,6 @@ class OnboardingFinishController extends GetxController {
     _client = RefreshDioClient();
     _dioClient = DioClient();
     _provider = LoginProvider(_client.init());
-    _profileProvider = ProfileProvider(_dioClient.init());
 
     notifIsAgree = argumentData[Keys.updatedNotificationArgumentsIsAgree];
     notifTermPivacy =
@@ -66,6 +65,9 @@ class OnboardingFinishController extends GetxController {
         authToken = "Bearer ${loginResonse.value.data!.accessToken}";
         refreshToken = loginResonse.value.data?.refreshToken ?? "";
         userId = loginResonse.value.data?.id ?? "";
+        Future.delayed(100.milliseconds, () {
+          _profileProvider = ProfileProvider(_dioClient.init());
+        });
         Future.delayed(300.milliseconds, () {
           var json = NotificationUpdatePostModel(
               termsPrivacy: notifTermPivacy, isAgree: notifIsAgree);

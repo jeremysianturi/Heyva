@@ -132,10 +132,19 @@ class RecoveryView extends GetView<RecoveryController> {
                               var data = controller
                                   .programListResponse.value.data?[index];
                               return CourseItem(
-                                type: data?.title ?? "",
-                                title: data?.body ?? "",
-                                days: data?.daysCount ?? "",
-                              );
+                                  type: data?.title ?? "",
+                                  title: data?.body ?? "",
+                                  days: index == 0
+                                      ? "${data?.dailyProgress} Progress"
+                                      : "${data?.daysCount} Days",
+                                  programId: data?.id ?? "",
+                                  programIdChild: data?.dailyProgress == '0/3'
+                                      ? data?.child![0].id ?? ""
+                                      : data?.dailyProgress == '1/3'
+                                          ? data?.child![1].id ?? ""
+                                          : data?.dailyProgress == '2/3'
+                                              ? data?.child![2].id ?? ""
+                                              : data?.id ?? "");
                             }),
                           )),
                       const SizedBox(

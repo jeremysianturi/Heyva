@@ -2,10 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/modules/learn/Widget/folder_item_list.dart';
 import 'package:heyva/app/modules/learn/Widget/upcoming_wdget.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
+import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
@@ -93,7 +95,7 @@ class LearnView extends GetView<LearnController> {
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 24,
-                          color: ColorApp.homepage_name_color),
+                          color: ColorApp.blue_container),
                     ),
                     const SizedBox(
                       height: 20,
@@ -114,10 +116,21 @@ class LearnView extends GetView<LearnController> {
                                   0, (index) {
                             var data = controller
                                 .programListResponse.value.data?[index];
+
                             return CourseItem(
                               type: data?.title ?? "",
                               title: data?.body ?? "",
-                              days: data?.daysCount ?? "",
+                              days: index == 0
+                                  ? "${data?.dailyProgress} Progress"
+                                  : "${data?.daysCount} Days",
+                              programId: data?.id ?? "",
+                              programIdChild: data?.dailyProgress == '0/3'
+                                  ? data?.child![0].id ?? ""
+                                  : data?.dailyProgress == '1/3'
+                                      ? data?.child![1].id ?? ""
+                                      : data?.dailyProgress == '2/3'
+                                          ? data?.child![2].id ?? ""
+                                          : data?.id ?? "",
                             );
                           }),
                         )),
@@ -138,19 +151,26 @@ class CourseItem extends StatelessWidget {
     required this.type,
     required this.title,
     required this.days,
+    required this.programId,
+    required this.programIdChild,
   });
 
-  final String type, title, days;
+  final String type, title, days, programId, programIdChild;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        var box = GetStorage();
+        box.write(Keys.programIdStorage, programId);
+        box.write(Keys.programIdChildStorage, programIdChild);
         if (type.toLowerCase().contains("breathin")) {
           Get.toNamed(Routes.BREATHING_EXERCISE);
         }
         if (type.toLowerCase().contains("pelvic")) {
-          Get.toNamed(Routes.BREATHING_ONE);
+          Get.toNamed(
+            Routes.BREATHING_ONE,
+          );
         }
       },
       child: Padding(
@@ -163,7 +183,9 @@ class CourseItem extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(12))),
             child: Card(
               elevation: 0,
-              color: ColorApp.container_pink,
+              color: days.contains("3/3") || days.contains("90/90")
+                  ? ColorApp.btn_maroon
+                  : ColorApp.container_pink,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),

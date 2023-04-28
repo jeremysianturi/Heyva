@@ -44,7 +44,8 @@ class Data {
   final List<Tags>? tags;
   final List<Child>? child;
   final List<dynamic>? programDetail;
-  final dynamic daysCount;
+  final String? daysCount;
+  final String? dailyProgress;
 
   Data({
     this.id,
@@ -58,6 +59,7 @@ class Data {
     this.child,
     this.programDetail,
     this.daysCount,
+    this.dailyProgress,
   });
 
   Data.fromJson(Map<String, dynamic> json)
@@ -71,7 +73,8 @@ class Data {
         tags = (json['tags'] as List?)?.map((dynamic e) => Tags.fromJson(e as Map<String,dynamic>)).toList(),
         child = (json['child'] as List?)?.map((dynamic e) => Child.fromJson(e as Map<String,dynamic>)).toList(),
         programDetail = json['program_detail'] as List?,
-        daysCount = json['days_count'];
+        daysCount = json['days_count'] as String?,
+        dailyProgress = json['daily_progress'] as String?;
 
   Map<String, dynamic> toJson() => {
     'id' : id,
@@ -84,7 +87,8 @@ class Data {
     'tags' : tags?.map((e) => e.toJson()).toList(),
     'child' : child?.map((e) => e.toJson()).toList(),
     'program_detail' : programDetail,
-    'days_count' : daysCount
+    'days_count' : daysCount,
+    'daily_progress' : dailyProgress
   };
 }
 

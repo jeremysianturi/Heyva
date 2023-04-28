@@ -71,42 +71,14 @@ class TurnOnNotifView extends GetView<TurnOnNotifController> {
                         title: data?.jsonContent?.title ?? "",
                         desc: data?.jsonContent?.body ?? "",
                         index: i,
-                        isActive: data?.isActive ?? false,
+                        isActive: data?.isAgree ?? false,
                         onChange: (value) {
-                          controller.response.value.data?[i].isActive = value;
+                          controller.response.value.data?[i].isAgree = value;
                           controller.response.refresh();
                           debugPrint("index $i value $value");
                         },
                       );
                     }),
-                // Column(
-                //   children: List.generate(
-                //     controller.length,
-                //     (index) {
-                //       var data = controller.response.value.data?[index];
-                //
-                //     },
-                //   ),
-                // ),
-                // Column(
-                //   children: [
-                //     ReusableSwitchButton(
-                //       controller: turnOnController,
-                //       title: Strings.we_care,
-                //       desc: Strings.proactive_support,
-                //       switchCount: 1,
-                //     ),
-                //     const SizedBox(
-                //       height: 20,
-                //     ),
-                //     ReusableSwitchButton(
-                //       controller: turnOnController,
-                //       title: Strings.you_first,
-                //       desc: Strings.exclusive_events_promotion,
-                //       switchCount: 2,
-                //     ),
-                //   ],
-                // ),
                 const Expanded(child: SizedBox()),
                 OrangeButtonWTrailingIcon(
                   determineAction: "ontap",

@@ -19,7 +19,7 @@ class TurnOnNotifController extends GetxController {
   void toggle2() => on2.value = on2.value ? false : true;
 
   var isLoading = false.obs;
-  late RefreshDioClient _client;
+  late DioClient _client;
   late ProfileProvider _profileProvider;
   var errorMessage = ''.obs;
   var box = GetStorage();
@@ -30,9 +30,11 @@ class TurnOnNotifController extends GetxController {
 
   @override
   void onInit() {
-    _client = RefreshDioClient();
+    _client = DioClient();
     _profileProvider = ProfileProvider(_client.init());
-    getNotif();
+    Future.delayed(200.milliseconds, () {
+      getNotif();
+    });
     super.onInit();
   }
 
@@ -62,7 +64,7 @@ class TurnOnNotifController extends GetxController {
 
     response.value.data?.forEach((e) {
       termsPrivacy.add(e.id ?? "");
-      isAgree.add(e.isActive ?? false);
+      isAgree.add(e.isAgree ?? false);
     });
 
     var json = NotificationUpdatePostModel(

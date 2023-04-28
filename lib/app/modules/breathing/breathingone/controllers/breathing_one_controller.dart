@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/modules/breathing/breathingtwo/views/breathing_two_view.dart';
 import 'package:heyva/app/modules/breathing/model/pelvic_model.dart';
 import 'package:heyva/app/modules/breathing/provider/pelvic_provider.dart';
+import 'package:heyva/app/modules/learn/provider/learn_provider.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/services/dio_services.dart';
 
@@ -11,15 +12,55 @@ class BreathingOneController extends GetxController {
   var isLoading = false.obs;
   late DioClient _client;
   late PelvicProvider _provider;
+  late LearnProvider _learnProvider;
   var errorMessage = ''.obs;
   var isEmailError = false.obs;
   var isPasserror = false.obs;
+  var box = GetStorage();
 
   @override
   void onInit() {
     _client = DioClient();
     _provider = PelvicProvider(_client.init());
+    _learnProvider = LearnProvider(_client.init());
+    initData();
     super.onInit();
+  }
+
+  initData() {
+    createProgramPersonal(programId: box.read(Keys.programIdStorage));
+  }
+
+  createProgramPersonal({required programId}) async {
+    errorMessage.value = "";
+    isLoading.value = true;
+    try {
+      var data =
+          (await _learnProvider.programPersonalCreate(programId: programId))!;
+      isLoading.value = false;
+      if (data.success == "Success") {
+      } else {}
+    } catch (e) {
+      isLoading.value = false;
+      debugPrint("error  $e");
+    }
+  }
+
+  createProgramPersonalTracker({required programId}) async {
+    errorMessage.value = "";
+    isLoading.value = true;
+    try {
+      var data = (await _learnProvider.programPersonalTrackerCreate(
+          programId: programId))!;
+      isLoading.value = false;
+
+      if (data.success == "Success") {
+      } else {}
+    } catch (e) {
+      isLoading.value = false;
+
+      debugPrint("error  $e");
+    }
   }
 
   var pelvicResponse =

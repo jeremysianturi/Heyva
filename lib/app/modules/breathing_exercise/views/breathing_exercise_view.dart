@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
 import 'package:heyva/constant/colors.dart';
+import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
@@ -68,7 +69,12 @@ class BreathingExerciseView extends GetView<BreathingExerciseController> {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                controller.getBreathing();
+                                controller.createProgramPersonalTracker(
+                                    programId: controller.box
+                                        .read(Keys.programIdChildStorage));
+                                Future.delayed(200.milliseconds, () {
+                                  controller.getBreathing();
+                                });
                               },
                               style: ButtonStyle(
                                 backgroundColor:
@@ -79,8 +85,8 @@ class BreathingExerciseView extends GetView<BreathingExerciseController> {
                                   const RoundedRectangleBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(14)),
-                                    side: BorderSide(
-                                        color: ColorApp.btn_orange),
+                                    side:
+                                        BorderSide(color: ColorApp.btn_orange),
                                   ),
                                 ),
                               ),

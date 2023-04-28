@@ -33,10 +33,11 @@ class Keys {
   ///article
   static const String contentIDArticleArguments = "CONTENT_ID_ARGUMENTS";
 
-
   /// onboarding notif
-  static const String updatedNotificationArgumentsTermPrivacy = "UPDATED_NOTIFICATION_ARGUMENTS_TERM_PRIVACY";
-  static const String updatedNotificationArgumentsIsAgree = "UPDATED_NOTIFICATION_ARGUMENTS_IS_AGREE";
+  static const String updatedNotificationArgumentsTermPrivacy =
+      "UPDATED_NOTIFICATION_ARGUMENTS_TERM_PRIVACY";
+  static const String updatedNotificationArgumentsIsAgree =
+      "UPDATED_NOTIFICATION_ARGUMENTS_IS_AGREE";
 
   ///profile
   static const String profileName = "PROFILE_NAME";
@@ -55,7 +56,6 @@ class Keys {
   static const String recomendationTrackerResponse =
       "RECOMENDATION_TRACKER_RESPONSE";
 
-
   static const String phycicalCheckFrontBodyId = "PHYSICAL_CHECK_FRONT_BODY_ID";
   static const String phycicalCheckBackBodyId = "PHYSICAL_CHECK_BACK_BODY_ID";
   static const String sleepTrackerId = "SLEEP_TRACKER_ID";
@@ -67,4 +67,9 @@ class Keys {
 
   /// reset password
   static const String resetPasswordEmail = "RESET_PASSWORD_EMAIL";
+
+  /// programID
+  static const String programIdStorage = "PROGRAM_ID_STORAGE";
+  static const String programIdChildStorage = "PROGRAM_ID_CHILD_STORAGE";
+
 }

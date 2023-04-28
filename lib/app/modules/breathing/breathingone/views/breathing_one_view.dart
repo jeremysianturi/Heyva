@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/widgets/nav_screen.dart';
+import 'package:heyva/constant/keys.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import '../../../../../constant/colors.dart';
@@ -75,7 +76,12 @@ class BreathingOneView extends GetView<BreathingOneController> {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          controller.getPelvic();
+                          controller.createProgramPersonalTracker(
+                              programId:
+                                  controller.box.read(Keys.programIdChildStorage));
+                          Future.delayed(200.milliseconds, () {
+                            controller.getPelvic();
+                          });
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(

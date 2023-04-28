@@ -4,6 +4,7 @@ import 'package:heyva/app/modules/profile/widget/profile_detail.dart';
 import 'package:heyva/app/modules/profile/widget/profile_header.dart';
 import 'package:heyva/app/modules/profile/widget/profile_settings_item.dart';
 import 'package:heyva/app/routes/app_pages.dart';
+import 'package:heyva/app/widgets/bottom_sheet_logout.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:loading_overlay/loading_overlay.dart';
@@ -45,7 +46,7 @@ class ProfileView extends GetView<ProfileController> {
                         titleColor: ColorApp.blue_container,
                         showCenterTitle: true,
                         ontapIcon: () async {
-                          controller.logout();
+                          logout();
                         },
                         onBack: () {
                           Get.back(result: "reload");

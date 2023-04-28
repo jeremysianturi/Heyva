@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heyva/app/widgets/nav_screen.dart';
 import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/constant/colors.dart';
+import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import '../controllers/breathing_finish_controller.dart';
 
@@ -91,13 +90,9 @@ class BreathingFinishView extends GetView<BreathingFinishController> {
                 determineAction: "from_onplanning_one",
                 text: Strings.lets_go,
                 ontap: () {
-                  Get.deleteAll();
-                  pushNewScreen(
-                    context,
-                    screen: NavScreen(
-                      menuScreenContext: context,
-                    ),
-                  );
+                  controller.programPersonalTrackerFinish(
+                      programId:
+                          controller.box.read(Keys.programIdChildStorage));
                 },
               ),
             ),

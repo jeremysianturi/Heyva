@@ -12,7 +12,6 @@ class NotificationSettingsController extends GetxController {
   var programNotifStatus = false.obs;
 
   var isLoading = false.obs;
-  late RefreshDioClient _client;
   late DioClient _dioClient;
   late ProfileProvider _profileProvider;
   late ProfileProvider _profileProvider2;
@@ -25,9 +24,8 @@ class NotificationSettingsController extends GetxController {
 
   @override
   void onInit() {
-    _client = RefreshDioClient();
     _dioClient = DioClient();
-    _profileProvider = ProfileProvider(_client.init());
+    _profileProvider = ProfileProvider(_dioClient.init());
     _profileProvider2 = ProfileProvider(_dioClient.init());
     getNotif();
     super.onInit();
@@ -59,7 +57,7 @@ class NotificationSettingsController extends GetxController {
 
     response.value.data?.forEach((e) {
       termsPrivacy.add(e.id ?? "");
-      isAgree.add(e.isActive ?? false);
+      isAgree.add(e.isAgree ?? false);
     });
 
     var json = NotificationUpdatePostModel(

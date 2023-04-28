@@ -53,7 +53,7 @@ class InsightsView extends GetView<InsightsController> {
                         systemOverlayStyle: const SystemUiOverlayStyle(
                           statusBarIconBrightness: Brightness.dark,
                           statusBarBrightness:
-                          Brightness.light, // For iOS (dark icons)
+                              Brightness.light, // For iOS (dark icons)
                         ),
                         backgroundColor: Colors.transparent,
                         elevation: 0,
@@ -65,7 +65,7 @@ class InsightsView extends GetView<InsightsController> {
                           },
                           child: CircleAvatar(
                             backgroundImage:
-                            NetworkImage(controller.profileAvatar),
+                                NetworkImage(controller.profileAvatar),
                           ),
                         ),
                         title: GestureDetector(
@@ -89,7 +89,7 @@ class InsightsView extends GetView<InsightsController> {
                                 style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
-                                  color: ColorApp.homepage_name_color,
+                                  color: ColorApp.blue_container,
                                 ),
                               ),
                             ],

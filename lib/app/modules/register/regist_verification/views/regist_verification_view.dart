@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:loading_overlay/loading_overlay.dart';
@@ -81,7 +80,9 @@ class RegistVerificationView extends GetView<RegistVerificationController> {
                     onPressed: () async {
                       controller.cekVerified();
                       if (controller.isVerified) {
-                        Get.toNamed(Routes.TURNON_NOTIF);
+                        Future.delayed(200.milliseconds, () {
+                          controller.postLogin();
+                        });
                       } else {
                         var result = await OpenMailApp.openMailApp();
                         if (!result.didOpen && !result.canOpen) {
@@ -118,7 +119,6 @@ class RegistVerificationView extends GetView<RegistVerificationController> {
                           const ImageIcon(
                             AssetImage("assets/icons/ic_arrow_right.png"),
                             color: ColorApp.arrow_white,
-
                           )
                         ],
                       ),

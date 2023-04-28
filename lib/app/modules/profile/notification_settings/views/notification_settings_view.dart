@@ -63,9 +63,9 @@ class NotificationSettingsView extends GetView<NotificationSettingsController> {
                           title: data?.jsonContent?.title ?? "",
                           desc: data?.jsonContent?.body ?? "",
                           index: i,
-                          isActive: data?.isActive ?? false,
+                          isActive: data?.isAgree ?? false,
                           onChange: (value) {
-                            controller.response.value.data?[i].isActive = value;
+                            controller.response.value.data?[i].isAgree = value;
                             controller.response.refresh();
                             debugPrint("index $i value $value");
                             controller.generateRawJson();

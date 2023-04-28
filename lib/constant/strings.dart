@@ -113,7 +113,7 @@ class Strings {
   static const String your_progress_day = "Your progress day";
   static const String pelvic_session = "Pelvic Session";
   static const String one_ninety_days = "1/90 Days";
-  static const String related_program = "Related Program";
+  static const String related_program = "Related";
   static const String to_keep_you_entertain = "To keep you entertain";
   static const String all_program = "All Program";
   static const String mental_health = "Mental Health";
