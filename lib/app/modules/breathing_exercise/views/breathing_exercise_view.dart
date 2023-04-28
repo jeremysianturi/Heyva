@@ -71,6 +71,8 @@ class BreathingExerciseView extends GetView<BreathingExerciseController> {
                               onPressed: () {
                                 controller.createProgramPersonalTracker(
                                     programId: controller.box
+                                        .read(Keys.programIdStorage),
+                                    programIdChild: controller.box
                                         .read(Keys.programIdChildStorage));
                                 Future.delayed(200.milliseconds, () {
                                   controller.getBreathing();

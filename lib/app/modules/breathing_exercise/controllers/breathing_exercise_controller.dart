@@ -58,12 +58,13 @@ class BreathingExerciseController extends GetxController {
     }
   }
 
-  createProgramPersonalTracker({required programId}) async {
+  createProgramPersonalTracker(
+      {required programId, required programIdChild}) async {
     errorMessage.value = "";
     isLoading.value = true;
     try {
       var data = (await _learnProvider.programPersonalTrackerCreate(
-          programId: programId))!;
+          programId: programId, programIdChild: programIdChild))!;
       isLoading.value = false;
 
       if (data.success == "Success") {

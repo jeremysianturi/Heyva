@@ -45,12 +45,12 @@ class LearnProvider {
   }
 
   Future<ProgramPersonalTrackerCreateModel?> programPersonalTrackerCreate(
-      {required programId}) async {
+      {required programId, required programIdChild}) async {
     ProgramPersonalTrackerCreateModel? res;
     try {
       Response response = await _client.post(
           '/api/v1/program-personal-tracker/create',
-          data: {"program": programId});
+          data: {"program": programId, "child_program": programIdChild});
       debugPrint('response data: ${response.data}');
       res = ProgramPersonalTrackerCreateModel.fromJson(response.data);
     } on DioError catch (e) {

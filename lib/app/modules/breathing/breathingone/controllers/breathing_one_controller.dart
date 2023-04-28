@@ -51,9 +51,8 @@ class BreathingOneController extends GetxController {
     isLoading.value = true;
     try {
       var data = (await _learnProvider.programPersonalTrackerCreate(
-          programId: programId))!;
+          programId: programId, programIdChild: ""))!;
       isLoading.value = false;
-
       if (data.success == "Success") {
       } else {}
     } catch (e) {

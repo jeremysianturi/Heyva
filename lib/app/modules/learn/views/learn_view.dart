@@ -159,6 +159,7 @@ class CourseItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDone = days.contains("3/3") || days.contains("90/90");
     return GestureDetector(
       onTap: () {
         var box = GetStorage();
@@ -178,14 +179,12 @@ class CourseItem extends StatelessWidget {
         child: Container(
             // width: 188,
             // margin: EdgeInsets.symmetric(horizontal: 5.0),
-            decoration: const BoxDecoration(
-                color: ColorApp.container_pink,
+            decoration: BoxDecoration(
+                color: isDone ? ColorApp.btn_maroon : ColorApp.container_pink,
                 borderRadius: BorderRadius.all(Radius.circular(12))),
             child: Card(
               elevation: 0,
-              color: days.contains("3/3") || days.contains("90/90")
-                  ? ColorApp.btn_maroon
-                  : ColorApp.container_pink,
+              color: isDone ? ColorApp.btn_maroon : ColorApp.container_pink,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -198,38 +197,52 @@ class CourseItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        IconButton(
-                          icon: Image.asset("assets/images/ic_program.png"),
-                          color: ColorApp.blue_container,
-                          padding: EdgeInsets.zero,
-                          constraints: const BoxConstraints(),
-                          onPressed: () {},
+                        // IconButton(
+                        //   icon: Image.asset("assets/images/ic_program.png"),
+                        //   color: isDone
+                        //       ? ColorApp.txt_white
+                        //       : ColorApp.blue_container,
+                        //   padding: EdgeInsets.zero,
+                        //   constraints: const BoxConstraints(),
+                        //   onPressed: () {},
+                        // ),
+                        SvgPicture.asset(
+                          "assets/images/ic_program.svg",
+                          color: isDone
+                              ? ColorApp.txt_white
+                              : ColorApp.blue_container,
                         ),
                         const SizedBox(
                           width: 10,
                         ),
                         Text(
                           type,
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
-                              color: ColorApp.blue_container),
+                              color: isDone
+                                  ? ColorApp.txt_white
+                                  : ColorApp.blue_container),
                         ),
                       ],
                     ),
                     Text(
                       title,
-                      style: const TextStyle(
+                      style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
-                          color: ColorApp.blue_container),
+                          color: isDone
+                              ? ColorApp.txt_white
+                              : ColorApp.blue_container),
                     ),
                     Text(
                       days,
-                      style: const TextStyle(
+                      style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: ColorApp.blue_container),
+                          color: isDone
+                              ? ColorApp.txt_white
+                              : ColorApp.blue_container),
                     ),
                   ],
                 ),
