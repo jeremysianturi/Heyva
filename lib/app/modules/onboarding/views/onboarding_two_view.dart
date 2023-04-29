@@ -29,7 +29,7 @@ class OnBoardingTwoView extends GetView<OnBoardingTwoController> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
              Padding(
-              padding: EdgeInsets.only(top: 48),
+              padding: EdgeInsets.only(top: 58),
               child: OnBoardingHeader(
                 indicatorColor1: ColorApp.btn_orange,
                 indicatorColor2: ColorApp.grey_divider,

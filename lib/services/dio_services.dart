@@ -15,16 +15,16 @@ class DioClient {
     Dio _dio = Dio();
     _dio.interceptors.add(Logging());
     _dio.options = BaseOptions(
-      baseUrl: "http://54.251.132.179:8000/",
+      baseUrl: "http://54.169.131.201/",
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': token != "null" ? "Bearer $token" : basicAuthToken,
+        'Authorization': "Bearer $token",
       },
       connectTimeout: 20.seconds,
       receiveTimeout: 10.seconds,
     );
-    _dio.options.baseUrl = "http://54.251.132.179:8000/";
+    _dio.options.baseUrl = "http://54.169.131.201/";
     return _dio;
   }
 }
@@ -36,7 +36,7 @@ class RefreshDioClient {
     Dio _dio = Dio();
     _dio.interceptors.add(Logging());
     _dio.options = BaseOptions(
-      baseUrl: "http://54.251.132.179:8000/",
+      baseUrl: "http://54.169.131.201/",
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -45,7 +45,7 @@ class RefreshDioClient {
       connectTimeout: 20.seconds,
       receiveTimeout: 10.seconds,
     );
-    _dio.options.baseUrl = "http://54.251.132.179:8000/";
+    _dio.options.baseUrl = "http://54.169.131.201/";
     return _dio;
   }
 }

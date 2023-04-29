@@ -44,8 +44,6 @@ class InsightMoodWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(data.response?.length ?? 0, (index) {
-                debugPrint(
-                    "data ${data.response?[index].answer?.firstWhereOrNull((e) => e.emoji == "")?.emoji != ""}");
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -62,14 +60,14 @@ class InsightMoodWidget extends StatelessWidget {
                     data.response?[index].answer?.length != 0
                         ? Container(
                             child: data.response?[index].answer
-                                        ?.firstWhereOrNull((e) => e.emoji == "")
+                                        ?.firstWhereOrNull((e) => e.emoji != "")
                                         ?.emoji !=
-                                    ""
+                                    null
                                 ? GridView.count(
                                     physics: NeverScrollableScrollPhysics(),
                                     crossAxisCount: 2,
                                     shrinkWrap: true,
-                                    childAspectRatio: 110 / 39,
+                                    childAspectRatio: 110 / 42,
                                     crossAxisSpacing: 5,
                                     mainAxisSpacing: 5,
                                     padding: EdgeInsets.zero,
@@ -79,37 +77,32 @@ class InsightMoodWidget extends StatelessWidget {
                                       var itemData =
                                           data.response?[index].answer?[i];
                                       return Container(
+                                          alignment: Alignment.center,
                                           padding: const EdgeInsets.symmetric(
-                                              horizontal: 10, vertical: 11),
+                                              horizontal: 10),
                                           decoration: const BoxDecoration(
                                               color: ColorApp.text_input_bg,
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(12))),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.min,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
-                                              if (itemData?.emoji != "")
-                                                Text(
-                                                  itemData?.emoji ?? "",
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    top: itemData?.emoji != ""
+                                                        ? 0
+                                                        : 4),
+                                                child: Text(
+                                                  "${itemData?.emoji} ${itemData?.name}",
                                                   style: const TextStyle(
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: ColorApp
-                                                          .black_font_underline,
+                                                          .blue_container,
                                                       fontSize: 14),
                                                 ),
-                                              const SizedBox(
-                                                width: 10,
-                                              ),
-                                              Text(
-                                                itemData?.name ?? "",
-                                                style: const TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                    color: ColorApp
-                                                        .black_font_underline,
-                                                    fontSize: 14),
                                               )
                                             ],
                                           ));
@@ -122,7 +115,7 @@ class InsightMoodWidget extends StatelessWidget {
                                       var itemData =
                                           data.response?[index].answer?[i];
                                       return Container(
-                                        width: Get.width,
+                                          width: Get.width,
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 10, vertical: 11),
                                           decoration: const BoxDecoration(
@@ -134,8 +127,8 @@ class InsightMoodWidget extends StatelessWidget {
                                               itemData?.name ?? "",
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  color: ColorApp
-                                                      .black_font_underline,
+                                                  color:
+                                                      ColorApp.blue_container,
                                                   fontSize: 14),
                                               overflow: TextOverflow.ellipsis,
                                             ),
@@ -152,13 +145,22 @@ class InsightMoodWidget extends StatelessWidget {
                                     const BorderRadius.all(Radius.circular(12)),
                                 border: Border.all(
                                     color: ColorApp.btn_orange, width: 1)),
-                            child: Text(
-                              data.response?[index].note ?? "",
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                  color: ColorApp.blue_container),
-                            ),
+                            child: data.response?[index].note != ""
+                                ? Text(
+                                    data.response?[index].note ?? "",
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        color: ColorApp.blue_container),
+                                  )
+                                : Text(
+                                    "notes",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        color: ColorApp.grey_font
+                                            .withOpacity(0.2)),
+                                  ),
                           ),
                     const SizedBox(
                       height: 20,

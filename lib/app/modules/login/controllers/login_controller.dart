@@ -79,7 +79,8 @@ class LoginController extends GetxController {
         refreshToken = loginResonse.value.data?.refreshToken ?? "";
         userId = loginResonse.value.data?.id ?? "";
         Future.delayed(800.milliseconds);
-        Get.toNamed(Routes.BREATHING_ONE);
+        Get.toNamed(Routes.BREATHING_EXERCISE);
+        // Get.toNamed(Routes.TURNON_NOTIF);
       } else {
         if (loginResonse.value.message
             .toString()

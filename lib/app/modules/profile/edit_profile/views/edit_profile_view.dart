@@ -28,133 +28,132 @@ class EditProfileView extends GetView<EditProfileController> {
         opacity: 0.3,
         child: Scaffold(
             resizeToAvoidBottomInset: false,
-            body: SafeArea(
-              child: Container(
-                height: Get.height,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/bg_heyva2.png"),
-                    fit: BoxFit.fill,
+            body: Container(
+              height: Get.height,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/bg_heyva2.png"),
+                  fit: BoxFit.fill,
+                ),
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(height: 40),
+                  Container(
+                      margin: const EdgeInsets.only(top: 14),
+                      child: ProfileHeader(
+                        centerTitle: Strings.profile,
+                        showIcon: true,
+                        isCostomBackFucntion: true,
+                        showCenterTitle: true,
+                        onBack: () {
+                          Get.back();
+                        },
+                      )),
+                  const SizedBox(
+                    height: 36,
                   ),
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                        margin: const EdgeInsets.only(top: 14),
-                        child: ProfileHeader(
-                          centerTitle: Strings.profile,
-                          showIcon: true,
-                          isCostomBackFucntion: true,
-                          showCenterTitle: true,
-                          onBack: () {
-                            Get.back();
-                          },
-                        )),
-                    const SizedBox(
-                      height: 36,
+                  GestureDetector(
+                    onTap: () {
+                      controller.changePicture();
+                    },
+                    child: Stack(
+                      children: [
+                        SizedBox(
+                            height: 80,
+                            width: 80,
+                            child: controller.filePath.value == ""
+                                ? CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                      controller.profileAvatar,
+                                    ),
+                                  )
+                                : CircleAvatar(
+                                    backgroundImage: FileImage(
+                                        File(controller.filePath.value)),
+                                  )),
+                        Positioned(
+                            right: 0,
+                            child: SizedBox(
+                                width: 16,
+                                height: 16,
+                                child: SvgPicture.asset(
+                                    "assets/icons/ic_edit.svg")))
+                      ],
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        controller.changePicture();
-                      },
-                      child: Stack(
-                        children: [
-                          SizedBox(
-                              height: 80,
-                              width: 80,
-                              child: controller.filePath.value == ""
-                                  ? CircleAvatar(
-                                      backgroundImage: NetworkImage(
-                                        controller.profileAvatar,
-                                      ),
-                                    )
-                                  : CircleAvatar(
-                                      backgroundImage: FileImage(
-                                          File(controller.filePath.value)),
-                                    )),
-                          Positioned(
-                              right: 0,
-                              child: SizedBox(
-                                  width: 16,
-                                  height: 16,
-                                  child: SvgPicture.asset(
-                                      "assets/icons/ic_edit.svg")))
-                        ],
-                      ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 40),
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 88,
+                        ),
+                        Obx(
+                          () => RegularTextField(
+                            controller: controller.fullnameC,
+                            isObsecure: false,
+                            isError: controller.errorMessage.isNotEmpty,
+                            hint: Strings.full_name,
+                            ontap: () {},
+                            isPassword: false,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Obx(
+                          () => RegularTextField(
+                            controller: controller.phoneC,
+                            isObsecure: false,
+                            isError: controller.errorMessage.isNotEmpty,
+                            hint: Strings.phone_number,
+                            ontap: () {},
+                            isPassword: false,
+                            isNumber: true,
+                            isEnable: false,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Obx(
+                          () => RegularTextField(
+                            controller: controller.emailC,
+                            isObsecure: false,
+                            isError: controller.errorMessage.isNotEmpty,
+                            hint: Strings.email_adress,
+                            ontap: () {},
+                            isPassword: false,
+                            isEnable: false,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        Container(
+                          alignment: Alignment.bottomCenter,
+                          child: OrangeButtonWTrailingIcon(
+                            padding: 0,
+                            determineAction: "from_onplanning_one",
+                            text: Strings.save,
+                            ontap: () {
+                              if (controller.filePath.value != "" ||
+                                  controller.fullnameC.text !=
+                                      controller.box.read(Keys.profileName)) {
+                                controller.updateProfile();
+                              } else {
+                                bottomSheetMessage(
+                                    color: "red",
+                                    desc: "no data has been changed");
+                              }
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 40),
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 88,
-                          ),
-                          Obx(
-                            () => RegularTextField(
-                              controller: controller.fullnameC,
-                              isObsecure: false,
-                              isError: controller.errorMessage.isNotEmpty,
-                              hint: Strings.full_name,
-                              ontap: () {},
-                              isPassword: false,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          Obx(
-                            () => RegularTextField(
-                              controller: controller.phoneC,
-                              isObsecure: false,
-                              isError: controller.errorMessage.isNotEmpty,
-                              hint: Strings.phone_number,
-                              ontap: () {},
-                              isPassword: false,
-                              isNumber: true,
-                              isEnable: false,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          Obx(
-                            () => RegularTextField(
-                              controller: controller.emailC,
-                              isObsecure: false,
-                              isError: controller.errorMessage.isNotEmpty,
-                              hint: Strings.email_adress,
-                              ontap: () {},
-                              isPassword: false,
-                              isEnable: false,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          Container(
-                            alignment: Alignment.bottomCenter,
-                            child: OrangeButtonWTrailingIcon(
-                              padding: 0,
-                              determineAction: "from_onplanning_one",
-                              text: Strings.save,
-                              ontap: () {
-                                if (controller.filePath.value != "" ||
-                                    controller.fullnameC.text !=
-                                        controller.box.read(Keys.profileName)) {
-                                  controller.updateProfile();
-                                } else {
-                                  bottomSheetMessage(
-                                      color: "red",
-                                      desc: "no data has been changed");
-                                }
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ))));
   }

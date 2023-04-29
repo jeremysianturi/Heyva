@@ -7,6 +7,7 @@ import 'package:heyva/app/modules/profile/model/profile_model.dart';
 import 'package:heyva/app/modules/profile/provider/profile_provider.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/services/dio_services.dart';
+import 'package:intl/intl.dart';
 
 class InsightsController extends GetxController {
   var currentIndex = 1.obs;
@@ -89,7 +90,13 @@ class InsightsController extends GetxController {
     errorMessage.value = "";
     isLoading.value = true;
     try {
-      var data = (await _insightProvider.getInsight())!;
+      var data = (await _insightProvider.getInsight(
+        date1: DateFormat('yyyy-MM-dd').format(DateTime.now()),
+        date2: DateFormat('yyyy-MM-dd')
+            .format(DateTime.now().subtract(const Duration(days: 1))),
+        date3: DateFormat('yyyy-MM-dd')
+            .format(DateTime.now().subtract(const Duration(days: 2))),
+      ))!;
       isLoading.value = false;
 
       if (data.success == "Success") {

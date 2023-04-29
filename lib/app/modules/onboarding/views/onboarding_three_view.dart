@@ -33,7 +33,7 @@ class OnBoardingThreeView extends GetView<OnBoardingThreeController> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 40,
+                  height: 60,
                 ),
                 OnBoardingHeader(
                   indicatorColor1: ColorApp.btn_orange,

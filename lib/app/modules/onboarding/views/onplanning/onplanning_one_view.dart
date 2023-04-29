@@ -32,7 +32,7 @@ class OnPlanningOneView extends GetView<OnPlanningOneController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 40,
+                height: 60,
               ),
               // const OnBoardingHeader(
               //   indicatorColor1: ColorApp.btn_orange,

@@ -71,18 +71,6 @@ class ArticleView extends GetView<ArticleController> {
                                     fit: BoxFit.cover,
                                   )
                                 : const SizedBox(),
-
-                            // FadeInImage.assetNetwork(
-                            //   placeholder:
-                            //       "assets/images/dummy_article_image.png",
-                            //   image: controller.imgUrl,
-                            //   fit: BoxFit.cover,
-                            // ),
-
-                            // Image.asset(
-                            //   "assets/images/dummy_article_image.png",
-                            //   fit: BoxFit.cover,
-                            // ),
                           ),
                           const SizedBox(
                             height: 22,
@@ -92,22 +80,23 @@ class ArticleView extends GetView<ArticleController> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Wrap(
-                                      spacing: 8,
-                                      children: controller.tagsList
-                                          .map(
-                                            (e) => _buildChip(
-                                                controller.tagsList[0].tag
-                                                        ?.name ??
-                                                    "",
-                                                ColorApp.btn_pink),
-                                          )
-                                          .toList(),
-                                    ),
-                                  ],
+                                SizedBox(
+                                  height: 48,
+                                  child: ListView(
+                                      scrollDirection: Axis.horizontal,
+                                      shrinkWrap: true,
+                                      children: [
+                                        Wrap(
+                                          spacing: 8,
+                                          children: controller.tagsList
+                                              .map(
+                                                (e) => _buildChip(
+                                                    e.tag?.name ?? "",
+                                                    ColorApp.btn_pink),
+                                              )
+                                              .toList(),
+                                        )
+                                      ]),
                                 ),
                                 const SizedBox(
                                   height: 4,
@@ -155,23 +144,6 @@ class ArticleView extends GetView<ArticleController> {
                                   height: 20,
                                 ),
                                 Html(data: controller.renderedBody),
-                                // Column(
-                                //   crossAxisAlignment: CrossAxisAlignment.start,
-                                //   children: [
-                                //     Image.asset(
-                                //         "assets/images/dummy_article_one.png"),
-                                //     const SizedBox(
-                                //       height: 14,
-                                //     ),
-                                //     Image.asset(
-                                //         "assets/images/dummy_article_two.png"),
-                                //     const SizedBox(
-                                //       height: 14,
-                                //     ),
-                                //     Image.asset(
-                                //         "assets/images/dummy_article_three.png"),
-                                //   ],
-                                // ),
                                 Row(
                                   children: [
                                     const Text(
@@ -192,8 +164,7 @@ class ArticleView extends GetView<ArticleController> {
                                         style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600,
-                                            color:
-                                                ColorApp.blue_container),
+                                            color: ColorApp.blue_container),
                                       ),
                                     ),
                                     TextButton.icon(
@@ -207,8 +178,7 @@ class ArticleView extends GetView<ArticleController> {
                                         style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600,
-                                            color:
-                                                ColorApp.blue_container),
+                                            color: ColorApp.blue_container),
                                       ),
                                     ),
                                   ],

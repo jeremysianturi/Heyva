@@ -29,46 +29,54 @@ class ProfileHeader extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ElevatedButton(
-            onPressed: () {
-              if (isCostomBackFucntion) {
-                onBack!();
-              } else {
-                Navigator.of(context).pop();
-              }
-            },
-            style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-                padding: const EdgeInsets.all(11),
-                minimumSize: Size.zero,
-                primary: ColorApp.white,
-                elevation: 0),
-            child: InkWell(
-              onTap: () {
-                if (isCostomBackFucntion) {
-                  onBack!();
-                } else {
-                  Navigator.of(context).pop();
-                }
-              },
-              child: const Icon(
-                Icons.arrow_back,
-                size: 18,
-                color: ColorApp.black_arrow_back,
+          Expanded(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: ElevatedButton(
+                onPressed: () {
+                  if (isCostomBackFucntion) {
+                    onBack!();
+                  } else {
+                    Navigator.of(context).pop();
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(11),
+                    minimumSize: Size.zero,
+                    primary: ColorApp.white,
+                    elevation: 0),
+                child: InkWell(
+                  onTap: () {
+                    if (isCostomBackFucntion) {
+                      onBack!();
+                    } else {
+                      Navigator.of(context).pop();
+                    }
+                  },
+                  child: const Icon(
+                    Icons.arrow_back,
+                    size: 18,
+                    color: ColorApp.black_arrow_back,
+                  ),
+                ),
               ),
             ),
           ),
-          if (showCenterTitle)
-            Text(
-              centerTitle ?? "",
-              style: TextStyle(
-                  decoration: TextDecoration.none,
-                  color: titleColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500),
-            ),
+          Expanded(
+            flex: 2,
+            child: showCenterTitle
+                ? Text(
+                    centerTitle ?? "",
+                    style: TextStyle(
+                        decoration: TextDecoration.none,
+                        color: titleColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500),
+                  )
+                : SizedBox(),
+          ),
           showIcon
               ? ElevatedButton(
                   onPressed: () {
@@ -91,13 +99,15 @@ class ProfileHeader extends StatelessWidget {
                     height: 24,
                   ),
                 )
-              : Text(
-                  rightText ?? "",
-                  style: const TextStyle(
-                      color: ColorApp.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600),
-                ),
+              : Expanded(
+                child: Text(
+                    rightText ?? "",
+                    style: const TextStyle(
+                        color: ColorApp.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600),
+                  ),
+              )
         ],
       ),
     );

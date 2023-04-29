@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:heyva/app/modules/login/model/login_model.dart';
+import 'package:heyva/app/modules/login/provider/login_provider.dart';
 import 'package:heyva/app/modules/register/model/register_storage_model.dart';
 import 'package:heyva/app/modules/register/model/verified_model.dart';
 import 'package:heyva/app/modules/register/provider/register_provider.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
+import 'package:heyva/constant/variabels.dart';
 import 'package:heyva/services/dio_services.dart';
-
 
 class RegistVerificationController extends GetxController {
   var box = GetStorage();
@@ -15,6 +18,7 @@ class RegistVerificationController extends GetxController {
   var isLoading = false.obs;
   late RefreshDioClient _client;
   late RegisterProvider _registerProvider;
+  late LoginProvider _loginProvider;
 
   var boxData = RegisterStorageModel(
           email: "",
@@ -31,6 +35,7 @@ class RegistVerificationController extends GetxController {
   void onInit() {
     _client = RefreshDioClient();
     _registerProvider = RegisterProvider(_client.init());
+    _loginProvider = LoginProvider(_client.init());
     boxData.value = box.read(Keys.registStorage) as RegisterStorageModel;
   }
 
@@ -76,6 +81,38 @@ class RegistVerificationController extends GetxController {
       }
     } catch (e) {
       isLoading.value = false;
+      debugPrint("error  $e");
+    }
+  }
+
+  var loginResonse =
+      LoginModel(success: "", data: null, message: "", error: "").obs;
+
+  postLogin() async {
+    isLoading.value = true;
+    try {
+      var boxData = box.read(Keys.registStorage) as RegisterStorageModel;
+
+      loginResonse.value = (await _loginProvider.Login(
+          username: boxData.email, password: boxData.password))!;
+
+      if (loginResonse.value.success == "Success") {
+        var box = GetStorage();
+        box.write(
+            Keys.loginAccessToken, loginResonse.value.data?.accessToken ?? "");
+        box.write(Keys.loginRefreshToken,
+            loginResonse.value.data?.refreshToken ?? "");
+        box.write(Keys.loginID, loginResonse.value.data?.id ?? "");
+        authToken = "Bearer ${loginResonse.value.data!.accessToken}";
+        refreshToken = loginResonse.value.data?.refreshToken ?? "";
+        userId = loginResonse.value.data?.id ?? "";
+        Get.toNamed(Routes.TURNON_NOTIF);
+      } else {
+        isLoading.value = false;
+      }
+    } catch (e) {
+      isLoading.value = false;
+
       debugPrint("error  $e");
     }
   }

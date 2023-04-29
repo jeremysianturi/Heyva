@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heyva/app/widgets/nav_screen.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:heyva/constant/keys.dart';
 
 import '../../../../../constant/colors.dart';
 import '../../../../../constant/strings.dart';
@@ -28,13 +27,9 @@ class BreathingFinishView extends GetView<BreathingFinishController> {
                     Container(),
                     GestureDetector(
                       onTap: () {
-                        Get.deleteAll();
-                        pushNewScreen(
-                          context,
-                          screen: NavScreen(
-                            menuScreenContext: context,
-                          ),
-                        );
+                        controller.programPersonalTrackerFinish(
+                            programId:
+                                controller.box.read(Keys.programIdChildStorage));
                       },
                       child: const Padding(
                         padding: EdgeInsets.only(top: 67),

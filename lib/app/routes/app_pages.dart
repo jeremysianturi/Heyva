@@ -1,6 +1,4 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:heyva/app/modules/reset_password/reset_password_input/bindings/reset_password_input_binding.dart';
-import 'package:heyva/app/modules/reset_password/reset_password_input/views/reset_password_input_view.dart';
 
 import '../modules/article/bindings/article_binding.dart';
 import '../modules/article/views/article_view.dart';
@@ -44,6 +42,8 @@ import '../modules/mood_tracker/recomendation2/views/recomendation2_view.dart';
 import '../modules/mood_tracker/sleep_check-in/bindings/sleep_check_in_binding.dart';
 import '../modules/mood_tracker/sleep_check-in/views/sleep_check_in_view.dart';
 import '../modules/mood_tracker/views/mood_tracker_view.dart';
+import '../modules/notification_center/bindings/notification_center_binding.dart';
+import '../modules/notification_center/views/notification_center_view.dart';
 import '../modules/onboarding/bindings/onboarding_one_binding.dart';
 import '../modules/onboarding/bindings/onboarding_three_binding.dart';
 import '../modules/onboarding/bindings/onboarding_two_binding.dart';
@@ -77,6 +77,8 @@ import '../modules/register/views/register_view.dart';
 import '../modules/related_program/bindings/related_program_binding.dart';
 import '../modules/related_program/views/related_program_view.dart';
 import '../modules/reset_password/bindings/reset_password_binding.dart';
+import '../modules/reset_password/reset_password_input/bindings/reset_password_input_binding.dart';
+import '../modules/reset_password/reset_password_input/views/reset_password_input_view.dart';
 import '../modules/reset_password/reset_password_verification/bindings/reset_password_verification_binding.dart';
 import '../modules/reset_password/reset_password_verification/views/reset_password_verification_view.dart';
 import '../modules/reset_password/views/reset_password_view.dart';
@@ -296,6 +298,11 @@ class AppPages {
       name: _Paths.RESET_PASSWORD_INPUT,
       page: () => const ResetPasswordInputView(),
       binding: ResetPasswordInputBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOTIFICATION_CENTER,
+      page: () => const NotificationCenterView(),
+      binding: NotificationCenterBinding(),
     ),
   ];
 }

@@ -34,6 +34,15 @@ class Staggered extends StatelessWidget {
           Get.toNamed(Routes.ARTICLE,
               arguments: {Keys.contentIDArticleArguments: data?.contents?.id});
         }
+        var title = data?.contents?.title ?? "";
+        if (data?.contentType?.name?.toLowerCase() == "program" &&
+            title.toLowerCase().contains("breathin")) {
+          Get.toNamed(Routes.BREATHING_EXERCISE);
+        }
+        if (data?.contentType?.name?.toLowerCase() == "program" &&
+            title.toLowerCase().contains("pelvic")) {
+          Get.toNamed(Routes.BREATHING_ONE);
+        }
       },
       child: Container(
           width: Get.width,
@@ -46,13 +55,13 @@ class Staggered extends StatelessWidget {
                 height: index % 2 == 0 ? 200 : 100,
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  image: DecorationImage(
-                    image: NetworkImage(data?.contents?.thumbnail ?? ""),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.centerLeft,
-                  ),
-                ),
+                    borderRadius: BorderRadius.circular(12),
+                    image: DecorationImage(
+                      image: NetworkImage(data?.contents?.thumbnail ?? ""),
+                      fit: BoxFit.cover,
+                      alignment: Alignment.centerLeft,
+                    ),
+                    color: ColorApp.blue_container),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

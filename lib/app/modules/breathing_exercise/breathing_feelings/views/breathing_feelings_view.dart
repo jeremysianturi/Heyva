@@ -12,84 +12,82 @@ class BreathingFeelingsView extends GetView<BreathingFeelingsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          height: Get.height,
-          width: Get.width,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/bg_breating_exercise.png"),
-              fit: BoxFit.fill,
-            ),
+      body: Container(
+        height: Get.height,
+        width: Get.width,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/bg_breating_exercise.png"),
+            fit: BoxFit.fill,
           ),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 17,
-              ),
-              Row(
-                children: [
-                  const Expanded(child: SizedBox()),
-                  const Text(
-                    Strings.breathing_exercise,
+        ),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 60,
+            ),
+            Row(
+              children: [
+                const Expanded(child: SizedBox()),
+                const Text(
+                  Strings.breathing_exercise,
+                  style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: ColorApp.black_article_title,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500),
+                  textAlign: TextAlign.center,
+                ),
+                Expanded(
+                  child: Text(
+                    Strings.skip,
                     style: TextStyle(
                         decoration: TextDecoration.none,
-                        color: ColorApp.black_article_title,
-                        fontSize: 20,
+                        color: ColorApp.black.withOpacity(0.3),
+                        fontSize: 16,
                         fontWeight: FontWeight.w500),
+                    textAlign: TextAlign.end,
+                  ),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 63,
+                  ),
+                  const Text(
+                    Strings.wasThisSessiOneEfective,
+                    style: TextStyle(
+                        decoration: TextDecoration.none,
+                        color: ColorApp.blue_container,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700),
                     textAlign: TextAlign.center,
                   ),
-                  Expanded(
-                    child: Text(
-                      Strings.skip,
-                      style: TextStyle(
-                          decoration: TextDecoration.none,
-                          color: ColorApp.black.withOpacity(0.3),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
-                      textAlign: TextAlign.end,
-                    ),
-                  ),
                   const SizedBox(
-                    width: 20,
+                    height: 100,
+                  ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: controller.list.length,
+                    itemBuilder: (BuildContext context, int index) =>
+                        BreatingFeelingsItems(
+                      controller: controller,
+                      index: index,
+                    ),
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(
-                      height: 63,
-                    ),
-                    const Text(
-                      Strings.wasThisSessiOneEfective,
-                      style: TextStyle(
-                          decoration: TextDecoration.none,
-                          color: ColorApp.blue_container,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w700),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(
-                      height: 100,
-                    ),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: controller.list.length,
-                      itemBuilder: (BuildContext context, int index) =>
-                          BreatingFeelingsItems(
-                        controller: controller,
-                        index: index,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

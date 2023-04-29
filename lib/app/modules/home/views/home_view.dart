@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/home/widget/doctor_card.dart';
 import 'package:heyva/app/routes/app_pages.dart';
+import 'package:heyva/app/widgets/bottom_sheet_invite.dart';
 import 'package:heyva/app/widgets/reusable_timeline.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
@@ -93,11 +95,19 @@ class HomeView extends GetView<HomeController> {
                 body: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
                       AppBar(
+                        systemOverlayStyle: const SystemUiOverlayStyle(
+                          statusBarIconBrightness: Brightness.dark,
+                          statusBarBrightness:
+                              Brightness.light, // For iOS (dark icons)
+                        ),
                         backgroundColor: Colors.transparent,
                         elevation: 0,
+                        centerTitle: false,
                         leading: GestureDetector(
                           onTap: () async {
                             await Get.toNamed(Routes.PROFILE);
@@ -114,6 +124,7 @@ class HomeView extends GetView<HomeController> {
                             controller.onInit();
                           },
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 controller.greeting,
@@ -128,7 +139,7 @@ class HomeView extends GetView<HomeController> {
                                 style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
-                                  color: ColorApp.homepage_name_color,
+                                  color: ColorApp.blue_container,
                                 ),
                               ),
                             ],
@@ -138,6 +149,7 @@ class HomeView extends GetView<HomeController> {
                           GestureDetector(
                             onTap: () {
                               // Get.to(ArticleView());
+                              Get.toNamed(Routes.NOTIFICATION_CENTER);
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(
@@ -260,26 +272,6 @@ class HomeView extends GetView<HomeController> {
                         }),
                       ),
 
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //   children: [
-                      //     const ArticleContainer(
-                      //       containerColor: ColorApp.blue_container,
-                      //       title: Strings.managing_anxiety,
-                      //       tag: Strings.articles,
-                      //       tagIcon: "assets/images/ic_bookmark.png",
-                      //       desc: Strings.desc_related_article,
-                      //     ),
-                      //     Container(),
-                      //     const ArticleContainer(
-                      //       containerColor: ColorApp.btn_maroon,
-                      //       title: Strings.managing_anxiety,
-                      //       tag: Strings.program,
-                      //       tagIcon: "assets/images/ic_program.png",
-                      //       desc: Strings.desc_related_article,
-                      //     ),
-                      //   ],
-                      // ),
                       const SizedBox(
                         height: 20,
                       ),
@@ -355,97 +347,102 @@ class HomeView extends GetView<HomeController> {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
-                          Card(
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14.0),
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
+                          // Card(
+                          //   elevation: 0,
+                          //   shape: RoundedRectangleBorder(
+                          //     borderRadius: BorderRadius.circular(14.0),
+                          //   ),
+                          //   child: Container(
+                          //     decoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(14.0),
+                          //       image: const DecorationImage(
+                          //         fit: BoxFit.cover,
+                          //         image: AssetImage(
+                          //             "assets/images/bg_blue_container_medal.png"),
+                          //       ),
+                          //     ),
+                          //     child: ListTile(
+                          //       shape: const RoundedRectangleBorder(
+                          //           borderRadius:
+                          //               BorderRadius.all(Radius.circular(14))),
+                          //       title: const Padding(
+                          //         padding: EdgeInsets.only(top: 20),
+                          //         child: Text(
+                          //           Strings.get_your_premium,
+                          //           style: TextStyle(
+                          //               fontSize: 20,
+                          //               fontWeight: FontWeight.w500,
+                          //               color: ColorApp.white_font),
+                          //         ),
+                          //       ),
+                          //       subtitle: Padding(
+                          //         padding: const EdgeInsets.only(bottom: 20),
+                          //         child: Text(
+                          //           Strings.get_unlimited_access,
+                          //           style: TextStyle(
+                          //               fontSize: 14,
+                          //               fontWeight: FontWeight.w400,
+                          //               color: ColorApp.grey_card_font
+                          //                   .withOpacity(0.6)),
+                          //         ),
+                          //       ),
+                          //       trailing: const Icon(
+                          //         Icons.arrow_forward_ios,
+                          //         color: ColorApp.white_font,
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
+                          // const SizedBox(
+                          //   height: 10,
+                          // ),
+                          GestureDetector(
+                            onTap: () {
+                              inviteFriends();
+                            },
+                            child: Card(
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(14.0),
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage(
-                                      "assets/images/bg_blue_container_medal.png"),
-                                ),
                               ),
-                              child: ListTile(
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(14))),
-                                title: const Padding(
-                                  padding: EdgeInsets.only(top: 20),
-                                  child: Text(
-                                    Strings.get_your_premium,
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: ColorApp.white_font),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(14.0),
+                                  image: const DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage(
+                                        "assets/images/bg_blue_container_plane.png"),
                                   ),
                                 ),
-                                subtitle: Padding(
-                                  padding: const EdgeInsets.only(bottom: 20),
-                                  child: Text(
-                                    Strings.get_unlimited_access,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400,
-                                        color: ColorApp.grey_card_font
-                                            .withOpacity(0.6)),
+                                child: ListTile(
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(14))),
+                                  title: const Padding(
+                                    padding: EdgeInsets.only(top: 20),
+                                    child: Text(
+                                      Strings.share_to_friends,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                          color: ColorApp.white_font),
+                                    ),
                                   ),
-                                ),
-                                trailing: const Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: ColorApp.white_font,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Card(
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14.0),
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(14.0),
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage(
-                                      "assets/images/bg_blue_container_plane.png"),
-                                ),
-                              ),
-                              child: ListTile(
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(14))),
-                                title: const Padding(
-                                  padding: EdgeInsets.only(top: 20),
-                                  child: Text(
-                                    Strings.share_to_friends,
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: ColorApp.white_font),
+                                  subtitle: Padding(
+                                    padding: const EdgeInsets.only(bottom: 20),
+                                    child: Text(
+                                      Strings.invite_your_friends,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
+                                          color: ColorApp.grey_card_font
+                                              .withOpacity(0.6)),
+                                    ),
                                   ),
-                                ),
-                                subtitle: Padding(
-                                  padding: const EdgeInsets.only(bottom: 20),
-                                  child: Text(
-                                    Strings.invite_your_friends,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400,
-                                        color: ColorApp.grey_card_font
-                                            .withOpacity(0.6)),
+                                  trailing: const Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: ColorApp.white_font,
                                   ),
-                                ),
-                                trailing: const Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: ColorApp.white_font,
                                 ),
                               ),
                             ),

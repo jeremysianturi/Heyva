@@ -14,90 +14,88 @@ class FaqView extends GetView<FaqController> {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        body: SafeArea(
-          child: Container(
-            height: Get.height,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/bg_heyva2.png"),
-                fit: BoxFit.fill,
-              ),
+        body: Container(
+          height: Get.height,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/bg_heyva2.png"),
+              fit: BoxFit.fill,
             ),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                      margin: const EdgeInsets.only(top: 14),
-                      child: const Header(
-                        rightText: "",
-                        showIcon: false,
-                      )),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        const Text(
-                          Strings.faq,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                    margin: const EdgeInsets.only(top: 50),
+                    child: const Header(
+                      rightText: "",
+                      showIcon: false,
+                    )),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      const Text(
+                        Strings.faq,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 28,
+                            color: ColorApp.blue_container),
+                      ),
+                      const SizedBox(
+                        height: 23,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                          Strings.privacyPolicyDesc,
                           style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 28,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
                               color: ColorApp.blue_container),
+                          textAlign: TextAlign.center,
                         ),
-                        const SizedBox(
-                          height: 23,
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      Column(
+                        children: List.generate(
+                            controller.list.length,
+                            (index) => PrivacyPolicyItem(
+                                  data: controller.list[index],
+                                  index: index,
+                                  onChange: () {
+                                    controller.list[index].isSelected.value =
+                                        !controller
+                                            .list[index].isSelected.value;
+                                    print(
+                                        "onchange ${controller.list[index].isSelected.value}");
+                                  },
+                                )),
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 20),
+                        width: Get.width,
+                        child: const Text(
+                          "Effective from March 2023",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              color: ColorApp.blue_container),
+                          textAlign: TextAlign.start,
                         ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: Text(
-                            Strings.privacyPolicyDesc,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14,
-                                color: ColorApp.blue_container),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        Column(
-                          children: List.generate(
-                              controller.list.length,
-                              (index) => PrivacyPolicyItem(
-                                    data: controller.list[index],
-                                    index: index,
-                                    onChange: () {
-                                      controller.list[index].isSelected.value =
-                                          !controller
-                                              .list[index].isSelected.value;
-                                      print(
-                                          "onchange ${controller.list[index].isSelected.value}");
-                                    },
-                                  )),
-                        ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 20),
-                          width: Get.width,
-                          child: const Text(
-                            "Effective from March 2023",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14,
-                                color: ColorApp.blue_container),
-                            textAlign: TextAlign.start,
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ));

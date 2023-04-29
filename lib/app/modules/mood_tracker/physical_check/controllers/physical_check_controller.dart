@@ -79,8 +79,12 @@ class PhysicalCheckController extends GetxController {
         Future.delayed(800.milliseconds);
         box.write(Keys.physicalCheckFrontBodyResponse,
             trackerResponse.value.data?[0].trackerDetail);
+        box.write(
+            Keys.phycicalCheckFrontBodyId, trackerResponse.value.data?[0].id);
         box.write(Keys.physicalCheckBackBodyResponse,
             trackerResponse.value.data?[1].trackerDetail);
+        box.write(
+            Keys.phycicalCheckBackBodyId, trackerResponse.value.data?[1].id);
       } else {
         errorMessage.value = trackerResponse.value.message ?? "Error Message";
       }
@@ -100,6 +104,7 @@ class PhysicalCheckController extends GetxController {
         Future.delayed(800.milliseconds);
         box.write(Keys.moodTrackerResponse,
             moodTrackerResponse.value.data?[0].trackerDetail);
+        box.write(Keys.moodTrackerId, moodTrackerResponse.value.data?[0].id);
       } else {
         errorMessage.value =
             moodTrackerResponse.value.message ?? "Error Message";
@@ -120,6 +125,7 @@ class PhysicalCheckController extends GetxController {
         Future.delayed(800.milliseconds);
         box.write(Keys.sleepTrackerResponse,
             sleepTrackerResponse.value.data?[0].trackerDetail);
+        box.write(Keys.sleepTrackerId, sleepTrackerResponse.value.data?[0].id);
       } else {
         errorMessage.value =
             sleepTrackerResponse.value.message ?? "Error Message";
@@ -140,6 +146,8 @@ class PhysicalCheckController extends GetxController {
         Future.delayed(800.milliseconds);
         box.write(Keys.recomendationTrackerResponse,
             recomendationResponse.value.data?[0].trackerDetail);
+        box.write(
+            Keys.recomendationID, recomendationResponse.value.data?[0].id);
       } else {
         errorMessage.value =
             recomendationResponse.value.message ?? "Error Message";
@@ -179,18 +187,19 @@ class PhysicalCheckController extends GetxController {
     } else {
       await Get.toNamed(Routes.BACK_BODY_CHECK);
       var box = GetStorage();
-      var checkFront =
+      var cekBack =
           box.read(Keys.physicalCheckBackBodyResponse) as List<TrackerDetail>;
       var loop = 0;
-      checkFront.forEach((e) {
+      cekBack.forEach((e) {
         var isselected =
             e.jsonContent?.firstWhereOrNull((e) => e.isSelected == true)?.name;
-        if (isselected != "") {
+        if (isselected != "" && isselected.toString() != "null") {
           debugPrint("isselected $isselected");
           loop++;
         }
       });
-      if (loop == checkFront.length) {
+
+      if (loop == cekBack.length - 1) {
         trackerResponse.value.data?[index].isDone = true;
         trackerResponse.refresh();
         debugPrint("done ${trackerResponse.value.data?[index].isDone}");

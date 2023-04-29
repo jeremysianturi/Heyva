@@ -7,11 +7,18 @@ class InsightProvider {
 
   InsightProvider(this._client);
 
-  Future<model.InsightModel?> getInsight() async {
+  Future<model.InsightModel?> getInsight(
+  {
+    required date1,
+    required date2,
+    required date3,
+
+  }
+      ) async {
     model.InsightModel? res;
     try {
       Response response = await _client.get(
-        '/api/v1/tracker-daily/insight?date=2023-04-09&date=2023-04-10&date=2023-04-11',
+        '/api/v1/tracker-daily/insight?date=$date1&date=$date2&date=$date3',
       );
       debugPrint('response data: ${response.data}');
       res = model.InsightModel.fromJson(response.data);

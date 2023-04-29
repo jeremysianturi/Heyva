@@ -18,7 +18,7 @@ class UpcomingWidget extends StatelessWidget {
           style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w600,
-              color: ColorApp.homepage_name_color),
+              color: ColorApp.blue_container),
         ),
         const SizedBox(
           height: 20,
@@ -65,12 +65,15 @@ class UpcomingWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  child: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: ColorApp.white_font,
-                  ),
-                ),
+                // Container(
+                //   child: const Icon(
+                //     Icons.arrow_forward_ios,
+                //     color: ColorApp.white_font,
+                //   ),
+                // ),
+                const SizedBox(
+                  width: 80,
+                )
               ],
             )),
         const SizedBox(
@@ -118,12 +121,15 @@ class UpcomingWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  child: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: ColorApp.white_font,
-                  ),
-                ),
+                // Container(
+                //   child: const Icon(
+                //     Icons.arrow_forward_ios,
+                //     color: ColorApp.white_font,
+                //   ),
+                // ),
+                const SizedBox(
+                  width: 80,
+                )
               ],
             )),
         const SizedBox(

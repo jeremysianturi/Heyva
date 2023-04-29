@@ -34,7 +34,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 56),
+                  padding: const EdgeInsets.only(top: 50),
                   child: Header(
                     centerTitle: Strings.resetPassword,
                     showCenterTitle: true,

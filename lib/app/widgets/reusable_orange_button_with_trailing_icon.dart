@@ -75,7 +75,7 @@ class OrangeButtonWTrailingIcon extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 35,
+            height: 25,
           )
         ],
       ),
