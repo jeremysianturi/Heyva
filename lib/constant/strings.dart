@@ -100,7 +100,7 @@ class Strings {
       "Invite your friend to join Heyva and get your benefits";
   static const String mother_love =
       "A mother's love is more beautiful than any fresh flower";
-  static const String breathing_exercise = "Breathing Excercise";
+  static const String breathing_exercise = "Breathing Exercise";
   static const String minute = "2-5 min";
   static const String track_my_mood = "Track my mood";
   static const String rhythm_of_health = "Check rhythm of health";
