@@ -46,52 +46,6 @@ class HomeView extends GetView<HomeController> {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 extendBodyBehindAppBar: false,
-                // appBar: AppBar(
-                //   backgroundColor: Colors.transparent,
-                //   elevation: 0,
-                //   leading: CircleAvatar(
-                //     child: Image.asset("assets/images/img_pp_dummy.png"),
-                //   ),
-                //   title: Column(
-                //     children: const [
-                //       Text(
-                //         Strings.good_afternoon,
-                //         style: TextStyle(
-                //           fontSize: 14,
-                //           fontWeight: FontWeight.w400,
-                //           color: ColorApp.black_greeting_color,
-                //         ),
-                //       ),
-                //       Text(
-                //         Strings.priscilla,
-                //         style: TextStyle(
-                //           fontSize: 18,
-                //           fontWeight: FontWeight.w600,
-                //           color: ColorApp.homepage_name_color,
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                //   actions: [
-                //     GestureDetector(
-                //       onTap: () {
-                //         Get.to(ArticleView());
-                //       },
-                //       child: Container(
-                //         padding: const EdgeInsets.symmetric(
-                //             horizontal: 12.5, vertical: 10.5),
-                //         decoration: BoxDecoration(
-                //           color: ColorApp.bottom_nav_color,
-                //           borderRadius: BorderRadius.circular(12),
-                //         ),
-                //         child: const ImageIcon(
-                //           AssetImage("assets/images/ic_notification.png"),
-                //           color: ColorApp.ic_notif_color,
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
                 body: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,52 +130,14 @@ class HomeView extends GetView<HomeController> {
                             fontSize: 14,
                             color: ColorApp.grey_font),
                       ),
-                      // Obx(
-                      //   () => Stepper(
-                      //     type: StepperType.vertical,
-                      //     steps: buildStep(),
-                      //     currentStep: homeController.currentSteps.value,
-                      //     onStepContinue: () {
-                      //       if (homeController.currentSteps.value ==
-                      //           buildStep().length - 1) {
-                      //       } else {
-                      //         homeController.currentSteps.value++;
-                      //       }
-                      //     },
-                      //     onStepCancel: () {
-                      //       if (homeController.currentSteps.value == 0) {
-                      //       } else {
-                      //         homeController.currentSteps.value--;
-                      //       }
-                      //     },
-                      //     onStepTapped: (index) {
-                      //       homeController.currentSteps.value = index;
-                      //     },
-                      //     controlsBuilder:
-                      //         (BuildContext context, ControlsDetails details) {
-                      //       return Row(
-                      //         children: <Widget>[
-                      //           TextButton(
-                      //             onPressed: details.onStepContinue,
-                      //             child: const Text(
-                      //               '',
-                      //               style: TextStyle(color: Colors.transparent),
-                      //             ),
-                      //           ),
-                      //           TextButton(
-                      //             onPressed: details.onStepCancel,
-                      //             child: const Text(
-                      //               '',
-                      //               style: TextStyle(color: Colors.transparent),
-                      //             ),
-                      //           ),
-                      //         ],
-                      //       );
-                      //     },
-                      //   ),
-                      // ),
+                      const SizedBox(
+                        height: 12,
+                      ),
                       TimelineView(
                         from: "home",
+                      ),
+                      const SizedBox(
+                        height: 24,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -247,8 +163,12 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ],
                       ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       GridView.count(
                         shrinkWrap: true,
+                        padding: EdgeInsets.zero,
                         crossAxisCount: 2,
                         childAspectRatio: 162 / 260,
                         crossAxisSpacing: 11,
@@ -271,10 +191,9 @@ class HomeView extends GetView<HomeController> {
                           );
                         }),
                       ),
-
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      // const SizedBox(
+                      //   height: 20,
+                      // ),
                       Column(
                         children: [
                           Row(
@@ -287,37 +206,6 @@ class HomeView extends GetView<HomeController> {
                                     fontWeight: FontWeight.w600,
                                     color: ColorApp.blue_container),
                               ),
-                              // Row(
-                              //   mainAxisAlignment: MainAxisAlignment.end,
-                              //   children: [
-                              //     SizedBox(
-                              //       // width: 70,
-                              //       child: Row(
-                              //         mainAxisAlignment:
-                              //             MainAxisAlignment.start,
-                              //         children: [
-                              //           const Text(
-                              //             Strings.view_all,
-                              //             style: TextStyle(
-                              //                 fontSize: 14,
-                              //                 fontWeight: FontWeight.w400,
-                              //                 color: ColorApp.black_view_all),
-                              //           ),
-                              //           IconButton(
-                              //             // icon: Image.asset(tagIcon),
-                              //             icon: const Icon(
-                              //               Icons.arrow_forward_ios,
-                              //               size: 12,
-                              //             ),
-                              //             padding: EdgeInsets.zero,
-                              //             constraints: const BoxConstraints(),
-                              //             onPressed: () {},
-                              //           ),
-                              //         ],
-                              //       ),
-                              //     ),
-                              //   ],
-                              // ),
                             ],
                           ),
                           const SizedBox(
@@ -340,11 +228,12 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ],
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 28,
                       ),
                       ListView(
                         shrinkWrap: true,
+                        padding: EdgeInsets.zero,
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
                           // Card(

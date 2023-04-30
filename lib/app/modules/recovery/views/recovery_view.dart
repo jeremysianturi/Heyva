@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/learn/views/learn_view.dart';
@@ -49,19 +50,23 @@ class RecoveryView extends GetView<RecoveryController> {
                 body: SingleChildScrollView(
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 64,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SvgPicture.asset("assets/images/heyva_text_logo.svg"),
-                          // const Text(
-                          //   Strings.heyva_capital,
-                          //   style: TextStyle(
-                          //     color: ColorApp.black_font,
-                          //   ),
-                          // ),
+                      AppBar(
+                        systemOverlayStyle: const SystemUiOverlayStyle(
+                          statusBarIconBrightness: Brightness.dark,
+                          statusBarBrightness:
+                              Brightness.light, // For iOS (dark icons)
+                        ),
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        centerTitle: false,
+                        leading: SvgPicture.asset(
+                          'assets/images/heyva_text_logo.svg',
+                          fit: BoxFit.fitWidth,
+                          alignment: Alignment.centerLeft,
+                          width: 60,
+                          height: 20,
+                        ),
+                        actions: [
                           GestureDetector(
                             onTap: () {
                               // Get.to(ArticleView());
@@ -76,11 +81,14 @@ class RecoveryView extends GetView<RecoveryController> {
                               ),
                               child: const ImageIcon(
                                 AssetImage("assets/images/ic_notification.png"),
-                                color: ColorApp.ic_notif_color,
+                                color: ColorApp.blue_container,
                               ),
                             ),
                           ),
                         ],
+                      ),
+                      const SizedBox(
+                        height: 20,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -94,7 +102,7 @@ class RecoveryView extends GetView<RecoveryController> {
                           )
                         ],
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 12,
                       ),
                       TimelineView(
@@ -180,10 +188,11 @@ class RecoveryView extends GetView<RecoveryController> {
                       const SizedBox(
                         height: 16,
                       ),
-                      SizedBox(
+                      Container(
                         height: 30,
                         child: ListView.builder(
                           shrinkWrap: true,
+                          padding: EdgeInsets.zero,
                           scrollDirection: Axis.horizontal,
                           itemCount: controller.tagList.length,
                           itemBuilder: (context, index) => ProgramTab(
@@ -195,9 +204,13 @@ class RecoveryView extends GetView<RecoveryController> {
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        height: 28,
+                      ),
                       if (controller.programLength > 0)
                         GridView.count(
                           shrinkWrap: true,
+                          padding: EdgeInsets.zero,
                           crossAxisCount: 2,
                           childAspectRatio: 162 / 260,
                           crossAxisSpacing: 11,
@@ -223,6 +236,7 @@ class RecoveryView extends GetView<RecoveryController> {
                         ),
                       ListView(
                         shrinkWrap: true,
+                        padding: EdgeInsets.zero,
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
                           Card(

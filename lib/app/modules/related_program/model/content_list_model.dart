@@ -115,7 +115,7 @@ class Contents {
   Contents.fromJson(Map<String, dynamic> json)
       : id = json['id'] as String?,
         title = json['title'] as String?,
-        body = json['body'] as String?,
+        body = json['rendered_body'] as String?,
         creator = json['creator'] as String?,
         banner = json['banner'] as String?,
         thumbnail = json['thumbnail'] as String?;
@@ -123,7 +123,7 @@ class Contents {
   Map<String, dynamic> toJson() => {
     'id' : id,
     'title' : title,
-    'body' : body,
+    'rendered_body' : body,
     'creator' : creator,
     'banner' : banner,
     'thumbnail' : thumbnail

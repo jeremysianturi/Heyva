@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -39,7 +40,7 @@ class LearnView extends GetView<LearnController> {
         child: Scaffold(
             resizeToAvoidBottomInset: false,
             body: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/images/bg_heyva2.png"),
@@ -50,19 +51,23 @@ class LearnView extends GetView<LearnController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
-                      height: 60,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/images/heyva_text_logo.svg',
-                          fit: BoxFit.fill,
-                          alignment: Alignment.centerLeft,
-                          width: 60,
-                          height: 20,
-                        ),
+                    AppBar(
+                      systemOverlayStyle: const SystemUiOverlayStyle(
+                        statusBarIconBrightness: Brightness.dark,
+                        statusBarBrightness:
+                            Brightness.light, // For iOS (dark icons)
+                      ),
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                      centerTitle: false,
+                      leading: SvgPicture.asset(
+                        'assets/images/heyva_text_logo.svg',
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.centerLeft,
+                        width: 60,
+                        height: 20,
+                      ),
+                      actions: [
                         GestureDetector(
                           onTap: () {
                             // Get.to(ArticleView());

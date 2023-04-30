@@ -200,7 +200,7 @@ class VoiceOver extends StatelessWidget {
       width: Get.width,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/bg_heyva.png"),
+          image: AssetImage("assets/images/bg_breating_exercise.png"),
           fit: BoxFit.fill,
         ),
       ),

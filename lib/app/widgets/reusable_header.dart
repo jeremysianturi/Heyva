@@ -67,7 +67,7 @@ class Header extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 2,
+            flex: 3,
             child: showCenterTitle
                 ? Text(
                     centerTitle ?? "",
@@ -76,30 +76,38 @@ class Header extends StatelessWidget {
                         color: titleColor,
                         fontSize: 20,
                         fontWeight: FontWeight.w500),
+                    textAlign: TextAlign.center,
                   )
                 : SizedBox(),
           ),
           showIcon
-              ? ElevatedButton(
-                  onPressed: () {
-                    ontapIcon!();
-                  },
-                  style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
+              ? Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {
+                          ontapIcon!();
+                        },
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            padding: const EdgeInsets.all(8),
+                            minimumSize: Size.zero,
+                            primary: ColorApp.bottom_nav_color,
+                            elevation: 0),
+                        child: SvgPicture.asset(
+                          'assets/icons/ic_option_header.svg',
+                          fit: BoxFit.fill,
+                          alignment: Alignment.centerLeft,
+                          width: 18,
+                          height: 18,
+                        ),
                       ),
-                      padding: const EdgeInsets.all(8),
-                      minimumSize: Size.zero,
-                      primary: ColorApp.bottom_nav_color,
-                      elevation: 0),
-                  child: SvgPicture.asset(
-                    'assets/icons/ic_option_header.svg',
-                    fit: BoxFit.fill,
-                    alignment: Alignment.centerLeft,
-                    width: 18,
-                    height: 18,
-                  ),
-                )
+                  ],
+                ),
+              )
               : Expanded(
                   child: Text(
                     rightText ?? "",
@@ -107,6 +115,7 @@ class Header extends StatelessWidget {
                         color: ColorApp.black,
                         fontSize: 16,
                         fontWeight: FontWeight.w600),
+                    textAlign: TextAlign.end,
                   ),
                 )
         ],

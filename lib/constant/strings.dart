@@ -109,6 +109,7 @@ class Strings {
       "You are feeling good today. Let’s continue your journey. Happy mommy, happy baby. Go";
   static const String identification_exercise = "Identification Exercise";
   static const String pelvic_floor = "Pelvic floor";
+  static const String pelvic_exercise = "Pelvic Exercise";
   static const String one_minute = "1 min";
   static const String your_progress_day = "Your progress day";
   static const String pelvic_session = "Pelvic Session";
@@ -215,4 +216,5 @@ class Strings {
   static const String resetYourPassword = "Reset Your Password";
 
   static const String notificationCenter ="Notification Center";
+  static const String goToHome ="Go To Home";
 }

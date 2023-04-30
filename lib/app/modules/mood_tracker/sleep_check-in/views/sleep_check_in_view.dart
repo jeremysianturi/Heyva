@@ -86,7 +86,7 @@ class MoodCheckForm1 extends StatelessWidget {
             Column(
               children: [
                 Container(
-                    margin: const EdgeInsets.only(top: 60),
+                    margin: const EdgeInsets.only(top: 80),
                     child: Header(
                         showCenterTitle: true,
                         centerTitle: Strings.sleepCheckIn,

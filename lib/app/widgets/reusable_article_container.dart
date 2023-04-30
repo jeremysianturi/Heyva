@@ -30,6 +30,7 @@ class ArticleContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("desc $desc");
     return InkWell(
       onTap: () {
         if (contentType.toLowerCase() == "video") {
