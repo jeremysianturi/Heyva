@@ -70,28 +70,28 @@ class MoodTrackerFormController extends GetxController {
     var jsonContentLength =
         moodList[pagePosition.value].jsonContent?.length ?? 0;
 
-    if (pagePosition.value == 0) {
-      if (val.toString().isNotEmpty) {
-        moodList[pagePosition.value]
-            .jsonContent?[jsonContentLength - 1]
-            .isSelected = true;
-
-        moodList[pagePosition.value].jsonContent?[jsonContentLength - 1].notes =
-            val;
-        moodList.refresh();
-      } else {
-        moodList[pagePosition.value]
-            .jsonContent?[jsonContentLength - 1]
-            .isSelected = false;
-        moodList[pagePosition.value].jsonContent?[jsonContentLength - 1].notes =
-            "";
-        moodList.refresh();
-      }
-    } else {
+    if (pagePosition.value != 0) {
       moodList[pagePosition.value]
           .jsonContent
           ?.firstWhereOrNull((e) => e.isSelected == true)
           ?.isSelected = false;
+      moodList.refresh();
+    }
+
+    if (val.toString().isNotEmpty) {
+      moodList[pagePosition.value]
+          .jsonContent?[jsonContentLength - 1]
+          .isSelected = true;
+
+      moodList[pagePosition.value].jsonContent?[jsonContentLength - 1].notes =
+          val;
+      moodList.refresh();
+    } else {
+      moodList[pagePosition.value]
+          .jsonContent?[jsonContentLength - 1]
+          .isSelected = false;
+      moodList[pagePosition.value].jsonContent?[jsonContentLength - 1].notes =
+          "";
       moodList.refresh();
     }
   }

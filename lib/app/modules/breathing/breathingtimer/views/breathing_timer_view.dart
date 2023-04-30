@@ -42,7 +42,7 @@ class BreathingTimerView extends GetView<BreathingTimerController> {
                   ),
                 ],
               ),
-              Lottie.asset("assets/images/breath.json"),
+              Lottie.asset("assets/images/pulse_new.json"),
             ],
           ),
         ),
