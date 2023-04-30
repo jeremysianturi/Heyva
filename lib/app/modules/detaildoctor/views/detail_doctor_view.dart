@@ -106,12 +106,11 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                         Text(
+                                        Text(
                                           data?.name ?? "",
                                           textAlign: TextAlign.center,
                                           style: const TextStyle(
-                                            color:
-                                                ColorApp.blue_container,
+                                            color: ColorApp.blue_container,
                                             fontSize: 24,
                                             fontWeight: FontWeight.w700,
                                           ),
@@ -129,7 +128,7 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
                                             Icons.star_outlined,
                                             color: ColorApp.yellow_icon,
                                           ),
-                                          label:  Text(
+                                          label: Text(
                                             data?.rate ?? "",
                                             style: const TextStyle(
                                                 fontSize: 14,
@@ -184,7 +183,7 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
                                       height: 20,
                                     ),
                                     Row(
-                                      children:  [
+                                      children: [
                                         Flexible(
                                           child: ReadMoreText(
                                             data?.about ?? "",
@@ -264,7 +263,9 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
                                               determineAction:
                                                   "from_onplanning_one",
                                               text: controller.buttonTitle,
-                                              ontap: () {},
+                                              ontap: () {
+                                                controller.onclickButton();
+                                              },
                                             ),
                                           )
                                         : const SizedBox()),
