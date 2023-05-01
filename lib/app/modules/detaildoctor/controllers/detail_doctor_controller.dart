@@ -1,5 +1,6 @@
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/modules/detaildoctor/model/detail_doctor_model.dart'
     as doctor;
 import 'package:heyva/app/modules/detaildoctor/model/service_model.dart';
@@ -138,9 +139,11 @@ class DetailDoctorController extends GetxController {
   }
 
   onclickButton() async {
+    var box = GetStorage();
     var dateFormat = DateFormat('dd/MM/yyyy');
     var message =
-        "Hello, I want to book :  Name of Doctor: $doctorName Date: ${dateFormat.format(selectedDay.value!)} Hour: $selectedHour:$selectedMinutes Service: ${listService.firstWhereOrNull((e) => e.isSelected.isTrue)?.title}";
+        "Hi, my name is ${box.read(Keys.profileName)}. I want to book $doctorName on ${dateFormat.format(selectedDay.value!)} at $selectedHour:$selectedMinutes via ${listService.firstWhereOrNull((e) => e.isSelected.isTrue)?.title}.";
+
     final link = WhatsAppUnilink(phoneNumber: phoneNumber, text: message);
 
     await launchUrlString('$link');
