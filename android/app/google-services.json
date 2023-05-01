@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "159265582817-pnq1r4n4epm2bibaduvsi2v59cghgke6.apps.googleusercontent.com",
+          "client_id": "159265582817-ormbdiq8310i2ghiud3edndbpf3qkbsn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.heyva.health",
+            "certificate_hash": "9defdf9cb90aa0bb1a42583e6b8b3215b95b0c15"
+          }
+        },
+        {
+          "client_id": "159265582817-nho6fgrj77cd8vrsjfb16in0i6834lb5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "159265582817-pnq1r4n4epm2bibaduvsi2v59cghgke6.apps.googleusercontent.com",
+              "client_id": "159265582817-brioo6gm23evpocaaiepcqi8khpggicb.apps.googleusercontent.com",
               "client_type": 3
             },
             {

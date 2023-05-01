@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heyva/app/modules/login/views/login_google_apple.dart';
 import 'package:heyva/app/modules/login/views/login_view.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../constant/colors.dart';
 import '../../constant/strings.dart';
@@ -20,6 +20,12 @@ class ReusableBtnLoginGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GoogleSignIn _googleSignIn = GoogleSignIn(
+      scopes: [
+        'email',
+        'https://www.googleapis.com/auth/contacts.readonly',
+      ],
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 42),
       child: Column(
@@ -81,7 +87,21 @@ class ReusableBtnLoginGroup extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              Get.to(LoginGoogleAppleView());
+              _googleSignIn.signIn().then((value) => {
+                print("value $value"),
+                print("displayname ${value?.displayName}"),
+                print("email ${value?.email}"),
+                print("asdkalskdj ${value?.id}"),
+                print("id ${value?.serverAuthCode}"),
+                if (value?.email != null)
+                  {
+                    // controller.postLoginGoogle(
+                    //     value?.email, value?.displayName),
+                  },
+                _googleSignIn.signOut()
+              });
+
+              // Get.to(LoginGoogleAppleView());
             },
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(ColorApp.white),

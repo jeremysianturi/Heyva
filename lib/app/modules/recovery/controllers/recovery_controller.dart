@@ -7,6 +7,7 @@ import 'package:heyva/app/modules/related_program/model/tags_model.dart'
     as tags;
 import 'package:heyva/app/modules/related_program/provider/related_program_provider.dart';
 import 'package:heyva/services/dio_services.dart';
+import 'package:html/parser.dart';
 
 class RecoveryController extends GetxController {
   var isLoading = false.obs;
@@ -118,5 +119,13 @@ class RecoveryController extends GetxController {
       isLoading.value = false;
       debugPrint("error  $e");
     }
+  }
+
+  String parseHtmlString(String htmlString) {
+    final document = parse(htmlString);
+    final String? parsedString =
+        parse(document.body?.text).documentElement?.text;
+
+    return parsedString ?? "";
   }
 }

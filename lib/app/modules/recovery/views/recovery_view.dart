@@ -225,9 +225,8 @@ class RecoveryView extends GetView<RecoveryController> {
                               title: data?.contents?.title ?? "",
                               tag: data?.contentType?.name ?? "",
                               tagIcon: "assets/images/ic_bookmark.png",
-                              desc: data?.contents?.body.toString() == "null"
-                                  ? data?.contents?.body ?? ""
-                                  : data?.contents?.body ?? "",
+                              desc:controller
+                                  .parseHtmlString(data?.contents!.body ?? ""),
                               contentId: data?.contents?.id ?? "",
                               contentType: data?.contentType?.name ?? "",
                               thumbnailUrl: data?.contents?.thumbnail ?? "",

@@ -206,13 +206,13 @@ class _NavScreenState extends State<NavScreen> {
           screens: _buildScreens(),
           items: _navBarsItems(),
           resizeToAvoidBottomInset: true,
-          navBarHeight: MediaQuery.of(context).viewInsets.bottom > 0
-              ? 0.0
-              : kBottomNavigationBarHeight,
+          navBarHeight: 74,
           bottomScreenMargin: 0,
+          padding: NavBarPadding.only(bottom: 20),
           selectedTabScreenContext: (final context) {
             testContext = context;
           },
+          confineInSafeArea: false,
           backgroundColor: ColorApp.bottom_nav_color,
           hideNavigationBar: _hideNavBar,
           decoration: const NavBarDecoration(
