@@ -7,6 +7,7 @@ import 'package:heyva/app/modules/related_program/model/content_list_model.dart'
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/keys.dart';
+import 'package:html/parser.dart';
 
 class RowItem extends StatelessWidget {
   const RowItem({
@@ -20,9 +21,15 @@ class RowItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var desc = data?.contents?.body.toString() == "null"
-        ? data?.contents?.body ?? ""
-        : data?.contents?.body ?? "";
+    String parseHtmlString(String htmlString) {
+      final document = parse(htmlString);
+      final String? parsedString =
+          parse(document.body?.text).documentElement?.text;
+
+      return parsedString ?? "";
+    }
+
+    var desc = parseHtmlString(data?.contents?.body.toString() ?? "");
 
     return GestureDetector(
       onTap: () {
@@ -55,14 +62,13 @@ class RowItem extends StatelessWidget {
               width: 104,
               height: 104,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                image: DecorationImage(
-                  image: NetworkImage(data?.contents?.thumbnail ?? ""),
-                  fit: BoxFit.cover,
-                  alignment: Alignment.centerLeft,
-                ),
-                color: ColorApp.blue_container
-              ),
+                  borderRadius: BorderRadius.circular(12),
+                  image: DecorationImage(
+                    image: NetworkImage(data?.contents?.thumbnail ?? ""),
+                    fit: BoxFit.cover,
+                    alignment: Alignment.centerLeft,
+                  ),
+                  color: ColorApp.blue_container),
             ),
             const SizedBox(
               width: 10,
