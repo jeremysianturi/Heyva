@@ -40,15 +40,15 @@ class InsightsView extends GetView<InsightsController> {
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.fill,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Scaffold(
-                backgroundColor: Colors.transparent,
-                extendBodyBehindAppBar: false,
-                body: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AppBar(
+            Scaffold(
+              backgroundColor: Colors.transparent,
+              extendBodyBehindAppBar: false,
+              body: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: AppBar(
                       systemOverlayStyle: const SystemUiOverlayStyle(
                         statusBarIconBrightness: Brightness.dark,
                         statusBarBrightness:
@@ -63,8 +63,7 @@ class InsightsView extends GetView<InsightsController> {
                           controller.onInit();
                         },
                         child: CircleAvatar(
-                          backgroundImage:
-                              NetworkImage(controller.profileAvatar),
+                          backgroundImage: NetworkImage(controller.profileAvatar),
                         ),
                       ),
                       title: GestureDetector(
@@ -115,52 +114,58 @@ class InsightsView extends GetView<InsightsController> {
                         ),
                       ],
                     ),
-                    Expanded(
-                        child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          const Text(
+                  ),
+                  Expanded(
+                      child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Text(
                             Strings.daily_refresh,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14,
                                 color: ColorApp.grey_font),
                           ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          const Text(
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Text(
                             Strings.congratsYourAchive,
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 20,
                                 color: ColorApp.blue_container),
                           ),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          Column(
-                            children: List.generate(
-                                controller.insightResponse.value.data?.length ??
-                                    0,
-                                (index) => insightItem(
-                                      controller: controller,
-                                      data: controller
-                                          .insightResponse.value.data?[index],
-                                    )),
-                          ),
-                          const SizedBox(
-                            height: 90,
-                          ),
-                        ],
-                      ),
-                    ))
-                  ],
-                ),
+                        ),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Column(
+                          children: List.generate(
+                              controller.insightResponse.value.data?.length ??
+                                  0,
+                              (index) => insightItem(
+                                    controller: controller,
+                                    data: controller
+                                        .insightResponse.value.data?[index],
+                                  )),
+                        ),
+                        const SizedBox(
+                          height: 90,
+                        ),
+                      ],
+                    ),
+                  ))
+                ],
               ),
             ),
           ],
@@ -187,12 +192,15 @@ class insightItem extends StatelessWidget {
           const SizedBox(
             height: 12,
           ),
-          Text(
-            data?.insightDate ?? "",
-            style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 20,
-                color: ColorApp.blue_container),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              data?.insightDate ?? "",
+              style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 20,
+                  color: ColorApp.blue_container),
+            ),
           ),
           const SizedBox(
             height: 24,

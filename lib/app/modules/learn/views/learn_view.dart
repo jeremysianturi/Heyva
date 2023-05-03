@@ -40,7 +40,6 @@ class LearnView extends GetView<LearnController> {
         child: Scaffold(
             resizeToAvoidBottomInset: false,
             body: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/images/bg_heyva2.png"),
@@ -50,42 +49,45 @@ class LearnView extends GetView<LearnController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppBar(
-                    systemOverlayStyle: const SystemUiOverlayStyle(
-                      statusBarIconBrightness: Brightness.dark,
-                      statusBarBrightness:
-                          Brightness.light, // For iOS (dark icons)
-                    ),
-                    backgroundColor: Colors.transparent,
-                    elevation: 0,
-                    centerTitle: false,
-                    leading: SvgPicture.asset(
-                      'assets/images/heyva_text_logo.svg',
-                      fit: BoxFit.fitWidth,
-                      alignment: Alignment.centerLeft,
-                      width: 60,
-                      height: 20,
-                    ),
-                    actions: [
-                      GestureDetector(
-                        onTap: () {
-                          // Get.to(ArticleView());
-                          Get.toNamed(Routes.NOTIFICATION_CENTER);
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12.5, vertical: 10.5),
-                          decoration: BoxDecoration(
-                            color: ColorApp.bottom_nav_color,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: const ImageIcon(
-                            AssetImage("assets/images/ic_notification.png"),
-                            color: ColorApp.blue_container,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: AppBar(
+                      systemOverlayStyle: const SystemUiOverlayStyle(
+                        statusBarIconBrightness: Brightness.dark,
+                        statusBarBrightness:
+                            Brightness.light, // For iOS (dark icons)
+                      ),
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                      centerTitle: false,
+                      leading: SvgPicture.asset(
+                        'assets/images/heyva_text_logo.svg',
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.centerLeft,
+                        width: 60,
+                        height: 20,
+                      ),
+                      actions: [
+                        GestureDetector(
+                          onTap: () {
+                            // Get.to(ArticleView());
+                            Get.toNamed(Routes.NOTIFICATION_CENTER);
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12.5, vertical: 10.5),
+                            decoration: BoxDecoration(
+                              color: ColorApp.bottom_nav_color,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const ImageIcon(
+                              AssetImage("assets/images/ic_notification.png"),
+                              color: ColorApp.blue_container,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 12,
@@ -98,16 +100,22 @@ class LearnView extends GetView<LearnController> {
                         const SizedBox(
                           height: 12,
                         ),
-                        FolderItemList(controller: controller),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: FolderItemList(controller: controller),
+                        ),
                         const SizedBox(
                           height: 24,
                         ),
-                        const Text(
-                          Strings.heyvaCourse,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 24,
-                              color: ColorApp.blue_container),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Text(
+                            Strings.heyvaCourse,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 24,
+                                color: ColorApp.blue_container),
+                          ),
                         ),
                         const SizedBox(
                           height: 20,
@@ -130,6 +138,7 @@ class LearnView extends GetView<LearnController> {
                                     .programListResponse.value.data?[index];
 
                                 return CourseItem(
+                                  index: index,
                                   type: data?.title ?? "",
                                   title: data?.body ?? "",
                                   days: index == 0
@@ -149,7 +158,10 @@ class LearnView extends GetView<LearnController> {
                         const SizedBox(
                           height: 24,
                         ),
-                        const UpcomingWidget(),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: UpcomingWidget(),
+                        ),
                       ],
                     ),
                   )),
@@ -167,9 +179,11 @@ class CourseItem extends StatelessWidget {
     required this.days,
     required this.programId,
     required this.programIdChild,
+    required this.index,
   });
 
   final String type, title, days, programId, programIdChild;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -189,13 +203,13 @@ class CourseItem extends StatelessWidget {
         }
       },
       child: Padding(
-        padding: const EdgeInsets.only(right: 10),
+        padding: EdgeInsets.only(right: 10, left: index == 0 ? 20 : 0),
         child: Container(
             // width: 188,
             // margin: EdgeInsets.symmetric(horizontal: 5.0),
             decoration: BoxDecoration(
                 color: isDone ? ColorApp.btn_maroon : ColorApp.container_pink,
-                borderRadius: BorderRadius.all(Radius.circular(12))),
+                borderRadius: const BorderRadius.all(Radius.circular(12))),
             child: Card(
               elevation: 0,
               color: isDone ? ColorApp.btn_maroon : ColorApp.container_pink,

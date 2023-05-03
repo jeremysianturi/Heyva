@@ -163,7 +163,7 @@ class HomeView extends GetView<HomeController> {
                                   child: const Text(
                                     Strings.seeMore,
                                     style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: 14,
                                         fontWeight: FontWeight.w500,
                                         color: ColorApp.blue_container),
                                   ),
@@ -177,7 +177,7 @@ class HomeView extends GetView<HomeController> {
                               shrinkWrap: true,
                               padding: EdgeInsets.zero,
                               crossAxisCount: 2,
-                              childAspectRatio: 162 / 260,
+                              childAspectRatio: 162 / 270,
                               crossAxisSpacing: 11,
                               mainAxisSpacing: 0,
                               physics: const NeverScrollableScrollPhysics(),
@@ -198,9 +198,9 @@ class HomeView extends GetView<HomeController> {
                                 );
                               }),
                             ),
-                            // const SizedBox(
-                            //   height: 20,
-                            // ),
+                            const SizedBox(
+                              height: 20,
+                            ),
                             Column(
                               children: [
                                 Row(
@@ -298,54 +298,68 @@ class HomeView extends GetView<HomeController> {
                                   onTap: () {
                                     inviteFriends();
                                   },
-                                  child: Card(
-                                    elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(14.0),
-                                    ),
-                                    child: Container(
+                                  child: Container(
+                                      width: Get.width,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 14),
                                       decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(14.0),
                                         image: const DecorationImage(
                                           fit: BoxFit.cover,
                                           image: AssetImage(
-                                              "assets/images/bg_blue_container_plane.png"),
+                                              "assets/images/bg_blue_container_medal.png"),
                                         ),
                                       ),
-                                      child: ListTile(
-                                        shape: const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(14))),
-                                        title: const Padding(
-                                          padding: EdgeInsets.only(top: 20),
-                                          child: Text(
-                                            Strings.share_to_friends,
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w500,
-                                                color: ColorApp.white_font),
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                const SizedBox(
+                                                  height: 20,
+                                                ),
+                                                const Text(
+                                                  Strings.share_to_friends,
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color:
+                                                          ColorApp.white_font),
+                                                ),
+                                                const SizedBox(
+                                                  height: 8,
+                                                ),
+                                                Text(
+                                                  Strings.invite_your_friends,
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: ColorApp
+                                                          .grey_card_font
+                                                          .withOpacity(0.6)),
+                                                ),
+                                                const SizedBox(
+                                                  height: 20,
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        subtitle: Padding(
-                                          padding:
-                                              const EdgeInsets.only(bottom: 20),
-                                          child: Text(
-                                            Strings.invite_your_friends,
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w400,
-                                                color: ColorApp.grey_card_font
-                                                    .withOpacity(0.6)),
+                                          const SizedBox(
+                                            width: 80,
                                           ),
-                                        ),
-                                        trailing: const Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: ColorApp.white_font,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                          Container(
+                                            child: const Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: ColorApp.white_font,
+                                            ),
+                                          ),
+                                        ],
+                                      )),
                                 ),
                               ],
                             ),

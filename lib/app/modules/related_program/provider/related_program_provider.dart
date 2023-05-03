@@ -12,7 +12,7 @@ class RelatedProgramProvider {
     TagsModel? res;
     try {
       Response response = await _client.get(
-        '/api/v1/dictionary/get-by-type?type=INTERESTS_TAG',
+        '/api/v1/dictionary/get-by-type?type=INTERESTS_TAG&id=33914c3e-0c63-4d78-96d5-cccf4cef0a0f&id=89b2aae1-7981-48da-ae9f-7116f1b5e007&id=ba0a4579-0848-4661-97ee-fe7e41bdf558&id=deba8feb-5352-4f01-b85b-bd8c25ec55ea&id=f9e70a98-8fd7-46c3-ab41-4bdce9ad3fda&id=b921ef45-0c23-4227-8b84-1a658d396563&id=9c47708c-2fc4-43e7-b516-a1a2c5eb9dc6',
       );
       debugPrint('response data: ${response.data}');
       res = TagsModel.fromJson(response.data);

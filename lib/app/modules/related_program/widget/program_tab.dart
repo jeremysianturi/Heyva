@@ -29,14 +29,16 @@ class ProgramTab extends StatelessWidget {
                 ? ColorApp.btn_orange
                 : Colors.transparent),
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-        child: Text(
-          data?.name ?? "",
-          style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 14,
-              color: data?.isSelected == true
-                  ? ColorApp.white
-                  : ColorApp.grey_tab_title),
+        child: Center(
+          child: Text(
+            data?.name ?? "",
+            style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 14,
+                color: data?.isSelected == true
+                    ? ColorApp.white
+                    : ColorApp.grey_tab_title),
+          ),
         ),
       ),
     );

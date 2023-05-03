@@ -50,7 +50,7 @@ class UpcomingWidget extends StatelessWidget {
                             color: ColorApp.white_font),
                       ),
                       const SizedBox(
-                        height: 4,
+                        height: 8,
                       ),
                       Text(
                         "Ut ultricies augue quam eu eu eros quis justo. Sed ut scelerisque.",
@@ -106,7 +106,7 @@ class UpcomingWidget extends StatelessWidget {
                             color: ColorApp.white_font),
                       ),
                       const SizedBox(
-                        height: 4,
+                        height: 8,
                       ),
                       Text(
                         "Ut ultricies augue quam eu eu eros quis justo. Sed ut scelerisque.",
