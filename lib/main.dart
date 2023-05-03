@@ -10,8 +10,8 @@ import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/variabels.dart';
 
-import '../firebase_options.dart';
-import 'controllers/auth_controller.dart';
+import 'firebase_options.dart';
+import 'app/controllers/auth_controller.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();

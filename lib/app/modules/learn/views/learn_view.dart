@@ -47,104 +47,113 @@ class LearnView extends GetView<LearnController> {
                   fit: BoxFit.fill,
                 ),
               ),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AppBar(
-                      systemOverlayStyle: const SystemUiOverlayStyle(
-                        statusBarIconBrightness: Brightness.dark,
-                        statusBarBrightness:
-                            Brightness.light, // For iOS (dark icons)
-                      ),
-                      backgroundColor: Colors.transparent,
-                      elevation: 0,
-                      centerTitle: false,
-                      leading: SvgPicture.asset(
-                        'assets/images/heyva_text_logo.svg',
-                        fit: BoxFit.fitWidth,
-                        alignment: Alignment.centerLeft,
-                        width: 60,
-                        height: 20,
-                      ),
-                      actions: [
-                        GestureDetector(
-                          onTap: () {
-                            // Get.to(ArticleView());
-                            Get.toNamed(Routes.NOTIFICATION_CENTER);
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12.5, vertical: 10.5),
-                            decoration: BoxDecoration(
-                              color: ColorApp.bottom_nav_color,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: const ImageIcon(
-                              AssetImage("assets/images/ic_notification.png"),
-                              color: ColorApp.blue_container,
-                            ),
-                          ),
-                        ),
-                      ],
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppBar(
+                    systemOverlayStyle: const SystemUiOverlayStyle(
+                      statusBarIconBrightness: Brightness.dark,
+                      statusBarBrightness:
+                          Brightness.light, // For iOS (dark icons)
                     ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    FolderItemList(controller: controller),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    const Text(
-                      Strings.heyvaCourse,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 24,
-                          color: ColorApp.blue_container),
-                    ),
-                    const SizedBox(
+                    backgroundColor: Colors.transparent,
+                    elevation: 0,
+                    centerTitle: false,
+                    leading: SvgPicture.asset(
+                      'assets/images/heyva_text_logo.svg',
+                      fit: BoxFit.fitWidth,
+                      alignment: Alignment.centerLeft,
+                      width: 60,
                       height: 20,
                     ),
-                    Obx(() => CarouselSlider(
-                          options: CarouselOptions(
-                              height: 108,
-                              viewportFraction: 0.7,
-                              disableCenter: true,
-                              enableInfiniteScroll: false,
-                              enlargeCenterPage: false,
-                              padEnds: false
-                              // aspectRatio: 16/9
-                              ),
-                          items: List.generate(
-                              controller
-                                      .programListResponse.value.data?.length ??
-                                  0, (index) {
-                            var data = controller
-                                .programListResponse.value.data?[index];
+                    actions: [
+                      GestureDetector(
+                        onTap: () {
+                          // Get.to(ArticleView());
+                          Get.toNamed(Routes.NOTIFICATION_CENTER);
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12.5, vertical: 10.5),
+                          decoration: BoxDecoration(
+                            color: ColorApp.bottom_nav_color,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: const ImageIcon(
+                            AssetImage("assets/images/ic_notification.png"),
+                            color: ColorApp.blue_container,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Expanded(
+                      child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        FolderItemList(controller: controller),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        const Text(
+                          Strings.heyvaCourse,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24,
+                              color: ColorApp.blue_container),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Obx(() => CarouselSlider(
+                              options: CarouselOptions(
+                                  height: 108,
+                                  viewportFraction: 0.7,
+                                  disableCenter: true,
+                                  enableInfiniteScroll: false,
+                                  enlargeCenterPage: false,
+                                  padEnds: false
+                                  // aspectRatio: 16/9
+                                  ),
+                              items: List.generate(
+                                  controller.programListResponse.value.data
+                                          ?.length ??
+                                      0, (index) {
+                                var data = controller
+                                    .programListResponse.value.data?[index];
 
-                            return CourseItem(
-                              type: data?.title ?? "",
-                              title: data?.body ?? "",
-                              days: index == 0
-                                  ? "${data?.dailyProgress} Progress"
-                                  : "${data?.daysCount} Days",
-                              programId: data?.id ?? "",
-                              programIdChild: data?.dailyProgress == '0/3'
-                                  ? data?.child![0].id ?? ""
-                                  : data?.dailyProgress == '1/3'
-                                      ? data?.child![1].id ?? ""
-                                      : data?.dailyProgress == '2/3'
-                                          ? data?.child![2].id ?? ""
-                                          : data?.id ?? "",
-                            );
-                          }),
-                        )),
-                    const SizedBox(
-                      height: 24,
+                                return CourseItem(
+                                  type: data?.title ?? "",
+                                  title: data?.body ?? "",
+                                  days: index == 0
+                                      ? "${data?.dailyProgress} Progress"
+                                      : "${data?.daysCount} Days",
+                                  programId: data?.id ?? "",
+                                  programIdChild: data?.dailyProgress == '0/3'
+                                      ? data?.child![0].id ?? ""
+                                      : data?.dailyProgress == '1/3'
+                                          ? data?.child![1].id ?? ""
+                                          : data?.dailyProgress == '2/3'
+                                              ? data?.child![2].id ?? ""
+                                              : data?.id ?? "",
+                                );
+                              }),
+                            )),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        const UpcomingWidget(),
+                      ],
                     ),
-                    const UpcomingWidget(),
-                  ],
-                ),
+                  )),
+                ],
               ),
             ))));
   }

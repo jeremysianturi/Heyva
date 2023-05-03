@@ -26,33 +26,34 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
           ),
           opacity: 0.3,
           child: Scaffold(
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  AppBar(
-                    backgroundColor: ColorApp.white,
-                    elevation: 0,
-                    leading: Padding(
-                      padding: const EdgeInsets.only(left: 15),
-                      child: IconButton(
-                          icon: const ImageIcon(
-                            AssetImage("assets/images/ic_arrow_back.png"),
-                            color: ColorApp.black_arrow_back,
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          }),
-                    ),
-                    title: const Text(
-                      Strings.article,
-                      style: TextStyle(
-                          color: ColorApp.black_article_title,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    centerTitle: false,
+            body: Column(
+              children: [
+                AppBar(
+                  backgroundColor: ColorApp.white,
+                  elevation: 0,
+                  leading: Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: IconButton(
+                        icon: const ImageIcon(
+                          AssetImage("assets/images/ic_arrow_back.png"),
+                          color: ColorApp.black_arrow_back,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        }),
                   ),
-                  Stack(
+                  title: const Text(
+                    Strings.article,
+                    style: TextStyle(
+                        color: ColorApp.black_article_title,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  centerTitle: false,
+                ),
+                Expanded(
+                    child: SingleChildScrollView(
+                  child: Stack(
                     children: [
                       Row(
                         children: [
@@ -146,39 +147,6 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
                                           fontWeight: FontWeight.w400,
                                           color: ColorApp.black_font_30),
                                     ),
-                                    // Row(
-                                    //   mainAxisAlignment:
-                                    //       MainAxisAlignment.start,
-                                    //   children: const [
-                                    //     Text(
-                                    //       Strings.senopati,
-                                    //       style: TextStyle(
-                                    //           fontSize: 12,
-                                    //           fontWeight: FontWeight.w400,
-                                    //           color: ColorApp.black_font_30),
-                                    //     ),
-                                    //     SizedBox(
-                                    //       width: 4,
-                                    //     ),
-                                    //     Text(
-                                    //       Strings.strip,
-                                    //       style: TextStyle(
-                                    //           fontSize: 12,
-                                    //           fontWeight: FontWeight.w600,
-                                    //           color: ColorApp.black_font_30),
-                                    //     ),
-                                    //     SizedBox(
-                                    //       width: 4,
-                                    //     ),
-                                    //     Text(
-                                    //       Strings.south_jakarta,
-                                    //       style: TextStyle(
-                                    //           fontSize: 12,
-                                    //           fontWeight: FontWeight.w600,
-                                    //           color: ColorApp.black_font_30),
-                                    //     ),
-                                    //   ],
-                                    // ),
                                     const SizedBox(
                                       height: 20,
                                     ),
@@ -277,9 +245,9 @@ class DetailDoctorView extends GetView<DetailDoctorController> {
                         ),
                       ),
                     ],
-                  )
-                ],
-              ),
+                  ),
+                ))
+              ],
             ),
           ));
     });

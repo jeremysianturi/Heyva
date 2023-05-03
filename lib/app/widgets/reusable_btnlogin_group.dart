@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/login/views/login_view.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../constant/colors.dart';
 import '../../constant/strings.dart';
@@ -20,12 +18,12 @@ class ReusableBtnLoginGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GoogleSignIn _googleSignIn = GoogleSignIn(
-      scopes: [
-        'email',
-        'https://www.googleapis.com/auth/contacts.readonly',
-      ],
-    );
+    // GoogleSignIn _googleSignIn = GoogleSignIn(
+    //   scopes: [
+    //     'email',
+    //     'https://www.googleapis.com/auth/contacts.readonly',
+    //   ],
+    // );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 42),
       child: Column(
@@ -87,19 +85,37 @@ class ReusableBtnLoginGroup extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              _googleSignIn.signIn().then((value) => {
-                print("value $value"),
-                print("displayname ${value?.displayName}"),
-                print("email ${value?.email}"),
-                print("asdkalskdj ${value?.id}"),
-                print("id ${value?.serverAuthCode}"),
-                if (value?.email != null)
-                  {
-                    // controller.postLoginGoogle(
-                    //     value?.email, value?.displayName),
-                  },
-                _googleSignIn.signOut()
-              });
+              Get.bottomSheet(
+                Container(
+                    padding: const EdgeInsets.all(25),
+                    child: const Text(
+                      "this featuee is not ready",
+                      style:
+                          TextStyle(fontSize: 16, color: ColorApp.white_font),
+                    )),
+                isDismissible: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(15),
+                      topLeft: Radius.circular(15)),
+                ),
+                backgroundColor: ColorApp.red_error,
+                enableDrag: false,
+              );
+
+              // _googleSignIn.signIn().then((value) => {
+              //   print("value $value"),
+              //   print("displayname ${value?.displayName}"),
+              //   print("email ${value?.email}"),
+              //   print("asdkalskdj ${value?.id}"),
+              //   print("id ${value?.serverAuthCode}"),
+              //   if (value?.email != null)
+              //     {
+              //       // controller.postLoginGoogle(
+              //       //     value?.email, value?.displayName),
+              //     },
+              //   _googleSignIn.signOut()
+              // });
 
               // Get.to(LoginGoogleAppleView());
             },
@@ -135,14 +151,31 @@ class ReusableBtnLoginGroup extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () async {
-              final credential = await SignInWithApple.getAppleIDCredential(
-                scopes: [
-                  AppleIDAuthorizationScopes.email,
-                  AppleIDAuthorizationScopes.fullName,
-                ],
+              Get.bottomSheet(
+                Container(
+                    padding: const EdgeInsets.all(25),
+                    child: const Text(
+                      "this featuee is not ready",
+                      style:
+                          TextStyle(fontSize: 16, color: ColorApp.white_font),
+                    )),
+                isDismissible: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(15),
+                      topLeft: Radius.circular(15)),
+                ),
+                backgroundColor: ColorApp.red_error,
+                enableDrag: false,
               );
-
-              print(credential);
+              // final credential = await SignInWithApple.getAppleIDCredential(
+              //   scopes: [
+              //     AppleIDAuthorizationScopes.email,
+              //     AppleIDAuthorizationScopes.fullName,
+              //   ],
+              // );
+              //
+              // print(credential);
 
               // Now send the credential (especially `credential.authorizationCode`) to your server to create a session
               // after they have been validated with Apple (see `Integration` section for more information on how to do this)

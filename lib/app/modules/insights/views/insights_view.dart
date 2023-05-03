@@ -45,114 +45,121 @@ class InsightsView extends GetView<InsightsController> {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 extendBodyBehindAppBar: false,
-                body: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AppBar(
-                        systemOverlayStyle: const SystemUiOverlayStyle(
-                          statusBarIconBrightness: Brightness.dark,
-                          statusBarBrightness:
-                              Brightness.light, // For iOS (dark icons)
+                body: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppBar(
+                      systemOverlayStyle: const SystemUiOverlayStyle(
+                        statusBarIconBrightness: Brightness.dark,
+                        statusBarBrightness:
+                            Brightness.light, // For iOS (dark icons)
+                      ),
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                      centerTitle: false,
+                      leading: GestureDetector(
+                        onTap: () async {
+                          await Get.toNamed(Routes.PROFILE);
+                          controller.onInit();
+                        },
+                        child: CircleAvatar(
+                          backgroundImage:
+                              NetworkImage(controller.profileAvatar),
                         ),
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        centerTitle: false,
-                        leading: GestureDetector(
-                          onTap: () async {
-                            await Get.toNamed(Routes.PROFILE);
-                            controller.onInit();
-                          },
-                          child: CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(controller.profileAvatar),
-                          ),
-                        ),
-                        title: GestureDetector(
-                          onTap: () async {
-                            await Get.toNamed(Routes.PROFILE);
-                            controller.onInit();
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                controller.greeting,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: ColorApp.black_greeting_color,
-                                ),
+                      ),
+                      title: GestureDetector(
+                        onTap: () async {
+                          await Get.toNamed(Routes.PROFILE);
+                          controller.onInit();
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              controller.greeting,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: ColorApp.black_greeting_color,
                               ),
-                              Text(
-                                controller.profileName,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: ColorApp.blue_container,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        actions: [
-                          GestureDetector(
-                            onTap: () {
-                              // Get.to(ArticleView());
-                              Get.toNamed(Routes.NOTIFICATION_CENTER);
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 12.5, vertical: 10.5),
-                              decoration: BoxDecoration(
-                                color: ColorApp.bottom_nav_color,
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: const ImageIcon(
-                                AssetImage("assets/images/ic_notification.png"),
+                            ),
+                            Text(
+                              controller.profileName,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
                                 color: ColorApp.blue_container,
                               ),
                             ),
+                          ],
+                        ),
+                      ),
+                      actions: [
+                        GestureDetector(
+                          onTap: () {
+                            // Get.to(ArticleView());
+                            Get.toNamed(Routes.NOTIFICATION_CENTER);
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12.5, vertical: 10.5),
+                            decoration: BoxDecoration(
+                              color: ColorApp.bottom_nav_color,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const ImageIcon(
+                              AssetImage("assets/images/ic_notification.png"),
+                              color: ColorApp.blue_container,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                        child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          const Text(
+                            Strings.daily_refresh,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                color: ColorApp.grey_font),
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          const Text(
+                            Strings.congratsYourAchive,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 20,
+                                color: ColorApp.blue_container),
+                          ),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          Column(
+                            children: List.generate(
+                                controller.insightResponse.value.data?.length ??
+                                    0,
+                                (index) => insightItem(
+                                      controller: controller,
+                                      data: controller
+                                          .insightResponse.value.data?[index],
+                                    )),
+                          ),
+                          const SizedBox(
+                            height: 90,
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      const Text(
-                        Strings.daily_refresh,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
-                            color: ColorApp.grey_font),
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      const Text(
-                        Strings.congratsYourAchive,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 20,
-                            color: ColorApp.blue_container),
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      Column(
-                        children: List.generate(
-                            controller.insightResponse.value.data?.length ?? 0,
-                            (index) => insightItem(
-                                  controller: controller,
-                                  data: controller
-                                      .insightResponse.value.data?[index],
-                                )),
-                      ),
-                      const SizedBox(
-                        height: 90,
-                      ),
-                    ],
-                  ),
+                    ))
+                  ],
                 ),
               ),
             ),
@@ -177,40 +184,6 @@ class insightItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 40.0),
-          //   child: Row(
-          //     children: [
-          //       Expanded(
-          //         child: Container(
-          //           height: 1,
-          //           width: Get.width,
-          //           color: ColorApp.black,
-          //         ),
-          //       ),
-          //       const SizedBox(
-          //         width: 17,
-          //       ),
-          //       const Text(
-          //         "${Strings.pospatrumWeek}3",
-          //         style: TextStyle(
-          //             fontWeight: FontWeight.w400,
-          //             fontSize: 12,
-          //             color: ColorApp.blue_container),
-          //       ),
-          //       const SizedBox(
-          //         width: 17,
-          //       ),
-          //       Expanded(
-          //         child: Container(
-          //           height: 1,
-          //           width: Get.width,
-          //           color: ColorApp.black,
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
           const SizedBox(
             height: 12,
           ),
