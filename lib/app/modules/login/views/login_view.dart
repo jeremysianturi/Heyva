@@ -43,7 +43,7 @@ class LoginView extends GetView<LoginController> {
                   Expanded(
                     flex: 1,
                     child: Padding(
-                      padding: EdgeInsets.only(top: 0),
+                      padding: EdgeInsets.only(top: 50),
                       child: Header(
                         rightText: Strings.register,
                         ontapIcon: () {

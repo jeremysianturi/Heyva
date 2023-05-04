@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
 
@@ -105,28 +106,33 @@ class BreatingFeelingsItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
-          color: ColorApp.btn_orange),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              controller.list[index],
-              style: const TextStyle(
-                  color: ColorApp.arrow_white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700),
-            ),
-            const ImageIcon(
-              AssetImage("assets/icons/ic_arrow_right.png"),
-              color: ColorApp.arrow_white,
-            )
-          ],
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(Routes.BREATHING_FINISH);
+      },
+      child: Container(
+        margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+            color: ColorApp.btn_orange),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                controller.list[index],
+                style: const TextStyle(
+                    color: ColorApp.arrow_white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700),
+              ),
+              const ImageIcon(
+                AssetImage("assets/icons/ic_arrow_right.png"),
+                color: ColorApp.arrow_white,
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -78,8 +78,8 @@ class ArticleView extends GetView<ArticleController> {
                                   height: 22,
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 20),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.stretch,
@@ -148,7 +148,14 @@ class ArticleView extends GetView<ArticleController> {
                                       const SizedBox(
                                         height: 20,
                                       ),
-                                      Html(data: controller.renderedBody),
+                                      Html(
+                                        data: controller.renderedBody,
+                                        style: {
+                                          "body": Style(
+                                            fontSize: FontSize(16.0),
+                                          ),
+                                        },
+                                      ),
                                       Row(
                                         children: [
                                           const Text(
@@ -169,7 +176,8 @@ class ArticleView extends GetView<ArticleController> {
                                               style: TextStyle(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w600,
-                                                  color: ColorApp.blue_container),
+                                                  color:
+                                                      ColorApp.blue_container),
                                             ),
                                           ),
                                           TextButton.icon(
@@ -183,7 +191,8 @@ class ArticleView extends GetView<ArticleController> {
                                               style: TextStyle(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w600,
-                                                  color: ColorApp.blue_container),
+                                                  color:
+                                                      ColorApp.blue_container),
                                             ),
                                           ),
                                         ],

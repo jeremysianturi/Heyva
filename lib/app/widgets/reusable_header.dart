@@ -117,7 +117,7 @@ class Header extends StatelessWidget {
                       child: Text(
                         rightText ?? "",
                         style: const TextStyle(
-                            color: ColorApp.black,
+                            color: ColorApp.blue_container,
                             fontSize: 16,
                             fontWeight: FontWeight.w600),
                         textAlign: TextAlign.end,

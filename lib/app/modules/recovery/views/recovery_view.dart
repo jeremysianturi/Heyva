@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:heyva/app/modules/learn/views/learn_view.dart';
 import 'package:heyva/app/modules/related_program/widget/program_tab.dart';
 import 'package:heyva/app/routes/app_pages.dart';
+import 'package:heyva/app/widgets/bottom_sheet_invite.dart';
 import 'package:heyva/app/widgets/reusable_article_container.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
@@ -260,64 +261,69 @@ class RecoveryView extends GetView<RecoveryController> {
                           const SizedBox(
                             height: 20,
                           ),
-                          Container(
-                              margin: EdgeInsets.symmetric(horizontal: 20),
-                              width: Get.width,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 14),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(14.0),
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage(
-                                      "assets/images/bg_blue_container_medal.png"),
+                          GestureDetector(
+                            onTap: () {
+                              inviteFriends();
+                            },
+                            child: Container(
+                                margin: EdgeInsets.symmetric(horizontal: 20),
+                                width: Get.width,
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 14),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(14.0),
+                                  image: const DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage(
+                                        "assets/images/bg_blue_container_medal.png"),
+                                  ),
                                 ),
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                        const Text(
-                                          Strings.to_keep_you_entertain,
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500,
-                                              color: ColorApp.white_font),
-                                        ),
-                                        const SizedBox(
-                                          height: 8,
-                                        ),
-                                        Text(
-                                          Strings.invite_your_friends,
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w400,
-                                              color: ColorApp.grey_card_font
-                                                  .withOpacity(0.6)),
-                                        ),
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                      ],
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          const Text(
+                                            Strings.to_keep_you_entertain,
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500,
+                                                color: ColorApp.white_font),
+                                          ),
+                                          const SizedBox(
+                                            height: 8,
+                                          ),
+                                          Text(
+                                            Strings.invite_your_friends,
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                                color: ColorApp.grey_card_font
+                                                    .withOpacity(0.6)),
+                                          ),
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    width: 80,
-                                  ),
-                                  Container(
-                                    child: const Icon(
-                                      Icons.arrow_forward_ios,
-                                      color: ColorApp.white_font,
+                                    const SizedBox(
+                                      width: 80,
                                     ),
-                                  ),
-                                ],
-                              )),
+                                    Container(
+                                      child: const Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: ColorApp.white_font,
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                          ),
                           const SizedBox(
                             height: 100,
                           )

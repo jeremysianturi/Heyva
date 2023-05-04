@@ -30,7 +30,7 @@ class UpcomingWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(14.0),
               image: const DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage("assets/images/bg_blue_container_medal.png"),
+                image: AssetImage("assets/images/bg_upcoming_program1.png"),
               ),
             ),
             child: Row(
@@ -43,7 +43,7 @@ class UpcomingWidget extends StatelessWidget {
                         height: 20,
                       ),
                       const Text(
-                        "Dui massa malesuada",
+                        "Breathing Exercise 2",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
@@ -53,7 +53,7 @@ class UpcomingWidget extends StatelessWidget {
                         height: 8,
                       ),
                       Text(
-                        "Ut ultricies augue quam eu eu eros quis justo. Sed ut scelerisque.",
+                        "The following is another breathing exercise to assist in managing your stress or you want to feel relaxed.",
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
@@ -86,7 +86,7 @@ class UpcomingWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(14.0),
               image: const DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage("assets/images/bg_blue_container_medal.png"),
+                image: AssetImage("assets/images/bg_upcoming_program2.png"),
               ),
             ),
             child: Row(
@@ -99,7 +99,7 @@ class UpcomingWidget extends StatelessWidget {
                         height: 20,
                       ),
                       const Text(
-                        "Dui massa malesuada",
+                        "Breathing Exercise 3",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
@@ -109,7 +109,7 @@ class UpcomingWidget extends StatelessWidget {
                         height: 8,
                       ),
                       Text(
-                        "Ut ultricies augue quam eu eu eros quis justo. Sed ut scelerisque.",
+                        "You could try the following breathing exercise to regulate your feelings",
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,

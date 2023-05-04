@@ -46,6 +46,9 @@ class InsightsView extends GetView<InsightsController> {
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: AppBar(
@@ -63,7 +66,8 @@ class InsightsView extends GetView<InsightsController> {
                           controller.onInit();
                         },
                         child: CircleAvatar(
-                          backgroundImage: NetworkImage(controller.profileAvatar),
+                          backgroundImage:
+                              NetworkImage(controller.profileAvatar),
                         ),
                       ),
                       title: GestureDetector(

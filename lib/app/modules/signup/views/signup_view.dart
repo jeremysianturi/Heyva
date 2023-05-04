@@ -29,7 +29,7 @@ class SignUpView extends GetView<SignUpController> {
             Column(
               children: [
                 const SizedBox(
-                  height: 64,
+                  height: 60,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),

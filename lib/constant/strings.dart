@@ -64,7 +64,8 @@ class Strings {
   static const String clouds =
       "Sometimes there might be\nclouds. But the blue sky is\nalways there.";
   static const String breath = "Let’s take a breath together";
-  static const String letsStart ="Let's start with a simple\n breathing exercise!";
+  static const String letsStart =
+      "Let's start with a simple\n breathing exercise!";
   static const String remember_blue_sky = "Remember the blue sky.";
   static const String home = "Home";
   static const String recovery = "Recovery";
@@ -208,13 +209,16 @@ class Strings {
 
   static const String updateInsights = "Update Insights";
   static const String checkYourEnauk = "Check your email!";
-  static const String confirmEmail = "To confirm your email address, tap the\n button in the email we sent to\n";
+  static const String confirmEmail =
+      "To confirm your email address, tap the\n button in the email we sent to\n";
   static const String opemMailApps = "Open email app";
-  static const String thankYoutForYourConfirm = "Thank you for your confirmation.";
+  static const String thankYoutForYourConfirm =
+      "Thank you for your confirmation.";
 
-  static const String enterYourEmailResetPass = "Enter your email address and we will send you a link to reset your password";
+  static const String enterYourEmailResetPass =
+      "Enter your email address and we will send you a link to reset your password";
   static const String resetYourPassword = "Reset Your Password";
 
-  static const String notificationCenter ="Notification Center";
-  static const String goToHome ="Go To Home";
+  static const String notificationCenter = "Notification Center";
+  static const String goToHome = "Go To Home";
 }
