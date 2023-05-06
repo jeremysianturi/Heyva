@@ -29,8 +29,8 @@ class ReusableBtnLoginGroup extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          ElevatedButton(
-            onPressed: () {
+          GestureDetector(
+            onTap: () {
               if (detemineAction == Strings.continue_email) {
                 Get.to(LoginView());
               } else if (detemineAction == Strings.login) {
@@ -41,28 +41,28 @@ class ReusableBtnLoginGroup extends StatelessWidget {
                 onTap!();
               }
             },
-            style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(ColorApp.btn_orange),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(14)),
-                  side: BorderSide(color: ColorApp.btn_orange),
+            child: Container(
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                  color: ColorApp.btn_orange),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      orangeBtnText,
+                      style: const TextStyle(
+                          color: ColorApp.arrow_white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    const ImageIcon(
+                      AssetImage("assets/icons/ic_arrow_right.png"),
+                      color: ColorApp.arrow_white,
+                    )
+                  ],
                 ),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  left: 20, top: 17, right: 20, bottom: 18),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(orangeBtnText),
-                  const ImageIcon(
-                    AssetImage("assets/icons/ic_arrow_right.png"),
-                    color: ColorApp.arrow_white,
-                  )
-                ],
               ),
             ),
           ),

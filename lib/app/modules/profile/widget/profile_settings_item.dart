@@ -18,7 +18,8 @@ class ProfileSettingsItem extends StatelessWidget {
       onTap: () {
         ontap();
       },
-      child: Padding(
+      child: Container(
+        color: Colors.transparent,
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
@@ -35,7 +36,10 @@ class ProfileSettingsItem extends StatelessWidget {
                       fontSize: 18,
                       color: ColorApp.blue_container),
                 ),
-                SvgPicture.asset("assets/icons/ic_chevron_right.svg",color: ColorApp.blue_container,)
+                SvgPicture.asset(
+                  "assets/icons/ic_chevron_right.svg",
+                  color: ColorApp.blue_container,
+                )
               ],
             ),
             const SizedBox(

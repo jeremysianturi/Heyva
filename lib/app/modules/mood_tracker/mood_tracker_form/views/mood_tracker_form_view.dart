@@ -67,7 +67,7 @@ class MoodCheckForm1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        height: Get.height - 50,
+        height: Get.height,
         width: Get.width,
         decoration: const BoxDecoration(
           image: DecorationImage(

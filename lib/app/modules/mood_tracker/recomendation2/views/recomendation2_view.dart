@@ -114,6 +114,9 @@ class Recomendation2View extends GetView<Recomendation2Controller> {
                     }),
                   ),
                 )),
+                const SizedBox(
+                  height: 20,
+                ),
                 OrangeButtonWTrailingIcon(
                   determineAction: "ontap",
                   text: Strings.thankYou,
@@ -173,7 +176,6 @@ class RecomendationWidget extends StatelessWidget {
             title.toLowerCase().contains("pelvic")) {
           Get.toNamed(Routes.BREATHING_ONE);
         }
-
       },
       child: Container(
         padding: const EdgeInsets.all(16),

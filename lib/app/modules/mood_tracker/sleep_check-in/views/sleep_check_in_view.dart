@@ -293,7 +293,7 @@ class MoodCheckForm2 extends StatelessWidget {
                         },
                         showIcon: false)),
                 const SizedBox(
-                  height: 100,
+                  height: 34,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -321,7 +321,7 @@ class MoodCheckForm2 extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 100,
+                  height: 34,
                 ),
                 Column(
                   children: List.generate(data.jsonContent?.length ?? 0, (i) {

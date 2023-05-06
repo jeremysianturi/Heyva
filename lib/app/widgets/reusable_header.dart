@@ -28,7 +28,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.only(left: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -67,7 +67,7 @@ class Header extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 3,
+            flex: 2,
             child: showCenterTitle
                 ? Text(
                     centerTitle ?? "",
@@ -114,13 +114,17 @@ class Header extends StatelessWidget {
                       ),
                     )
                   : Expanded(
-                      child: Text(
-                        rightText ?? "",
-                        style: const TextStyle(
-                            color: ColorApp.blue_container,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                        textAlign: TextAlign.end,
+                      child: Container(
+                        padding: const EdgeInsets.only(
+                            top: 20, right: 20, bottom: 20),
+                        child: Text(
+                          rightText ?? "",
+                          style: const TextStyle(
+                              color: ColorApp.blue_container,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
+                          textAlign: TextAlign.end,
+                        ),
                       ),
                     ),
             ),

@@ -1,9 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/signup/controllers/signup_controller.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
+import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
 
 import '../../../widgets/reusable_btnlogin_group.dart';
@@ -29,10 +31,10 @@ class SignUpView extends GetView<SignUpController> {
             Column(
               children: [
                 const SizedBox(
-                  height: 60,
+                  height: 35,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.only(left: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -41,12 +43,17 @@ class SignUpView extends GetView<SignUpController> {
                         onTap: () {
                           Get.toNamed(Routes.REGISTER);
                         },
-                        child: const Text(
-                          Strings.register,
-                          style: TextStyle(
-                              color: ColorApp.blue_container,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600),
+                        child: Expanded(
+                          child: Container(
+                            padding: EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+                            child: const Text(
+                              Strings.register,
+                              style: TextStyle(
+                                  color: ColorApp.blue_container,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -82,10 +89,10 @@ class SignUpView extends GetView<SignUpController> {
                 ),
                 RichText(
                   textAlign: TextAlign.center,
-                  text: const TextSpan(
-                    style: TextStyle(fontSize: 14),
+                  text: TextSpan(
+                    style: const TextStyle(fontSize: 14),
                     children: [
-                      TextSpan(
+                      const TextSpan(
                         text: Strings.privacy_policy_text1,
                         style: TextStyle(
                           color: ColorApp.grey_font,
@@ -93,27 +100,41 @@ class SignUpView extends GetView<SignUpController> {
                       ),
                       TextSpan(
                         text: Strings.terms_service_underline,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: ColorApp.blue_container,
                             decoration: TextDecoration.underline,
                             fontSize: 14,
                             fontWeight: FontWeight.w700),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Get.toNamed(Routes.IN_APP_WEB_VIEW, arguments: {
+                              Keys.arUrl:
+                                  "http://54.169.131.201/#/termsofservice"
+                            });
+                          },
                       ),
-                      TextSpan(
+                      const TextSpan(
                         text: Strings.privacy_policy_text2,
                         style: TextStyle(color: ColorApp.grey_font),
                       ),
-                      TextSpan(
+                      const TextSpan(
                         text: Strings.privacy_policy_text3,
                         style: TextStyle(color: ColorApp.grey_font),
                       ),
                       TextSpan(
                         text: Strings.privacy_policy_underline,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: ColorApp.blue_container,
                             decoration: TextDecoration.underline,
                             fontSize: 14,
                             fontWeight: FontWeight.w700),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Get.toNamed(Routes.IN_APP_WEB_VIEW, arguments: {
+                              Keys.arUrl:
+                                  "http://54.169.131.201/#/privacypolicy"
+                            });
+                          },
                       ),
                     ],
                   ),

@@ -231,77 +231,13 @@ class OnPlanningOneView extends GetView<OnPlanningOneController> {
                                     ],
                                   ),
                                 )),
-                      )
-                          // child: ListView.builder(
-                          //   itemCount: onPlanningOneController.list.length,
-                          //   itemBuilder: ((context, index) {
-                          //     return Padding(
-                          //       padding: const EdgeInsets.symmetric(horizontal: 20),
-                          //       child: Column(
-                          //         children: [
-                          //           Obx(
-                          //                 () => ElevatedButton(
-                          //               onPressed: () {
-                          //                 onPlanningOneController
-                          //                     .list[index].isSelected.value =
-                          //                 !onPlanningOneController
-                          //                     .list[index].isSelected.value;
-                          //                 if(onPlanningOneController.list[index].isSelected.value == true){
-                          //                   onPlanningOneController.anyButtonStillSelected("plus");
-                          //                 } else {
-                          //                   onPlanningOneController.anyButtonStillSelected("minus");
-                          //                 }
-                          //                 print("check current value button selected remaining: ${onPlanningOneController.selectedBtnRemaining}");
-                          //               },
-                          //               style: ButtonStyle(
-                          //                 backgroundColor: MaterialStateProperty.all<Color>(
-                          //                     onPlanningOneController
-                          //                         .list[index].isSelected.value
-                          //                         ? ColorApp.btn_pink
-                          //                         : ColorApp.white),
-                          //                 shape: MaterialStateProperty.all<
-                          //                     RoundedRectangleBorder>(
-                          //                   RoundedRectangleBorder(
-                          //                     borderRadius:
-                          //                     const BorderRadius.all(Radius.circular(14)),
-                          //                     side: BorderSide(
-                          //                         color: onPlanningOneController
-                          //                             .list[index].isSelected.value
-                          //                             ? ColorApp.btn_pink
-                          //                             : ColorApp.btn_orange),
-                          //                   ),
-                          //                 ),
-                          //               ),
-                          //               child: Padding(
-                          //                 padding: const EdgeInsets.symmetric(
-                          //                     vertical: 17, horizontal: 20),
-                          //                 child: Row(
-                          //                   mainAxisAlignment: MainAxisAlignment.center,
-                          //                   children: [
-                          //                     Text(
-                          //                       onPlanningOneController.list[index].subject,
-                          //                       style: const TextStyle(
-                          //                           color: ColorApp.blue_container,
-                          //                           fontSize: 16,
-                          //                           fontWeight: FontWeight.w700),
-                          //                     ),
-                          //                   ],
-                          //                 ),
-                          //               ),
-                          //             ),
-                          //           ),
-                          //           const SizedBox(
-                          //             height: 12,
-                          //           ),
-                          //         ],
-                          //       ),
-                          //     );
-                          //   }),
-                          // ),
-                          ),
+                      )),
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Obx(
                 () => Visibility(

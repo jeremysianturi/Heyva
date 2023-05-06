@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/profile/widget/profile_header.dart';
+import 'package:heyva/app/widgets/bottom_sheet_logout.dart';
 import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
 import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/app/widgets/reusable_regular_textfield.dart';
@@ -48,6 +49,9 @@ class EditProfileView extends GetView<EditProfileController> {
                         showCenterTitle: true,
                         onBack: () {
                           Get.back();
+                        },
+                        ontapIcon: () {
+                          logout();
                         },
                       )),
                   const SizedBox(
