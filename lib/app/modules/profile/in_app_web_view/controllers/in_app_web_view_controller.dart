@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:easy_stepper/easy_stepper.dart';
 import 'package:get/get.dart';
 import 'package:heyva/constant/keys.dart';
 
@@ -13,6 +14,7 @@ class InAppWebViewController extends GetxController {
   @override
   void onInit() {
     Future.delayed(200.milliseconds);
+    debugPrint("ar url ${argumentData[Keys.arUrl]}");
     initWebView(url: argumentData[Keys.arUrl]);
     super.onInit();
   }
