@@ -117,7 +117,6 @@ class ArticleContainer extends StatelessWidget {
             height: 16,
           ),
           Container(
-            height: 30,
             width: Get.width,
             padding: const EdgeInsets.only(right: 20),
             child: desc.contains("<")

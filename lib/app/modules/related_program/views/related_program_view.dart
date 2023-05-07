@@ -39,7 +39,7 @@ class RelatedProgramView extends GetView<RelatedProgramController> {
               const SizedBox(
                 height: 12,
               ),
-              SizedBox(
+              Container(
                 height: 30,
                 child: ListView.builder(
                   shrinkWrap: true,

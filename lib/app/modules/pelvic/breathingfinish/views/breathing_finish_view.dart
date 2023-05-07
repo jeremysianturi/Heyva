@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/constant/keys.dart';
 
 import '../../../../../constant/colors.dart';
@@ -14,8 +15,13 @@ class BreathingFinishView extends GetView<BreathingFinishController> {
     Get.put(BreathingFinishController());
     return Scaffold(
       body: Container(
-        height: double.maxFinite,
-        color: ColorApp.btn_pink,
+        height: Get.height,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/bg_breating_exercise.png"),
+            fit: BoxFit.fill,
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
@@ -28,15 +34,15 @@ class BreathingFinishView extends GetView<BreathingFinishController> {
                     GestureDetector(
                       onTap: () {
                         controller.programPersonalTrackerFinish(
-                            programId:
-                                controller.box.read(Keys.programIdChildStorage));
+                            programId: controller.box
+                                .read(Keys.programIdChildStorage));
                       },
                       child: const Padding(
                         padding: EdgeInsets.only(top: 67),
                         child: Text(
                           Strings.done,
                           style: TextStyle(
-                              color: ColorApp.txt_white,
+                              color: ColorApp.blue_container,
                               fontWeight: FontWeight.w600,
                               fontSize: 16),
                         ),
@@ -44,19 +50,31 @@ class BreathingFinishView extends GetView<BreathingFinishController> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  width: Get.width,
-                  child: Text(
-                    controller.pelvic6,
-                    style: const TextStyle(
-                      color: ColorApp.txt_white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: Container(
+                      width: Get.width,
+                      decoration: const BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                  "assets/images/pelvic_done_img.png"),
+                              fit: BoxFit.cover)),
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
-                Container(),
+                OrangeButtonWTrailingIcon(
+                  determineAction: "ontap",
+                  text: Strings.goToHome,
+                  ontap: () {
+                    controller.programPersonalTrackerFinish(
+                        programId:
+                            controller.box.read(Keys.programIdChildStorage));
+                  },
+                )
               ]),
         ),
       ),

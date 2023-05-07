@@ -46,7 +46,17 @@ class SelectScheduleWidget extends StatelessWidget {
                   ).then((date) {
                     controller.selectedMonthYear.value =
                         date ?? controller.selectedMonthYear.value;
-                    controller.focusedDay.value = date;
+                    // controller.focusedDay.value = date;
+                    debugPrint(
+                        "month picker  ${(date?.month == DateTime.now().month)}");
+
+                    if (date?.month == DateTime.now().month) {
+                      controller.selectedDay.value = DateTime.now();
+                      controller.focusedDay.value = DateTime.now();
+                    } else {
+                      controller.selectedDay.value = date;
+                      controller.focusedDay.value = date;
+                    }
                   });
                 },
                 text: DateFormat.yMMMM()
@@ -62,7 +72,7 @@ class SelectScheduleWidget extends StatelessWidget {
                   controller.selectedTime.value = selectedTime;
                 },
                 text:
-                    "${controller.selectedTime.value?.hour} : ${controller.selectedTime.value?.minute}",
+                    "${controller.selectedHour} : ${controller.selectedMinutes}",
               ),
             ],
           ),
@@ -74,6 +84,7 @@ class SelectScheduleWidget extends StatelessWidget {
               firstDay: controller.kFirstDay,
               lastDay: controller.kLastDay,
               headerVisible: false,
+              currentDay: null,
               focusedDay: controller.focusedDay.value ?? controller.kToday,
               calendarFormat:
                   controller.calendarFormat.value ?? CalendarFormat.month,
@@ -94,9 +105,7 @@ class SelectScheduleWidget extends StatelessWidget {
               },
               onPageChanged: (focusedDay) {
                 // No need to call `setState()` here
-                debugPrint("focused day $focusedDay");
                 controller.selectedMonthYear.value = focusedDay;
-                focusedDay = focusedDay;
               },
             )),
       ],

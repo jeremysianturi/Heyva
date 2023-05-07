@@ -26,8 +26,8 @@ class OrangeButtonWTrailingIcon extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: padding),
       child: Column(
         children: [
-          ElevatedButton(
-            onPressed: () {
+          GestureDetector(
+            onTap: () {
               if (determineAction == "from_login") {
                 Get.to(const OnBoardingOneView());
               } else if (determineAction == "from_onboarding_one") {
@@ -44,33 +44,29 @@ class OrangeButtonWTrailingIcon extends StatelessWidget {
                 Get.toNamed(Routes.ONBOARDING_FINISH);
               }
             },
-            style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(ColorApp.btn_orange),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(14)),
-                  side: BorderSide(color: ColorApp.btn_orange),
+            child: Container(
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                  color: ColorApp.btn_orange),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      text,
+                      style: const TextStyle(
+                          color: ColorApp.arrow_white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    const ImageIcon(
+                      AssetImage("assets/icons/ic_arrow_right.png"),
+                      color: ColorApp.arrow_white,
+                    )
+                  ],
                 ),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    text,
-                    style: const TextStyle(
-                        color: ColorApp.arrow_white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700),
-                  ),
-                  const ImageIcon(
-                    AssetImage("assets/icons/ic_arrow_right.png"),
-                    color: ColorApp.arrow_white,
-                  )
-                ],
               ),
             ),
           ),

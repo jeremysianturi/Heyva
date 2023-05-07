@@ -1,15 +1,11 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:heyva/app/modules/profile/in_app_web_view/bindings/in_app_web_view_binding.dart';
+import 'package:heyva/app/modules/profile/in_app_web_view/views/in_app_web_view_view.dart';
 
 import '../modules/article/bindings/article_binding.dart';
 import '../modules/article/views/article_view.dart';
 import '../modules/breast_feeding/bindings/breast_feeding_binding.dart';
 import '../modules/breast_feeding/views/breast_feeding_view.dart';
-import '../modules/breathing/breathingone/bindings/breathing_one_binding.dart';
-import '../modules/breathing/breathingone/views/breathing_one_view.dart';
-import '../modules/breathing/breathingtimer/bindings/breathing_timer_binding.dart';
-import '../modules/breathing/breathingtimer/views/breathing_timer_view.dart';
-import '../modules/breathing/breathingtwo/bindings/breathing_two_binding.dart';
-import '../modules/breathing/breathingtwo/views/breathing_two_view.dart';
 import '../modules/breathing_exercise/bindings/breathing_exercise_binding.dart';
 import '../modules/breathing_exercise/breathin_voice/bindings/breathin_voice_binding.dart';
 import '../modules/breathing_exercise/breathin_voice/views/breathin_voice_view.dart';
@@ -58,6 +54,12 @@ import '../modules/onboarding/views/onboarding_three_view.dart';
 import '../modules/onboarding/views/onboarding_two_view.dart';
 import '../modules/onboarding/views/onplanning/onplanning_one_view.dart';
 import '../modules/onboarding/views/turnon_notif/turnon_notif_view.dart';
+import '../modules/pelvic/breathingone/bindings/breathing_one_binding.dart';
+import '../modules/pelvic/breathingone/views/breathing_one_view.dart';
+import '../modules/pelvic/breathingtimer/bindings/breathing_timer_binding.dart';
+import '../modules/pelvic/breathingtimer/views/breathing_timer_view.dart';
+import '../modules/pelvic/breathingtwo/bindings/breathing_two_binding.dart';
+import '../modules/pelvic/breathingtwo/views/breathing_two_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/change_password/bindings/change_password_binding.dart';
 import '../modules/profile/change_password/views/change_password_view.dart';
@@ -303,6 +305,11 @@ class AppPages {
       name: _Paths.NOTIFICATION_CENTER,
       page: () => const NotificationCenterView(),
       binding: NotificationCenterBinding(),
+    ),
+    GetPage(
+      name: _Paths.IN_APP_WEB_VIEW,
+      page: () => const InAppWebViewView(),
+      binding: InAppWebViewBinding(),
     ),
   ];
 }

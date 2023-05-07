@@ -34,7 +34,7 @@ logout() {
                   child: CircleAvatar(
                     backgroundColor: ColorApp.btn_orange,
                     child: Transform.rotate(
-                      angle: 180 * math.pi / 105,
+                      angle: 180 * math.pi / 103.5,
                       child: const Icon(
                         Icons.add,
                         color: ColorApp.white,

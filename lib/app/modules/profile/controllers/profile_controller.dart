@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -49,10 +48,12 @@ class ProfileController extends GetxController {
       inviteFriends();
     }
     if (index == 2) {
-      Get.toNamed(Routes.PRIVACY_POLICY);
+      Get.toNamed(Routes.IN_APP_WEB_VIEW,
+          arguments: {Keys.arUrl: "http://54.169.131.201/#/privacypolicy"});
     }
     if (index == 3) {
-      Get.toNamed(Routes.FAQ);
+      Get.toNamed(Routes.IN_APP_WEB_VIEW,
+          arguments: {Keys.arUrl: "http://54.169.131.201/#/termsofservice"});
     }
     if (index == 4) {}
     if (index == 5) {
@@ -102,5 +103,4 @@ class ProfileController extends GetxController {
     }
     return 'Good Evening';
   }
-
 }

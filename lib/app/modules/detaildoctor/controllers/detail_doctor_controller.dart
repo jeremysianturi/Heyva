@@ -1,5 +1,6 @@
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/modules/detaildoctor/model/detail_doctor_model.dart'
     as doctor;
 import 'package:heyva/app/modules/detaildoctor/model/service_model.dart';
@@ -7,9 +8,12 @@ import 'package:heyva/app/modules/detaildoctor/provider/doctor_provider.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:heyva/services/dio_services.dart';
+import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
 import '../../../../model/tag.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class DetailDoctorController extends GetxController {
   var list = <Tag>[].obs;
@@ -30,8 +34,8 @@ class DetailDoctorController extends GetxController {
   Rxn<DateTime> selectedDay = Rxn<DateTime>();
 
   var kToday = DateTime.now();
-  var kFirstDay = DateTime(
-      DateTime.now().year, DateTime.now().month - 1, DateTime.now().day);
+  var kFirstDay =
+      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
   var kLastDay = DateTime(
       DateTime.now().year, DateTime.now().month + 200, DateTime.now().day);
 
@@ -50,6 +54,22 @@ class DetailDoctorController extends GetxController {
     return argumentData[Keys.doctorIdArguments].toString();
   }
 
+  String get selectedHour {
+    if (selectedTime.value!.hour.toString().length == 1) {
+      return "0${selectedTime.value!.hour}";
+    } else {
+      return selectedTime.value!.hour.toString();
+    }
+  }
+
+  String get selectedMinutes {
+    if (selectedTime.value!.minute.toString().length == 1) {
+      return "0${selectedTime.value!.minute}";
+    } else {
+      return selectedTime.value!.minute.toString();
+    }
+  }
+
   List<Tag> get listTag {
     var data = detailDoctorResponse.value.data?[0].tags;
     var list = <Tag>[];
@@ -62,6 +82,7 @@ class DetailDoctorController extends GetxController {
   @override
   void onInit() {
     focusedDay.value = DateTime.now();
+    selectedDay.value = DateTime.now();
     selectedTime.value = TimeOfDay.now();
     selectedMonthYear.value = DateTime.now();
     calendarFormat.value = CalendarFormat.week;
@@ -88,6 +109,16 @@ class DetailDoctorController extends GetxController {
       doctor.DetailDoctorModel(success: "", data: null, message: "", error: "")
           .obs;
 
+  String get phoneNumber {
+    var data = detailDoctorResponse.value.data;
+    return data?[0].phoneNumber;
+  }
+
+  String get doctorName {
+    var data = detailDoctorResponse.value.data;
+    return data?[0].name ?? "";
+  }
+
   getDetailDoctor() async {
     errorMessage.value = "";
     isLoading.value = true;
@@ -105,5 +136,16 @@ class DetailDoctorController extends GetxController {
 
       debugPrint("error  $e");
     }
+  }
+
+  onclickButton() async {
+    var box = GetStorage();
+    var dateFormat = DateFormat('dd/MM/yyyy');
+    var message =
+        "Hi, my name is ${box.read(Keys.profileName)}. I want to book $doctorName on ${dateFormat.format(selectedDay.value!)} at $selectedHour:$selectedMinutes via ${listService.firstWhereOrNull((e) => e.isSelected.isTrue)?.title}.";
+
+    final link = WhatsAppUnilink(phoneNumber: phoneNumber, text: message);
+
+    await launchUrlString('$link');
   }
 }

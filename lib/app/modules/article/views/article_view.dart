@@ -32,162 +32,179 @@ class ArticleView extends GetView<ArticleController> {
                     ),
                   ),
                   Expanded(
-                    child: SingleChildScrollView(
-                      controller: controller.scrollController,
-                      child: Column(
-                        children: [
-                          AppBar(
-                            backgroundColor: ColorApp.white,
-                            elevation: 0,
-                            leading: Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: IconButton(
-                                  icon: const ImageIcon(
-                                    AssetImage(
-                                        "assets/images/ic_arrow_back.png"),
-                                    color: ColorApp.black_arrow_back,
-                                  ),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                    // Get.to(Coba());
-                                  }),
-                            ),
-                            title: const Text(
-                              Strings.article,
-                              style: TextStyle(
-                                  color: ColorApp.black_article_title,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            centerTitle: false,
+                    child: Column(
+                      children: [
+                        AppBar(
+                          backgroundColor: ColorApp.white,
+                          elevation: 0,
+                          leading: Padding(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: IconButton(
+                                icon: const ImageIcon(
+                                  AssetImage("assets/images/ic_arrow_back.png"),
+                                  color: ColorApp.black_arrow_back,
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                  // Get.to(Coba());
+                                }),
                           ),
-                          Container(
-                            color: ColorApp.purple_article_dummy,
-                            width: MediaQuery.of(context).size.width,
-                            height: 320,
-                            child: controller.imgUrl != ""
-                                ? Image.network(
-                                    controller.imgUrl,
-                                    fit: BoxFit.cover,
-                                  )
-                                : const SizedBox(),
+                          title: const Text(
+                            Strings.article,
+                            style: TextStyle(
+                                color: ColorApp.black_article_title,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500),
                           ),
-                          const SizedBox(
-                            height: 22,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                          centerTitle: false,
+                        ),
+                        Expanded(
+                          child: SingleChildScrollView(
+                            controller: controller.scrollController,
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                SizedBox(
-                                  height: 48,
-                                  child: ListView(
-                                      scrollDirection: Axis.horizontal,
-                                      shrinkWrap: true,
-                                      children: [
-                                        Wrap(
-                                          spacing: 8,
-                                          children: controller.tagsList
-                                              .map(
-                                                (e) => _buildChip(
-                                                    e.tag?.name ?? "",
-                                                    ColorApp.btn_pink),
-                                              )
-                                              .toList(),
+                                Container(
+                                  color: ColorApp.purple_article_dummy,
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 320,
+                                  child: controller.imgUrl != ""
+                                      ? Image.network(
+                                          controller.imgUrl,
+                                          fit: BoxFit.cover,
                                         )
-                                      ]),
+                                      : const SizedBox(),
                                 ),
                                 const SizedBox(
-                                  height: 4,
+                                  height: 22,
                                 ),
-                                Row(
-                                  children: [
-                                    Flexible(
-                                      child: Text(
-                                        controller.title,
-                                        style: const TextStyle(
-                                          color: ColorApp.blue_container,
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.w700,
-                                        ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: [
+                                      SizedBox(
+                                        height: 48,
+                                        child: ListView(
+                                            scrollDirection: Axis.horizontal,
+                                            shrinkWrap: true,
+                                            children: [
+                                              Wrap(
+                                                spacing: 8,
+                                                children: controller.tagsList
+                                                    .map(
+                                                      (e) => _buildChip(
+                                                          e.tag?.name ?? "",
+                                                          ColorApp.btn_pink),
+                                                    )
+                                                    .toList(),
+                                              )
+                                            ]),
                                       ),
-                                    )
-                                  ],
+                                      const SizedBox(
+                                        height: 4,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Flexible(
+                                            child: Text(
+                                              controller.title,
+                                              style: const TextStyle(
+                                                color: ColorApp.blue_container,
+                                                fontSize: 24,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: const [
+                                          Text(
+                                            Strings.created_by,
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: ColorApp.black_font_30),
+                                          ),
+                                          SizedBox(
+                                            width: 4,
+                                          ),
+                                          Text(
+                                            Strings.dr_name,
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600,
+                                                color: ColorApp.black_font_30),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      Html(
+                                        data: controller.renderedBody,
+                                        style: {
+                                          "body": Style(
+                                            fontSize: FontSize(16.0),
+                                          ),
+                                        },
+                                      ),
+                                      Row(
+                                        children: [
+                                          const Text(
+                                            Strings.article_helpfull_ques,
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                                color: ColorApp.black_font_30),
+                                          ),
+                                          TextButton.icon(
+                                            onPressed: () {},
+                                            icon: const Icon(
+                                              Icons.thumb_up,
+                                              color: ColorApp.yellow_icon,
+                                            ),
+                                            label: const Text(
+                                              Strings.yes,
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600,
+                                                  color:
+                                                      ColorApp.blue_container),
+                                            ),
+                                          ),
+                                          TextButton.icon(
+                                            onPressed: () {},
+                                            icon: const Icon(
+                                              Icons.thumb_down,
+                                              color: ColorApp.yellow_icon,
+                                            ),
+                                            label: const Text(
+                                              Strings.no,
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600,
+                                                  color:
+                                                      ColorApp.blue_container),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: const [
-                                    Text(
-                                      Strings.created_by,
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w400,
-                                          color: ColorApp.black_font_30),
-                                    ),
-                                    SizedBox(
-                                      width: 4,
-                                    ),
-                                    Text(
-                                      Strings.dr_name,
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                          color: ColorApp.black_font_30),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Html(data: controller.renderedBody),
-                                Row(
-                                  children: [
-                                    const Text(
-                                      Strings.article_helpfull_ques,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                          color: ColorApp.black_font_30),
-                                    ),
-                                    TextButton.icon(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.thumb_up,
-                                        color: ColorApp.yellow_icon,
-                                      ),
-                                      label: const Text(
-                                        Strings.yes,
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600,
-                                            color: ColorApp.blue_container),
-                                      ),
-                                    ),
-                                    TextButton.icon(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.thumb_down,
-                                        color: ColorApp.yellow_icon,
-                                      ),
-                                      label: const Text(
-                                        Strings.no,
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600,
-                                            color: ColorApp.blue_container),
-                                      ),
-                                    ),
-                                  ],
-                                )
                               ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

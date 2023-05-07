@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -39,30 +40,34 @@ class LearnView extends GetView<LearnController> {
         child: Scaffold(
             resizeToAvoidBottomInset: false,
             body: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/images/bg_heyva2.png"),
                   fit: BoxFit.fill,
                 ),
               ),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 60,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/images/heyva_text_logo.svg',
-                          fit: BoxFit.fill,
-                          alignment: Alignment.centerLeft,
-                          width: 60,
-                          height: 20,
-                        ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: AppBar(
+                      systemOverlayStyle: const SystemUiOverlayStyle(
+                        statusBarIconBrightness: Brightness.dark,
+                        statusBarBrightness:
+                            Brightness.light, // For iOS (dark icons)
+                      ),
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                      centerTitle: false,
+                      leading: SvgPicture.asset(
+                        'assets/images/heyva_text_logo.svg',
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.centerLeft,
+                        width: 60,
+                        height: 20,
+                      ),
+                      actions: [
                         GestureDetector(
                           onTap: () {
                             // Get.to(ArticleView());
@@ -83,63 +88,84 @@ class LearnView extends GetView<LearnController> {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    FolderItemList(controller: controller),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    const Text(
-                      Strings.heyvaCourse,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 24,
-                          color: ColorApp.blue_container),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Obx(() => CarouselSlider(
-                          options: CarouselOptions(
-                              height: 108,
-                              viewportFraction: 0.7,
-                              disableCenter: true,
-                              enableInfiniteScroll: false,
-                              enlargeCenterPage: false,
-                              padEnds: false
-                              // aspectRatio: 16/9
-                              ),
-                          items: List.generate(
-                              controller
-                                      .programListResponse.value.data?.length ??
-                                  0, (index) {
-                            var data = controller
-                                .programListResponse.value.data?[index];
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Expanded(
+                      child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: FolderItemList(controller: controller),
+                        ),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Text(
+                            Strings.heyvaCourse,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 24,
+                                color: ColorApp.blue_container),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Obx(() => CarouselSlider(
+                              options: CarouselOptions(
+                                  height: 108,
+                                  viewportFraction: 0.7,
+                                  disableCenter: true,
+                                  enableInfiniteScroll: false,
+                                  enlargeCenterPage: false,
+                                  padEnds: false
+                                  // aspectRatio: 16/9
+                                  ),
+                              items: List.generate(
+                                  controller.programListResponse.value.data
+                                          ?.length ??
+                                      0, (index) {
+                                var data = controller
+                                    .programListResponse.value.data?[index];
 
-                            return CourseItem(
-                              type: data?.title ?? "",
-                              title: data?.body ?? "",
-                              days: index == 0
-                                  ? "${data?.dailyProgress} Progress"
-                                  : "${data?.daysCount} Days",
-                              programId: data?.id ?? "",
-                              programIdChild: data?.dailyProgress == '0/3'
-                                  ? data?.child![0].id ?? ""
-                                  : data?.dailyProgress == '1/3'
-                                      ? data?.child![1].id ?? ""
-                                      : data?.dailyProgress == '2/3'
-                                          ? data?.child![2].id ?? ""
-                                          : data?.id ?? "",
-                            );
-                          }),
-                        )),
-                    const SizedBox(
-                      height: 24,
+                                return CourseItem(
+                                  index: index,
+                                  type: data?.title ?? "",
+                                  title: data?.body ?? "",
+                                  days: index == 0
+                                      ? "${data?.dailyProgress} Progress"
+                                      : "${data?.daysCount} Days",
+                                  programId: data?.id ?? "",
+                                  programIdChild: data?.dailyProgress == '0/3'
+                                      ? data?.child![0].id ?? ""
+                                      : data?.dailyProgress == '1/3'
+                                          ? data?.child![1].id ?? ""
+                                          : data?.dailyProgress == '2/3'
+                                              ? data?.child![2].id ?? ""
+                                              : data?.id ?? "",
+                                );
+                              }),
+                            )),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: UpcomingWidget(),
+                        ),
+                      ],
                     ),
-                    const UpcomingWidget(),
-                  ],
-                ),
+                  )),
+                ],
               ),
             ))));
   }
@@ -153,9 +179,11 @@ class CourseItem extends StatelessWidget {
     required this.days,
     required this.programId,
     required this.programIdChild,
+    required this.index,
   });
 
   final String type, title, days, programId, programIdChild;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -175,13 +203,13 @@ class CourseItem extends StatelessWidget {
         }
       },
       child: Padding(
-        padding: const EdgeInsets.only(right: 10),
+        padding: EdgeInsets.only(right: 10, left: index == 0 ? 20 : 0),
         child: Container(
             // width: 188,
             // margin: EdgeInsets.symmetric(horizontal: 5.0),
             decoration: BoxDecoration(
                 color: isDone ? ColorApp.btn_maroon : ColorApp.container_pink,
-                borderRadius: BorderRadius.all(Radius.circular(12))),
+                borderRadius: const BorderRadius.all(Radius.circular(12))),
             child: Card(
               elevation: 0,
               color: isDone ? ColorApp.btn_maroon : ColorApp.container_pink,

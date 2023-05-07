@@ -106,22 +106,15 @@ class BreatingFeelingsItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
-      child: ElevatedButton(
-        onPressed: () {
-          Get.toNamed(Routes.BREATHING_FINISH);
-        },
-        style: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.all<Color>(ColorApp.btn_orange),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(14)),
-              side: BorderSide(color: ColorApp.btn_orange),
-            ),
-          ),
-        ),
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(Routes.BREATHING_FINISH);
+      },
+      child: Container(
+        margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+            color: ColorApp.btn_orange),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
           child: Row(

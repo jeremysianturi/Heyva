@@ -565,6 +565,54 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  google_identity_services_web:
+    dependency: transitive
+    description:
+      name: google_identity_services_web
+      sha256: "7940fdc3b1035db4d65d387c1bdd6f9574deaa6777411569c05ecc25672efacd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.1"
+  google_sign_in:
+    dependency: "direct main"
+    description:
+      name: google_sign_in
+      sha256: "776a4c988dc179c3b8e9201de0ad61bf350a4e75d378ff9d94c76880378c7bca"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.1.0"
+  google_sign_in_android:
+    dependency: transitive
+    description:
+      name: google_sign_in_android
+      sha256: "2a8b90b766ce00b03e7543f4ffeec97b6eb51fb6c3f31ce2a364bd1f1b9dd7fc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.1.14"
+  google_sign_in_ios:
+    dependency: transitive
+    description:
+      name: google_sign_in_ios
+      sha256: "2e1df687b17f7fddcaf9a0c7f994d0d19b5d41e8ce1d943013befd0a0ae67403"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.6.1"
+  google_sign_in_platform_interface:
+    dependency: transitive
+    description:
+      name: google_sign_in_platform_interface
+      sha256: "95a9e0a8701b5485f2ca330fd1fc6f918f5ce088042ce1019c5e389d8574ae4c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
+  google_sign_in_web:
+    dependency: transitive
+    description:
+      name: google_sign_in_web
+      sha256: "7e0ec507f4752383a6daa67d0cc775253cfc3b1d87907e7004e2c1b99c0a723f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.12.0"
   graphs:
     dependency: transitive
     description:
@@ -981,6 +1029,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
+  quiver:
+    dependency: transitive
+    description:
+      name: quiver
+      sha256: b1c1ac5ce6688d77f65f3375a9abb9319b3cb32486bdc7a1e0fdf004d7ba4e47
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.1"
   readmore:
     dependency: "direct main"
     description:
@@ -1211,7 +1267,7 @@ packages:
     source: hosted
     version: "1.3.1"
   url_launcher:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: url_launcher
       sha256: "75f2846facd11168d007529d6cd8fcb2b750186bea046af9711f10b907e1587e"
@@ -1390,34 +1446,42 @@ packages:
     dependency: "direct main"
     description:
       name: webview_flutter
-      sha256: "392c1d83b70fe2495de3ea2c84531268d5b8de2de3f01086a53334d8b6030a88"
+      sha256: "1a37bdbaaf5fbe09ad8579ab09ecfd473284ce482f900b5aea27cf834386a567"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.4"
+    version: "4.2.0"
   webview_flutter_android:
     dependency: transitive
     description:
       name: webview_flutter_android
-      sha256: "8b3b2450e98876c70bfcead876d9390573b34b9418c19e28168b74f6cb252dbd"
+      sha256: d6cf18cd6c809c5a9294cd99707a21986aac4e08c87e1916ce2590315fb55d3a
       url: "https://pub.dev"
     source: hosted
-    version: "2.10.4"
+    version: "3.6.2"
   webview_flutter_platform_interface:
     dependency: transitive
     description:
       name: webview_flutter_platform_interface
-      sha256: "812165e4e34ca677bdfbfa58c01e33b27fd03ab5fa75b70832d4b7d4ca1fa8cf"
+      sha256: "78715dc442b7849dbde74e92bb67de1cecf5addf95531c5fb474e72f5fe9a507"
       url: "https://pub.dev"
     source: hosted
-    version: "1.9.5"
+    version: "2.3.0"
   webview_flutter_wkwebview:
     dependency: transitive
     description:
       name: webview_flutter_wkwebview
-      sha256: a5364369c758892aa487cbf59ea41d9edd10f9d9baf06a94e80f1bd1b4c7bbc0
+      sha256: c94d242d8cbe1012c06ba7ac790c46d6e6b68723b7d34f8c74ed19f68d166f49
       url: "https://pub.dev"
     source: hosted
-    version: "2.9.5"
+    version: "3.4.0"
+  whatsapp_unilink:
+    dependency: "direct main"
+    description:
+      name: whatsapp_unilink
+      sha256: "2cad5519a73024205829f2db46676174af2664112340eb3f84e0444ada5316e5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   win32:
     dependency: transitive
     description:

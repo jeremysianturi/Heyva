@@ -7,6 +7,7 @@ import 'package:heyva/app/modules/related_program/model/content_list_model.dart'
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/keys.dart';
+import 'package:html/parser.dart';
 
 class Staggered extends StatelessWidget {
   const Staggered({
@@ -20,9 +21,16 @@ class Staggered extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var desc = data?.contents?.body.toString() == "null"
-        ? data?.contents?.body ?? ""
-        : data?.contents?.body ?? "";
+    String parseHtmlString(String htmlString) {
+      final document = parse(htmlString);
+      final String? parsedString =
+          parse(document.body?.text).documentElement?.text;
+
+      return parsedString ?? "";
+    }
+
+    var desc = parseHtmlString(data?.contents?.body.toString() ?? "");
+
     return GestureDetector(
       onTap: () {
         if (data?.contentType?.name?.toLowerCase() == "video") {

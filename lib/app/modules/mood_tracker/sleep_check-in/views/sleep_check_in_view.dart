@@ -86,7 +86,7 @@ class MoodCheckForm1 extends StatelessWidget {
             Column(
               children: [
                 Container(
-                    margin: const EdgeInsets.only(top: 60),
+                    margin: const EdgeInsets.only(top: 80),
                     child: Header(
                         showCenterTitle: true,
                         centerTitle: Strings.sleepCheckIn,
@@ -293,7 +293,7 @@ class MoodCheckForm2 extends StatelessWidget {
                         },
                         showIcon: false)),
                 const SizedBox(
-                  height: 100,
+                  height: 34,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -321,7 +321,7 @@ class MoodCheckForm2 extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 100,
+                  height: 34,
                 ),
                 Column(
                   children: List.generate(data.jsonContent?.length ?? 0, (i) {

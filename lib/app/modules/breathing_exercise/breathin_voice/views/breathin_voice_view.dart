@@ -3,6 +3,7 @@ import 'package:flutter_lyric/lyrics_reader.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/routes/app_pages.dart';
+import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
@@ -200,7 +201,7 @@ class VoiceOver extends StatelessWidget {
       width: Get.width,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/bg_heyva.png"),
+          image: AssetImage("assets/images/bg_breating_exercise.png"),
           fit: BoxFit.fill,
         ),
       ),
@@ -245,103 +246,117 @@ class VoiceOver extends StatelessWidget {
                 ),
               ),
             ),
-            InkWell(
-                onTap: () {
-                  controller.onPlay();
-                },
-                child: Container(
-                  margin: const EdgeInsets.only(top: 40),
-                  padding: const EdgeInsets.only(
-                      left: 30, right: 30, top: 12, bottom: 6),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 2,
-                        blurRadius: 2,
-                        offset:
-                            const Offset(0, 2), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Obx(
-                    () => Text(
-                      controller.prettyDuration(Duration(
-                          milliseconds: controller.playProgress.value)),
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18,
-                          color: ColorApp.gery_voice_over),
-                    ),
-                  ),
-                )),
-            InkWell(
-                onTap: () {
-                  if (controller.audioPlayer != null) {
-                    controller.audioPlayer?.pause();
-                  }
-                },
-                child: Container(
-                  margin: const EdgeInsets.only(top: 10),
-                  padding: const EdgeInsets.only(
-                      left: 30, right: 30, top: 12, bottom: 6),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 2,
-                        blurRadius: 2,
-                        offset:
-                            const Offset(0, 2), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: const Text(
-                    "Pause",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18,
-                        color: ColorApp.gery_voice_over),
-                  ),
-                )),
-            InkWell(
-                onTap: () {
-                  if (controller.audioPlayer != null) {
-                    controller.audioPlayer?.pause();
-                  }
-                  Future.delayed(20.milliseconds, () {
-                    controller.pagePosition.value = 1;
-                  });
-                },
-                child: Container(
-                  margin: const EdgeInsets.only(top: 10),
-                  padding: const EdgeInsets.only(
-                      left: 30, right: 30, top: 12, bottom: 6),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 2,
-                        blurRadius: 2,
-                        offset:
-                            const Offset(0, 2), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: const Text(
-                    "Next",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18,
-                        color: ColorApp.gery_voice_over),
-                  ),
-                )),
+            // InkWell(
+            //     onTap: () {
+            //       controller.onPlay();
+            //     },
+            //     child: Container(
+            //       margin: const EdgeInsets.only(top: 40),
+            //       padding: const EdgeInsets.only(
+            //           left: 30, right: 30, top: 12, bottom: 6),
+            //       decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(15),
+            //         color: Colors.white,
+            //         boxShadow: [
+            //           BoxShadow(
+            //             color: Colors.grey.withOpacity(0.2),
+            //             spreadRadius: 2,
+            //             blurRadius: 2,
+            //             offset:
+            //                 const Offset(0, 2), // changes position of shadow
+            //           ),
+            //         ],
+            //       ),
+            //       child: Obx(
+            //         () => Text(
+            //           controller.prettyDuration(Duration(
+            //               milliseconds: controller.playProgress.value)),
+            //           style: const TextStyle(
+            //               fontWeight: FontWeight.w500,
+            //               fontSize: 18,
+            //               color: ColorApp.gery_voice_over),
+            //         ),
+            //       ),
+            //     )),
+            // InkWell(
+            //     onTap: () {
+            //       if (controller.audioPlayer != null) {
+            //         controller.audioPlayer?.pause();
+            //       }
+            //     },
+            //     child: Container(
+            //       margin: const EdgeInsets.only(top: 10),
+            //       padding: const EdgeInsets.only(
+            //           left: 30, right: 30, top: 12, bottom: 6),
+            //       decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(15),
+            //         color: Colors.white,
+            //         boxShadow: [
+            //           BoxShadow(
+            //             color: Colors.grey.withOpacity(0.2),
+            //             spreadRadius: 2,
+            //             blurRadius: 2,
+            //             offset:
+            //                 const Offset(0, 2), // changes position of shadow
+            //           ),
+            //         ],
+            //       ),
+            //       child: const Text(
+            //         "Pause",
+            //         style: TextStyle(
+            //             fontWeight: FontWeight.w500,
+            //             fontSize: 18,
+            //             color: ColorApp.gery_voice_over),
+            //       ),
+            //     )),
+            const Expanded(child: SizedBox()),
+            OrangeButtonWTrailingIcon(
+              determineAction: "ontap",
+              text: Strings.next,
+              ontap: () {
+                // FocusScope.of(context).requestFocus(new FocusNode());
+                // if (controller.audioPlayer != null) {
+                  controller.audioPlayer?.pause();
+                // }
+                Future.delayed(200.milliseconds, () {
+                  controller.pagePosition.value = 1;
+                });
+              },
+            ),
+            // InkWell(
+            //     onTap: () {
+            //       if (controller.audioPlayer != null) {
+            //         controller.audioPlayer?.pause();
+            //       }
+            //       Future.delayed(20.milliseconds, () {
+            //         controller.pagePosition.value = 1;
+            //       });
+            //     },
+            //     child: Container(
+            //       margin: const EdgeInsets.only(top: 10),
+            //       padding: const EdgeInsets.only(
+            //           left: 30, right: 30, top: 12, bottom: 6),
+            //       decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(15),
+            //         color: Colors.white,
+            //         boxShadow: [
+            //           BoxShadow(
+            //             color: Colors.grey.withOpacity(0.2),
+            //             spreadRadius: 2,
+            //             blurRadius: 2,
+            //             offset:
+            //                 const Offset(0, 2), // changes position of shadow
+            //           ),
+            //         ],
+            //       ),
+            //       child: const Text(
+            //         "Next",
+            //         style: TextStyle(
+            //             fontWeight: FontWeight.w500,
+            //             fontSize: 18,
+            //             color: ColorApp.gery_voice_over),
+            //       ),
+            //     )),
           ],
         ),
       ),

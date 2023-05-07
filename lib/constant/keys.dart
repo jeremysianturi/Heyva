@@ -72,4 +72,8 @@ class Keys {
   static const String programIdStorage = "PROGRAM_ID_STORAGE";
   static const String programIdChildStorage = "PROGRAM_ID_CHILD_STORAGE";
 
+
+  /// url
+  static const String arUrl = "URL_ARGUMENTS";
+
 }

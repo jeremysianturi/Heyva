@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heyva/app/modules/login/views/login_google_apple.dart';
 import 'package:heyva/app/modules/login/views/login_view.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../constant/colors.dart';
 import '../../constant/strings.dart';
@@ -20,13 +18,19 @@ class ReusableBtnLoginGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // GoogleSignIn _googleSignIn = GoogleSignIn(
+    //   scopes: [
+    //     'email',
+    //     'https://www.googleapis.com/auth/contacts.readonly',
+    //   ],
+    // );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 42),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          ElevatedButton(
-            onPressed: () {
+          GestureDetector(
+            onTap: () {
               if (detemineAction == Strings.continue_email) {
                 Get.to(LoginView());
               } else if (detemineAction == Strings.login) {
@@ -37,28 +41,28 @@ class ReusableBtnLoginGroup extends StatelessWidget {
                 onTap!();
               }
             },
-            style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(ColorApp.btn_orange),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(14)),
-                  side: BorderSide(color: ColorApp.btn_orange),
+            child: Container(
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                  color: ColorApp.btn_orange),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      orangeBtnText,
+                      style: const TextStyle(
+                          color: ColorApp.arrow_white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    const ImageIcon(
+                      AssetImage("assets/icons/ic_arrow_right.png"),
+                      color: ColorApp.arrow_white,
+                    )
+                  ],
                 ),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  left: 20, top: 17, right: 20, bottom: 18),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(orangeBtnText),
-                  const ImageIcon(
-                    AssetImage("assets/icons/ic_arrow_right.png"),
-                    color: ColorApp.arrow_white,
-                  )
-                ],
               ),
             ),
           ),
@@ -81,7 +85,39 @@ class ReusableBtnLoginGroup extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              Get.to(LoginGoogleAppleView());
+              Get.bottomSheet(
+                Container(
+                    padding: const EdgeInsets.all(25),
+                    child: const Text(
+                      "this featuee is not ready",
+                      style:
+                          TextStyle(fontSize: 16, color: ColorApp.white_font),
+                    )),
+                isDismissible: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(15),
+                      topLeft: Radius.circular(15)),
+                ),
+                backgroundColor: ColorApp.red_error,
+                enableDrag: false,
+              );
+
+              // _googleSignIn.signIn().then((value) => {
+              //   print("value $value"),
+              //   print("displayname ${value?.displayName}"),
+              //   print("email ${value?.email}"),
+              //   print("asdkalskdj ${value?.id}"),
+              //   print("id ${value?.serverAuthCode}"),
+              //   if (value?.email != null)
+              //     {
+              //       // controller.postLoginGoogle(
+              //       //     value?.email, value?.displayName),
+              //     },
+              //   _googleSignIn.signOut()
+              // });
+
+              // Get.to(LoginGoogleAppleView());
             },
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(ColorApp.white),
@@ -115,14 +151,31 @@ class ReusableBtnLoginGroup extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () async {
-              final credential = await SignInWithApple.getAppleIDCredential(
-                scopes: [
-                  AppleIDAuthorizationScopes.email,
-                  AppleIDAuthorizationScopes.fullName,
-                ],
+              Get.bottomSheet(
+                Container(
+                    padding: const EdgeInsets.all(25),
+                    child: const Text(
+                      "this featuee is not ready",
+                      style:
+                          TextStyle(fontSize: 16, color: ColorApp.white_font),
+                    )),
+                isDismissible: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(15),
+                      topLeft: Radius.circular(15)),
+                ),
+                backgroundColor: ColorApp.red_error,
+                enableDrag: false,
               );
-
-              print(credential);
+              // final credential = await SignInWithApple.getAppleIDCredential(
+              //   scopes: [
+              //     AppleIDAuthorizationScopes.email,
+              //     AppleIDAuthorizationScopes.fullName,
+              //   ],
+              // );
+              //
+              // print(credential);
 
               // Now send the credential (especially `credential.authorizationCode`) to your server to create a session
               // after they have been validated with Apple (see `Integration` section for more information on how to do this)

@@ -9,6 +9,7 @@ import 'package:heyva/app/modules/related_program/model/content_list_model.dart'
 import 'package:heyva/app/modules/related_program/provider/related_program_provider.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/services/dio_services.dart';
+import 'package:html/parser.dart';
 
 class HomeController extends GetxController {
   var currentSteps = 0.obs;
@@ -142,5 +143,13 @@ class HomeController extends GetxController {
       return 'Good Afternoon';
     }
     return 'Good Evening';
+  }
+
+  String parseHtmlString(String htmlString) {
+    final document = parse(htmlString);
+    final String? parsedString =
+        parse(document.body?.text).documentElement?.text;
+
+    return parsedString ?? "";
   }
 }

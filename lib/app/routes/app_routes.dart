@@ -45,6 +45,7 @@ abstract class Routes {
   static const RESET_PASSWORD_VERIFICATION = _Paths.RESET_PASSWORD_VERIFICATION;
   static const RESET_PASSWORD_INPUT = _Paths.RESET_PASSWORD_INPUT;
   static const NOTIFICATION_CENTER = _Paths.NOTIFICATION_CENTER;
+  static const IN_APP_WEB_VIEW = _Paths.IN_APP_WEB_VIEW;
 }
 
 abstract class _Paths {
@@ -92,4 +93,5 @@ abstract class _Paths {
   static const RESET_PASSWORD_VERIFICATION = '/reset-password-verification';
   static const RESET_PASSWORD_INPUT = '/reset-password-input';
   static const NOTIFICATION_CENTER = '/notification-center';
+  static const IN_APP_WEB_VIEW = '/in-app-web-view';
 }

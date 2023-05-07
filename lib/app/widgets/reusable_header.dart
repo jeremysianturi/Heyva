@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
 import '../../constant/colors.dart';
 
 class Header extends StatelessWidget {
@@ -29,79 +28,107 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.only(left: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ElevatedButton(
-            onPressed: () {
-              if (isCostomBackFucntion) {
-                onBack!();
-              } else {
-                Navigator.of(context).pop();
-              }
-            },
-            style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-                padding: const EdgeInsets.all(11),
-                minimumSize: Size.zero,
-                primary: ColorApp.white,
-                elevation: 0),
-            child: InkWell(
-              onTap: () {
-                if (isCostomBackFucntion) {
-                  onBack!();
-                } else {
-                  Navigator.of(context).pop();
-                }
-              },
-              child: const Icon(
-                Icons.arrow_back,
-                size: 18,
-                color: ColorApp.black_arrow_back,
+          Expanded(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: ElevatedButton(
+                onPressed: () {
+                  if (isCostomBackFucntion) {
+                    onBack!();
+                  } else {
+                    Navigator.of(context).pop();
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(11),
+                    minimumSize: Size.zero,
+                    primary: ColorApp.white,
+                    elevation: 0),
+                child: InkWell(
+                  onTap: () {
+                    if (isCostomBackFucntion) {
+                      onBack!();
+                    } else {
+                      Navigator.of(context).pop();
+                    }
+                  },
+                  child: const Icon(
+                    Icons.arrow_back,
+                    size: 18,
+                    color: ColorApp.black_arrow_back,
+                  ),
+                ),
               ),
             ),
           ),
-          if (showCenterTitle)
-            Text(
-              centerTitle ?? "",
-              style: TextStyle(
-                  decoration: TextDecoration.none,
-                  color: titleColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500),
+          Expanded(
+            flex: 2,
+            child: showCenterTitle
+                ? Text(
+                    centerTitle ?? "",
+                    style: TextStyle(
+                        decoration: TextDecoration.none,
+                        color: titleColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500),
+                    textAlign: TextAlign.center,
+                  )
+                : SizedBox(),
+          ),
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                ontapIcon!();
+              },
+              child: showIcon
+                  ? Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              // ontapIcon!();
+                            },
+                            style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                                padding: const EdgeInsets.all(8),
+                                minimumSize: Size.zero,
+                                primary: ColorApp.bottom_nav_color,
+                                elevation: 0),
+                            child: SvgPicture.asset(
+                              'assets/icons/ic_option_header.svg',
+                              fit: BoxFit.fill,
+                              alignment: Alignment.centerLeft,
+                              width: 18,
+                              height: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.only(
+                            top: 20, right: 20, bottom: 20),
+                        child: Text(
+                          rightText ?? "",
+                          style: const TextStyle(
+                              color: ColorApp.blue_container,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
+                          textAlign: TextAlign.end,
+                        ),
+                      ),
+                    ),
             ),
-          showIcon
-              ? ElevatedButton(
-                  onPressed: () {
-                    ontapIcon!();
-                  },
-                  style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(11),
-                      minimumSize: Size.zero,
-                      primary: ColorApp.white,
-                      elevation: 0),
-                  child: SvgPicture.asset(
-                    'assets/icons/ic_option_header.svg',
-                    fit: BoxFit.fill,
-                    alignment: Alignment.centerLeft,
-                    width: 18,
-                    height: 18,
-                  ),
-                )
-              : GestureDetector(
-                  onTap: () {
-                    ontapIcon!();
-                  },
-                  child: Text(
-                    rightText ?? "",
-                    style: const TextStyle(
-                        color: ColorApp.blue_container,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ),
+          )
         ],
       ),
     );

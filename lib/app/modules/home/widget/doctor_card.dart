@@ -23,7 +23,7 @@ class DoctorCard extends StatelessWidget {
         });
       },
       child: Card(
-        elevation: 0,
+        elevation: 1.5,
         color: ColorApp.arrow_white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),

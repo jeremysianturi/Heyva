@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:heyva/app/modules/breathing/breathingtwo/views/breathing_two_view.dart';
-import 'package:heyva/app/modules/breathing/model/pelvic_model.dart';
-import 'package:heyva/app/modules/breathing/provider/pelvic_provider.dart';
+import 'package:heyva/app/modules/learn/model/program_list_model.dart';
+import 'package:heyva/app/modules/pelvic/breathingtimer/views/breathing_timer_view.dart';
+import 'package:heyva/app/modules/pelvic/model/pelvic_model.dart';
+import 'package:heyva/app/modules/pelvic/provider/pelvic_provider.dart';
 import 'package:heyva/app/modules/learn/provider/learn_provider.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/services/dio_services.dart';
@@ -28,7 +29,8 @@ class BreathingOneController extends GetxController {
   }
 
   initData() {
-    createProgramPersonal(programId: box.read(Keys.programIdStorage));
+    getProgram();
+    // createProgramPersonal(programId: box.read(Keys.programIdStorage));
   }
 
   createProgramPersonal({required programId}) async {
@@ -62,6 +64,32 @@ class BreathingOneController extends GetxController {
     }
   }
 
+  var programListResponse =
+      ProgramListModel(success: "", data: null, message: "", error: "").obs;
+
+  getProgram() async {
+    errorMessage.value = "";
+    isLoading.value = true;
+    try {
+      programListResponse.value = (await _learnProvider.getProgramList())!;
+      isLoading.value = false;
+
+      if (programListResponse.value.success == "Success") {
+        box.write(Keys.programIdStorage, programListResponse.value.data![1].id);
+        box.write(
+            Keys.programIdChildStorage, programListResponse.value.data![1].id);
+        
+        createProgramPersonal(programId: programListResponse.value.data![1].id);
+      } else {
+        errorMessage.value =
+            programListResponse.value.message ?? "Error Message";
+      }
+    } catch (e) {
+      isLoading.value = false;
+      debugPrint("error  $e");
+    }
+  }
+
   var pelvicResponse =
       PelvicModel(success: "", data: null, message: "", error: "").obs;
 
@@ -69,7 +97,7 @@ class BreathingOneController extends GetxController {
     errorMessage.value = "";
     isLoading.value = true;
     try {
-      pelvicResponse.value = (await _provider.getPelvic())!;
+      pelvicResponse.value = (await _provider.getPelvic(pelvicID: box.read(Keys.programIdStorage)))!;
       isLoading.value = false;
 
       if (pelvicResponse.value.success == "Success") {
@@ -82,7 +110,8 @@ class BreathingOneController extends GetxController {
         box.write(Keys.pelvic5Storage, data?.programDetail?[4].textContent);
         box.write(Keys.pelvic6Storage, data?.programDetail?[5].textContent);
         Future.delayed(400.milliseconds);
-        Get.to(const BreathingTwoView());
+        // Get.to(const BreathingTwoView());
+        Get.to(const BreathingTimerView());
       } else {
         errorMessage.value = pelvicResponse.value.message ?? "Error Message";
       }

@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/modules/profile/model/update_profile_model.dart';
 import 'package:heyva/app/modules/profile/provider/profile_provider.dart';
+import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
@@ -70,8 +71,11 @@ class EditProfileController extends GetxController {
           Get.back(result: "true");
         });
       } else {
-        errorMessage.value =
-            updateProfileResponse.value.message ?? "Error Message";
+        // errorMessage.value =
+        //     updateProfileResponse.value.message ?? "Error Message";
+        bottomSheetMessage(
+            color: "red",
+            desc: updateProfileResponse.value.message ?? "Error Message");
       }
     } catch (e) {
       isLoading.value = false;

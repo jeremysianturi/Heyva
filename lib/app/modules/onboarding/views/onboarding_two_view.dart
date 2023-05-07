@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/constant/strings.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../constant/colors.dart';
 import '../../../widgets/reusable_onboarding_header.dart';
@@ -28,7 +29,7 @@ class OnBoardingTwoView extends GetView<OnBoardingTwoController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-             Padding(
+            Padding(
               padding: EdgeInsets.only(top: 58),
               child: OnBoardingHeader(
                 indicatorColor1: ColorApp.btn_orange,
@@ -62,7 +63,9 @@ class OnBoardingTwoView extends GetView<OnBoardingTwoController> {
                       () => Container(
                         padding: EdgeInsets.symmetric(vertical: 18),
                         child: Text(
-                          "${onBoardingTwoController.dateChosen.value}",
+                          // "${onBoardingTwoController.dateChosen.value}",
+                          DateFormat('yyyy-MM-dd')
+                              .format(onBoardingTwoController.dateChosen.value),
                           style: const TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.w400,
@@ -108,6 +111,7 @@ class OnBoardingTwoView extends GetView<OnBoardingTwoController> {
         fontSize: 15,
         color: Colors.blue,
       ),
+      maxDateTime: DateTime.now(),
       onChange: (dateChosen) {},
       onSubmit: (dateChosen) {
         var parsedDate = DateTime.tryParse(dateChosen.toString());
