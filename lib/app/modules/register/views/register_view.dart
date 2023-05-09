@@ -5,6 +5,7 @@ import 'package:heyva/app/modules/register/controllers/register_controller.dart'
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_regular_textfield.dart';
 import 'package:heyva/constant/keys.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 import '../../../../constant/colors.dart';
 import '../../../../constant/strings.dart';
@@ -20,7 +21,14 @@ class RegisterView extends GetView<RegisterController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Scaffold(
+    return Obx(() => LoadingOverlay(
+        isLoading: controller.isLoading.value,
+        color: Colors.grey,
+        progressIndicator: const CircularProgressIndicator(
+          color: ColorApp.btn_orange,
+        ),
+        opacity: 0.3,
+        child: Scaffold(
           resizeToAvoidBottomInset: false,
           body: Container(
             height: double.maxFinite,
@@ -127,7 +135,9 @@ class RegisterView extends GetView<RegisterController> {
                           onTap: () {
                             FocusScope.of(context)
                                 .requestFocus(new FocusNode());
-                            controller.saveToStorage();
+                            if (controller.validateData) {
+                              controller.cekVerified();
+                            }
                           },
                         ),
                       ],
@@ -194,6 +204,6 @@ class RegisterView extends GetView<RegisterController> {
               ],
             ),
           ),
-        ));
+        )));
   }
 }
