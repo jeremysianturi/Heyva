@@ -13,21 +13,23 @@ class BreathingTimerController extends GetxController {
   }
 
   late Timer timer;
-  int _start = 10000;
+  int _start = 16000;
 
   void startTimer() {
     const oneSec = Duration(milliseconds: 1);
+    var _tick = 0;
+
     timer = Timer.periodic(
       oneSec,
       (Timer timer) {
-        if (_start == 0) {
+        if (_start == _tick) {
           Future.delayed(1.seconds, () {
             Get.to(const BreathingFinishView());
           });
           timer.cancel();
         } else {
-          progressValue.value = timer.tick / 10000;
-          _start--;
+          progressValue.value = timer.tick / 16000;
+          _tick++;
         }
       },
     );

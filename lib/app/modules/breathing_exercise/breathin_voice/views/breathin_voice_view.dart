@@ -3,7 +3,6 @@ import 'package:flutter_lyric/lyrics_reader.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/routes/app_pages.dart';
-import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
@@ -38,32 +37,81 @@ class BreathinVoiceView extends GetView<BreathinVoiceController> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: Container(
-                          height: 2,
-                          width: Get.width,
-                          decoration: BoxDecoration(
-                              color: controller.pagePosition.value >= 0
-                                  ? ColorApp.black
-                                  : ColorApp.black.withOpacity(0.3),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10))),
-                        ),
+                        flex: 4,
+                        child: Obx(() {
+                          return Stack(
+                            children: [
+                              Container(
+                                width: Get.width,
+                                height: 2,
+                                child: ClipRRect(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  child: LinearProgressIndicator(
+                                    value: controller.progressValue.value,
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        ColorApp.blue_container),
+                                    backgroundColor: ColorApp.grey_font,
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    height: 2,
+                                    width: 2.5,
+                                  ),
+                                  Container(
+                                    height: 2,
+                                    width: 2.5,
+                                    color: Colors.white,
+                                  ),
+                                  Container(
+                                    height: 2,
+                                    width: 2.5,
+                                    color: Colors.white,
+                                  ),
+                                  Container(
+                                    height: 2,
+                                    width: 2.5,
+                                  )
+                                ],
+                              ),
+                            ],
+                          );
+                        }),
                       ),
-                      const SizedBox(
+                      Container(
+                        height: 2,
                         width: 2.5,
                       ),
                       Expanded(
+                        flex: 1,
                         child: Container(
                           height: 2,
                           width: Get.width,
                           decoration: BoxDecoration(
-                              color: controller.pagePosition.value >= 1
-                                  ? ColorApp.black
-                                  : ColorApp.black.withOpacity(0.3),
+                              color: controller.pagePosition.value > 0
+                                  ? ColorApp.blue_container
+                                  : ColorApp.grey_font,
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10))),
                         ),
                       ),
+                      // Expanded(
+                      //   child: Container(
+                      //     height: 2,
+                      //     width: Get.width,
+                      //     decoration: BoxDecoration(
+                      //         color: controller.pagePosition.value >= 1
+                      //             ? ColorApp.black
+                      //             : ColorApp.black.withOpacity(0.3),
+                      //         borderRadius:
+                      //             const BorderRadius.all(Radius.circular(10))),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
@@ -196,168 +244,200 @@ class VoiceOver extends StatelessWidget {
     Future.delayed(200.milliseconds, () {
       controller.onPlay();
     });
-    return Container(
-      height: Get.height,
-      width: Get.width,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/bg_breating_exercise.png"),
-          fit: BoxFit.fill,
-        ),
-      ),
+    return GestureDetector(
+      onTap: () {
+        if (controller.showButton.isTrue) {
+          // FocusScope.of(context).requestFocus(new FocusNode());
+          // if (controller.audioPlayer != null) {
+          controller.audioPlayer?.pause();
+          // }
+          Future.delayed(200.milliseconds, () {
+            controller.pagePosition.value = 1;
+          });
+        }
+      },
       child: Container(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 80,
-            ),
-            const Text(
-              Strings.breathing_exercise,
-              style: TextStyle(
-                  decoration: TextDecoration.none,
-                  color: ColorApp.black_article_title,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500),
-            ),
-            Padding(
-                padding: const EdgeInsets.only(top: 88, left: 58, right: 58),
-                child: Image.asset("assets/images/bg_voice_over.png")),
-            const SizedBox(
-              height: 22,
-            ),
-            Obx(
-              () => Container(
-                height: 200,
-                // color: Colors.grey,
-                margin: const EdgeInsets.symmetric(horizontal: 40.0),
-                child: LyricsReader(
-                  model: controller.lyricModel,
-                  position: controller.playProgress.value,
-                  lyricUi: controller.lyricUI,
-                  playing: controller.playing.value,
-                  size: Size(
-                      double.infinity, MediaQuery.of(context).size.height / 2),
-                  emptyBuilder: () => Center(
-                    child: Text(
-                      "No lyrics",
-                      style: controller.lyricUI.getOtherMainTextStyle(),
+        height: Get.height,
+        width: Get.width,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/bg_breating_exercise.png"),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Container(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 80,
+              ),
+              const Text(
+                Strings.breathing_exercise,
+                style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: ColorApp.black_article_title,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500),
+              ),
+              Padding(
+                  padding: const EdgeInsets.only(top: 88, left: 58, right: 58),
+                  child: Image.asset("assets/images/bg_voice_over.png")),
+              const SizedBox(
+                height: 22,
+              ),
+              Obx(
+                () => Container(
+                  height: 200,
+                  // color: Colors.grey,
+                  margin: const EdgeInsets.symmetric(horizontal: 40.0),
+                  child: LyricsReader(
+                    model: controller.lyricModel,
+                    position: controller.playProgress.value,
+                    lyricUi: controller.lyricUI,
+                    playing: controller.playing.value,
+                    size: Size(double.infinity,
+                        MediaQuery.of(context).size.height / 2),
+                    emptyBuilder: () => Center(
+                      child: Text(
+                        "No lyrics",
+                        style: controller.lyricUI.getOtherMainTextStyle(),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            // InkWell(
-            //     onTap: () {
-            //       controller.onPlay();
-            //     },
-            //     child: Container(
-            //       margin: const EdgeInsets.only(top: 40),
-            //       padding: const EdgeInsets.only(
-            //           left: 30, right: 30, top: 12, bottom: 6),
-            //       decoration: BoxDecoration(
-            //         borderRadius: BorderRadius.circular(15),
-            //         color: Colors.white,
-            //         boxShadow: [
-            //           BoxShadow(
-            //             color: Colors.grey.withOpacity(0.2),
-            //             spreadRadius: 2,
-            //             blurRadius: 2,
-            //             offset:
-            //                 const Offset(0, 2), // changes position of shadow
-            //           ),
-            //         ],
-            //       ),
-            //       child: Obx(
-            //         () => Text(
-            //           controller.prettyDuration(Duration(
-            //               milliseconds: controller.playProgress.value)),
-            //           style: const TextStyle(
-            //               fontWeight: FontWeight.w500,
-            //               fontSize: 18,
-            //               color: ColorApp.gery_voice_over),
-            //         ),
-            //       ),
-            //     )),
-            // InkWell(
-            //     onTap: () {
-            //       if (controller.audioPlayer != null) {
-            //         controller.audioPlayer?.pause();
-            //       }
-            //     },
-            //     child: Container(
-            //       margin: const EdgeInsets.only(top: 10),
-            //       padding: const EdgeInsets.only(
-            //           left: 30, right: 30, top: 12, bottom: 6),
-            //       decoration: BoxDecoration(
-            //         borderRadius: BorderRadius.circular(15),
-            //         color: Colors.white,
-            //         boxShadow: [
-            //           BoxShadow(
-            //             color: Colors.grey.withOpacity(0.2),
-            //             spreadRadius: 2,
-            //             blurRadius: 2,
-            //             offset:
-            //                 const Offset(0, 2), // changes position of shadow
-            //           ),
-            //         ],
-            //       ),
-            //       child: const Text(
-            //         "Pause",
-            //         style: TextStyle(
-            //             fontWeight: FontWeight.w500,
-            //             fontSize: 18,
-            //             color: ColorApp.gery_voice_over),
-            //       ),
-            //     )),
-            const Expanded(child: SizedBox()),
-            OrangeButtonWTrailingIcon(
-              determineAction: "ontap",
-              text: Strings.next,
-              ontap: () {
-                // FocusScope.of(context).requestFocus(new FocusNode());
-                // if (controller.audioPlayer != null) {
-                  controller.audioPlayer?.pause();
-                // }
-                Future.delayed(200.milliseconds, () {
-                  controller.pagePosition.value = 1;
-                });
-              },
-            ),
-            // InkWell(
-            //     onTap: () {
-            //       if (controller.audioPlayer != null) {
-            //         controller.audioPlayer?.pause();
-            //       }
-            //       Future.delayed(20.milliseconds, () {
-            //         controller.pagePosition.value = 1;
-            //       });
-            //     },
-            //     child: Container(
-            //       margin: const EdgeInsets.only(top: 10),
-            //       padding: const EdgeInsets.only(
-            //           left: 30, right: 30, top: 12, bottom: 6),
-            //       decoration: BoxDecoration(
-            //         borderRadius: BorderRadius.circular(15),
-            //         color: Colors.white,
-            //         boxShadow: [
-            //           BoxShadow(
-            //             color: Colors.grey.withOpacity(0.2),
-            //             spreadRadius: 2,
-            //             blurRadius: 2,
-            //             offset:
-            //                 const Offset(0, 2), // changes position of shadow
-            //           ),
-            //         ],
-            //       ),
-            //       child: const Text(
-            //         "Next",
-            //         style: TextStyle(
-            //             fontWeight: FontWeight.w500,
-            //             fontSize: 18,
-            //             color: ColorApp.gery_voice_over),
-            //       ),
-            //     )),
-          ],
+              // InkWell(
+              //     onTap: () {
+              //       controller.onPlay();
+              //     },
+              //     child: Container(
+              //       margin: const EdgeInsets.only(top: 40),
+              //       padding: const EdgeInsets.only(
+              //           left: 30, right: 30, top: 12, bottom: 6),
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(15),
+              //         color: Colors.white,
+              //         boxShadow: [
+              //           BoxShadow(
+              //             color: Colors.grey.withOpacity(0.2),
+              //             spreadRadius: 2,
+              //             blurRadius: 2,
+              //             offset:
+              //                 const Offset(0, 2), // changes position of shadow
+              //           ),
+              //         ],
+              //       ),
+              //       child: Obx(
+              //         () => Text(
+              //           controller.prettyDuration(Duration(
+              //               milliseconds: controller.playProgress.value)),
+              //           style: const TextStyle(
+              //               fontWeight: FontWeight.w500,
+              //               fontSize: 18,
+              //               color: ColorApp.gery_voice_over),
+              //         ),
+              //       ),
+              //     )),
+              // InkWell(
+              //     onTap: () {
+              //       if (controller.audioPlayer != null) {
+              //         controller.audioPlayer?.pause();
+              //       }
+              //     },
+              //     child: Container(
+              //       margin: const EdgeInsets.only(top: 10),
+              //       padding: const EdgeInsets.only(
+              //           left: 30, right: 30, top: 12, bottom: 6),
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(15),
+              //         color: Colors.white,
+              //         boxShadow: [
+              //           BoxShadow(
+              //             color: Colors.grey.withOpacity(0.2),
+              //             spreadRadius: 2,
+              //             blurRadius: 2,
+              //             offset:
+              //                 const Offset(0, 2), // changes position of shadow
+              //           ),
+              //         ],
+              //       ),
+              //       child: const Text(
+              //         "Pause",
+              //         style: TextStyle(
+              //             fontWeight: FontWeight.w500,
+              //             fontSize: 18,
+              //             color: ColorApp.gery_voice_over),
+              //       ),
+              //     )),
+              const Expanded(child: SizedBox()),
+              Obx(
+                () => controller.showButton.isTrue
+                    ? const Text(
+                        Strings.tapToFinish,
+                        style: TextStyle(
+                            decoration: TextDecoration.none,
+                            color: ColorApp.black_article_title,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
+                        textAlign: TextAlign.center,
+                      )
+
+                    // OrangeButtonWTrailingIcon(
+                    //         determineAction: "ontap",
+                    //         text: Strings.next,
+                    //         ontap: () {
+                    //           // FocusScope.of(context).requestFocus(new FocusNode());
+                    //           // if (controller.audioPlayer != null) {
+                    //           controller.audioPlayer?.pause();
+                    //           // }
+                    //           Future.delayed(200.milliseconds, () {
+                    //             controller.pagePosition.value = 1;
+                    //           });
+                    //         },
+                    //       )
+                    : SizedBox(),
+              ),
+
+              const SizedBox(
+                height: 20,
+              ),
+
+              // InkWell(
+              //     onTap: () {
+              //       if (controller.audioPlayer != null) {
+              //         controller.audioPlayer?.pause();
+              //       }
+              //       Future.delayed(20.milliseconds, () {
+              //         controller.pagePosition.value = 1;
+              //       });
+              //     },
+              //     child: Container(
+              //       margin: const EdgeInsets.only(top: 10),
+              //       padding: const EdgeInsets.only(
+              //           left: 30, right: 30, top: 12, bottom: 6),
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(15),
+              //         color: Colors.white,
+              //         boxShadow: [
+              //           BoxShadow(
+              //             color: Colors.grey.withOpacity(0.2),
+              //             spreadRadius: 2,
+              //             blurRadius: 2,
+              //             offset:
+              //                 const Offset(0, 2), // changes position of shadow
+              //           ),
+              //         ],
+              //       ),
+              //       child: const Text(
+              //         "Next",
+              //         style: TextStyle(
+              //             fontWeight: FontWeight.w500,
+              //             fontSize: 18,
+              //             color: ColorApp.gery_voice_over),
+              //       ),
+              //     )),
+            ],
+          ),
         ),
       ),
     );
