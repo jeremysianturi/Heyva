@@ -160,6 +160,7 @@ class Strings {
   static const String thankYou = "Thank you";
   static const String upcomingProgram = "Upcoming program";
   static const String tapToFinish = "TAP ANYWHERE TO FINISH";
+  static const String tapToContinue = "TAP ANYWHERE TO CONTINUE";
   static const String wasThisSessiOneEfective =
       "Was this session effective in addressing what you were feeling?";
 

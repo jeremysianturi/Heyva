@@ -183,7 +183,8 @@ final breathingEx2Lyric = """[ti:Breathing Exercise 2]
 [07:30.15]Remember to do it again tomorrow
 [07:32.16]because consistency is the key to see result""";
 
-final breathingEx1Lyric =""" [00:02.00]Hi there, welcome to Heyva’s breathing exercise
+final breathingEx1Lyric =
+    """ [00:02.00]Hi there, welcome to Heyva’s breathing exercise
 [00:05.10]created by our in house accredited psychologist, Paula.
 [00:09.05]Here's a short deep breathing exercise
 [00:12.05]step by step for managing your stress after birth
@@ -234,3 +235,89 @@ final breathingEx1Lyric =""" [00:02.00]Hi there, welcome to Heyva’s breathing 
 [06:17.20]You can repeat this exercise as many as you want
 [06:21.03]Remember to do it again tomorrow 
 [06:23.03]because consistency is the key to see result""";
+
+final breathingEx3Lyric =
+    """[00:02.00]Hi there, welcome to Heyva’s breathing exercise
+[00:05.10]created by our in house accredited psychologist, Paula.
+[00:05.10]
+[00:11.05]Let’s try the following breathing exercise to regulate your feelings today :
+[00:16.15]
+[00:17.20]Are you ready?
+[00:19.05]
+[00:21.05]Press start whenever you are ready.
+[00:23.20]
+[00:26.15]Close your eyes and imagine you are going to draw a triangle with your finger.
+[00:31.20]
+[00:32.15] Each side representing a step.
+[00:36.05]Begin with imagining to draw the first line and inhale for three seconds.
+[00:41.15]
+[00:43.05]Feel the air go into your nostrils,
+[00:46.10]all the way down to your belly.
+[00:50.05]
+[00:51.20]Imagine you are drawing the second line,
+[00:55.00]while holding your breath for three seconds.
+[00:58.20]
+[01:00.20]Now imagine you are drawing the third line,
+[01:04.15]while exhaling slowly for three seconds.
+[01:08.10]
+[01:11.00]Let's do this a few more times.
+[01:14.05]
+[01:17.00]Close your eyes and imagine you are going to draw a triangle with your finger.
+[01:23.16]
+[01:25.05]Each side representing a step.
+[01:28.10]
+[01:29.20]Begin with imagining to draw the first line and inhale for three seconds.
+[01:38.05]Feel the air go into your nostrils, all the way to your belly.
+[01:44.05]
+[01:46.23]Imagine you are drawing the second line,
+[01:49.20]while holding your breath for three seconds.
+[01:53.20]
+[01:56.13]Now imagine you are drawing the third line,
+[02:00.15]while exhaling slowly for three seconds.
+[02:04.20]
+[02:08.05]Close your eyes and imagine you are going to draw a triangle with your finger.
+[02:16.10]Each side representing a step.
+[02:20.05]
+[02:21.00]Begin with imagining to draw the first line and inhale for three seconds.
+[02:28.05]
+[02:29.15]Feel the air go into your nostrils, all the way to your belly.
+[02:35.13]
+[02:38.05]Imagine you are drawing the second line,
+[02:41.10]while holding your breath for three seconds.
+[02:45.10]
+[02:47.20]Now imagine you are drawing the third line,
+[02:52.00]while exhaling slowly for three seconds.
+[02:56.10]
+[02:59.00]Close your eyes and imagine you are going to draw a triangle with your finger.
+[03:07.10]Each side representing a step.
+[03:12.00]Begin with imagining to draw the first line and inhale for three seconds.
+[03:19.05]
+[03:20.15]Feel the air go into your nostrils, all the way to your belly.
+[03:27.00]
+[03:29.03]Imagine you are drawing the second line,
+[03:32.10]while holding your breath for three seconds.
+[03:36.00]
+[03:38.20]Now imagine you are drawing the third line,
+[03:43.00]while exhaling slowly for three seconds.
+[03:47.00] 
+[03:49.10]Let’s do this one last round
+[03:52.10]
+[03:55.10]Close your eyes and imagine you are going to draw a triangle with your finger.
+[04:03.05]Each side representing a step.
+[04:06.20]
+[04:08.05]Begin with imagining to draw the first line and inhale for three seconds.
+[04:15.00]
+[04:16.15]Feel the air go into your nostrils, all the way to your belly.
+[04:25.05]Imagine you are drawing the second line,
+[04:28.10]while holding your breath for three seconds.
+[04:32.10]
+[04:35.00]Now imagine you are drawing the third line,
+[04:39.00]while exhaling slowly for three seconds.
+[04:43.15] 
+[04:46.00]Are you feeling more relaxed now?
+[04:49.00]I hope you are.
+[04:50.20]Please repeat the exercise if you need more.
+[04:56.00]Thank you for following through our breathing program
+[04:59.00]You can repeat this exercise as many as you want
+[05:02.10]Remember to do it again tomorrow 
+[05:04.10]because consistency is the key to see result""";

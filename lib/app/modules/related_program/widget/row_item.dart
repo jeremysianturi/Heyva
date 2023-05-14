@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/modules/related_program/model/content_list_model.dart'
     as content;
 import 'package:heyva/app/routes/app_pages.dart';
@@ -45,6 +46,9 @@ class RowItem extends StatelessWidget {
         var title = data?.contents?.title ?? "";
         if (data?.contentType?.name?.toLowerCase() == "program" &&
             title.toLowerCase().contains("breathin")) {
+          var box = GetStorage();
+          box.remove(Keys.programIdStorage);
+          box.remove(Keys.programIdChildStorage);
           Get.toNamed(Routes.BREATHING_EXERCISE);
         }
         if (data?.contentType?.name?.toLowerCase() == "program" &&

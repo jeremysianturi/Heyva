@@ -7,6 +7,7 @@ import 'package:heyva/app/widgets/reusable_onboarding_header.dart';
 import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
+import 'package:intl/intl.dart';
 
 import '../controllers/just_birth_or_pregnant_controller.dart';
 
@@ -61,7 +62,8 @@ class JustBirthOrPregnantView extends GetView<JustBirthOrPregnantController> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 17),
                         child: Text(
-                          "${controller.dateChosen.value}",
+                          DateFormat('yyyy-MM-dd')
+                              .format(controller.dateChosen.value),
                           style: const TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.w400,

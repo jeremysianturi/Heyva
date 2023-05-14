@@ -1,6 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:heyva/app/modules/profile/in_app_web_view/bindings/in_app_web_view_binding.dart';
-import 'package:heyva/app/modules/profile/in_app_web_view/views/in_app_web_view_view.dart';
+import 'package:heyva/app/modules/breathing_exercise/breathing_ex_3/bindings/breathing_ex_3_binding.dart';
+import 'package:heyva/app/modules/breathing_exercise/breathing_ex_3/views/breathing_ex_3_view.dart';
 
 import '../modules/article/bindings/article_binding.dart';
 import '../modules/article/views/article_view.dart';
@@ -9,6 +9,10 @@ import '../modules/breast_feeding/views/breast_feeding_view.dart';
 import '../modules/breathing_exercise/bindings/breathing_exercise_binding.dart';
 import '../modules/breathing_exercise/breathin_voice/bindings/breathin_voice_binding.dart';
 import '../modules/breathing_exercise/breathin_voice/views/breathin_voice_view.dart';
+import '../modules/breathing_exercise/breathing_ex_1/bindings/breathing_ex_1_binding.dart';
+import '../modules/breathing_exercise/breathing_ex_1/views/breathing_ex_1_view.dart';
+import '../modules/breathing_exercise/breathing_ex_2/bindings/breathing_ex_2_binding.dart';
+import '../modules/breathing_exercise/breathing_ex_2/views/breathing_ex_2_view.dart';
 import '../modules/breathing_exercise/breathing_feelings/bindings/breathing_feelings_binding.dart';
 import '../modules/breathing_exercise/breathing_feelings/views/breathing_feelings_view.dart';
 import '../modules/breathing_exercise/breathing_finish/bindings/breathing_finish_binding.dart';
@@ -67,6 +71,8 @@ import '../modules/profile/edit_profile/bindings/edit_profile_binding.dart';
 import '../modules/profile/edit_profile/views/edit_profile_view.dart';
 import '../modules/profile/faq/bindings/faq_binding.dart';
 import '../modules/profile/faq/views/faq_view.dart';
+import '../modules/profile/in_app_web_view/bindings/in_app_web_view_binding.dart';
+import '../modules/profile/in_app_web_view/views/in_app_web_view_view.dart';
 import '../modules/profile/notification_settings/bindings/notification_settings_binding.dart';
 import '../modules/profile/notification_settings/views/notification_settings_view.dart';
 import '../modules/profile/privacy_policy/bindings/privacy_policy_binding.dart';
@@ -310,6 +316,21 @@ class AppPages {
       name: _Paths.IN_APP_WEB_VIEW,
       page: () => const InAppWebViewView(),
       binding: InAppWebViewBinding(),
+    ),
+    GetPage(
+      name: _Paths.BREATHING_EX_1,
+      page: () => const BreathingEx1View(),
+      binding: BreathingEx1Binding(),
+    ),
+    GetPage(
+      name: _Paths.BREATHING_EX_2,
+      page: () => const BreathingEx2View(),
+      binding: BreathingEx2Binding(),
+    ),
+    GetPage(
+      name: _Paths.BREATHING_EX_3,
+      page: () => const BreathingEx3View(),
+      binding: BreathingEx3Binding(),
     ),
   ];
 }

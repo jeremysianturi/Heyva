@@ -18,6 +18,9 @@ class Keys {
   ///breathing
   static const String breathing1Storage = "BREATHING1_STORAGE";
   static const String breathing2Storage = "BREATHING2_STORAGE";
+  static const String breathing3Storage = "BREATHING3_STORAGE";
+
+  static const String ardoExercise = "DO_EXERCISE";
 
   ///arguments
   static const String fullNameArguments = "FULLNAME_ARGUMENTS";
@@ -71,9 +74,10 @@ class Keys {
   /// programID
   static const String programIdStorage = "PROGRAM_ID_STORAGE";
   static const String programIdChildStorage = "PROGRAM_ID_CHILD_STORAGE";
-
+  static const String exerciseOngoing = "EXERCISE_ONGOING";
 
   /// url
   static const String arUrl = "URL_ARGUMENTS";
 
+  ///
 }

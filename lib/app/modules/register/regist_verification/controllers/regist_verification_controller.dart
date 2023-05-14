@@ -21,6 +21,8 @@ class RegistVerificationController extends GetxController {
   late LoginProvider _loginProvider;
 
   var boxData = RegisterStorageModel(
+          googleId: "",
+          avatar: "",
           email: "",
           password: "",
           fullName: "",
@@ -93,8 +95,13 @@ class RegistVerificationController extends GetxController {
     try {
       var boxData = box.read(Keys.registStorage) as RegisterStorageModel;
 
-      loginResonse.value = (await _loginProvider.Login(
-          username: boxData.email, password: boxData.password))!;
+      if (boxData.googleId != "") {
+        loginResonse.value = (await _loginProvider.LoginWithGoole(
+            email: boxData.email, googleId: boxData.googleId))!;
+      } else {
+        loginResonse.value = (await _loginProvider.Login(
+            username: boxData.email, password: boxData.password))!;
+      }
 
       if (loginResonse.value.success == "Success") {
         var box = GetStorage();

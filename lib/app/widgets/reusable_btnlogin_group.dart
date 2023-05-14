@@ -99,6 +99,7 @@ class ReusableBtnLoginGroup extends StatelessWidget {
                     if (value?.email != null)
                       {
                         loginC.postLoginGoogle(
+                            fullName: value?.displayName,
                             googleId: value?.id,
                             email: value?.email,
                             avatar: value?.photoUrl),

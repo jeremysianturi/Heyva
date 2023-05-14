@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lyric/lyrics_reader.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:heyva/app/modules/breathing_exercise/breathing_feelings/views/breathing_feelings_view.dart';
+import 'package:heyva/app/modules/breathing_exercise/model/breathing_model.dart'
+    as model;
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/keys.dart';
@@ -27,7 +31,12 @@ class BreathinVoiceView extends GetView<BreathinVoiceController> {
                   VoiceOver(
                     controller: controller,
                   ),
-                if (controller.pagePosition.value == 1) const ImportantNotes(),
+                if (controller.pagePosition.value == 1)
+                  ImportantNotes(
+                    controller: controller,
+                  ),
+                if (controller.pagePosition.value == 2)
+                  MultipleChoice(controller: controller),
                 Container(
                   margin: const EdgeInsets.only(
                     top: 60,
@@ -39,51 +48,94 @@ class BreathinVoiceView extends GetView<BreathinVoiceController> {
                       Expanded(
                         flex: 4,
                         child: Obx(() {
-                          return Stack(
-                            children: [
-                              Container(
+                          return GridView.count(
+                            crossAxisCount: controller.progresList.length,
+                            crossAxisSpacing: 2.5,
+                            childAspectRatio: 82 / 2,
+                            shrinkWrap: true,
+                            padding: EdgeInsets.zero,
+                            children: List.generate(
+                                controller.progresList.length, (index) {
+                              return SizedBox(
                                 width: Get.width,
                                 height: 2,
                                 child: ClipRRect(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
                                   child: LinearProgressIndicator(
-                                    value: controller.progressValue.value,
+                                    value: controller.progresList[index],
                                     valueColor: AlwaysStoppedAnimation<Color>(
                                         ColorApp.blue_container),
                                     backgroundColor: ColorApp.grey_font,
                                   ),
                                 ),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    height: 2,
-                                    width: 2.5,
-                                  ),
-                                  Container(
-                                    height: 2,
-                                    width: 2.5,
-                                    color: Colors.white,
-                                  ),
-                                  Container(
-                                    height: 2,
-                                    width: 2.5,
-                                    color: Colors.white,
-                                  ),
-                                  Container(
-                                    height: 2,
-                                    width: 2.5,
-                                  )
-                                ],
-                              ),
-                            ],
+                              );
+                            }),
                           );
+                          // return Stack(
+                          //   children: [
+                          //     Row(
+                          //       children: [
+                          //         Expanded(
+                          //           child: Container(
+                          //             width: Get.width,
+                          //             height: 2,
+                          //             child: ClipRRect(
+                          //               borderRadius: BorderRadius.all(
+                          //                   Radius.circular(10)),
+                          //               child: LinearProgressIndicator(
+                          //                 value: controller.progresList[0],
+                          //                 valueColor:
+                          //                     AlwaysStoppedAnimation<Color>(
+                          //                         ColorApp.blue_container),
+                          //                 backgroundColor: ColorApp.grey_font,
+                          //               ),
+                          //             ),
+                          //           ),
+                          //         ),
+                          //         SizedBox(width: 2.5,),
+                          //         Expanded(
+                          //           child: Container(
+                          //             width: Get.width,
+                          //             height: 2,
+                          //             child: ClipRRect(
+                          //               borderRadius: BorderRadius.all(
+                          //                   Radius.circular(10)),
+                          //               child: LinearProgressIndicator(
+                          //                 value: controller.progresList[1],
+                          //                 valueColor:
+                          //                     AlwaysStoppedAnimation<Color>(
+                          //                         ColorApp.blue_container),
+                          //                 backgroundColor: ColorApp.grey_font,
+                          //               ),
+                          //             ),
+                          //           ),
+                          //         ),
+                          //         SizedBox(width: 2.5,),
+                          //         Expanded(
+                          //           child: Container(
+                          //             width: Get.width,
+                          //             height: 2,
+                          //             child: ClipRRect(
+                          //               borderRadius: BorderRadius.all(
+                          //                   Radius.circular(10)),
+                          //               child: LinearProgressIndicator(
+                          //                 value: controller.progresList[2],
+                          //                 valueColor:
+                          //                 AlwaysStoppedAnimation<Color>(
+                          //                     ColorApp.blue_container),
+                          //                 backgroundColor: ColorApp.grey_font,
+                          //               ),
+                          //             ),
+                          //           ),
+                          //         )
+                          //       ],
+                          //     ),
+                          //   ],
+                          // );
                         }),
                       ),
-                      Container(
+                      SizedBox(
                         height: 2,
                         width: 2.5,
                       ),
@@ -122,15 +174,115 @@ class BreathinVoiceView extends GetView<BreathinVoiceController> {
   }
 }
 
-class ImportantNotes extends StatelessWidget {
-  const ImportantNotes({
+class MultipleChoice extends StatelessWidget {
+  const MultipleChoice({
     super.key,
+    required this.controller,
   });
+
+  final BreathinVoiceController controller;
 
   @override
   Widget build(BuildContext context) {
     var box = GetStorage();
-    var text = box.read(Keys.breathing2Storage);
+    var data = box.read(Keys.breathing1Storage) as model.Child;
+
+    return Container(
+      height: Get.height,
+      width: Get.width,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/bg_breating_exercise.png"),
+          fit: BoxFit.fill,
+        ),
+      ),
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 80,
+          ),
+          Row(
+            children: [
+              const Expanded(child: SizedBox()),
+              const Text(
+                Strings.breathing_exercise,
+                style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: ColorApp.black_article_title,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500),
+                textAlign: TextAlign.center,
+              ),
+              Expanded(
+                child: Text(
+                  Strings.skip,
+                  style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: ColorApp.black.withOpacity(0.3),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+                  textAlign: TextAlign.end,
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 63,
+                ),
+                Text(
+                  data.programDetail?[3].textContent ?? "",
+                  style: const TextStyle(
+                      decoration: TextDecoration.none,
+                      color: ColorApp.blue_container,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 100,
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  itemCount: controller.list.length,
+                  itemBuilder: (BuildContext context, int index) =>
+                      BreatingFeelingsItems(
+                    title: controller.list[index],
+                    index: index,
+                    ontap: () {},
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ImportantNotes extends StatelessWidget {
+  const ImportantNotes({
+    super.key,
+    required this.controller,
+  });
+
+  final BreathinVoiceController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    var box = GetStorage();
+
+    var data = box.read(Keys.breathing1Storage) as model.Child;
+    // var text = box.read(Keys.breathing2Storage);
     return Container(
       height: Get.height,
       width: Get.width,
@@ -142,88 +294,112 @@ class ImportantNotes extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          Get.toNamed(Routes.BREATHING_FEELINGS);
+          // Get.toNamed(Routes.BREATHING_FEELINGS);
+          controller.pagePosition + 1;
         },
-        child: Column(
+        child: Stack(
           children: [
-            const SizedBox(
-              height: 80,
-            ),
-            Row(
-              children: [
-                const Expanded(child: SizedBox()),
-                const Text(
-                  Strings.breathing_exercise,
-                  style: TextStyle(
-                      decoration: TextDecoration.none,
-                      color: ColorApp.black_article_title,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500),
-                  textAlign: TextAlign.center,
-                ),
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      Get.toNamed(Routes.BREATHING_FEELINGS);
-                    },
-                    child: Text(
-                      Strings.skip,
-                      style: TextStyle(
-                          decoration: TextDecoration.none,
-                          color: ColorApp.black.withOpacity(0.3),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
-                      textAlign: TextAlign.end,
-                    ),
+            SizedBox(
+              width: Get.width,
+              height: Get.height,
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: 20,
+                    top: 200,
+                    child:
+                        SvgPicture.asset("assets/icons/ic_yellow_flower.svg"),
                   ),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-              ],
+                  Positioned(
+                    right: 0,
+                    bottom: 140,
+                    child: SvgPicture.asset("assets/icons/ic_red_flower.svg"),
+                  )
+                ],
+              ),
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+            Column(
+              children: [
+                const SizedBox(
+                  height: 80,
+                ),
+                Row(
                   children: [
-                    Text(
-                      "Important notes",
+                    const Expanded(child: SizedBox()),
+                    const Text(
+                      Strings.breathing_exercise,
                       style: TextStyle(
                           decoration: TextDecoration.none,
-                          color: ColorApp.black.withOpacity(0.3),
+                          color: ColorApp.black_article_title,
                           fontSize: 20,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w500),
+                      textAlign: TextAlign.center,
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          Get.toNamed(Routes.BREATHING_FEELINGS);
+                        },
+                        child: Text(
+                          Strings.skip,
+                          style: TextStyle(
+                              decoration: TextDecoration.none,
+                              color: ColorApp.black.withOpacity(0.3),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500),
+                          textAlign: TextAlign.end,
+                        ),
+                      ),
                     ),
                     const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      text,
-                      style: const TextStyle(
-                          decoration: TextDecoration.none,
-                          color: ColorApp.black_view_all,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400),
+                      width: 20,
                     ),
                   ],
                 ),
-              ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Important notes",
+                          style: TextStyle(
+                              decoration: TextDecoration.none,
+                              color: ColorApp.black.withOpacity(0.3),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          data.programDetail?[2].textContent ?? "",
+                          style: const TextStyle(
+                              decoration: TextDecoration.none,
+                              color: ColorApp.black_view_all,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const Text(
+                  Strings.tapToFinish,
+                  style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: ColorApp.black_article_title,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 20,
+                )
+              ],
             ),
-            const Text(
-              Strings.tapToFinish,
-              style: TextStyle(
-                  decoration: TextDecoration.none,
-                  color: ColorApp.black_article_title,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(
-              height: 20,
-            )
           ],
         ),
       ),
@@ -242,18 +418,25 @@ class VoiceOver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(200.milliseconds, () {
-      controller.onPlay();
+      // controller.onPlay();
     });
     return GestureDetector(
       onTap: () {
         if (controller.showButton.isTrue) {
-          // FocusScope.of(context).requestFocus(new FocusNode());
-          // if (controller.audioPlayer != null) {
-          controller.audioPlayer?.pause();
-          // }
-          Future.delayed(200.milliseconds, () {
-            controller.pagePosition.value = 1;
-          });
+          if (controller.timerIndex == controller.progresList.length - 1) {
+            // FocusScope.of(context).requestFocus(new FocusNode());
+            // if (controller.audioPlayer != null) {
+            controller.audioPlayer?.pause();
+            // }
+            Future.delayed(200.milliseconds, () {
+              controller.pagePosition.value = 1;
+            });
+          } else {
+            controller.showButton.value = false;
+            controller.stop = 9999;
+            controller.startTimerIndex(controller.timerIndex,
+                controller.mainPeriode - controller.tick);
+          }
         }
       },
       child: Container(

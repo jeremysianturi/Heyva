@@ -8,8 +8,8 @@ class RegisterStorageModel {
     required this.interests,
     required this.childBirthDate,
     required this.estimateDueDate,
-    this.avatar,
-    this.googleId,
+    required this.avatar,
+    required this.googleId,
   });
 
   late final String email;

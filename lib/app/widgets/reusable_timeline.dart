@@ -1,6 +1,8 @@
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/routes/app_pages.dart';
+import 'package:heyva/constant/keys.dart';
 import 'package:heyva/model/timeline.dart';
 import 'package:timelines/timelines.dart';
 
@@ -179,6 +181,9 @@ class TimelineView extends StatelessWidget {
         image: "assets/images/img_dummy_yoga.png",
         isSelected: true.obs,
         ontap: () {
+          var box = GetStorage();
+          box.remove(Keys.programIdStorage);
+          box.remove(Keys.programIdChildStorage);
           Get.toNamed(Routes.BREATHING_EXERCISE);
         }),
     TimelineModel(

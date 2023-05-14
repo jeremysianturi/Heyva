@@ -21,6 +21,20 @@ class BreathinVoiceController extends GetxController {
   var lyricUI = UINetease();
   double _start = 0.0;
 
+  var progresList = [
+    0.0,
+    0.0,
+    0.0,
+  ].obs;
+
+  var list = [
+    "It was effective",
+    "It was good",
+    "I need recommendations",
+    "Not effective",
+    "Not very effective",
+  ];
+
   String prettyDuration(Duration duration) {
     var minutes = duration.inMinutes;
     var seconds = (duration.inSeconds - minutes * 60).toString();
@@ -79,34 +93,68 @@ class BreathinVoiceController extends GetxController {
   }
 
   var progressValue = 0.0.obs;
+  var progressValue2 = 0.0.obs;
+
+  var timerIndex = 0;
+  var tick = 0;
+  var mainPeriode = 0.0;
+  var stop = 2;
 
   @override
   void onInit() {
-    Future.delayed(400.milliseconds, () {
-      startTimer();
-    });
+    _start = 9;
+
+    mainPeriode = _start / progresList.length;
+
+    startTimerIndex(timerIndex, mainPeriode);
     super.onInit();
+  }
+
+  startTimerIndex(index, periode) {
+    startTimer(
+        periode: periode,
+        onDone: () {
+          if (index == progresList.length - 1) {
+            showButton.value = true;
+          }
+          if (timerIndex != progresList.length-1) {
+            timerIndex = timerIndex + 1;
+            startTimerIndex(timerIndex, mainPeriode);
+          }
+        },
+        onTick: (val) {
+          tick = val;
+          if (index == 1 && val == stop) {
+            timer.cancel();
+            showButton.value = true;
+          }
+
+          progresList[index] = val / periode;
+          progresList.refresh();
+        });
   }
 
   late Timer timer;
   var showButton = false.obs;
 
-  void startTimer() {
-    int _tick = 0 ;
+  void startTimer(
+      {required Function onDone, required Function onTick, required periode}) {
+    int _tick = 0;
     const oneSec = Duration(seconds: 1);
     timer = Timer.periodic(
       oneSec,
       (Timer timer) {
-        if (_start == _tick) {
+        if (periode == _tick) {
+          onDone();
           timer.cancel();
-          showButton.value = true;
         } else {
-          progressValue.value = timer.tick / (_start);
-          _tick ++ ;
+          onTick(timer.tick);
+          _tick++;
         }
       },
     );
   }
+
   double normalize(double value, double min, double max) {
     return ((value - min) / (max - min)).clamp(0, 1);
   }

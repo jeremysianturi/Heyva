@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -153,6 +152,7 @@ class LoginController extends GetxController {
     required email,
     required googleId,
     required avatar,
+    required fullName,
   }) async {
     errorMessage.value = "";
     isLoading.value = true;
@@ -175,6 +175,11 @@ class LoginController extends GetxController {
         Get.toNamed(Routes.INITIAL_PAGE);
         // Get.toNamed(Routes.TURNON_NOTIF);
       } else {
+        saveToStorage(
+            email: email,
+            fullname: fullName,
+            avatar: avatar,
+            googleId: googleId);
         errorMessage.value = loginResonse.value.message ?? "Error Message";
       }
     } catch (e) {
@@ -201,11 +206,12 @@ class LoginController extends GetxController {
         interests: [],
         childBirthDate: "",
         estimateDueDate: "");
+    box.remove(Keys.registStorage);
     box.write(Keys.registStorage, data);
-    debugPrint("read data ${box.read(Keys.registStorage)}");
+    // debugPrint("read data ${box.read(Keys.registStorage)}");
     800.seconds;
     Get.toNamed(Routes.ONBOARDING_ONE,
-        arguments: {Keys.fullNameArguments: fullname.text});
+        arguments: {Keys.fullNameArguments: fullname});
     // Get.to(OnBoardingOneView());
   }
 }

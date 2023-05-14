@@ -190,16 +190,31 @@ class CourseItem extends StatelessWidget {
     bool isDone = days.contains("3/3") || days.contains("90/90");
     return GestureDetector(
       onTap: () {
-        var box = GetStorage();
-        box.write(Keys.programIdStorage, programId);
-        box.write(Keys.programIdChildStorage, programIdChild);
-        if (type.toLowerCase().contains("breathin")) {
-          Get.toNamed(Routes.BREATHING_EXERCISE);
-        }
-        if (type.toLowerCase().contains("pelvic")) {
-          Get.toNamed(
-            Routes.BREATHING_ONE,
-          );
+        if (isDone == false) {
+          var box = GetStorage();
+          box.write(Keys.programIdStorage, programId);
+          box.write(Keys.programIdChildStorage, programIdChild);
+          if (type.toLowerCase().contains("breathin")) {
+            var exercise = "0";
+            if (days.contains("0/3")) {
+              exercise = "1";
+            }
+            if (days.contains("1/3")) {
+              exercise = "2";
+            }
+            if (days.contains("2/3")) {
+              exercise = "3";
+            }
+            box.write(Keys.exerciseOngoing, exercise.toString());
+
+            Get.toNamed(Routes.BREATHING_EXERCISE,
+                arguments: {Keys.ardoExercise: exercise});
+          }
+          if (type.toLowerCase().contains("pelvic")) {
+            Get.toNamed(
+              Routes.BREATHING_ONE,
+            );
+          }
         }
       },
       child: Padding(

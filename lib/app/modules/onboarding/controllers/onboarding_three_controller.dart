@@ -58,6 +58,8 @@ class OnBoardingThreeController extends GetxController {
     box.write(
         Keys.registStorage,
         RegisterStorageModel(
+            avatar: data.avatar,
+            googleId: data.googleId,
             email: data.email,
             password: data.password,
             fullName: data.fullName,

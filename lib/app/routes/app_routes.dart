@@ -46,6 +46,9 @@ abstract class Routes {
   static const RESET_PASSWORD_INPUT = _Paths.RESET_PASSWORD_INPUT;
   static const NOTIFICATION_CENTER = _Paths.NOTIFICATION_CENTER;
   static const IN_APP_WEB_VIEW = _Paths.IN_APP_WEB_VIEW;
+  static const BREATHING_EX_1 = _Paths.BREATHING_EX_1;
+  static const BREATHING_EX_2 = _Paths.BREATHING_EX_2;
+  static const BREATHING_EX_3 = _Paths.BREATHING_EX_3;
 }
 
 abstract class _Paths {
@@ -94,4 +97,7 @@ abstract class _Paths {
   static const RESET_PASSWORD_INPUT = '/reset-password-input';
   static const NOTIFICATION_CENTER = '/notification-center';
   static const IN_APP_WEB_VIEW = '/in-app-web-view';
+  static const BREATHING_EX_1 = '/breathing-ex-1';
+  static const BREATHING_EX_2 = '/breathing-ex-2';
+  static const BREATHING_EX_3 = '/breathing-ex-3';
 }

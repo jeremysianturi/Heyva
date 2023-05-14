@@ -71,7 +71,7 @@ class RegisterProvider {
         data: {
           "email": data.email,
           "full_name": data.fullName,
-          "google_id": data.fullName,
+          "google_id": data.googleId,
           "avatar": data.fullName,
           "birth_date": data.birthDate.split(" ")[0],
           "pregnancy_status": data.pregnancyStatus,
