@@ -402,7 +402,7 @@ class VoiceOver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Future.delayed(200.milliseconds, () {
-      controller.onPlay();
+    controller.onPlay();
     // });
 
     Future.delayed(400.milliseconds, () {
@@ -411,22 +411,7 @@ class VoiceOver extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        if (controller.showButton.isTrue) {
-          if (controller.timerIndex == controller.progresList.length - 1) {
-            // FocusScope.of(context).requestFocus(new FocusNode());
-            // if (controller.audioPlayer != null) {
-            controller.audioPlayer?.pause();
-            // }
-            Future.delayed(200.milliseconds, () {
-              controller.pagePosition.value = controller.pagePosition.value + 1;
-            });
-          } else {
-            controller.showButton.value = false;
-            controller.stop = 9999;
-            controller.startTimerIndex(controller.timerIndex,
-                controller.mainPeriode - controller.tick);
-          }
-        }
+        controller.ontap();
       },
       child: Container(
         height: Get.height,
@@ -454,44 +439,25 @@ class VoiceOver extends StatelessWidget {
                 child: Align(
               alignment: Alignment.center,
               child: Obx(
-                () => GestureDetector(
-                  onTap: () {
-                    if (controller.showButton.isTrue) {
-                      if (controller.timerIndex ==
-                          controller.progresList.length - 1) {
-                        // FocusScope.of(context).requestFocus(new FocusNode());
-                        // if (controller.audioPlayer != null) {
-                        controller.audioPlayer?.pause();
-                        // }
-                        Future.delayed(200.milliseconds, () {
-                          controller.pagePosition.value =
-                              controller.pagePosition.value + 1;
-                        });
-                      } else {
-                        controller.showButton.value = false;
-                        controller.stop = 9999;
-                        controller.startTimerIndex(controller.timerIndex,
-                            controller.mainPeriode - controller.tick);
-                      }
-                    }
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 200,
-                    // color: Colors.grey,
-                    margin: const EdgeInsets.symmetric(horizontal: 40.0),
-                    child: LyricsReader(
-                      model: controller.lyricModel,
-                      position: controller.playProgress.value,
-                      lyricUi: controller.lyricUI,
-                      playing: controller.playing.value,
-                      size: Size(double.infinity,
-                          MediaQuery.of(context).size.height / 2),
-                      emptyBuilder: () => Center(
-                        child: Text(
-                          "No lyrics",
-                          style: controller.lyricUI.getOtherMainTextStyle(),
-                        ),
+                () => Container(
+                  alignment: Alignment.center,
+                  height: 200,
+                  // color: Colors.grey,
+                  margin: const EdgeInsets.symmetric(horizontal: 40.0),
+                  child: LyricsReader(
+                    model: controller.lyricModel,
+                    position: controller.playProgress.value,
+                    lyricUi: controller.lyricUI,
+                    playing: controller.playing.value,
+                    onTap: () {
+                      controller.ontap();
+                    },
+                    size: Size(double.infinity,
+                        MediaQuery.of(context).size.height / 2),
+                    emptyBuilder: () => Center(
+                      child: Text(
+                        "No lyrics",
+                        style: controller.lyricUI.getOtherMainTextStyle(),
                       ),
                     ),
                   ),
@@ -501,9 +467,9 @@ class VoiceOver extends StatelessWidget {
 
             Obx(
               () => controller.showButton.isTrue
-                  ? const Text(
-                      Strings.tapToFinish,
-                      style: TextStyle(
+                  ? Text(
+                      controller.buttonTile.value,
+                      style: const TextStyle(
                           decoration: TextDecoration.none,
                           color: ColorApp.black_article_title,
                           fontSize: 14,

@@ -222,4 +222,9 @@ class Strings {
 
   static const String notificationCenter = "Notification Center";
   static const String goToHome = "Go To Home";
+
+  static const String textUpperEmptyInsight ="It looks like you have not track yourself on ";
+  static const String txtdownEmptySyInsight = ". But don’t worry, let’s start now!";
+  static const String startNow = "Start Now";
+
 }
