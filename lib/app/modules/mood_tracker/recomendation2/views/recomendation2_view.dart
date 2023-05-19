@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/nav_screen.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
@@ -170,6 +171,9 @@ class RecomendationWidget extends StatelessWidget {
         }
         if (contentType.toLowerCase() == "program" &&
             title.toLowerCase().contains("breathin")) {
+          var box = GetStorage();
+          box.remove(Keys.programIdStorage);
+          box.remove(Keys.programIdChildStorage);
           Get.toNamed(Routes.BREATHING_EXERCISE);
         }
         if (contentType.toLowerCase() == "program" &&

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:heyva/app/modules/login/controllers/login_controller.dart';
 import 'package:heyva/app/modules/login/views/login_view.dart';
 
 import '../../constant/colors.dart';
@@ -18,12 +20,14 @@ class ReusableBtnLoginGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // GoogleSignIn _googleSignIn = GoogleSignIn(
-    //   scopes: [
-    //     'email',
-    //     'https://www.googleapis.com/auth/contacts.readonly',
-    //   ],
-    // );
+    GoogleSignIn _googleSignIn = GoogleSignIn(
+      scopes: [
+        'email',
+        'https://www.googleapis.com/auth/contacts.readonly',
+      ],
+    );
+    var loginC = Get.put(LoginController());
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 42),
       child: Column(
@@ -46,7 +50,8 @@ class ReusableBtnLoginGroup extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   color: ColorApp.btn_orange),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -85,39 +90,22 @@ class ReusableBtnLoginGroup extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              Get.bottomSheet(
-                Container(
-                    padding: const EdgeInsets.all(25),
-                    child: const Text(
-                      "this featuee is not ready",
-                      style:
-                          TextStyle(fontSize: 16, color: ColorApp.white_font),
-                    )),
-                isDismissible: true,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(15),
-                      topLeft: Radius.circular(15)),
-                ),
-                backgroundColor: ColorApp.red_error,
-                enableDrag: false,
-              );
-
-              // _googleSignIn.signIn().then((value) => {
-              //   print("value $value"),
-              //   print("displayname ${value?.displayName}"),
-              //   print("email ${value?.email}"),
-              //   print("asdkalskdj ${value?.id}"),
-              //   print("id ${value?.serverAuthCode}"),
-              //   if (value?.email != null)
-              //     {
-              //       // controller.postLoginGoogle(
-              //       //     value?.email, value?.displayName),
-              //     },
-              //   _googleSignIn.signOut()
-              // });
-
-              // Get.to(LoginGoogleAppleView());
+              _googleSignIn.signIn().then((value) => {
+                    // print("value $value"),
+                    // print("displayname ${value?.displayName}"),
+                    // print("email ${value?.email}"),
+                    // print("asdkalskdj ${value?.id}"),
+                    // print("id ${value?.serverAuthCode}"),
+                    if (value?.email != null)
+                      {
+                        loginC.postLoginGoogle(
+                            fullName: value?.displayName,
+                            googleId: value?.id,
+                            email: value?.email,
+                            avatar: value?.photoUrl),
+                      },
+                    _googleSignIn.signOut()
+                  });
             },
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(ColorApp.white),

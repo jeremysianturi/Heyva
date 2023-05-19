@@ -41,4 +41,22 @@ class LoginProvider {
     }
     return res;
   }
+
+  Future<LoginModel?> LoginWithGoole(
+      {required googleId, required email}) async {
+    LoginModel? res;
+    try {
+      Response response = await _client.post(
+        '/api/v1/users/login/google',
+        data: {"google_id": googleId, "email": email},
+      );
+      debugPrint('response data: ${response.data}');
+      res = LoginModel.fromJson(response.data);
+    } on DioError catch (e) {
+      var message = e.response?.data['message'];
+      var error = e.response?.data['error'];
+      res = LoginModel(success: "", data: null, message: message, error: error);
+    }
+    return res;
+  }
 }

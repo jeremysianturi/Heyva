@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/constant/colors.dart';
@@ -22,79 +23,102 @@ class BreathingFinishView extends GetView<BreathingFinishController> {
             fit: BoxFit.fill,
           ),
         ),
-        child: Column(
+        child: Stack(
           children: [
-            const SizedBox(
-              height: 60,
-            ),
-            Row(
-              children: [
-                const Expanded(child: SizedBox()),
-                const Text(
-                  Strings.breathing_exercise,
-                  style: TextStyle(
-                      decoration: TextDecoration.none,
-                      color: ColorApp.black_article_title,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500),
-                  textAlign: TextAlign.center,
-                ),
-                Expanded(
-                  child: Text(
-                    Strings.skip,
-                    style: TextStyle(
-                        decoration: TextDecoration.none,
-                        color: ColorApp.black.withOpacity(0.3),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                    textAlign: TextAlign.end,
+            SizedBox(
+              width: Get.width,
+              height: Get.height,
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: 20,
+                    top: 200,
+                    child:
+                    SvgPicture.asset("assets/icons/ic_yellow_flower.svg"),
                   ),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-              ],
-            ),
-            Expanded(
-                child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    Strings.completeExercise,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 24,
-                        color: ColorApp.blue_container),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "Aliquet est vulputate elit viverra. Consectetur nulla arcu aliquam sem nunc nunc. At dui lobortis dignissim in id tempus non.",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
-                        color: ColorApp.grey_font),
-                    textAlign: TextAlign.center,
-                  ),
+                  Positioned(
+                    right: 0,
+                    bottom: 140,
+                    child: SvgPicture.asset("assets/icons/ic_red_flower.svg"),
+                  )
                 ],
               ),
-            )),
-            Container(
-              alignment: Alignment.bottomCenter,
-              child: OrangeButtonWTrailingIcon(
-                determineAction: "from_onplanning_one",
-                text: Strings.lets_go,
-                ontap: () {
-                  controller.programPersonalTrackerFinish(
-                      programId:
-                          controller.box.read(Keys.programIdChildStorage));
-                },
-              ),
+            ),
+            Column(
+              children: [
+                const SizedBox(
+                  height: 60,
+                ),
+                Row(
+                  children: [
+                    const Expanded(child: SizedBox()),
+                    const Text(
+                      Strings.breathing_exercise,
+                      style: TextStyle(
+                          decoration: TextDecoration.none,
+                          color: ColorApp.black_article_title,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500),
+                      textAlign: TextAlign.center,
+                    ),
+                    Expanded(
+                      child: Text(
+                        Strings.skip,
+                        style: TextStyle(
+                            decoration: TextDecoration.none,
+                            color: ColorApp.black.withOpacity(0.3),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500),
+                        textAlign: TextAlign.end,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                  ],
+                ),
+                Expanded(
+                    child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        Strings.completeExercise,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 24,
+                            color: ColorApp.blue_container),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "I hope you feel better. Make this exercise as a habit and you will see a long-term change.",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            color: ColorApp.grey_font),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                )),
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  child: OrangeButtonWTrailingIcon(
+                    determineAction: "from_onplanning_one",
+                    text: Strings.lets_go,
+                    ontap: () {
+                      controller.programPersonalTrackerFinish(
+                          programId:
+                              controller.box.read(Keys.programIdChildStorage));
+                    },
+                  ),
+                ),
+              ],
             ),
           ],
         ),

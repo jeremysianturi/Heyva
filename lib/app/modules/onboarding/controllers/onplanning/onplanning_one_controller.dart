@@ -90,6 +90,8 @@ class OnPlanningOneController extends GetxController {
     box.write(
         Keys.registStorage,
         RegisterStorageModel(
+            googleId: data.googleId,
+            avatar: data.avatar,
             email: data.email,
             password: data.password,
             fullName: data.fullName,
@@ -103,8 +105,11 @@ class OnPlanningOneController extends GetxController {
 
     200.milliseconds;
     // Get.toNamed(Routes.TURNON_NOTIF);
-
-    postRegister(data2);
+    if (data2.googleId.toString() != "") {
+      postRegisterWithGoole(data2);
+    } else {
+      postRegister(data2);
+    }
   }
 
   var registResonse =
@@ -114,6 +119,28 @@ class OnPlanningOneController extends GetxController {
     isLoading.value = true;
     try {
       registResonse.value = (await _registerProvider.Register(data: data))!;
+      isLoading.value = false;
+
+      if (registResonse.value.success == "Success") {
+        800.milliseconds;
+        Get.toNamed(Routes.REGIST_VERIFICATION);
+        // Get.toNamed(Routes.TURNON_NOTIF);
+      } else {
+        bottomSheetMessage(
+            color: "red", desc: registResonse.value.message ?? "");
+      }
+    } catch (e) {
+      isLoading.value = false;
+
+      debugPrint("error  $e");
+    }
+  }
+
+  postRegisterWithGoole(RegisterStorageModel data) async {
+    isLoading.value = true;
+    try {
+      registResonse.value =
+          (await _registerProvider.RegisterwithGoogle(data: data))!;
       isLoading.value = false;
 
       if (registResonse.value.success == "Success") {

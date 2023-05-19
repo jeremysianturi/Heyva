@@ -35,7 +35,7 @@ class OnboardingFinishView extends GetView<OnboardingFinishController> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    controller.postLogin();
+                    controller.postNext();
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -101,7 +101,7 @@ class OnboardingFinishView extends GetView<OnboardingFinishController> {
                   determineAction: "ontap",
                   text: Strings.lets_go,
                   ontap: () {
-                    controller.postLogin();
+                    controller.postNext();
                   },
                 ),
               ],

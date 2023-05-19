@@ -32,7 +32,8 @@ class TurnOnNotifController extends GetxController {
   void onInit() {
     _client = DioClient();
     _profileProvider = ProfileProvider(_client.init());
-    Future.delayed(200.milliseconds, () {
+    isLoading.value = true;
+    Future.delayed(400.milliseconds, () {
       getNotif();
     });
     super.onInit();
@@ -44,7 +45,6 @@ class TurnOnNotifController extends GetxController {
 
   getNotif() async {
     errorMessage.value = "";
-    isLoading.value = true;
     try {
       response.value = (await _profileProvider.getNotifList())!;
       isLoading.value = false;
@@ -54,6 +54,7 @@ class TurnOnNotifController extends GetxController {
       }
     } catch (e) {
       isLoading.value = false;
+
       debugPrint("error  $e");
     }
   }

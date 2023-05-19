@@ -13,31 +13,31 @@ class BreathingModel {
 
   BreathingModel.fromJson(Map<String, dynamic> json)
       : success = json['success'] as String?,
-        data = (json['data'] as Map<String, dynamic>?) != null
-            ? Data.fromJson(json['data'] as Map<String, dynamic>)
-            : null,
+        data = (json['data'] as Map<String,dynamic>?) != null ? Data.fromJson(json['data'] as Map<String,dynamic>) : null,
         message = json['message'],
         error = json['error'];
 
   Map<String, dynamic> toJson() => {
-        'success': success,
-        'data': data?.toJson(),
-        'message': message,
-        'error': error
-      };
+    'success' : success,
+    'data' : data?.toJson(),
+    'message' : message,
+    'error' : error
+  };
 }
 
 class Data {
   final String? id;
   final String? title;
   final String? body;
-  final dynamic banner;
+  final String? banner;
   final dynamic parent;
   final dynamic order;
+  final String? thumbnail;
   final List<Tags>? tags;
   final List<Child>? child;
   final List<dynamic>? programDetail;
-  final dynamic daysCount;
+  final String? daysCount;
+  final String? dailyProgress;
 
   Data({
     this.id,
@@ -46,40 +46,42 @@ class Data {
     this.banner,
     this.parent,
     this.order,
+    this.thumbnail,
     this.tags,
     this.child,
     this.programDetail,
     this.daysCount,
+    this.dailyProgress,
   });
 
   Data.fromJson(Map<String, dynamic> json)
       : id = json['id'] as String?,
         title = json['title'] as String?,
         body = json['body'] as String?,
-        banner = json['banner'],
+        banner = json['banner'] as String?,
         parent = json['parent'],
         order = json['order'],
-        tags = (json['tags'] as List?)
-            ?.map((dynamic e) => Tags.fromJson(e as Map<String, dynamic>))
-            .toList(),
-        child = (json['child'] as List?)
-            ?.map((dynamic e) => Child.fromJson(e as Map<String, dynamic>))
-            .toList(),
+        thumbnail = json['thumbnail'] as String?,
+        tags = (json['tags'] as List?)?.map((dynamic e) => Tags.fromJson(e as Map<String,dynamic>)).toList(),
+        child = (json['child'] as List?)?.map((dynamic e) => Child.fromJson(e as Map<String,dynamic>)).toList(),
         programDetail = json['program_detail'] as List?,
-        daysCount = json['days_count'];
+        daysCount = json['days_count'] as String?,
+        dailyProgress = json['daily_progress'] as String?;
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'title': title,
-        'body': body,
-        'banner': banner,
-        'parent': parent,
-        'order': order,
-        'tags': tags?.map((e) => e.toJson()).toList(),
-        'child': child?.map((e) => e.toJson()).toList(),
-        'program_detail': programDetail,
-        'days_count': daysCount
-      };
+    'id' : id,
+    'title' : title,
+    'body' : body,
+    'banner' : banner,
+    'parent' : parent,
+    'order' : order,
+    'thumbnail' : thumbnail,
+    'tags' : tags?.map((e) => e.toJson()).toList(),
+    'child' : child?.map((e) => e.toJson()).toList(),
+    'program_detail' : programDetail,
+    'days_count' : daysCount,
+    'daily_progress' : dailyProgress
+  };
 }
 
 class Tags {
@@ -93,11 +95,12 @@ class Tags {
 
   Tags.fromJson(Map<String, dynamic> json)
       : id = json['id'] as String?,
-        tag = (json['tag'] as Map<String, dynamic>?) != null
-            ? Tag.fromJson(json['tag'] as Map<String, dynamic>)
-            : null;
+        tag = (json['tag'] as Map<String,dynamic>?) != null ? Tag.fromJson(json['tag'] as Map<String,dynamic>) : null;
 
-  Map<String, dynamic> toJson() => {'id': id, 'tag': tag?.toJson()};
+  Map<String, dynamic> toJson() => {
+    'id' : id,
+    'tag' : tag?.toJson()
+  };
 }
 
 class Tag {
@@ -126,21 +129,22 @@ class Tag {
         value = json['value'];
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'name': name,
-        'parent': parent,
-        'icon': icon,
-        'value': value
-      };
+    'id' : id,
+    'type' : type,
+    'name' : name,
+    'parent' : parent,
+    'icon' : icon,
+    'value' : value
+  };
 }
 
 class Child {
   final String? id;
   final String? title;
   final String? body;
-  final dynamic banner;
-  final int? order;
+  final String? banner;
+  final String? thumbnail;
+  final dynamic order;
   final List<ProgramDetail>? programDetail;
 
   Child({
@@ -148,6 +152,7 @@ class Child {
     this.title,
     this.body,
     this.banner,
+    this.thumbnail,
     this.order,
     this.programDetail,
   });
@@ -156,21 +161,20 @@ class Child {
       : id = json['id'] as String?,
         title = json['title'] as String?,
         body = json['body'] as String?,
-        banner = json['banner'],
-        order = json['order'] as int?,
-        programDetail = (json['program_detail'] as List?)
-            ?.map((dynamic e) =>
-                ProgramDetail.fromJson(e as Map<String, dynamic>))
-            .toList();
+        banner = json['banner'] as String?,
+        thumbnail = json['thumbnail'] as String?,
+        order = json['order'],
+        programDetail = (json['program_detail'] as List?)?.map((dynamic e) => ProgramDetail.fromJson(e as Map<String,dynamic>)).toList();
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'title': title,
-        'body': body,
-        'banner': banner,
-        'order': order,
-        'program_detail': programDetail?.map((e) => e.toJson()).toList()
-      };
+    'id' : id,
+    'title' : title,
+    'body' : body,
+    'banner' : banner,
+    'thumbnail' : thumbnail,
+    'order' : order,
+    'program_detail' : programDetail?.map((e) => e.toJson()).toList()
+  };
 }
 
 class ProgramDetail {
@@ -202,12 +206,12 @@ class ProgramDetail {
         order = json['order'] as int?;
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'content_type': contentType,
-        'text_content': textContent,
-        'image_content': imageContent,
-        'video_content': videoContent,
-        'json_content': jsonContent,
-        'order': order
-      };
+    'id' : id,
+    'content_type' : contentType,
+    'text_content' : textContent,
+    'image_content' : imageContent,
+    'video_content' : videoContent,
+    'json_content' : jsonContent,
+    'order' : order
+  };
 }

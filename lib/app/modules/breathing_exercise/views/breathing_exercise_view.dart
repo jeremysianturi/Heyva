@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/keys.dart';
@@ -30,86 +31,100 @@ class BreathingExerciseView extends GetView<BreathingExerciseController> {
                   fit: BoxFit.fill,
                 ),
               ),
-              child: Container(
-                child: Column(
-                  children: [
-                    Container(
-                        margin: const EdgeInsets.only(top: 50),
-                        child: const Header(
-                          showIcon: false,
-                          centerTitle: Strings.breathing_exercise,
-                          showCenterTitle: true,
-                        )),
-                    Expanded(
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 62),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Hi there 👋🏻",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20,
-                                  color: ColorApp.black.withOpacity(0.3)),
-                            ),
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            const Text(
-                              "Here is a short deep breathing exercise step-by-step for managing your stress after birth:",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 20,
-                                  color: ColorApp.blue_container),
-                              textAlign: TextAlign.center,
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            ElevatedButton(
-                              onPressed: () {
-                                controller.createProgramPersonalTracker(
-                                    programId: controller.box
-                                        .read(Keys.programIdStorage),
-                                    programIdChild: controller.box
-                                        .read(Keys.programIdChildStorage));
-                                Future.delayed(200.milliseconds, () {
-                                  controller.getBreathing();
-                                });
-                              },
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        ColorApp.btn_orange),
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(14)),
-                                    side:
-                                        BorderSide(color: ColorApp.btn_orange),
-                                  ),
-                                ),
-                              ),
-                              child: const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 17, horizontal: 20),
-                                  child: Text(
-                                    Strings.begin,
-                                    style: TextStyle(
-                                        color: ColorApp.arrow_white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700),
-                                    textAlign: TextAlign.center,
-                                  )),
-                            )
-                          ],
+              child: Column(
+                children: [
+                  Container(
+                      margin: const EdgeInsets.only(top: 50),
+                      child: const Header(
+                        showIcon: false,
+                        centerTitle: Strings.breathing_exercise,
+                        showCenterTitle: true,
+                      )),
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 62, vertical: 40),
+                    child: Column(
+                      children: [
+                        Obx(() {
+                          return controller.imgAsset.value != ""
+                              ? Image.asset(
+                                  controller.imgAsset.value,
+                                  width: 200,
+                                  height: 200,
+                                  fit: BoxFit.cover,
+                                )
+                              : SizedBox();
+                        }),
+                        const SizedBox(
+                          height: 20,
                         ),
-                      ),
+                        Text(
+                          controller.greeting,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                              color: ColorApp.black.withOpacity(0.3)),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        Text(
+                          controller.desc1Breathing,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 20,
+                              color: ColorApp.blue_container),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            controller.createProgramPersonalTracker(
+                                programId:
+                                    controller.box.read(Keys.programIdStorage),
+                                programIdChild: controller.box
+                                    .read(Keys.programIdChildStorage));
+                            Future.delayed(800.milliseconds);
+                            if (controller.exercise == "1") {
+                              Get.toNamed(Routes.BREATHING_EX_1);
+                            }
+                            if (controller.exercise == "2") {
+                              Get.toNamed(Routes.BREATHING_EX_2);
+                            }
+                            if (controller.exercise == "3") {
+                              Get.toNamed(Routes.BREATHING_EX_3);
+                            }
+                          },
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                ColorApp.btn_orange),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(14)),
+                                side: BorderSide(color: ColorApp.btn_orange),
+                              ),
+                            ),
+                          ),
+                          child: const Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 17, horizontal: 20),
+                              child: Text(
+                                Strings.begin,
+                                style: TextStyle(
+                                    color: ColorApp.arrow_white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700),
+                                textAlign: TextAlign.center,
+                              )),
+                        )
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ))));
   }

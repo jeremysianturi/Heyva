@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/routes/app_pages.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 import '../../../../../constant/colors.dart';
 import '../../../../../constant/strings.dart';
@@ -15,7 +16,14 @@ class TurnOnNotifView extends GetView<TurnOnNotifController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Scaffold(
+    return Obx(() => LoadingOverlay(
+        isLoading: controller.isLoading.value,
+        color: Colors.grey,
+        progressIndicator: const CircularProgressIndicator(
+          color: ColorApp.btn_orange,
+        ),
+        opacity: 0.3,
+        child: Scaffold(
           body: Container(
             height: double.maxFinite,
             decoration: const BoxDecoration(
@@ -90,6 +98,6 @@ class TurnOnNotifView extends GetView<TurnOnNotifController> {
               ],
             ),
           ),
-        ));
+        )));
   }
 }

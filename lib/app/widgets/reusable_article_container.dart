@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/keys.dart';
 
@@ -42,6 +43,9 @@ class ArticleContainer extends StatelessWidget {
         }
         if (contentType.toLowerCase() == "program" &&
             title.toLowerCase().contains("breathin")) {
+          var box = GetStorage();
+          box.remove(Keys.programIdStorage);
+          box.remove(Keys.programIdChildStorage);
           Get.toNamed(Routes.BREATHING_EXERCISE);
         }
         if (contentType.toLowerCase() == "program" &&

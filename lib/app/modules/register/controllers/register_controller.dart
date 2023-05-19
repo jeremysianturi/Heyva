@@ -26,6 +26,8 @@ class RegisterController extends GetxController {
 
   saveToStorage() {
     var data = RegisterStorageModel(
+        googleId: "",
+        avatar: "",
         email: email.text,
         password: pass.text,
         fullName: fullname.text,
@@ -34,6 +36,8 @@ class RegisterController extends GetxController {
         interests: [],
         childBirthDate: "",
         estimateDueDate: "");
+    box.remove(Keys.registStorage);
+
     box.write(Keys.registStorage, data);
     debugPrint("read data ${box.read(Keys.registStorage)}");
     800.seconds;

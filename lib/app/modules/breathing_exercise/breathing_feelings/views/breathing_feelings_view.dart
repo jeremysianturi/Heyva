@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
 
@@ -74,16 +73,16 @@ class BreathingFeelingsView extends GetView<BreathingFeelingsController> {
                   const SizedBox(
                     height: 100,
                   ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: controller.list.length,
-                    itemBuilder: (BuildContext context, int index) =>
-                        BreatingFeelingsItems(
-                      controller: controller,
-                      index: index,
-                    ),
-                  ),
+                  // ListView.builder(
+                  //   shrinkWrap: true,
+                  //   scrollDirection: Axis.vertical,
+                  //   itemCount: controller.list.length,
+                  //   itemBuilder: (BuildContext context, int index) =>
+                  //       BreatingFeelingsItems(
+                  //     controller: controller,
+                  //     index: index,
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -97,18 +96,20 @@ class BreathingFeelingsView extends GetView<BreathingFeelingsController> {
 class BreatingFeelingsItems extends StatelessWidget {
   const BreatingFeelingsItems({
     super.key,
-    required this.controller,
     required this.index,
+    required this.title,
+    required this.ontap,
   });
 
-  final BreathingFeelingsController controller;
   final int index;
+  final String title;
+  final Function ontap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.BREATHING_FINISH);
+        ontap();
       },
       child: Container(
         margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
@@ -121,7 +122,7 @@ class BreatingFeelingsItems extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                controller.list[index],
+                title,
                 style: const TextStyle(
                     color: ColorApp.arrow_white,
                     fontSize: 16,

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_lyric/lyrics_reader.dart';
 import 'package:get/get.dart';
@@ -14,9 +16,24 @@ class BreathinVoiceController extends GetxController {
   var playing = false.obs;
   bool useEnhancedLrc = false;
   var lyricModel =
-      LyricsModelBuilder.create().bindLyricToMain(normalLyric).getModel();
+      LyricsModelBuilder.create().bindLyricToMain(breathingEx1Lyric).getModel();
 
   var lyricUI = UINetease();
+  double _start = 0.0;
+
+  var progresList = [
+    0.0,
+    0.0,
+    0.0,
+  ].obs;
+
+  var list = [
+    "It was effective",
+    "It was good",
+    "I need recommendations",
+    "Not effective",
+    "Not very effective",
+  ];
 
   String prettyDuration(Duration duration) {
     var minutes = duration.inMinutes;
@@ -30,47 +47,36 @@ class BreathinVoiceController extends GetxController {
     }
     return '$minutes : $seconds';
   }
-  
-  onPlay(){
+
+  onPlay() {
     if (audioPlayer == null) {
-      audioPlayer = AudioPlayer()
-        ..play(AssetSource('music1.mp3'));
+      audioPlayer = AudioPlayer()..play(AssetSource('breathing_ex_1.mp3'));
       playing.value = true;
 
-      audioPlayer?.onDurationChanged
-          .listen((Duration event) {
-        max_value.value =
-            event.inMilliseconds.toDouble();
+      audioPlayer?.onDurationChanged.listen((Duration event) {
+        max_value.value = event.inMilliseconds.toDouble();
+        _start = event.inSeconds.toDouble();
       });
       List<int> prevPositions = [0, 0];
       int lostPositions = 0;
-      audioPlayer?.onPositionChanged
-          .listen((Duration event) {
+      audioPlayer?.onPositionChanged.listen((Duration event) {
         if (isTap.isTrue) return;
 
-        int positionChanged =
-            event.inMilliseconds;
+        int positionChanged = event.inMilliseconds;
         if (prevPositions[1] > positionChanged) {
-          int diff =
-              prevPositions[1] - prevPositions[0];
+          int diff = prevPositions[1] - prevPositions[0];
           int tempNext = prevPositions[1] + diff;
-          lostPositions +=
-              tempNext - positionChanged;
+          lostPositions += tempNext - positionChanged;
         }
-        int correctPosition =
-            positionChanged + lostPositions;
-        sliderProgress.value =
-            correctPosition.toDouble();
-        playProgress.value =
-            correctPosition;
+        int correctPosition = positionChanged + lostPositions;
+        sliderProgress.value = correctPosition.toDouble();
+        playProgress.value = correctPosition;
         prevPositions.add(positionChanged);
         prevPositions.removeAt(0);
       });
 
-      audioPlayer?.onPlayerStateChanged
-          .listen((PlayerState state) {
-        playing.value =
-            state == PlayerState.playing;
+      audioPlayer?.onPlayerStateChanged.listen((PlayerState state) {
+        playing.value = state == PlayerState.playing;
       });
     } else {
       audioPlayer?.resume();
@@ -81,7 +87,76 @@ class BreathinVoiceController extends GetxController {
   void dispose() {
     playing.value = false;
     audioPlayer?.dispose();
+    timer.cancel();
 
     super.dispose();
   }
+
+  var progressValue = 0.0.obs;
+  var progressValue2 = 0.0.obs;
+
+  var timerIndex = 0;
+  var tick = 0;
+  var mainPeriode = 0.0;
+  var stop = 2;
+
+  @override
+  void onInit() {
+    _start = 9;
+
+    mainPeriode = _start / progresList.length;
+
+    startTimerIndex(timerIndex, mainPeriode);
+    super.onInit();
+  }
+
+  startTimerIndex(index, periode) {
+    startTimer(
+        periode: periode,
+        onDone: () {
+          if (index == progresList.length - 1) {
+            showButton.value = true;
+          }
+          if (timerIndex != progresList.length-1) {
+            timerIndex = timerIndex + 1;
+            startTimerIndex(timerIndex, mainPeriode);
+          }
+        },
+        onTick: (val) {
+          tick = val;
+          if (index == 1 && val == stop) {
+            timer.cancel();
+            showButton.value = true;
+          }
+
+          progresList[index] = val / periode;
+          progresList.refresh();
+        });
+  }
+
+  late Timer timer;
+  var showButton = false.obs;
+
+  void startTimer(
+      {required Function onDone, required Function onTick, required periode}) {
+    int _tick = 0;
+    const oneSec = Duration(seconds: 1);
+    timer = Timer.periodic(
+      oneSec,
+      (Timer timer) {
+        if (periode == _tick) {
+          onDone();
+          timer.cancel();
+        } else {
+          onTick(timer.tick);
+          _tick++;
+        }
+      },
+    );
+  }
+
+  double normalize(double value, double min, double max) {
+    return ((value - min) / (max - min)).clamp(0, 1);
+  }
+
 }

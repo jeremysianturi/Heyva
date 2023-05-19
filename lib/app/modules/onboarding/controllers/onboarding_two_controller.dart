@@ -22,6 +22,8 @@ class OnBoardingTwoController extends GetxController {
     box.write(
         Keys.registStorage,
         RegisterStorageModel(
+            googleId: data.googleId,
+            avatar: data.avatar,
             email: data.email,
             password: data.password,
             fullName: data.fullName,

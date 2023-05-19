@@ -44,8 +44,10 @@ class Logging extends Interceptor {
     );
 
     debugPrint("status code${(err.response?.statusCode == 401)}");
+    debugPrint("status code${(err.response?.data['message'])}");
     if (err.response?.statusCode == 401 &&
-        err.requestOptions.path != "/api/v1/users/refresh-token") {
+        err.requestOptions.path != "/api/v1/users/refresh-token" &&
+        err.response?.data['message'] == "Expired Signature") {
       var loginC = gt.Get.put(LoginController());
       loginC.refresh();
     } else if (err.response?.statusCode == 401 &&

@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/insights/model/Insight_model.dart' as insight;
 import 'package:heyva/app/modules/insights/widget/insight_mood_widget.dart';
@@ -124,32 +125,32 @@ class InsightsView extends GetView<InsightsController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: Text(
-                            Strings.daily_refresh,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14,
-                                color: ColorApp.grey_font),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: Text(
-                            Strings.congratsYourAchive,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 20,
-                                color: ColorApp.blue_container),
-                          ),
-                        ),
+                        // const SizedBox(
+                        //   height: 30,
+                        // ),
+                        // const Padding(
+                        //   padding: EdgeInsets.symmetric(horizontal: 20),
+                        //   child: Text(
+                        //     Strings.daily_refresh,
+                        //     style: TextStyle(
+                        //         fontWeight: FontWeight.w600,
+                        //         fontSize: 14,
+                        //         color: ColorApp.grey_font),
+                        //   ),
+                        // ),
+                        // const SizedBox(
+                        //   height: 12,
+                        // ),
+                        // const Padding(
+                        //   padding: EdgeInsets.symmetric(horizontal: 20),
+                        //   child: Text(
+                        //     Strings.congratsYourAchive,
+                        //     style: TextStyle(
+                        //         fontWeight: FontWeight.w500,
+                        //         fontSize: 20,
+                        //         color: ColorApp.blue_container),
+                        //   ),
+                        // ),
                         const SizedBox(
                           height: 24,
                         ),
@@ -209,35 +210,122 @@ class insightItem extends StatelessWidget {
           const SizedBox(
             height: 24,
           ),
-          CarouselSlider(
-            options: CarouselOptions(
-              height: 700,
-              // aspectRatio: 310 / 360,
-              viewportFraction: 0.8,
-              initialPage: 0,
-              enableInfiniteScroll: true,
-              reverse: false,
-              autoPlay: false,
-              autoPlayInterval: const Duration(seconds: 3),
-              autoPlayAnimationDuration: const Duration(milliseconds: 800),
-              // autoPlayCurve: Curves.fastOutSlowIn,
-              // enlargeCenterPage: true,
-              enlargeFactor: 0.3,
-              onPageChanged: (index, reason) {
-                controller.currentIndex.value = index + 1;
-              },
-              scrollDirection: Axis.horizontal,
-            ),
-            // options: CarouselOptions(height: 400.0),
-            items: data?.insight?.map((i) {
-              return Opacity(
-                  // opacity: controller.currentIndex.value == i ? 1 : 0.5,
-                  opacity: 1,
-                  child: InsightMoodWidget(
-                    data: i,
-                  ));
-            }).toList(),
+          data?.insight?.length == 0
+              ? EmptyState(data: data)
+              : CarouselSlider(
+                  options: CarouselOptions(
+                    height: 700,
+                    // aspectRatio: 310 / 360,
+                    viewportFraction: 0.8,
+                    initialPage: 0,
+                    enableInfiniteScroll: true,
+                    reverse: false,
+                    autoPlay: false,
+                    autoPlayInterval: const Duration(seconds: 3),
+                    autoPlayAnimationDuration:
+                        const Duration(milliseconds: 800),
+                    // autoPlayCurve: Curves.fastOutSlowIn,
+                    // enlargeCenterPage: true,
+                    enlargeFactor: 0.3,
+                    onPageChanged: (index, reason) {
+                      controller.currentIndex.value = index + 1;
+                    },
+                    scrollDirection: Axis.horizontal,
+                  ),
+                  // options: CarouselOptions(height: 400.0),
+                  items: data?.insight?.map((i) {
+                    return Opacity(
+                        // opacity: controller.currentIndex.value == i ? 1 : 0.5,
+                        opacity: 1,
+                        child: InsightMoodWidget(
+                          data: i,
+                        ));
+                  }).toList(),
+                ),
+        ],
+      ),
+    );
+  }
+}
+
+class EmptyState extends StatelessWidget {
+  const EmptyState({
+    super.key,
+    required this.data,
+  });
+
+  final insight.Data? data;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: Get.width,
+      margin: const EdgeInsets.symmetric(horizontal: 44, vertical: 30),
+      child: Column(
+        children: [
+          SvgPicture.asset(
+            "assets/icons/ic_empty_insight.svg",
           ),
+          const SizedBox(
+            height: 17,
+          ),
+          RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(
+              style: const TextStyle(fontSize: 20),
+              children: [
+                const TextSpan(
+                  text: Strings.textUpperEmptyInsight,
+                  style: TextStyle(
+                      color: ColorApp.blue_container,
+                      fontWeight: FontWeight.w500),
+                ),
+                TextSpan(
+                  text: data?.insightDate ?? "",
+                  style: const TextStyle(
+                      color: ColorApp.blue_container,
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.w500),
+                ),
+                const TextSpan(
+                  text: Strings.txtdownEmptySyInsight,
+                  style: TextStyle(
+                      color: ColorApp.blue_container,
+                      fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 17,
+          ),
+          Column(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed(Routes.MOOD_TRACKER);
+                },
+                child: Container(
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(14)),
+                      color: ColorApp.btn_orange),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                    child: Text(
+                      Strings.startNow,
+                      style: TextStyle(
+                          color: ColorApp.arrow_white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 25,
+              )
+            ],
+          )
         ],
       ),
     );
