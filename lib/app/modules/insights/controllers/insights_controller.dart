@@ -86,6 +86,23 @@ class InsightsController extends GetxController {
   var insightResponse =
       InsightModel(success: "", data: null, message: "", error: "").obs;
 
+  bool get isEmptyInsight {
+    var data = insightResponse.value.data ?? [];
+    var loop = -1;
+
+    for (var e in data) {
+      if (e.insight!.isNotEmpty) {
+        loop++;
+      }
+    }
+
+    if (loop != data.length) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   getInsight() async {
     errorMessage.value = "";
     isLoading.value = true;

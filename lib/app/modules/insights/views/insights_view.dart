@@ -121,53 +121,35 @@ class InsightsView extends GetView<InsightsController> {
                     ),
                   ),
                   Expanded(
-                      child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // const SizedBox(
-                        //   height: 30,
-                        // ),
-                        // const Padding(
-                        //   padding: EdgeInsets.symmetric(horizontal: 20),
-                        //   child: Text(
-                        //     Strings.daily_refresh,
-                        //     style: TextStyle(
-                        //         fontWeight: FontWeight.w600,
-                        //         fontSize: 14,
-                        //         color: ColorApp.grey_font),
-                        //   ),
-                        // ),
-                        // const SizedBox(
-                        //   height: 12,
-                        // ),
-                        // const Padding(
-                        //   padding: EdgeInsets.symmetric(horizontal: 20),
-                        //   child: Text(
-                        //     Strings.congratsYourAchive,
-                        //     style: TextStyle(
-                        //         fontWeight: FontWeight.w500,
-                        //         fontSize: 20,
-                        //         color: ColorApp.blue_container),
-                        //   ),
-                        // ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        Column(
-                          children: List.generate(
-                              controller.insightResponse.value.data?.length ??
-                                  0,
-                              (index) => insightItem(
-                                    controller: controller,
-                                    data: controller
-                                        .insightResponse.value.data?[index],
-                                  )),
-                        ),
-                        const SizedBox(
-                          height: 90,
-                        ),
-                      ],
+                      child: Align(
+                    alignment: controller.isEmptyInsight
+                        ? Alignment.center
+                        : Alignment.topCenter,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          controller.isEmptyInsight
+                              ? const EmptyState(data: null)
+                              : Column(
+                                  children: List.generate(
+                                      controller.insightResponse.value.data
+                                              ?.length ??
+                                          0,
+                                      (index) => insightItem(
+                                            controller: controller,
+                                            data: controller.insightResponse
+                                                .value.data?[index],
+                                          )),
+                                ),
+                          const SizedBox(
+                            height: 90,
+                          ),
+                        ],
+                      ),
                     ),
                   ))
                 ],
@@ -269,33 +251,45 @@ class EmptyState extends StatelessWidget {
           const SizedBox(
             height: 17,
           ),
-          RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(
-              style: const TextStyle(fontSize: 20),
-              children: [
-                const TextSpan(
-                  text: Strings.textUpperEmptyInsight,
-                  style: TextStyle(
-                      color: ColorApp.blue_container,
-                      fontWeight: FontWeight.w500),
+          data == null
+              ? const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  child: Text(
+                    Strings.txtEmptyAllInsight,
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: ColorApp.blue_container,
+                        fontWeight: FontWeight.w700),
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              : RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    style: const TextStyle(fontSize: 20),
+                    children: [
+                      const TextSpan(
+                        text: Strings.textUpperEmptyInsight,
+                        style: TextStyle(
+                            color: ColorApp.blue_container,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      TextSpan(
+                        text: data?.insightDate ?? "",
+                        style: const TextStyle(
+                            color: ColorApp.blue_container,
+                            decoration: TextDecoration.underline,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      const TextSpan(
+                        text: Strings.txtdownEmptySyInsight,
+                        style: TextStyle(
+                            color: ColorApp.blue_container,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
                 ),
-                TextSpan(
-                  text: data?.insightDate ?? "",
-                  style: const TextStyle(
-                      color: ColorApp.blue_container,
-                      decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.w500),
-                ),
-                const TextSpan(
-                  text: Strings.txtdownEmptySyInsight,
-                  style: TextStyle(
-                      color: ColorApp.blue_container,
-                      fontWeight: FontWeight.w500),
-                ),
-              ],
-            ),
-          ),
           const SizedBox(
             height: 17,
           ),
