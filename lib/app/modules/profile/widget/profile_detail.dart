@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -93,12 +94,22 @@ class ProfileAvatar extends StatelessWidget {
       child: Stack(
         children: [
           SizedBox(
-            height: 80,
-            width: 80,
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(imgUrl),
-            ),
-          ),
+              height: 80,
+              width: 80,
+              child: CachedNetworkImage(
+                imageUrl: imgUrl,
+                placeholder: (context, url) => const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: CircularProgressIndicator(
+                    color: ColorApp.btn_orange,
+                  ),
+                ),
+                imageBuilder: (context, image) => CircleAvatar(
+                  backgroundImage: image,
+                  radius: 150,
+                ),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              )),
           Positioned(
               right: 0,
               child: SizedBox(

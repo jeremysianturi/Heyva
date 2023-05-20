@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -66,9 +67,19 @@ class InsightsView extends GetView<InsightsController> {
                           await Get.toNamed(Routes.PROFILE);
                           controller.onInit();
                         },
-                        child: CircleAvatar(
-                          backgroundImage:
-                              NetworkImage(controller.profileAvatar),
+                        child:  CachedNetworkImage(
+                          imageUrl: controller.profileAvatar,
+                          placeholder: (context, url) =>  const Padding(
+                            padding: EdgeInsets.all(10),
+                            child: CircularProgressIndicator(
+                              color: ColorApp.btn_orange,
+                            ),
+                          ),
+                          imageBuilder: (context, image) => CircleAvatar(
+                            backgroundImage: image,
+                            radius: 150,
+                          ),
+                          errorWidget: (context, url, error) => const Icon(Icons.error),
                         ),
                       ),
                       title: GestureDetector(

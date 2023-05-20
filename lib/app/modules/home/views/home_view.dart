@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -62,15 +63,24 @@ class HomeView extends GetView<HomeController> {
                       elevation: 0,
                       centerTitle: false,
                       leading: GestureDetector(
-                        onTap: () async {
-                          await Get.toNamed(Routes.PROFILE);
-                          controller.onInit();
-                        },
-                        child: CircleAvatar(
-                          backgroundImage:
-                              NetworkImage(controller.profileAvatar),
-                        ),
-                      ),
+                          onTap: () async {
+                            await Get.toNamed(Routes.PROFILE);
+                            controller.onInit();
+                          },
+                          child: CachedNetworkImage(
+                            imageUrl: controller.profileAvatar,
+                            placeholder: (context, url) =>  const Padding(
+                              padding: EdgeInsets.all(10),
+                              child: CircularProgressIndicator(
+                                color: ColorApp.btn_orange,
+                              ),
+                            ),
+                            imageBuilder: (context, image) => CircleAvatar(
+                              backgroundImage: image,
+                              radius: 150,
+                            ),
+                            errorWidget: (context, url, error) => const Icon(Icons.error),
+                          )),
                       title: GestureDetector(
                         onTap: () async {
                           await Get.toNamed(Routes.PROFILE);
@@ -175,9 +185,9 @@ class HomeView extends GetView<HomeController> {
                             ),
                             GridView.count(
                               shrinkWrap: true,
-                              padding: EdgeInsets.zero,
+                              padding: const EdgeInsets.all(4.1),
                               crossAxisCount: 2,
-                              childAspectRatio: 162 / 270,
+                              childAspectRatio: 0.556,
                               crossAxisSpacing: 11,
                               mainAxisSpacing: 0,
                               physics: const NeverScrollableScrollPhysics(),

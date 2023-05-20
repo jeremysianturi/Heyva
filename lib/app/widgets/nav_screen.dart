@@ -206,7 +206,7 @@ class _NavScreenState extends State<NavScreen> {
           screens: _buildScreens(),
           items: _navBarsItems(),
           resizeToAvoidBottomInset: true,
-          navBarHeight: 74,
+          navBarHeight: 80,
           bottomScreenMargin: 0,
           padding: NavBarPadding.only(bottom: 20),
           selectedTabScreenContext: (final context) {

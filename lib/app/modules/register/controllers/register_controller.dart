@@ -81,10 +81,6 @@ class RegisterController extends GetxController {
 
   @override
   void onInit() {
-    fullname.text = "testing";
-    email.text = "kang-bakso@harakirimail.com";
-    pass.text = "minimal88";
-
     _refreshDioClient = RefreshDioClient();
     _registerProvider = RegisterProvider(_refreshDioClient.init());
     super.onInit();
