@@ -104,6 +104,9 @@ class TimelineView extends StatelessWidget {
                                         height: 11,
                                         width: 11,
                                       ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
                                       Text(
                                         data[index].time,
                                         style: const TextStyle(

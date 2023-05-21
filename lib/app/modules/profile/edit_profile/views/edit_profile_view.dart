@@ -12,6 +12,7 @@ import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:loading_overlay/loading_overlay.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '../controllers/edit_profile_controller.dart';
 
@@ -67,11 +68,20 @@ class EditProfileView extends GetView<EditProfileController> {
                             height: 80,
                             width: 80,
                             child: controller.filePath.value == ""
-                                ? CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                      controller.profileAvatar,
-                                    ),
-                                  )
+                                ?  CachedNetworkImage(
+                              imageUrl: controller.profileAvatar,
+                              placeholder: (context, url) =>  const Padding(
+                                padding: EdgeInsets.all(10),
+                                child: CircularProgressIndicator(
+                                  color: ColorApp.btn_orange,
+                                ),
+                              ),
+                              imageBuilder: (context, image) => CircleAvatar(
+                                backgroundImage: image,
+                                radius: 150,
+                              ),
+                              errorWidget: (context, url, error) => const Icon(Icons.error),
+                            )
                                 : CircleAvatar(
                                     backgroundImage: FileImage(
                                         File(controller.filePath.value)),

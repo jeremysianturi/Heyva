@@ -31,8 +31,6 @@ class LoginController extends GetxController {
     _clientRefresh = RefreshDioClient();
     _provider = LoginProvider(_client.init());
     _refreshprovider = LoginProvider(_clientRefresh.init());
-    emailC.text = "howosa9215@larland.com";
-    passC.text = "minimal88";
     super.onInit();
   }
 
