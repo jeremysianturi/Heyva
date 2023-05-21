@@ -8,12 +8,12 @@ import 'package:heyva/services/dio_services.dart';
 
 class LearnController extends GetxController {
   var folderList = <String>[
-    "Mental Health",
+    "Newborn",
     "Postpartum",
     "Feeding",
-    "Pelvic Floor",
-    "Feeding",
-    "Body",
+    "Pelvic Health",
+    "Mental Health",
+    "Body Recovery",
   ];
 
   var isLoading = false.obs;
