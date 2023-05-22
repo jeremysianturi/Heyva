@@ -21,10 +21,10 @@ class FolderItemList extends StatelessWidget {
       mainAxisSpacing: 12,
       padding: EdgeInsets.zero,
       children: List.generate(controller.folderList.length, (index) {
-        return Container(
-            child: FolderItem(
-              title: controller.folderList[index],
-            ));
+        return FolderItem(
+          title: controller.folderList[index].name,
+          iconPath: controller.folderList[index].iconPath,
+        );
       }),
     );
   }

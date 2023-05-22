@@ -236,9 +236,9 @@ class RecoveryView extends GetView<RecoveryController> {
                                   const EdgeInsets.symmetric(horizontal: 20),
                               child: GridView.count(
                                 shrinkWrap: true,
-                                padding: EdgeInsets.zero,
+                                padding: const EdgeInsets.all(4.1),
                                 crossAxisCount: 2,
-                                childAspectRatio: 162 / 270,
+                                childAspectRatio:0.556,
                                 crossAxisSpacing: 11,
                                 mainAxisSpacing: 0,
                                 physics: const NeverScrollableScrollPhysics(),

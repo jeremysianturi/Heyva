@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/constant/keys.dart';
+import 'package:heyva/constant/variabels.dart';
 
 import '../../constant/colors.dart';
+
+String removeAllHtmlTags(String htmlText) {
+  RegExp exp = RegExp(r"<[^>]*>", multiLine: true, caseSensitive: true);
+
+  return htmlText.replaceAll(exp, '');
+}
 
 class ArticleContainer extends StatelessWidget {
   const ArticleContainer({
@@ -56,30 +62,33 @@ class ArticleContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            decoration: BoxDecoration(
-                border: Border.all(
+          AspectRatio(
+            aspectRatio: dyW(162) / dyH(121),
+            child: Container(
+              width: Get.width,
+              height: Get.height,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: containerColor,
+                  ),
                   color: containerColor,
-                ),
-                color: containerColor,
-                image: DecorationImage(
-                    image: NetworkImage(thumbnailUrl), fit: BoxFit.cover),
-                borderRadius: const BorderRadius.all(Radius.circular(12))),
-            height: 120,
-            width: (MediaQuery.of(context).size.width - 51) / 2,
-            alignment: Alignment.topRight,
-            child: RawMaterialButton(
-              constraints: BoxConstraints.tight(const Size(24, 24)),
-              padding: EdgeInsets.zero,
-              onPressed: () {},
-              elevation: 0,
-              fillColor: ColorApp.txt_white,
-              shape: const CircleBorder(),
-              child: IconButton(
+                  image: DecorationImage(
+                      image: NetworkImage(thumbnailUrl), fit: BoxFit.cover),
+                  borderRadius: const BorderRadius.all(Radius.circular(12))),
+              alignment: Alignment.topRight,
+              child: RawMaterialButton(
+                constraints: BoxConstraints.tight(const Size(24, 24)),
                 padding: EdgeInsets.zero,
-                constraints: const BoxConstraints(),
-                icon: Image.asset("assets/images/ic_bookmark.png"),
                 onPressed: () {},
+                elevation: 0,
+                fillColor: ColorApp.txt_white,
+                shape: const CircleBorder(),
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                  icon: Image.asset("assets/images/ic_bookmark.png"),
+                  onPressed: () {},
+                ),
               ),
             ),
           ),
@@ -120,22 +129,19 @@ class ArticleContainer extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          Container(
-            width: Get.width,
-            padding: const EdgeInsets.only(right: 20),
-            child: desc.contains("<")
-                ? Html(data: desc)
-                : SizedBox(
-                    width: Get.width,
-                    child: Text(
-                      desc,
-                      style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: ColorApp.grey_font),
-                      maxLines: 2,
-                    ),
-                  ),
+          Expanded(
+            child: Container(
+              width: Get.width,
+              padding: const EdgeInsets.only(right: 20),
+              child: Text(
+                removeAllHtmlTags(desc),
+                style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: ColorApp.grey_font),
+                maxLines: 10000,
+              ),
+            ),
           )
         ],
       ),

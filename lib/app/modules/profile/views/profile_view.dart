@@ -36,7 +36,7 @@ class ProfileView extends GetView<ProfileController> {
               child: Column(
                 children: [
                   const SizedBox(
-                    height: 40,
+                    height: 20,
                   ),
                   Container(
                       margin: const EdgeInsets.only(top: 14),

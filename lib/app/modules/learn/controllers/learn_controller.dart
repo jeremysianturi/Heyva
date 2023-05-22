@@ -6,14 +6,25 @@ import 'package:heyva/app/modules/learn/model/program_list_model.dart';
 import 'package:heyva/app/modules/learn/provider/learn_provider.dart';
 import 'package:heyva/services/dio_services.dart';
 
+class FolderModel {
+  FolderModel({required this.name, required this.iconPath});
+
+  final String name;
+  final String iconPath;
+}
+
 class LearnController extends GetxController {
-  var folderList = <String>[
-    "Newborn",
-    "Postpartum",
-    "Feeding",
-    "Pelvic Health",
-    "Mental Health",
-    "Body Recovery",
+  var folderList = <FolderModel>[
+    FolderModel(
+        name: "Newborn", iconPath: "assets/icons/ic_postpartum1.svg"),
+    FolderModel(
+        name: "Postpartum", iconPath: "assets/icons/ic_postpartum2.svg"),
+    FolderModel(name: "Feeding", iconPath: "assets/icons/ic_feeding.svg"),
+    FolderModel(name: "Pelvic Health", iconPath: "assets/icons/ic_bones.svg"),
+    FolderModel(
+        name: "Mental Health", iconPath: "assets/icons/ic_mental_health.svg"),
+    FolderModel(
+        name: "Body Recovery", iconPath: "assets/icons/ic_body_recover.svg"),
   ];
 
   var isLoading = false.obs;
