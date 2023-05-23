@@ -69,7 +69,7 @@ class HomeView extends GetView<HomeController> {
                           },
                           child: CachedNetworkImage(
                             imageUrl: controller.profileAvatar,
-                            placeholder: (context, url) =>  const Padding(
+                            placeholder: (context, url) => const Padding(
                               padding: EdgeInsets.all(10),
                               child: CircularProgressIndicator(
                                 color: ColorApp.btn_orange,
@@ -79,7 +79,8 @@ class HomeView extends GetView<HomeController> {
                               backgroundImage: image,
                               radius: 150,
                             ),
-                            errorWidget: (context, url, error) => const Icon(Icons.error),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
                           )),
                       title: GestureDetector(
                         onTap: () async {
@@ -208,9 +209,9 @@ class HomeView extends GetView<HomeController> {
                                 );
                               }),
                             ),
-                            const SizedBox(
-                              height: 20,
-                            ),
+                            // const SizedBox(
+                            //   height: 20,
+                            // ),
                             Column(
                               children: [
                                 Row(

@@ -129,18 +129,16 @@ class ArticleContainer extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          Expanded(
-            child: Container(
-              width: Get.width,
-              padding: const EdgeInsets.only(right: 20),
-              child: Text(
-                removeAllHtmlTags(desc),
-                style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: ColorApp.grey_font),
-                maxLines: 10000,
-              ),
+          Container(
+            width: Get.width,
+            padding: const EdgeInsets.only(right: 20),
+            child: Text(
+              removeAllHtmlTags(desc),
+              style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: ColorApp.grey_font),
+              maxLines: 2,
             ),
           )
         ],
