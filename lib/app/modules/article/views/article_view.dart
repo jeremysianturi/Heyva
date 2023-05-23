@@ -77,35 +77,43 @@ class ArticleView extends GetView<ArticleController> {
                                 const SizedBox(
                                   height: 22,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      SizedBox(
-                                        height: 48,
-                                        child: ListView(
-                                            scrollDirection: Axis.horizontal,
-                                            shrinkWrap: true,
-                                            children: [
-                                              Wrap(
-                                                spacing: 8,
-                                                children: controller.tagsList
-                                                    .map(
-                                                      (e) => _buildChip(
-                                                          e.tag?.name ?? "",
-                                                          ColorApp.btn_pink),
-                                                    )
-                                                    .toList(),
-                                              )
-                                            ]),
-                                      ),
-                                      const SizedBox(
-                                        height: 4,
-                                      ),
-                                      Row(
+                                Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    SizedBox(
+                                      height: 48,
+                                      child: ListView(
+                                          scrollDirection: Axis.horizontal,
+                                          shrinkWrap: true,
+                                          children: [
+                                            Wrap(
+                                              spacing: 8,
+                                              children: controller.tagsList
+                                                  .asMap()
+                                                  .map(
+                                                    (i, element) => MapEntry(
+                                                      i,
+                                                      _buildChipCleaner(
+                                                        element.tag?.name ?? "",
+                                                        ColorApp.btn_pink,
+                                                        i,
+                                                        controller
+                                                            .tagsList.length,
+                                                      ),
+                                                    ),
+                                                  )
+                                                  .values
+                                                  .toList(),
+                                            )
+                                          ]),
+                                    ),
+                                    const SizedBox(
+                                      height: 4,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 20),
+                                      child: Row(
                                         children: [
                                           Flexible(
                                             child: Text(
@@ -119,10 +127,14 @@ class ArticleView extends GetView<ArticleController> {
                                           )
                                         ],
                                       ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Row(
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 20),
+                                      child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: const [
@@ -145,10 +157,14 @@ class ArticleView extends GetView<ArticleController> {
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(
-                                        height: 20,
-                                      ),
-                                      Html(
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 20),
+                                      child: Html(
                                         data: controller.renderedBody,
                                         style: {
                                           "body": Style(
@@ -156,7 +172,10 @@ class ArticleView extends GetView<ArticleController> {
                                           ),
                                         },
                                       ),
-                                      Row(
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 20),
+                                      child: Row(
                                         children: [
                                           const Text(
                                             Strings.article_helpfull_ques,
@@ -176,8 +195,7 @@ class ArticleView extends GetView<ArticleController> {
                                               style: TextStyle(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w600,
-                                                  color:
-                                                      ColorApp.blue_container),
+                                                  color: ColorApp.blue_container),
                                             ),
                                           ),
                                           TextButton.icon(
@@ -191,14 +209,13 @@ class ArticleView extends GetView<ArticleController> {
                                               style: TextStyle(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w600,
-                                                  color:
-                                                      ColorApp.blue_container),
+                                                  color: ColorApp.blue_container),
                                             ),
                                           ),
                                         ],
-                                      )
-                                    ],
-                                  ),
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ],
                             ),
@@ -215,18 +232,35 @@ class ArticleView extends GetView<ArticleController> {
   }
 }
 
-Widget _buildChip(String label, Color color) {
-  return Chip(
-    labelPadding: EdgeInsets.all(2.0),
-    label: Text(
-      label,
-      style: const TextStyle(
-        color: Colors.white,
+Widget _buildChipCleaner(String label, Color color, int index, int? listSize) {
+  if (listSize != 0) {
+    return Padding(
+      // padding: const EdgeInsets.only(left: 20),
+      padding: setPadding(index, listSize!),
+      child: Chip(
+        labelPadding: EdgeInsets.all(2.0),
+        label: Text(
+          label,
+          style: const TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: color,
+        elevation: 0,
+        shadowColor: Colors.grey[60],
+        padding: const EdgeInsets.all(8.0),
       ),
-    ),
-    backgroundColor: color,
-    elevation: 0,
-    shadowColor: Colors.grey[60],
-    padding: const EdgeInsets.all(8.0),
-  );
+    );
+  } else
+    return Container();
+}
+
+EdgeInsets setPadding(int index, int listSize) {
+  if (index == 0) {
+    return EdgeInsets.only(left: 20);
+  } else if (index == (listSize - 1)) {
+    return EdgeInsets.only(right: 20);
+  } else {
+    return EdgeInsets.only(right: 0);
+  }
 }

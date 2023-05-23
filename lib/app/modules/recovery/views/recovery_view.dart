@@ -48,6 +48,9 @@ class RecoveryView extends GetView<RecoveryController> {
               backgroundColor: Colors.transparent,
               body: Column(
                 children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: AppBar(

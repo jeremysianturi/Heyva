@@ -27,6 +27,7 @@ class ArticleController extends GetxController {
 
   List<Tags> get tagsList {
     var data = detailArticleResponse.value.data?[0].tags;
+    debugPrint("check value taglist: ${data?.length}");
     return data ?? [];
   }
 

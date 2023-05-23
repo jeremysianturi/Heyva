@@ -16,7 +16,7 @@ class FolderModel {
 class LearnController extends GetxController {
   var folderList = <FolderModel>[
     FolderModel(
-        name: "Postpartum", iconPath: "assets/icons/ic_postpartum1.svg"),
+        name: "Newborn", iconPath: "assets/icons/ic_postpartum1.svg"),
     FolderModel(
         name: "Postpartum", iconPath: "assets/icons/ic_postpartum2.svg"),
     FolderModel(name: "Feeding", iconPath: "assets/icons/ic_feeding.svg"),
