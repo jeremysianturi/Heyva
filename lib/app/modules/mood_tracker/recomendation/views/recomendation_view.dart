@@ -37,7 +37,7 @@ class RecomendationView extends GetView<RecomendationController> {
                     child: const Header(
                         showCenterTitle: true,
                         centerTitle: Strings.recomendation,
-                        rightText: Strings.skip,
+                        rightText: "",
                         showIcon: false)),
                 const SizedBox(
                   height: 24,

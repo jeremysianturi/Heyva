@@ -5,7 +5,6 @@ import 'package:heyva/app/modules/article/provider/article_provider.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/services/dio_services.dart';
 
-
 class ArticleController extends GetxController {
   var isLoading = false.obs;
   late DioClient _client;
@@ -39,6 +38,11 @@ class ArticleController extends GetxController {
   String get renderedBody {
     var data = detailArticleResponse.value.data?[0];
     return data?.renderedBody ?? "";
+  }
+
+  String get creator {
+    var data = detailArticleResponse.value.data?[0];
+    return data?.creator ?? "";
   }
 
   String get imgUrl {

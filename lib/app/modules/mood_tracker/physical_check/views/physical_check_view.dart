@@ -280,7 +280,7 @@ class InputForm extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
-                  maxLines: null,
+                  maxLines: 9,
                   minLines: 9,
                   controller: controller.otherC,
                   decoration: InputDecoration(

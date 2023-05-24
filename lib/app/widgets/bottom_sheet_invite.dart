@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/strings.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
 inviteFriends() {
   Get.bottomSheet(
@@ -70,7 +72,15 @@ inviteFriends() {
                       Image.asset("assets/icons/ic_arrow_right.png"),
                     ],
                   ),
-                  onPressed: () {
+                  onPressed: () async {
+                    var message =
+                        "i'm inviting you to install Heyva! Here is the link:https://";
+
+                    final link = WhatsAppUnilink(
+                        phoneNumber: '6584313869', text: message);
+                    await launchUrlString('$link',
+                        mode: LaunchMode.externalApplication);
+
                     Get.back();
                   },
                 ),

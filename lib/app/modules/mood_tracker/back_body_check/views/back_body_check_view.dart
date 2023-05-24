@@ -67,7 +67,7 @@ class MoodCheckForm1 extends StatelessWidget {
     var leng = data.jsonContent?.length ?? 0;
     return SingleChildScrollView(
       child: Container(
-        height: Get.height - 50,
+        height: Get.height,
         width: Get.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -77,7 +77,7 @@ class MoodCheckForm1 extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Column(
+            ListView(
               children: [
                 Container(
                     margin: const EdgeInsets.only(top: 80),
@@ -134,8 +134,8 @@ class MoodCheckForm1 extends StatelessWidget {
                         controller.frontList[index].jsonContent
                             ?.firstWhereOrNull((e) => e.isSelected == true)
                             ?.isSelected = false;
-                        controller.frontList[index].jsonContent?[i]
-                            .isSelected = true;
+                        controller.frontList[index].jsonContent?[i].isSelected =
+                            true;
                         controller.frontList.refresh();
                         Future.delayed(400.milliseconds, () {
                           if (controller.frontList.length !=
@@ -180,7 +180,7 @@ class MoodCheckForm1 extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.symmetric(horizontal: 20),
                         child: TextFormField(
-                          maxLines: null,
+                          maxLines: 9,
                           minLines: 9,
                           controller: controller.otherC,
                           decoration: InputDecoration(

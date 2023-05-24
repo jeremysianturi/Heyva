@@ -56,7 +56,11 @@ class BreathingOneController extends GetxController {
           programId: programId, programIdChild: ""))!;
       isLoading.value = false;
       if (data.success == "Success") {
+
       } else {}
+      Future.delayed(200.milliseconds, () {
+        getPelvic();
+      });
     } catch (e) {
       isLoading.value = false;
 
@@ -78,7 +82,7 @@ class BreathingOneController extends GetxController {
         box.write(Keys.programIdStorage, programListResponse.value.data![1].id);
         box.write(
             Keys.programIdChildStorage, programListResponse.value.data![1].id);
-        
+
         createProgramPersonal(programId: programListResponse.value.data![1].id);
       } else {
         errorMessage.value =
@@ -97,7 +101,8 @@ class BreathingOneController extends GetxController {
     errorMessage.value = "";
     isLoading.value = true;
     try {
-      pelvicResponse.value = (await _provider.getPelvic(pelvicID: box.read(Keys.programIdStorage)))!;
+      pelvicResponse.value = (await _provider.getPelvic(
+          pelvicID: box.read(Keys.programIdStorage)))!;
       isLoading.value = false;
 
       if (pelvicResponse.value.success == "Success") {

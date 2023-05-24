@@ -72,9 +72,7 @@ class BreathingOneView extends GetView<BreathingOneController> {
                                 controller.createProgramPersonalTracker(
                                     programId: controller.box
                                         .read(Keys.programIdChildStorage));
-                                Future.delayed(200.milliseconds, () {
-                                  controller.getPelvic();
-                                });
+
                               },
                               style: ButtonStyle(
                                 backgroundColor:

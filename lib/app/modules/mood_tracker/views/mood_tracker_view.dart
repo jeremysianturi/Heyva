@@ -28,7 +28,7 @@ class MoodTrackerView extends GetView<MoodTrackerController> {
               Container(
                   margin: const EdgeInsets.only(top: 50),
                   child:
-                      const Header(rightText: Strings.skip, showIcon: false)),
+                      const Header(rightText: '', showIcon: false)),
               const SizedBox(
                 height: 24,
               ),

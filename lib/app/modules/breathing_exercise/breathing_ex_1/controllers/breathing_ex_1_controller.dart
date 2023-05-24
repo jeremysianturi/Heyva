@@ -94,7 +94,7 @@ class BreathingEx1Controller extends GetxController {
   @override
   void onInit() {
     onPlay();
-    Future.delayed(600.milliseconds, () {
+    Future.delayed(700.milliseconds, () {
       // _start = 3;
       mainPeriode = _start / progresList.length;
       startTimerIndex(timerIndex, mainPeriode-1);
@@ -156,5 +156,24 @@ class BreathingEx1Controller extends GetxController {
 
   double normalize(double value, double min, double max) {
     return ((value - min) / (max - min)).clamp(0, 1);
+  }
+  
+  ontapVoice(){
+    if (showButton.isTrue) {
+      if (timerIndex == progresList.length - 1) {
+        // FocusScope.of(context).requestFocus(new FocusNode());
+        // if (audioPlayer != null) {
+        audioPlayer?.pause();
+        // }
+        Future.delayed(200.milliseconds, () {
+          pagePosition.value = 1;
+        });
+      } else {
+        showButton.value = false;
+        stop = 9999;
+        startTimerIndex(timerIndex,
+            mainPeriode - tick);
+      }
+    }
   }
 }

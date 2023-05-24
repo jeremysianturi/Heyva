@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:heyva/app/routes/app_pages.dart';
@@ -83,12 +84,14 @@ class ArticleContainer extends StatelessWidget {
                 elevation: 0,
                 fillColor: ColorApp.txt_white,
                 shape: const CircleBorder(),
-                child: IconButton(
-                  padding: EdgeInsets.zero,
-                  constraints: const BoxConstraints(),
-                  icon: Image.asset("assets/images/ic_bookmark.png"),
-                  onPressed: () {},
-                ),
+                // child:
+                // IconButton(
+                //   padding: EdgeInsets.zero,
+                //   constraints: const BoxConstraints(),
+                //   icon: Image.asset(""),
+                //   // icon: Image.asset("assets/images/ic_bookmark.png"),
+                //   onPressed: () {},
+                // ),
               ),
             ),
           ),
@@ -110,11 +113,18 @@ class ArticleContainer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                IconButton(
-                  icon: Image.asset(tagIcon),
-                  padding: EdgeInsets.zero,
-                  constraints: const BoxConstraints(),
-                  onPressed: () {},
+                // IconButton(
+                //   icon: Image.asset(tagIcon),
+                //   padding: EdgeInsets.zero,
+                //   constraints: const BoxConstraints(),
+                //   onPressed: () {},
+                // ),
+                SvgPicture.asset(
+                  "assets/icons/ic_article.svg",
+                  color: Colors.black,
+                ),
+                const SizedBox(
+                  width: 5,
                 ),
                 Text(
                   tag,

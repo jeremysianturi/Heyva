@@ -112,7 +112,8 @@ class ArticleView extends GetView<ArticleController> {
                                       height: 4,
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: 20),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
                                       child: Row(
                                         children: [
                                           Flexible(
@@ -132,25 +133,25 @@ class ArticleView extends GetView<ArticleController> {
                                       height: 10,
                                     ),
                                     Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 20),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
-                                        children: const [
-                                          Text(
+                                        children: [
+                                          const Text(
                                             Strings.created_by,
                                             style: TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w400,
                                                 color: ColorApp.black_font_30),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 4,
                                           ),
                                           Text(
-                                            Strings.dr_name,
-                                            style: TextStyle(
+                                            controller.creator,
+                                            style: const TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w600,
                                                 color: ColorApp.black_font_30),
@@ -162,59 +163,59 @@ class ArticleView extends GetView<ArticleController> {
                                       height: 20,
                                     ),
                                     Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 20),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
                                       child: Html(
                                         data: controller.renderedBody,
                                         style: {
                                           "body": Style(
-                                            fontSize: FontSize(16.0),
-                                          ),
+                                              // fontSize: FontSize(12.0),
+                                              ),
                                         },
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: 20),
-                                      child: Row(
-                                        children: [
-                                          const Text(
-                                            Strings.article_helpfull_ques,
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w400,
-                                                color: ColorApp.black_font_30),
-                                          ),
-                                          TextButton.icon(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                              Icons.thumb_up,
-                                              color: ColorApp.yellow_icon,
-                                            ),
-                                            label: const Text(
-                                              Strings.yes,
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: ColorApp.blue_container),
-                                            ),
-                                          ),
-                                          TextButton.icon(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                              Icons.thumb_down,
-                                              color: ColorApp.yellow_icon,
-                                            ),
-                                            label: const Text(
-                                              Strings.no,
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: ColorApp.blue_container),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    )
+                                    // Padding(
+                                    //   padding: EdgeInsets.symmetric(horizontal: 20),
+                                    //   child: Row(
+                                    //     children: [
+                                    //       const Text(
+                                    //         Strings.article_helpfull_ques,
+                                    //         style: TextStyle(
+                                    //             fontSize: 14,
+                                    //             fontWeight: FontWeight.w400,
+                                    //             color: ColorApp.black_font_30),
+                                    //       ),
+                                    //       TextButton.icon(
+                                    //         onPressed: () {},
+                                    //         icon: const Icon(
+                                    //           Icons.thumb_up,
+                                    //           color: ColorApp.yellow_icon,
+                                    //         ),
+                                    //         label: const Text(
+                                    //           Strings.yes,
+                                    //           style: TextStyle(
+                                    //               fontSize: 14,
+                                    //               fontWeight: FontWeight.w600,
+                                    //               color: ColorApp.blue_container),
+                                    //         ),
+                                    //       ),
+                                    //       TextButton.icon(
+                                    //         onPressed: () {},
+                                    //         icon: const Icon(
+                                    //           Icons.thumb_down,
+                                    //           color: ColorApp.yellow_icon,
+                                    //         ),
+                                    //         label: const Text(
+                                    //           Strings.no,
+                                    //           style: TextStyle(
+                                    //               fontSize: 14,
+                                    //               fontWeight: FontWeight.w600,
+                                    //               color: ColorApp.blue_container),
+                                    //         ),
+                                    //       ),
+                                    //     ],
+                                    //   ),
+                                    // )
                                   ],
                                 ),
                               ],
@@ -238,7 +239,7 @@ Widget _buildChipCleaner(String label, Color color, int index, int? listSize) {
       // padding: const EdgeInsets.only(left: 20),
       padding: setPadding(index, listSize!),
       child: Chip(
-        labelPadding: EdgeInsets.all(2.0),
+        labelPadding: const EdgeInsets.all(2.0),
         label: Text(
           label,
           style: const TextStyle(
@@ -257,10 +258,10 @@ Widget _buildChipCleaner(String label, Color color, int index, int? listSize) {
 
 EdgeInsets setPadding(int index, int listSize) {
   if (index == 0) {
-    return EdgeInsets.only(left: 20);
+    return const EdgeInsets.only(left: 20);
   } else if (index == (listSize - 1)) {
-    return EdgeInsets.only(right: 20);
+    return const EdgeInsets.only(right: 20);
   } else {
-    return EdgeInsets.only(right: 0);
+    return const EdgeInsets.only(right: 0);
   }
 }

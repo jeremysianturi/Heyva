@@ -146,4 +146,23 @@ class BreathingEx3Controller extends GetxController {
   double normalize(double value, double min, double max) {
     return ((value - min) / (max - min)).clamp(0, 1);
   }
+  
+  ontapVoice(){
+    if (showButton.isTrue) {
+      if (timerIndex == progresList.length - 1) {
+        // FocusScope.of(context).requestFocus(new FocusNode());
+        // if (audioPlayer != null) {
+        audioPlayer?.pause();
+        // }
+        Future.delayed(200.milliseconds, () {
+          pagePosition.value = 1;
+        });
+      } else {
+        showButton.value = false;
+        stop = 9999;
+        startTimerIndex(timerIndex,
+            mainPeriode - tick);
+      }
+    }
+  }
 }

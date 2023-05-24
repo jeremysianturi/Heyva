@@ -68,20 +68,23 @@ class EditProfileView extends GetView<EditProfileController> {
                             height: 80,
                             width: 80,
                             child: controller.filePath.value == ""
-                                ?  CachedNetworkImage(
-                              imageUrl: controller.profileAvatar,
-                              placeholder: (context, url) =>  const Padding(
-                                padding: EdgeInsets.all(10),
-                                child: CircularProgressIndicator(
-                                  color: ColorApp.btn_orange,
-                                ),
-                              ),
-                              imageBuilder: (context, image) => CircleAvatar(
-                                backgroundImage: image,
-                                radius: 150,
-                              ),
-                              errorWidget: (context, url, error) => const Icon(Icons.error),
-                            )
+                                ? CachedNetworkImage(
+                                    imageUrl: controller.profileAvatar,
+                                    placeholder: (context, url) =>
+                                        const Padding(
+                                      padding: EdgeInsets.all(10),
+                                      child: CircularProgressIndicator(
+                                        color: ColorApp.btn_orange,
+                                      ),
+                                    ),
+                                    imageBuilder: (context, image) =>
+                                        CircleAvatar(
+                                      backgroundImage: image,
+                                      radius: 150,
+                                    ),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                  )
                                 : CircleAvatar(
                                     backgroundImage: FileImage(
                                         File(controller.filePath.value)),
@@ -113,21 +116,21 @@ class EditProfileView extends GetView<EditProfileController> {
                             isPassword: false,
                           ),
                         ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        Obx(
-                          () => RegularTextField(
-                            controller: controller.phoneC,
-                            isObsecure: false,
-                            isError: controller.errorMessage.isNotEmpty,
-                            hint: Strings.phone_number,
-                            ontap: () {},
-                            isPassword: false,
-                            isNumber: true,
-                            isEnable: false,
-                          ),
-                        ),
+                        // const SizedBox(
+                        //   height: 24,
+                        // ),
+                        // Obx(
+                        //   () => RegularTextField(
+                        //     controller: controller.phoneC,
+                        //     isObsecure: false,
+                        //     isError: controller.errorMessage.isNotEmpty,
+                        //     hint: Strings.phone_number,
+                        //     ontap: () {},
+                        //     isPassword: false,
+                        //     isNumber: true,
+                        //     isEnable: false,
+                        //   ),
+                        // ),
                         const SizedBox(
                           height: 24,
                         ),

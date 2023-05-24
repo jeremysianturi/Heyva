@@ -127,8 +127,7 @@ class MoodCheckForm1 extends StatelessWidget {
                   height: 50,
                 ),
                 Obx(() {
-                  var item =
-                      controller.moodList[controller.pagePosition.value];
+                  var item = controller.moodList[controller.pagePosition.value];
                   var itemLength = item.jsonContent?.length ?? 0;
                   return Column(
                     children: [
@@ -166,7 +165,8 @@ class MoodCheckForm1 extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.symmetric(horizontal: 20),
                         child: TextFormField(
-                          maxLines: null,
+                          maxLines:
+                              item.jsonContent.toString() != "null" ? 1 : 9,
                           minLines:
                               item.jsonContent.toString() != "null" ? 1 : 9,
                           controller: controller.otherC,

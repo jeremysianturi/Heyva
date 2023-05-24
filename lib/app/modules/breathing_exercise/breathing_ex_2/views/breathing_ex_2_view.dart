@@ -464,7 +464,6 @@ class VoiceOver extends StatelessWidget {
                 ),
               ),
             )),
-
             Obx(
               () => controller.showButton.isTrue
                   ? Text(
@@ -476,61 +475,11 @@ class VoiceOver extends StatelessWidget {
                           fontWeight: FontWeight.w500),
                       textAlign: TextAlign.center,
                     )
-
-                  // OrangeButtonWTrailingIcon(
-                  //         determineAction: "ontap",
-                  //         text: Strings.next,
-                  //         ontap: () {
-                  //           // FocusScope.of(context).requestFocus(new FocusNode());
-                  //           // if (controller.audioPlayer != null) {
-                  //           controller.audioPlayer?.pause();
-                  //           // }
-                  //           Future.delayed(200.milliseconds, () {
-                  //             controller.pagePosition.value = 1;
-                  //           });
-                  //         },
-                  //       )
                   : const SizedBox(),
             ),
-
             const SizedBox(
               height: 20,
             ),
-
-            // InkWell(
-            //     onTap: () {
-            //       if (controller.audioPlayer != null) {
-            //         controller.audioPlayer?.pause();
-            //       }
-            //       Future.delayed(20.milliseconds, () {
-            //         controller.pagePosition.value = 1;
-            //       });
-            //     },
-            //     child: Container(
-            //       margin: const EdgeInsets.only(top: 10),
-            //       padding: const EdgeInsets.only(
-            //           left: 30, right: 30, top: 12, bottom: 6),
-            //       decoration: BoxDecoration(
-            //         borderRadius: BorderRadius.circular(15),
-            //         color: Colors.white,
-            //         boxShadow: [
-            //           BoxShadow(
-            //             color: Colors.grey.withOpacity(0.2),
-            //             spreadRadius: 2,
-            //             blurRadius: 2,
-            //             offset:
-            //                 const Offset(0, 2), // changes position of shadow
-            //           ),
-            //         ],
-            //       ),
-            //       child: const Text(
-            //         "Next",
-            //         style: TextStyle(
-            //             fontWeight: FontWeight.w500,
-            //             fontSize: 18,
-            //             color: ColorApp.gery_voice_over),
-            //       ),
-            //     )),
           ],
         ),
       ),

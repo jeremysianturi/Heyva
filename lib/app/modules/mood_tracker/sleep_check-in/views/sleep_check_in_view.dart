@@ -172,7 +172,8 @@ class MoodCheckForm1 extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.symmetric(horizontal: 20),
                         child: TextFormField(
-                          maxLines: null,
+                          maxLines:
+                              item.jsonContent.toString() != "null" ? 1 : 9,
                           minLines:
                               item.jsonContent.toString() != "null" ? 1 : 9,
                           controller: controller.otherC,
@@ -331,8 +332,8 @@ class MoodCheckForm2 extends StatelessWidget {
                         controller.sleepList[index].jsonContent
                             ?.firstWhereOrNull((e) => e.isSelected == true)
                             ?.isSelected = false;
-                        controller.sleepList[index].jsonContent?[i]
-                            .isSelected = true;
+                        controller.sleepList[index].jsonContent?[i].isSelected =
+                            true;
                         controller.sleepList.refresh();
                       },
                       child: Container(

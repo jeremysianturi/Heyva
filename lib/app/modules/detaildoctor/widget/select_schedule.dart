@@ -69,7 +69,9 @@ class SelectScheduleWidget extends StatelessWidget {
                     context: context,
                     initialTime: controller.selectedTime.value!,
                   );
-                  controller.selectedTime.value = selectedTime;
+                  if (selectedTime != null) {
+                    controller.selectedTime.value = selectedTime;
+                  }
                 },
                 text:
                     "${controller.selectedHour} : ${controller.selectedMinutes}",

@@ -13,7 +13,7 @@ class BreathingTimerController extends GetxController {
   }
 
   late Timer timer;
-  int _start = 16000;
+  final int _start = 16000;
 
   void startTimer() {
     const oneSec = Duration(milliseconds: 1);

@@ -145,7 +145,6 @@ class DetailDoctorController extends GetxController {
         "Hi, my name is ${box.read(Keys.profileName)}. I want to book $doctorName on ${dateFormat.format(selectedDay.value!)} at $selectedHour:$selectedMinutes via ${listService.firstWhereOrNull((e) => e.isSelected.isTrue)?.title}.";
 
     final link = WhatsAppUnilink(phoneNumber: phoneNumber, text: message);
-
-    await launchUrlString('$link');
+    await launchUrlString('$link', mode: LaunchMode.externalApplication);
   }
 }

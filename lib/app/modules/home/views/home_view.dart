@@ -200,7 +200,8 @@ class HomeView extends GetView<HomeController> {
                                   containerColor: ColorApp.blue_container,
                                   title: data?.contents?.title ?? "",
                                   tag: data?.contentType?.name ?? "",
-                                  tagIcon: "assets/images/ic_bookmark.png",
+                                  tagIcon: "",
+                                  // tagIcon: "assets/images/ic_bookmark.png",
                                   desc: controller.parseHtmlString(
                                       data?.contents!.body ?? ""),
                                   contentId: data?.contents?.id ?? "",

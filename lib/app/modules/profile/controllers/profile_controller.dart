@@ -36,7 +36,7 @@ class ProfileController extends GetxController {
     "Invite Friends",
     "Privacy Policy",
     "Terms of Service",
-    "Rate our App",
+    // "Rate our App",
     "Notification Settings",
   ];
 
@@ -55,8 +55,8 @@ class ProfileController extends GetxController {
       Get.toNamed(Routes.IN_APP_WEB_VIEW,
           arguments: {Keys.arUrl: "http://54.169.131.201/#/termsofservice"});
     }
-    if (index == 4) {}
-    if (index == 5) {
+    // if (index == 4) {}
+    if (index == 4) {
       Get.toNamed(Routes.NOTIFICATION_SETTINGS);
     }
   }
