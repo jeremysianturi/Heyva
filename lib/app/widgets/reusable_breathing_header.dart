@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../constant/colors.dart';
-import '../../constant/strings.dart';
 
 class BreathingHeader extends StatelessWidget {
   const BreathingHeader({
@@ -84,7 +83,8 @@ class BreathingHeader extends StatelessWidget {
               Container(),
               TextButton(
                 onPressed: () {},
-                child: const Text(Strings.skip, style: TextStyle(color: ColorApp.txt_white, fontSize: 16, fontWeight: FontWeight.w600),),
+                // child: const Text(Strings.skip, style: TextStyle(color: ColorApp.txt_white, fontSize: 16, fontWeight: FontWeight.w600),),
+                child: const Text("", style: TextStyle(color: ColorApp.txt_white, fontSize: 16, fontWeight: FontWeight.w600),),
               ),
             ],
           ),

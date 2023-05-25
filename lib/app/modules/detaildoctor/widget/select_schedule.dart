@@ -68,6 +68,13 @@ class SelectScheduleWidget extends StatelessWidget {
                   var selectedTime = await showTimePicker(
                     context: context,
                     initialTime: controller.selectedTime.value!,
+                    builder: (context, childWidget) {
+                      return MediaQuery(
+                        data:
+                            MediaQuery.of(context).copyWith(textScaleFactor: 1),
+                        child: childWidget!,
+                      );
+                    },
                   );
                   if (selectedTime != null) {
                     controller.selectedTime.value = selectedTime;

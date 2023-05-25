@@ -22,6 +22,7 @@ class FolderItemList extends StatelessWidget {
       padding: EdgeInsets.zero,
       children: List.generate(controller.folderList.length, (index) {
         return FolderItem(
+          tagId: controller.folderList[index].tagId,
           title: controller.folderList[index].name,
           iconPath: controller.folderList[index].iconPath,
         );

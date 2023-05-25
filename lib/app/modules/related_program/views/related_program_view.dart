@@ -32,7 +32,8 @@ class RelatedProgramView extends GetView<RelatedProgramController> {
               Container(
                   margin: const EdgeInsets.only(top: 50),
                   child: const Header(
-                      rightText: Strings.skip,
+                      rightText: "",
+                      // rightText: Strings.skip,
                       centerTitle: Strings.related_program,
                       showCenterTitle: true,
                       showIcon: true)),
@@ -43,6 +44,7 @@ class RelatedProgramView extends GetView<RelatedProgramController> {
                 height: 30,
                 child: ListView.builder(
                   shrinkWrap: true,
+                  controller: controller.scrollController,
                   scrollDirection: Axis.horizontal,
                   itemCount: controller.tagList.length,
                   itemBuilder: (context, index) => ProgramTab(

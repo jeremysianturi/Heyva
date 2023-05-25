@@ -189,7 +189,8 @@ class MultipleChoice extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  Strings.skip,
+                  "",
+                  // Strings.skip,
                   style: TextStyle(
                       decoration: TextDecoration.none,
                       color: ColorApp.black.withOpacity(0.3),
@@ -325,7 +326,8 @@ class ImportantNotes extends StatelessWidget {
                           Get.toNamed(Routes.BREATHING_FEELINGS);
                         },
                         child: Text(
-                          Strings.skip,
+                          "",
+                          // Strings.skip,
                           style: TextStyle(
                               decoration: TextDecoration.none,
                               color: ColorApp.black.withOpacity(0.3),

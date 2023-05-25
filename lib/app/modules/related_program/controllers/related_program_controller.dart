@@ -4,19 +4,47 @@ import 'package:heyva/app/modules/related_program/model/content_list_model.dart'
 import 'package:heyva/app/modules/related_program/model/tags_model.dart'
     as tags;
 import 'package:heyva/app/modules/related_program/provider/related_program_provider.dart';
+import 'package:heyva/constant/keys.dart';
 import 'package:heyva/services/dio_services.dart';
 
 class RelatedProgramController extends GetxController {
   // var listProgram = <ProgramModel>[].obs;
   var switchbutton = false.obs;
+  dynamic argumentData = Get.arguments;
+  var sendedTagId = "";
+  final ScrollController scrollController = ScrollController();
+
+  getArguments() {
+    if (argumentData != null) {
+      sendedTagId = argumentData[Keys.learnTagId].toString();
+      onArgumentTags(id: sendedTagId);
+    } else {
+      getListContent(tags: "");
+    }
+  }
 
   @override
   void onInit() {
     _client = RefreshDioClient();
     _programProvider = RelatedProgramProvider(_client.init());
-    getListContent(tags: "");
     getTagList();
+
     super.onInit();
+  }
+
+  onArgumentTags({required String id}) {
+    tagList.firstWhereOrNull((e) => e.isSelected == true)?.isSelected = false;
+    tagList.firstWhereOrNull((e) => e.id == id)?.isSelected = true;
+    var index = tagList.indexWhere((e) => e.id == id);
+    tagList.refresh();
+    // scrollController.animateTo(
+    //   scrollController.position.,
+    //   duration: Duration(seconds: 2),
+    //   curve: Curves.fastOutSlowIn,
+    // );
+    scrollController.jumpTo(index * (Get.width / 4));
+
+    getListContent(tags: id);
   }
 
   ontapProgramsTab({required int index}) {
@@ -87,6 +115,7 @@ class RelatedProgramController extends GetxController {
         tagListResponse.value.data?.forEach((e) {
           tagList.add(e);
         });
+        getArguments();
       } else {
         errorMessage.value = tagListResponse.value.message ?? "Error Message";
       }

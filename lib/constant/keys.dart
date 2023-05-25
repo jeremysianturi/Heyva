@@ -79,5 +79,6 @@ class Keys {
   /// url
   static const String arUrl = "URL_ARGUMENTS";
 
-  ///
+  /// learn
+  static const String learnTagId  = "LEARN_TAG_ID";
 }

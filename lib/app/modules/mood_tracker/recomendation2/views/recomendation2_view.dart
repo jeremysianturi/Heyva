@@ -45,7 +45,7 @@ class Recomendation2View extends GetView<Recomendation2Controller> {
                         showCenterTitle: true,
                         centerTitle: Strings.recomendation,
                         rightText: '',
-                        showIcon: true)),
+                        showIcon: false)),
                 const SizedBox(
                   height: 24,
                 ),
@@ -54,7 +54,7 @@ class Recomendation2View extends GetView<Recomendation2Controller> {
                   child: Text(
                     "More relevant articles",
                     style: TextStyle(
-                        color: ColorApp.black,
+                        color: ColorApp.blue_container,
                         fontWeight: FontWeight.w700,
                         fontSize: 28),
                     textAlign: TextAlign.center,

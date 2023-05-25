@@ -5,6 +5,7 @@ import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_header.dart';
 import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/constant/colors.dart';
+import 'package:heyva/constant/function.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
@@ -62,7 +63,8 @@ class MoodCheckForm1 extends StatelessWidget {
                   child: const Header(
                       showCenterTitle: true,
                       centerTitle: Strings.physicalCheckIn,
-                      rightText: Strings.skip,
+                      rightText: "",
+                      // rightText: Strings.skip,
                       titleColor: ColorApp.blue_container,
                       showIcon: false)),
               const SizedBox(
@@ -123,8 +125,7 @@ class MoodCheckForm1 extends StatelessWidget {
                         ontap: () {
                           // controller.pagePosition + 1;
 
-                          FocusScope.of(context)
-                              .requestFocus(new FocusNode());
+                          FocusScope.of(context).requestFocus(new FocusNode());
                           Get.toNamed(Routes.MOOD_TRACKER_FORM);
                         },
                       )
@@ -215,111 +216,116 @@ class InputForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: Get.height,
-      width: Get.width,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/bg_heyva.png"),
-          fit: BoxFit.fill,
-        ),
-      ),
-      child: Stack(
-        children: [
-          Column(
-            children: [
-              Container(
-                  margin: const EdgeInsets.only(top: 60),
-                  child: Header(
-                      showCenterTitle: true,
-                      centerTitle: Strings.physicalCheckIn,
-                      rightText: Strings.skip,
-                      isCostomBackFucntion: true,
-                      onBack: () {
-                        controller.pagePosition--;
-                      },
-                      showIcon: false)),
-              const SizedBox(
-                height: 24,
-              ),
-              Text(
-                title,
-                style: const TextStyle(
-                    fontWeight: FontWeight.w700, fontSize: 28),
-                textAlign: TextAlign.center,
-              ),
-              if (subtitle != "")
-                Column(
-                  children: [
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Text(
-                      subtitle,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                          color: ColorApp.grey_font),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              Expanded(child: Container()),
-              OrangeButtonWTrailingIcon(
-                determineAction: "ontap",
-                text: Strings.lets_go,
-                ontap: () {
-                  ontap();
-                },
-              )
-            ],
+    return GestureDetector(
+      onTap: () {
+        Keyboard.dismiss();
+      },
+      child: Container(
+        height: Get.height,
+        width: Get.width,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/bg_heyva.png"),
+            fit: BoxFit.fill,
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextFormField(
-                  maxLines: 9,
-                  minLines: 9,
-                  controller: controller.otherC,
-                  decoration: InputDecoration(
-                    hintText: Strings.other,
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 17, horizontal: 20),
-                    filled: true,
-                    fillColor: ColorApp.white,
-                    hintStyle: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: ColorApp.grey_font),
-                    labelStyle: const TextStyle(
-                        fontSize: 16,
-                        color: ColorApp.blue_container,
-                        fontWeight: FontWeight.w400),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14.0),
-                      borderSide: const BorderSide(
-                        color: Colors.red,
-                        width: 0.8,
+        ),
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                Container(
+                    margin: const EdgeInsets.only(top: 60),
+                    child: Header(
+                        showCenterTitle: true,
+                        centerTitle: Strings.physicalCheckIn,
+                        rightText: Strings.skip,
+                        isCostomBackFucntion: true,
+                        onBack: () {
+                          controller.pagePosition--;
+                        },
+                        showIcon: false)),
+                const SizedBox(
+                  height: 24,
+                ),
+                Text(
+                  title,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w700, fontSize: 28),
+                  textAlign: TextAlign.center,
+                ),
+                if (subtitle != "")
+                  Column(
+                    children: [
+                      const SizedBox(
+                        height: 16,
                       ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14.0),
-                      borderSide: const BorderSide(
-                        color: Colors.red,
-                        width: 0.8,
+                      Text(
+                        subtitle,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            color: ColorApp.grey_font),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                Expanded(child: Container()),
+                OrangeButtonWTrailingIcon(
+                  determineAction: "ontap",
+                  text: Strings.lets_go,
+                  ontap: () {
+                    ontap();
+                  },
+                )
+              ],
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  child: TextFormField(
+                    maxLines: 9,
+                    minLines: 9,
+                    controller: controller.otherC,
+                    decoration: InputDecoration(
+                      hintText: Strings.other,
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 17, horizontal: 20),
+                      filled: true,
+                      fillColor: ColorApp.white,
+                      hintStyle: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: ColorApp.grey_font),
+                      labelStyle: const TextStyle(
+                          fontSize: 16,
+                          color: ColorApp.blue_container,
+                          fontWeight: FontWeight.w400),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(14.0),
+                        borderSide: const BorderSide(
+                          color: Colors.red,
+                          width: 0.8,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(14.0),
+                        borderSide: const BorderSide(
+                          color: Colors.red,
+                          width: 0.8,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

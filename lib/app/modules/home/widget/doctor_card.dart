@@ -82,7 +82,11 @@ class DoctorCard extends StatelessWidget {
             trailing: RawMaterialButton(
               constraints: BoxConstraints.tight(const Size(24, 24)),
               padding: EdgeInsets.zero,
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(Routes.DETAIL_DOCTOR, arguments: {
+                  Keys.doctorIdArguments: data?.id ?? "",
+                });
+              },
               elevation: 0,
               fillColor: ColorApp.txt_white,
               shape: const CircleBorder(),
@@ -90,7 +94,11 @@ class DoctorCard extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
                 icon: const Icon(Icons.arrow_forward_ios),
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(Routes.DETAIL_DOCTOR, arguments: {
+                    Keys.doctorIdArguments: data?.id ?? "",
+                  });
+                },
               ),
             ),
           ),

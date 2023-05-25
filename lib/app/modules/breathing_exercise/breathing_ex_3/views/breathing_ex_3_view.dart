@@ -197,7 +197,8 @@ class MultipleChoice extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  Strings.skip,
+                  "",
+                  // Strings.skip,
                   style: TextStyle(
                       decoration: TextDecoration.none,
                       color: ColorApp.black.withOpacity(0.3),
@@ -332,7 +333,8 @@ class ImportantNotes extends StatelessWidget {
                           controller.pagePosition + 1;
                         },
                         child: Text(
-                          Strings.skip,
+                          "",
+                          // Strings.skip,
                           style: TextStyle(
                               decoration: TextDecoration.none,
                               color: ColorApp.black.withOpacity(0.3),

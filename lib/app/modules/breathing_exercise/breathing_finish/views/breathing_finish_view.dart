@@ -63,7 +63,8 @@ class BreathingFinishView extends GetView<BreathingFinishController> {
                     ),
                     Expanded(
                       child: Text(
-                        Strings.skip,
+                        "",
+                        // Strings.skip,
                         style: TextStyle(
                             decoration: TextDecoration.none,
                             color: ColorApp.black.withOpacity(0.3),
