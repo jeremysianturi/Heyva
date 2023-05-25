@@ -74,10 +74,10 @@ inviteFriends() {
                   ),
                   onPressed: () async {
                     var message =
-                        "i'm inviting you to install Heyva! Here is the link:https://";
+                        "Hey, let’s try Heyva together. It really helps me as a woman. I think you should try it. Click the link to install the app:  https://heyva.page.link/referral";
 
                     final link = WhatsAppUnilink(
-                        phoneNumber: '6584313869', text: message);
+                        phoneNumber: '+6584313869', text: message);
                     await launchUrlString('$link',
                         mode: LaunchMode.externalApplication);
 
