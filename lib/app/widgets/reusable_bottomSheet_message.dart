@@ -1,18 +1,19 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 
 bottomSheetMessage({String desc = "", String color = "red"}) {
-
   var colorText = Colors.white;
-  var colorBg = Colors.green;
+  Color colorBg = Colors.green;
   if (color == "red") {
     colorText = Colors.white;
     colorBg = Colors.red;
   } else if (color == "yellow") {
     colorText = Colors.white;
     colorBg = Colors.yellow;
+  } else if (color == "heyva") {
+    colorText = Color(0xFFE7947D);
+    colorBg = Color(0xFFFFFAF6);
   } else {
     // green
     colorText = Colors.white;
@@ -38,10 +39,10 @@ bottomSheetMessage({String desc = "", String color = "red"}) {
             child: Center(
               child: Text(
                 desc,
-                style : TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12,
-                    color: colorText,
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 12,
+                  color: colorText,
                 ),
                 textAlign: TextAlign.center,
               ),

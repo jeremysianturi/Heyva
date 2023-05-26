@@ -77,22 +77,22 @@ class ArticleContainer extends StatelessWidget {
                       image: NetworkImage(thumbnailUrl), fit: BoxFit.cover),
                   borderRadius: const BorderRadius.all(Radius.circular(12))),
               alignment: Alignment.topRight,
-              child: RawMaterialButton(
-                constraints: BoxConstraints.tight(const Size(24, 24)),
-                padding: EdgeInsets.zero,
-                onPressed: () {},
-                elevation: 0,
-                fillColor: ColorApp.txt_white,
-                shape: const CircleBorder(),
-                // child:
-                // IconButton(
-                //   padding: EdgeInsets.zero,
-                //   constraints: const BoxConstraints(),
-                //   icon: Image.asset(""),
-                //   // icon: Image.asset("assets/images/ic_bookmark.png"),
-                //   onPressed: () {},
-                // ),
-              ),
+              // child: RawMaterialButton(
+              //   constraints: BoxConstraints.tight(const Size(24, 24)),
+              //   padding: EdgeInsets.zero,
+              //   onPressed: () {},
+              //   elevation: 0,
+              //   fillColor: ColorApp.txt_white,
+              //   shape: const CircleBorder(),
+              //   // child:
+              //   // IconButton(
+              //   //   padding: EdgeInsets.zero,
+              //   //   constraints: const BoxConstraints(),
+              //   //   icon: Image.asset(""),
+              //   //   // icon: Image.asset("assets/images/ic_bookmark.png"),
+              //   //   onPressed: () {},
+              //   // ),
+              // ),
             ),
           ),
           const SizedBox(

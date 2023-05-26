@@ -66,16 +66,22 @@ class EditProfileController extends GetxController {
           fullName: fullnameC.text.toString()))!;
 
       if (updateProfileResponse.value.success == "Success") {
+        bottomSheetMessage(
+            color: "heyva", desc: "Your profile has been updated.");
+
         Future.delayed(2.seconds, () {
           isLoading.value = false;
+          if (Get.isBottomSheetOpen == true) {
+            Get.back();
+          }
           Get.back(result: "true");
         });
       } else {
         // errorMessage.value =
         //     updateProfileResponse.value.message ?? "Error Message";
         bottomSheetMessage(
-            color: "red",
-            desc: updateProfileResponse.value.message ?? "Error Message");
+            color: "heyva",
+            desc: "Oops! There is an error saving your profile.");
       }
     } catch (e) {
       isLoading.value = false;

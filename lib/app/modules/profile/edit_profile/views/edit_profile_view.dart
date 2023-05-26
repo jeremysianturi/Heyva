@@ -161,8 +161,8 @@ class EditProfileView extends GetView<EditProfileController> {
                                 controller.updateProfile();
                               } else {
                                 bottomSheetMessage(
-                                    color: "red",
-                                    desc: "no data has been changed");
+                                    color: "heyva",
+                                    desc: "There is no changes to your profile");
                               }
                             },
                           ),

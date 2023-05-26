@@ -53,6 +53,12 @@ class DetailDoctorController extends GetxController {
   String get id {
     return argumentData[Keys.doctorIdArguments].toString();
   }
+  String toDoubleDigit(String data){
+   if(data.length ==  1) {
+     return "0$data";
+   }
+    return data;
+  }
 
   String get selectedHour {
     if (selectedTime.value!.hour.toString().length == 1) {

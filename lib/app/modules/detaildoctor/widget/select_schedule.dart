@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/detaildoctor/widget/month_time_select_Widget.dart';
+import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
 import 'package:intl/intl.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -76,8 +78,26 @@ class SelectScheduleWidget extends StatelessWidget {
                       );
                     },
                   );
+                  var selectedToInt = int.parse(
+                      "${controller.toDoubleDigit(selectedTime?.hour.toString() ?? "")}${controller.toDoubleDigit(selectedTime?.minute.toString() ?? "")}");
+                  var dateNowToInt = int.parse(
+                      "${controller.toDoubleDigit(controller.selectedTime.value?.hour.toString() ?? "")}${controller.toDoubleDigit(controller.selectedTime.value?.minute.toString() ?? "")}");
+                    var selectedDay =
+                      "${controller.selectedDay.value?.day}${controller.selectedDay.value?.month}${controller.selectedDay.value?.year}";
+                  var dateNow =
+                      "${DateTime.now().day}${DateTime.now().month}${DateTime.now().year}";
+                  debugPrint(selectedDay);
+                  debugPrint(dateNow);
                   if (selectedTime != null) {
-                    controller.selectedTime.value = selectedTime;
+                    if (selectedDay == dateNow &&
+                        selectedToInt > dateNowToInt) {
+                      controller.selectedTime.value = selectedTime;
+                    } else if (selectedDay != dateNow) {
+                      controller.selectedTime.value = selectedTime;
+                    } else {
+                      bottomSheetMessage(
+                          color: "heyva", desc: "Time that has passed could not be selected.");
+                    }
                   }
                 },
                 text:
@@ -104,6 +124,10 @@ class SelectScheduleWidget extends StatelessWidget {
                 if (!isSameDay(controller.selectedDay.value, selectedDay)) {
                   controller.selectedDay.value = selectedDay;
                   controller.focusedDay.value = focusedDay;
+                }
+
+                if (isSameDay(controller.selectedDay.value, selectedDay)) {
+                  controller.selectedTime.value = TimeOfDay.now();
                 }
               },
               onFormatChanged: (format) {
