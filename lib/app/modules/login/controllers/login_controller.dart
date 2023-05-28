@@ -107,14 +107,13 @@ class LoginController extends GetxController {
     isLoading.value = true;
     var userId = box.read(Keys.loginID);
     var refres = box.read(Keys.loginRefreshToken);
-    box.write(Keys.loginAccessToken, "");
+    // box.write(Keys.loginAccessToken, "");
     isRefresh = true;
     Future.delayed(800.milliseconds);
     try {
       response.value = (await _refreshprovider.refreshToken(
           refreshToken: refres, userId: userId))!;
       isLoading.value = false;
-
       if (response.value.success == "Success") {
         debugPrint("refresh cusess -----------------------");
         Future.delayed(800.milliseconds);
@@ -130,6 +129,7 @@ class LoginController extends GetxController {
         onInit();
         debugPrint("new token ${box.read(Keys.loginAccessToken)}");
       } else {
+        debugPrint("refresh false ${box.read(Keys.loginAccessToken)}");
         errorMessage.value = response.value.message ?? "Error Message";
       }
     } catch (e) {

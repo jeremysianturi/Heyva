@@ -1,4 +1,5 @@
-class Strings {
+class
+Strings {
   Strings._();
 
   static const String tagline_splash = "Empowering women through health";
@@ -230,4 +231,6 @@ class Strings {
   static const String txtdownEmptySyInsight =
       ". But don’t worry, let’s start now!";
   static const String startNow = "Start Now";
+  static const String yourSessionExpired = "Your session has expired!";
+  static const String pleaseLogin = "Please log in.";
 }

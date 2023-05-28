@@ -12,13 +12,16 @@ class InitialPageView extends GetView<InitialPageController> {
   @override
   Widget build(BuildContext context) {
     Future.delayed(800.milliseconds, () {
-    Get.deleteAll();
-    pushNewScreen(
-      context,
-      screen: NavScreen(
-        menuScreenContext: context,
-      ),
-    );
+      if (Get.isDialogOpen == true) {
+        Get.back();
+      }
+      Get.deleteAll();
+      pushNewScreen(
+        context,
+        screen: NavScreen(
+          menuScreenContext: context,
+        ),
+      );
     });
     return const Scaffold(
       body: Center(

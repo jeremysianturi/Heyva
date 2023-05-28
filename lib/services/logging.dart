@@ -1,13 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' as gt;
-import 'package:get_storage/get_storage.dart';
+// import 'package:get/get.dart';
 import 'package:heyva/app/modules/login/controllers/login_controller.dart';
-import 'package:heyva/app/routes/app_pages.dart';
+import 'package:heyva/app/widgets/relogin_dialog.dart';
 import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
-import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
-import 'package:heyva/constant/variabels.dart';
 
 class Logging extends Interceptor {
   @override
@@ -30,9 +28,9 @@ class Logging extends Interceptor {
     debugPrint(
       'RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}',
     );
-    debugPrint(
-      'RESPONSE[${response.data}] ',
-    );
+    // debugPrint(
+    //   'RESPONSE[${response.data}] ',
+    // );
     return super.onResponse(response, handler);
   }
 
@@ -50,16 +48,12 @@ class Logging extends Interceptor {
         err.response?.data['message'] == "Expired Signature") {
       var loginC = gt.Get.put(LoginController());
       loginC.refresh();
-    } else if (err.response?.statusCode == 401 &&
+    } else if (err.response?.data['message'] == "Expired Signature" &&
         err.requestOptions.path == "/api/v1/users/refresh-token") {
-      var box = GetStorage();
-      box.remove(Keys.loginAccessToken);
-      box.remove(Keys.loginRefreshToken);
-      box.remove(Keys.loginID);
-      authToken = "";
-      refreshToken = "";
-      Future.delayed(800.seconds);
-      gt.Get.offNamed(Routes.SIGNUP);
+
+      if (gt.Get.isDialogOpen == false) {
+        ReloginDialog.show();
+      }
     }
     debugPrint(
       'ERROR[${err.response?.data}] ',
