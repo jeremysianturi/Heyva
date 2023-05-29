@@ -28,8 +28,8 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     _client = RefreshDioClient();
-    emailC.text = "howosa9215@larland.com";
-    passC.text = "minimal88";
+    // emailC.text = "howosa9215@larland.com";
+    // passC.text = "minimal88";
     _clientRefresh = RefreshDioClient();
     _provider = LoginProvider(_client.init());
     _refreshprovider = LoginProvider(_clientRefresh.init());
