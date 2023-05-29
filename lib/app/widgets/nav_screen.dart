@@ -15,9 +15,10 @@ import '../../constant/colors.dart';
 BuildContext? testContext;
 
 class NavScreen extends StatefulWidget {
-  const NavScreen({Key? key, required this.menuScreenContext})
+  const NavScreen({Key? key, required this.menuScreenContext, this.jumpTo = 0})
       : super(key: key);
   final BuildContext menuScreenContext;
+  final int jumpTo;
 
   @override
   _NavScreenState createState() => _NavScreenState();
@@ -31,6 +32,7 @@ class _NavScreenState extends State<NavScreen> {
   void initState() {
     super.initState();
     _controller = PersistentTabController();
+    _controller.jumpToTab(widget.jumpTo);
     _hideNavBar = false;
   }
 

@@ -88,15 +88,19 @@ class InsightsController extends GetxController {
 
   bool get isEmptyInsight {
     var data = insightResponse.value.data ?? [];
-    var loop = -1;
+    var loop = 0;
 
     for (var e in data) {
-      if (e.insight!.isNotEmpty) {
+      debugPrint("insight noEmpty ${e.insight?.isEmpty}");
+      if (e.insight?.isEmpty == true) {
         loop++;
       }
     }
+    debugPrint("loop $loop");
+    debugPrint("data.length ${data.length}");
+    debugPrint("return  ${(loop != data.length)}");
 
-    if (loop != data.length) {
+    if (loop == data.length) {
       return true;
     } else {
       return false;

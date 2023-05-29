@@ -127,6 +127,7 @@ class Recomendation2View extends GetView<Recomendation2Controller> {
                       context,
                       screen: NavScreen(
                         menuScreenContext: context,
+                        jumpTo: 4,
                       ),
                     );
                   },

@@ -51,6 +51,8 @@ class BreathingEx1Controller extends GetxController {
       List<int> prevPositions = [0, 0];
       int lostPositions = 0;
       audioPlayer?.onPositionChanged.listen((Duration event) {
+
+
         if (isTap.isTrue) return;
 
         int positionChanged = event.inMilliseconds;

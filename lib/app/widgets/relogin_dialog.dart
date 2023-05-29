@@ -12,18 +12,23 @@ import 'reusable_orange_button_with_trailing_icon.dart';
 class ReloginDialog {
   static show() {
     Get.defaultDialog(
+      contentPadding: EdgeInsets.zero,
+      titlePadding: EdgeInsets.zero,
       title: '',
       backgroundColor: ColorApp.white.withOpacity(0.8),
       content: Container(
-        width: 400,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
         child: Column(
           children: [
+            const SizedBox(
+              height: 15,
+            ),
             const Text(
               Strings.yourSessionExpired,
               style: TextStyle(
                   fontWeight: FontWeight.w700,
-                  color: ColorApp.black,
-                  fontSize: 25),
+                  color: ColorApp.blue_container,
+                  fontSize: 28),
               textAlign: TextAlign.center,
             ),
             const SizedBox(
@@ -33,7 +38,7 @@ class ReloginDialog {
               Strings.pleaseLogin,
               style: TextStyle(
                   fontWeight: FontWeight.w400,
-                  color: ColorApp.black,
+                  color: ColorApp.blue_container,
                   fontSize: 16),
             ),
             const SizedBox(

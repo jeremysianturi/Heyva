@@ -68,20 +68,22 @@ class HomeView extends GetView<HomeController> {
                             controller.onInit();
                           },
                           child: CachedNetworkImage(
-                            imageUrl: controller.profileAvatar,
-                            placeholder: (context, url) => const Padding(
-                              padding: EdgeInsets.all(10),
-                              child: CircularProgressIndicator(
-                                color: ColorApp.btn_orange,
-                              ),
-                            ),
-                            imageBuilder: (context, image) => CircleAvatar(
-                              backgroundImage: image,
-                              radius: 150,
-                            ),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
-                          )),
+                              imageUrl: controller.profileAvatar,
+                              placeholder: (context, url) => const Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: CircularProgressIndicator(
+                                      color: ColorApp.btn_orange,
+                                    ),
+                                  ),
+                              imageBuilder: (context, image) => CircleAvatar(
+                                    backgroundImage: image,
+                                    radius: 150,
+                                  ),
+                              errorWidget: (context, url, error) =>
+                                  const CircleAvatar(
+                                    backgroundColor: ColorApp.blue_container,
+                                    radius: 150,
+                                  ))),
                       title: GestureDetector(
                         onTap: () async {
                           await Get.toNamed(Routes.PROFILE);

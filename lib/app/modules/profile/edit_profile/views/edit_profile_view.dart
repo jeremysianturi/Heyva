@@ -83,7 +83,10 @@ class EditProfileView extends GetView<EditProfileController> {
                                       radius: 150,
                                     ),
                                     errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
+                                    const CircleAvatar(
+                                      backgroundColor: ColorApp.blue_container,
+                                      radius: 150,
+                                    ),
                                   )
                                 : CircleAvatar(
                                     backgroundImage: FileImage(

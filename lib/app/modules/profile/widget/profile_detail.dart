@@ -97,19 +97,21 @@ class ProfileAvatar extends StatelessWidget {
               height: 80,
               width: 80,
               child: CachedNetworkImage(
-                imageUrl: imgUrl,
-                placeholder: (context, url) => const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: CircularProgressIndicator(
-                    color: ColorApp.btn_orange,
-                  ),
-                ),
-                imageBuilder: (context, image) => CircleAvatar(
-                  backgroundImage: image,
-                  radius: 150,
-                ),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              )),
+                  imageUrl: imgUrl,
+                  placeholder: (context, url) => const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: CircularProgressIndicator(
+                          color: ColorApp.btn_orange,
+                        ),
+                      ),
+                  imageBuilder: (context, image) => CircleAvatar(
+                        backgroundImage: image,
+                        radius: 150,
+                      ),
+                  errorWidget: (context, url, error) => const CircleAvatar(
+                        backgroundColor: ColorApp.blue_container,
+                        radius: 150,
+                      ))),
           Positioned(
               right: 0,
               child: SizedBox(

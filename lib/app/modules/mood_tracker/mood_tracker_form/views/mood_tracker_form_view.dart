@@ -82,7 +82,7 @@ class MoodCheckForm1 extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              Column(
+              ListView(
                 children: [
                   Container(
                       margin: const EdgeInsets.only(top: 80),

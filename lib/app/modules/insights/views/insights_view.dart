@@ -79,7 +79,10 @@ class InsightsView extends GetView<InsightsController> {
                             backgroundImage: image,
                             radius: 150,
                           ),
-                          errorWidget: (context, url, error) => const Icon(Icons.error),
+                          errorWidget: (context, url, error) => const CircleAvatar(
+                            backgroundColor: ColorApp.blue_container,
+                            radius: 150,
+                          ),
                         ),
                       ),
                       title: GestureDetector(
