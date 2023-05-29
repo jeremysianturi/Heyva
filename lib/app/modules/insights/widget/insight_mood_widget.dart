@@ -17,9 +17,10 @@ class InsightMoodWidget extends StatelessWidget {
       margin: const EdgeInsets.only(right: 10),
       width: Get.width - 65,
       decoration: const BoxDecoration(
-          color: ColorApp.white,
+          color: Colors.transparent,
           borderRadius: BorderRadius.all(Radius.circular(12))),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
@@ -40,8 +41,16 @@ class InsightMoodWidget extends StatelessWidget {
             ),
           ),
           Container(
+            decoration: const BoxDecoration(
+                color: ColorApp.white,
+                // borderRadius: BorderRadius.all(Radius.circular(12))),
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(12),
+                  bottomLeft: Radius.circular(12),
+                )),
             padding: const EdgeInsets.all(24.0),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(data.response?.length ?? 0, (index) {
                 return Column(
