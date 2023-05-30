@@ -210,9 +210,9 @@ class insightItem extends StatelessWidget {
               ? EmptyState(data: data)
               : CarouselSlider(
                   options: CarouselOptions(
-                    height: 700,
+                    height: 610,
                     // aspectRatio: 310 / 360,
-                    viewportFraction: 0.8,
+                    // viewportFraction: 0.6,
                     initialPage: 0,
                     enableInfiniteScroll: true,
                     reverse: false,
