@@ -5,12 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:heyva/app/modules/profile/model/delete_account_model.dart';
 import 'package:heyva/app/modules/profile/model/update_profile_model.dart';
 import 'package:heyva/app/modules/profile/provider/profile_provider.dart';
+import 'package:heyva/app/routes/app_pages.dart';
 import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
 import 'package:heyva/constant/colors.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
+import 'package:heyva/constant/variabels.dart';
 import 'package:heyva/services/dio_services.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -188,5 +191,40 @@ class EditProfileController extends GetxController {
       backgroundColor: ColorApp.white,
       enableDrag: false,
     );
+  }
+
+  var deleteResponse =
+      DeleteAccountModel(success: "", data: null, message: "", error: "").obs;
+
+  deleteAccount() async {
+    errorMessage.value = "";
+    isLoading.value = true;
+    try {
+      deleteResponse.value = (await _profileProvider.deleteAccount())!;
+      if (deleteResponse.value.success == "Success") {
+        bottomSheetMessage(
+            color: "heyva", desc: "Your account has been successfully deleted");
+        Future.delayed(2.seconds, () {
+          var box = GetStorage();
+          box.remove(Keys.loginAccessToken);
+          box.remove(Keys.loginRefreshToken);
+          box.remove(Keys.loginID);
+          box.remove(Keys.profileName);
+          box.remove(Keys.profileImgUrl);
+          box.erase();
+          authToken = "";
+          refreshToken = "";
+          Future.delayed(800.seconds);
+          Get.offNamed(Routes.SIGNUP);
+        });
+      } else {
+        // bottomSheetMessage(
+        //     color: "heyva",
+        //     desc: "Oops! There is an error saving your profile.");
+      }
+    } catch (e) {
+      isLoading.value = false;
+      debugPrint("error  $e");
+    }
   }
 }

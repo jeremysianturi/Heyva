@@ -233,4 +233,10 @@ Strings {
   static const String startNow = "Start Now";
   static const String yourSessionExpired = "Your session has expired!";
   static const String pleaseLogin = "Please log in.";
+
+  static const String deletedAccount = "Delete Account";
+
+  static const String deleteAccountTitl = "Are you sure you want to delete your account?";
+  static const String deleteAccountSub = "Your daily tracker, exercise progress, personal data and others will be erased if you proceed to continue.";
+  static const String cancle = "Cancle";
 }

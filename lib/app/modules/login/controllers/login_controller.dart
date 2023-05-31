@@ -5,6 +5,7 @@ import 'package:heyva/app/modules/login/model/login_model.dart';
 import 'package:heyva/app/modules/login/provider/login_provider.dart';
 import 'package:heyva/app/modules/register/model/register_storage_model.dart';
 import 'package:heyva/app/routes/app_pages.dart';
+import 'package:heyva/constant/function.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:heyva/constant/variabels.dart';
@@ -64,9 +65,10 @@ class LoginController extends GetxController {
   postLogin() async {
     errorMessage.value = "";
     isLoading.value = true;
+    var deviceID = GetDeviceID().get().toString();
     try {
-      loginResonse.value =
-          (await _provider.Login(username: emailC.text, password: passC.text))!;
+      loginResonse.value = (await _provider.Login(
+          username: emailC.text, password: passC.text, device_id: deviceID))!;
       isLoading.value = false;
 
       if (loginResonse.value.success == "Success") {
@@ -80,7 +82,7 @@ class LoginController extends GetxController {
         refreshToken = loginResonse.value.data?.refreshToken ?? "";
         userId = loginResonse.value.data?.id ?? "";
         Future.delayed(800.milliseconds);
-        Get.toNamed(Routes.INITIAL_PAGE);
+        Get.offAllNamed(Routes.INITIAL_PAGE);
         // Get.toNamed(Routes.TURNON_NOTIF);
       } else {
         if (loginResonse.value.message
@@ -172,7 +174,7 @@ class LoginController extends GetxController {
         refreshToken = loginResonse.value.data?.refreshToken ?? "";
         userId = loginResonse.value.data?.id ?? "";
         Future.delayed(800.milliseconds);
-        Get.toNamed(Routes.INITIAL_PAGE);
+        Get.offAllNamed(Routes.INITIAL_PAGE);
         // Get.toNamed(Routes.TURNON_NOTIF);
       } else {
         saveToStorage(

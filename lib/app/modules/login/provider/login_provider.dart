@@ -7,12 +7,17 @@ class LoginProvider {
 
   LoginProvider(this._client);
 
-  Future<LoginModel?> Login({required username, required password}) async {
+  Future<LoginModel?> Login(
+      {required username, required password, required device_id}) async {
     LoginModel? res;
     try {
       Response response = await _client.post(
         '/api/v1/users/login',
-        data: {"username": username, "password": password},
+        data: {
+          "username": username,
+          "password": password,
+          "device_id": device_id
+        },
       );
       debugPrint('response data: ${response.data}');
       res = LoginModel.fromJson(response.data);

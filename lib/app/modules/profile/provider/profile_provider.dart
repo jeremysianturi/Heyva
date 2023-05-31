@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:heyva/app/modules/profile/model/change_password_model.dart';
+import 'package:heyva/app/modules/profile/model/delete_account_model.dart';
 import 'package:heyva/app/modules/profile/model/notification_list_model.dart';
 import 'package:heyva/app/modules/profile/model/notification_update_model.dart';
 import 'package:heyva/app/modules/profile/model/profile_model.dart';
@@ -117,6 +118,22 @@ class ProfileProvider {
       var message = e.response?.data['message'];
       var error = e.response?.data['error'];
       res = NotificationUpdateModel(
+          success: "", data: null, message: message, error: error);
+    }
+    return res;
+  }
+
+  Future<DeleteAccountModel?> deleteAccount() async {
+    DeleteAccountModel? res;
+    try {
+      Response response =
+          await _client.delete('/api/v1/users/delete');
+      debugPrint('response data: ${response.data}');
+      res = DeleteAccountModel.fromJson(response.data);
+    } on DioError catch (e) {
+      var message = e.response?.data['message'];
+      var error = e.response?.data['error'];
+      res = DeleteAccountModel(
           success: "", data: null, message: message, error: error);
     }
     return res;

@@ -7,6 +7,7 @@ import 'package:heyva/app/modules/register/model/register_storage_model.dart';
 import 'package:heyva/app/modules/register/model/verified_model.dart';
 import 'package:heyva/app/modules/register/provider/register_provider.dart';
 import 'package:heyva/app/routes/app_pages.dart';
+import 'package:heyva/constant/function.dart';
 import 'package:heyva/constant/keys.dart';
 import 'package:heyva/constant/strings.dart';
 import 'package:heyva/constant/variabels.dart';
@@ -99,8 +100,12 @@ class RegistVerificationController extends GetxController {
         loginResonse.value = (await _loginProvider.LoginWithGoole(
             email: boxData.email, googleId: boxData.googleId))!;
       } else {
+        var deviceID = GetDeviceID().get().toString();
+
         loginResonse.value = (await _loginProvider.Login(
-            username: boxData.email, password: boxData.password))!;
+            username: boxData.email,
+            password: boxData.password,
+            device_id: deviceID))!;
       }
 
       if (loginResonse.value.success == "Success") {
