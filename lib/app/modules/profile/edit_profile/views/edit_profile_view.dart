@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:heyva/app/modules/profile/widget/profile_header.dart';
 import 'package:heyva/app/widgets/bottom_sheet_logout.dart';
+import 'package:heyva/app/widgets/delete_account_dialog.dart';
 import 'package:heyva/app/widgets/reusable_bottomSheet_message.dart';
 import 'package:heyva/app/widgets/reusable_orange_button_with_trailing_icon.dart';
 import 'package:heyva/app/widgets/reusable_regular_textfield.dart';
@@ -83,7 +84,7 @@ class EditProfileView extends GetView<EditProfileController> {
                                       radius: 150,
                                     ),
                                     errorWidget: (context, url, error) =>
-                                    const CircleAvatar(
+                                        const CircleAvatar(
                                       backgroundColor: ColorApp.blue_container,
                                       radius: 150,
                                     ),
@@ -165,11 +166,36 @@ class EditProfileView extends GetView<EditProfileController> {
                               } else {
                                 bottomSheetMessage(
                                     color: "heyva",
-                                    desc: "There is no changes to your profile");
+                                    desc:
+                                        "There is no changes to your profile");
                               }
                             },
                           ),
                         ),
+                        GestureDetector(
+                          onTap: () {
+                            DeleteAccountDialog.show(ontap: () {
+                              Get.back();
+                              Future.delayed(200.milliseconds, () {
+                                controller.deleteAccount();
+                              });
+                            });
+                          },
+                          child: Container(
+                            color: Colors.transparent,
+                            width: Get.width,
+                            padding: const EdgeInsets.symmetric(vertical: 28),
+                            child: const Text(
+                              Strings.deletedAccount,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: ColorApp.blue_container,
+                                  fontSize: 14,
+                                  decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
