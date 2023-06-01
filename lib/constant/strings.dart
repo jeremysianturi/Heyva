@@ -238,5 +238,5 @@ Strings {
 
   static const String deleteAccountTitl = "Are you sure you want to delete your account?";
   static const String deleteAccountSub = "Your daily tracker, exercise progress, personal data and others will be erased if you proceed to continue.";
-  static const String cancle = "Cancle";
+  static const String cancel = "Cancel";
 }

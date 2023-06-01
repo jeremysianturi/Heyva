@@ -55,7 +55,7 @@ class DeleteAccountDialog {
                         border: Border.all(color: ColorApp.blue_container),
                       ),
                       child: const Text(
-                        Strings.cancle,
+                        Strings.cancel,
                         style: TextStyle(
                             color: ColorApp.blue_container,
                             fontSize: 16,
