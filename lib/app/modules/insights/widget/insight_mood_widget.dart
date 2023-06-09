@@ -163,16 +163,14 @@ class InsightMoodWidget extends StatelessWidget {
                                               color: ColorApp.text_input_bg,
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(12))),
-                                          child: Expanded(
-                                            child: Text(
-                                              itemData?.name ?? "",
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  color:
-                                                      ColorApp.blue_container,
-                                                  fontSize: 14),
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
+                                          child: Text(
+                                            itemData?.name ?? "",
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                color:
+                                                    ColorApp.blue_container,
+                                                fontSize: 14),
+                                            overflow: TextOverflow.ellipsis,
                                           ));
                                     }),
                                   ),

@@ -124,11 +124,9 @@ class ProfileView extends GetView<ProfileController> {
                               ],
                             ),
                           ),
-                          Container(
-                            child: const Icon(
-                              Icons.arrow_forward_ios,
-                              color: ColorApp.white_font,
-                            ),
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            color: ColorApp.white_font,
                           ),
                         ],
                       )),

@@ -104,7 +104,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.SIGNUP,
-      page: () => SignUpView(),
+      page: () => const SignUpView(),
       binding: SignupBinding(),
     ),
     GetPage(
@@ -119,12 +119,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LOGIN_GOOGLE_APPLE,
-      page: () => LoginGoogleAppleView(),
+      page: () => const LoginGoogleAppleView(),
       binding: LoginGoogleAppleBinding(),
     ),
     GetPage(
       name: _Paths.ONBOARDING_ONE,
-      page: () => OnBoardingOneView(),
+      page: () => const OnBoardingOneView(),
       binding: OnBoardingOneBinding(),
     ),
     GetPage(
@@ -134,7 +134,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ONBOARDING_THREE,
-      page: () => OnBoardingThreeView(),
+      page: () => const OnBoardingThreeView(),
       binding: OnBoardingThreeBinding(),
     ),
     GetPage(
@@ -149,17 +149,17 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.BREATHING_ONE,
-      page: () => BreathingOneView(),
+      page: () => const BreathingOneView(),
       binding: BreathingOneBinding(),
     ),
     GetPage(
       name: _Paths.BREATHING_TWO,
-      page: () => BreathingTwoView(),
+      page: () => const BreathingTwoView(),
       binding: BreathingTwoBinding(),
     ),
     GetPage(
       name: _Paths.BREATHING_TIMER,
-      page: () => BreathingTimerView(),
+      page: () => const BreathingTimerView(),
       binding: BreathingTimerBinding(),
     ),
     GetPage(
@@ -174,7 +174,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.BREAST_FEEDING,
-      page: () => BreastFeedingView(),
+      page: () => const BreastFeedingView(),
       binding: BreastFeedingBinding(),
     ),
     GetPage(
@@ -184,7 +184,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.MOOD_TRACKER_FORM,
-      page: () => MoodTrackerFormView(),
+      page: () => const MoodTrackerFormView(),
       binding: MoodTrackerFormBinding(),
     ),
     GetPage(

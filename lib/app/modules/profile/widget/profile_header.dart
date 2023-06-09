@@ -84,76 +84,43 @@ class ProfileHeader extends StatelessWidget {
                 ontapIcon!();
               },
               child: showIcon
-                  ? Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        ontapIcon!();
-                      },
-                      style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          padding: const EdgeInsets.all(8),
-                          minimumSize: Size.zero,
-                          primary: ColorApp.bottom_nav_color,
-                          elevation: 0),
-                      child: SvgPicture.asset(
-                        'assets/icons/ic_logout.svg',
-                        fit: BoxFit.fill,
-                        color: ColorApp.blue_container,
-                        alignment: Alignment.centerLeft,
-                        width: 24,
-                        height: 24,
+                  ? Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          ontapIcon!();
+                        },
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            padding: const EdgeInsets.all(8),
+                            minimumSize: Size.zero,
+                            primary: ColorApp.bottom_nav_color,
+                            elevation: 0),
+                        child: SvgPicture.asset(
+                          'assets/icons/ic_logout.svg',
+                          fit: BoxFit.fill,
+                          color: ColorApp.blue_container,
+                          alignment: Alignment.centerLeft,
+                          width: 24,
+                          height: 24,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              )
-                  : Expanded(
-                child: Text(
-                  rightText ?? "",
-                  style: const TextStyle(
-                      color: ColorApp.blue_container,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600),
-                  textAlign: TextAlign.end,
-                ),
-              ),
+                    ],
+                  )
+                  : Text(
+                    rightText ?? "",
+                    style: const TextStyle(
+                        color: ColorApp.blue_container,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600),
+                    textAlign: TextAlign.end,
+                  ),
             ),
           ),
-          // Expanded(
-          //     child: showIcon
-          //         ? ElevatedButton(
-          //             onPressed: () {
-          //               ontapIcon!();
-          //             },
-          //             style: ElevatedButton.styleFrom(
-          //                 shape: RoundedRectangleBorder(
-          //                   borderRadius: BorderRadius.circular(12.0),
-          //                 ),
-          //                 padding: const EdgeInsets.all(8),
-          //                 minimumSize: Size.zero,
-          //                 primary: ColorApp.bottom_nav_color,
-          //                 elevation: 0),
-          //             child: SvgPicture.asset(
-          //               'assets/icons/ic_logout.svg',
-          //               fit: BoxFit.fill,
-          //               color: ColorApp.blue_container,
-          //               alignment: Alignment.centerLeft,
-          //               width: 24,
-          //               height: 24,
-          //             ),
-          //           )
-          //         : Text(
-          //             rightText ?? "",
-          //             style: const TextStyle(
-          //                 color: ColorApp.black,
-          //                 fontSize: 16,
-          //                 fontWeight: FontWeight.w600),
-          //           ))
+
         ],
       ),
     );

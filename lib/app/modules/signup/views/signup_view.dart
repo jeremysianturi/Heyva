@@ -33,7 +33,7 @@ class SignUpView extends GetView<SignUpController> {
                 const SizedBox(
                   height: 35,
                 ),
-                Padding(
+                Container(
                   padding: const EdgeInsets.only(left: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,16 +43,15 @@ class SignUpView extends GetView<SignUpController> {
                         onTap: () {
                           Get.toNamed(Routes.REGISTER);
                         },
-                        child: Expanded(
-                          child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 20,horizontal: 20),
-                            child: const Text(
-                              Strings.register,
-                              style: TextStyle(
-                                  color: ColorApp.blue_container,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600),
-                            ),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 20, horizontal: 20),
+                          child: Text(
+                            Strings.register,
+                            style: TextStyle(
+                                color: ColorApp.blue_container,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600),
                           ),
                         ),
                       ),

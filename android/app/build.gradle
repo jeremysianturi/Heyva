@@ -65,11 +65,17 @@ android {
     }
 
     signingConfigs {
+//        release {
+//            keyAlias keystoreProperties['keyAlias']
+//            keyPassword keystoreProperties['keyPassword']
+//            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+//            storePassword keystoreProperties['storePassword']
+//        }
         release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-            storePassword keystoreProperties['storePassword']
+            storeFile file('/Users/MyMacbook/Desktop/heyva.jks')
+            storePassword = 'Heyforeverva234!'
+            keyAlias = 'heyva'
+            keyPassword 'Heyforeverva234!'
         }
     }
     buildTypes {
@@ -95,5 +101,5 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation platform('com.google.firebase:firebase-bom:31.5.0')
-    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx:20.0.0' // Update the version number
 }
