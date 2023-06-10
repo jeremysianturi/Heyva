@@ -83,8 +83,8 @@ class Staggered extends StatelessWidget {
                         Container(
                           width: 32,
                           height: 32,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle, color: ColorApp.white),
+                          // decoration: const BoxDecoration(
+                          //     shape: BoxShape.circle, color: ColorApp.white),
                         ),
                       ],
                     ),

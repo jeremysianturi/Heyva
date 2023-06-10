@@ -236,7 +236,14 @@ Strings {
 
   static const String deletedAccount = "Delete Account";
 
-  static const String deleteAccountTitl = "Are you sure you want to delete your account?";
-  static const String deleteAccountSub = "Your daily tracker, exercise progress, personal data and others will be erased if you proceed to continue.";
+  static const String deleteAccountTitl =
+      "Are you sure you want to delete your account?";
+  static const String deleteAccountSub =
+      "Your daily tracker, exercise progress, personal data and others will be erased if you proceed to continue.";
   static const String cancel = "Cancel";
+
+  static const String txtTwoLevel = 'canRefresh';
+  static const String txtIdle = 'pull down refresh';
+
+  static const String txtRefreshing = 'refreshing...';
 }

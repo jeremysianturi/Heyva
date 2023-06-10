@@ -24,12 +24,12 @@ class RelatedProgramProvider {
     return res;
   }
 
-  Future<ContentListModel?> getContentList({required tagId}) async {
+  Future<ContentListModel?> getContentList({required tagId, page = "1"}) async {
     ContentListModel? res;
     var tag = tagId != "" ? "tag=$tagId" : "";
     try {
       Response response = await _client.get(
-        '/api/v1/content/list?$tag',
+        '/api/v1/content/list?$tag&page=$page&per_page=10',
       );
       debugPrint('response data: ${response.data}');
       res = ContentListModel.fromJson(response.data);
