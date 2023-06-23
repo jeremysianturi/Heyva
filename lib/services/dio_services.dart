@@ -22,7 +22,7 @@ class DioClient {
         'Authorization': "Bearer $token",
       },
       connectTimeout: 20.seconds,
-      receiveTimeout: 10.seconds,
+      receiveTimeout: 30.seconds,
     );
     _dio.options.baseUrl = "http://54.169.131.201/";
     return _dio;
