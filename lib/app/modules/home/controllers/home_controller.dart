@@ -34,9 +34,9 @@ class HomeController extends GetxController {
   }
 
   String get profileAvatar {
-    var read = box.read(Keys.profileImgUrl) ?? "";
+    var read = box.read(Keys.profileImgUrl);
     if (read.toString().isNotEmpty) {
-      return box.read(Keys.profileImgUrl) ?? "";
+      return box.read(Keys.profileImgUrl);
     } else {
       return profileResponse.value.data?.avatar ?? "";
     }
@@ -121,10 +121,18 @@ class HomeController extends GetxController {
 
       if (profileResponse.value.success == "Success") {
         var data = profileResponse.value.data;
-        box.write(Keys.profileName, data?.fullName);
-        box.write(Keys.profileEmail, data?.user?.email);
-        box.write(Keys.profileImgUrl, data?.avatar);
-        box.write(Keys.profilePhone, data?.user?.phoneNumber);
+        if (box.read(Keys.profileName).toString() == "null") {
+          box.write(Keys.profileName, data?.fullName);
+          box.write(Keys.profileEmail, data?.user?.email);
+          box.write(Keys.profileImgUrl, data?.avatar);
+          box.write(Keys.profilePhone, data?.user?.phoneNumber);
+        } else if (box.read(Keys.profileName).toString() != data?.fullName ||
+            box.read(Keys.profileEmail).toString() != data?.user?.email) {
+          box.write(Keys.profileName, data?.fullName);
+          box.write(Keys.profileEmail, data?.user?.email);
+          box.write(Keys.profileImgUrl, data?.avatar);
+          box.write(Keys.profilePhone, data?.user?.phoneNumber);
+        }
       } else {
         errorMessage.value = profileResponse.value.message ?? "Error Message";
       }

@@ -49,7 +49,7 @@ class ProfileView extends GetView<ProfileController> {
                           logout();
                         },
                         onBack: () {
-                          Get.back(result: "reload");
+                          Get.back();
                         },
                         isCostomBackFucntion: true,
                       )),
@@ -61,7 +61,9 @@ class ProfileView extends GetView<ProfileController> {
                     ontap: () async {
                       var data = await Get.toNamed(Routes.EDIT_PROFILE);
                       debugPrint("alsdjkalksd data $data");
-                      controller.onInit();
+                      if (data == "reload") {
+                        controller.getProfile();
+                      }
                     },
                   ),
                   ListView.builder(

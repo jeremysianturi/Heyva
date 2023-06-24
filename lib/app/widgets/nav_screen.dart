@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:heyva/app/modules/home/controllers/home_controller.dart';
 import 'package:heyva/app/modules/home/views/home_view.dart';
+import 'package:heyva/app/modules/insights/controllers/insights_controller.dart';
 import 'package:heyva/app/modules/insights/views/insights_view.dart';
 import 'package:heyva/app/modules/learn/views/learn_view.dart';
 import 'package:heyva/app/modules/recovery/views/recovery_view.dart';
@@ -33,6 +35,16 @@ class _NavScreenState extends State<NavScreen> {
     super.initState();
     _controller = PersistentTabController();
     _controller.jumpToTab(widget.jumpTo);
+    _controller.addListener(() {
+      if (_controller.index == 0) {
+        var homeC = Get.find<HomeController>();
+        homeC.getProfile();
+      }
+      if (_controller.index == 4) {
+        var insightC = Get.find<InsightsController>();
+        insightC.getProfile();
+      }
+    });
     _hideNavBar = false;
   }
 

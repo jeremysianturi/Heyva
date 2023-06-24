@@ -17,61 +17,61 @@ class ProfileDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => GestureDetector(
-          onTap: () {
-            ontap();
-          },
-          child: Container(
-            height: 80,
-            width: Get.width,
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
+    return GestureDetector(
+      onTap: () {
+        ontap();
+      },
+      child: Container(
+        height: 80,
+        width: Get.width,
+        margin: const EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          children: [
+            ProfileAvatar(
+              imgUrl: controller.profileAvatar,
+              ontap: () {
+                ontap();
+              },
+            ),
+            const SizedBox(
+              width: 16,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ProfileAvatar(
-                  imgUrl: controller.profileAvatar,
-                  ontap: () {
-                    ontap();
-                  },
+                Text(
+                  controller.profileName,
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      color: ColorApp.blue_container),
                 ),
                 const SizedBox(
-                  width: 16,
+                  height: 4,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      controller.profileName,
-                      style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          color: ColorApp.blue_container),
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Text(
-                      controller.phone,
-                      style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: ColorApp.blue_container),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      controller.email,
-                      style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: ColorApp.blue_container),
-                    ),
-                  ],
-                )
+                Text(
+                  controller.phone,
+                  style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: ColorApp.blue_container),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  controller.email,
+                  style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: ColorApp.blue_container),
+                ),
               ],
-            ),
-          ),
-        ));
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
 

@@ -16,19 +16,19 @@ class ProfileController extends GetxController {
   var box = GetStorage();
 
   String get profileName {
-    return profileResponse.value.data?.fullName ?? "";
+    return box.read(Keys.profileName) ?? "";
   }
 
   String get email {
-    return profileResponse.value.data?.user?.email ?? "";
+    return box.read(Keys.profileEmail) ?? "";
   }
 
   String get phone {
-    return profileResponse.value.data?.user?.phoneNumber ?? "";
+    return box.read(Keys.profilePhone) ?? "";
   }
 
   String get profileAvatar {
-    return profileResponse.value.data?.avatar ?? "";
+    return box.read(Keys.profileImgUrl);
   }
 
   var profileSettings = [
@@ -65,7 +65,7 @@ class ProfileController extends GetxController {
   void onInit() {
     _client = DioClient();
     _profileProvider = ProfileProvider(_client.init());
-    getProfile();
+    // getProfile();
     super.onInit();
   }
 

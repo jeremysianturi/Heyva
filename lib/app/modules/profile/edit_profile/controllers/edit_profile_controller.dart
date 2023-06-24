@@ -77,7 +77,7 @@ class EditProfileController extends GetxController {
           if (Get.isBottomSheetOpen == true) {
             Get.back();
           }
-          Get.back(result: "true");
+          Get.back(result: "reload");
         });
       } else {
         // errorMessage.value =
@@ -107,7 +107,7 @@ class EditProfileController extends GetxController {
   }
 
   String get profileAvatar {
-    return box.read(Keys.profileImgUrl) ?? "";
+    return box.read(Keys.profileImgUrl);
   }
 
   changePicture() {

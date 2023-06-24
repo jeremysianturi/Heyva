@@ -65,7 +65,7 @@ class HomeView extends GetView<HomeController> {
                       leading: GestureDetector(
                           onTap: () async {
                             await Get.toNamed(Routes.PROFILE);
-                            controller.onInit();
+                            controller.getProfile();
                           },
                           child: CachedNetworkImage(
                               imageUrl: controller.profileAvatar,
@@ -87,7 +87,7 @@ class HomeView extends GetView<HomeController> {
                       title: GestureDetector(
                         onTap: () async {
                           await Get.toNamed(Routes.PROFILE);
-                          controller.onInit();
+                          controller.getProfile();
                         },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
