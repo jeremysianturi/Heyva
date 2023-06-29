@@ -104,6 +104,8 @@ class ArticleContainer extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
                 color: ColorApp.blue_container),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(
             height: 12,

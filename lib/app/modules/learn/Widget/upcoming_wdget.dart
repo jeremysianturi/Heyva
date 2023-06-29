@@ -34,10 +34,13 @@ class UpcomingWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 14),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14.0),
-                image: const DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage("assets/images/upcoming1.png"),
-                ),
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: const AssetImage(
+                      "assets/images/upcoming1.png",
+                    ),
+                    colorFilter: ColorFilter.mode(
+                        ColorApp.black.withOpacity(0.6), BlendMode.srcOver)),
               ),
               child: Row(
                 children: [
@@ -96,10 +99,11 @@ class UpcomingWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 14),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14.0),
-                image: const DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage("assets/images/upcoming2.png"),
-                ),
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/images/upcoming2.png"),
+                    colorFilter: ColorFilter.mode(
+                        ColorApp.black.withOpacity(0.6), BlendMode.srcOver)),
               ),
               child: Row(
                 children: [

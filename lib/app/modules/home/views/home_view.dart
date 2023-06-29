@@ -186,35 +186,103 @@ class HomeView extends GetView<HomeController> {
                             const SizedBox(
                               height: 20,
                             ),
-                            GridView.count(
-                              shrinkWrap: true,
-                              padding: const EdgeInsets.all(4.1),
-                              crossAxisCount: 2,
-                              childAspectRatio: 0.556,
-                              crossAxisSpacing: 11,
-                              mainAxisSpacing: 0,
-                              physics: const NeverScrollableScrollPhysics(),
-                              children:
-                                  List.generate(controller.programLength, (i) {
-                                var data = controller
-                                    .contentListResponse.value.data?[i];
-                                return ArticleContainer(
-                                  containerColor: ColorApp.blue_container,
-                                  title: data?.contents?.title ?? "",
-                                  tag: data?.contentType?.name ?? "",
-                                  tagIcon: "",
-                                  // tagIcon: "assets/images/ic_bookmark.png",
-                                  desc: controller.parseHtmlString(
-                                      data?.contents!.body ?? ""),
-                                  contentId: data?.contents?.id ?? "",
-                                  contentType: data?.contentType?.name ?? "",
-                                  thumbnailUrl: data?.contents?.thumbnail ?? "",
-                                );
-                              }),
-                            ),
-                            // const SizedBox(
-                            //   height: 20,
+                            // GridView.count(
+                            //   shrinkWrap: true,
+                            //   padding: const EdgeInsets.all(4.1),
+                            //   crossAxisCount: 2,
+                            //   childAspectRatio: 0.556,
+                            //   crossAxisSpacing: 11,
+                            //   mainAxisSpacing: 0,
+                            //   physics: const NeverScrollableScrollPhysics(),
+                            //   children:
+                            //       List.generate(controller.programLength, (i) {
+                            //     var data = controller
+                            //         .contentListResponse.value.data?[i];
+                            //     return ArticleContainer(
+                            //       containerColor: ColorApp.blue_container,
+                            //       title: data?.contents?.title ?? "",
+                            //       tag: data?.contentType?.name ?? "",
+                            //       tagIcon: "",
+                            //       // tagIcon: "assets/images/ic_bookmark.png",
+                            //       desc: controller.parseHtmlString(
+                            //           data?.contents!.body ?? ""),
+                            //       contentId: data?.contents?.id ?? "",
+                            //       contentType: data?.contentType?.name ?? "",
+                            //       thumbnailUrl: data?.contents?.thumbnail ?? "",
+                            //     );
+                            //   }),
                             // ),
+
+                            Obx(() {
+                              var data =
+                                  controller.contentListResponse.value.data;
+                              var lengt = controller
+                                      .contentListResponse.value.data?.length ??
+                                  0;
+                              return lengt > 2
+                                  ? Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                            child: ArticleContainer(
+                                          containerColor:
+                                              ColorApp.blue_container,
+                                          title: data?[0].contents?.title ?? "",
+                                          tag: data?[0].contentType?.name ?? "",
+                                          tagIcon: "",
+                                          // tagIcon: "assets/images/ic_bookmark.png",
+                                          desc: controller.parseHtmlString(
+                                              data?[0].contents!.body ?? ""),
+                                          contentId:
+                                              data?[0].contents?.id ?? "",
+                                          contentType:
+                                              data?[0].contentType?.name ?? "",
+                                          thumbnailUrl:
+                                              data?[0].contents?.thumbnail ??
+                                                  "",
+                                        )),
+                                        const SizedBox(
+                                          width: 11,
+                                        ),
+                                        lengt >= 2
+                                            ? Expanded(
+                                                child: ArticleContainer(
+                                                containerColor:
+                                                    ColorApp.blue_container,
+                                                title:
+                                                    data?[1].contents?.title ??
+                                                        "",
+                                                tag: data?[1]
+                                                        .contentType
+                                                        ?.name ??
+                                                    "",
+                                                tagIcon: "",
+                                                // tagIcon: "assets/images/ic_bookmark.png",
+                                                desc: controller
+                                                    .parseHtmlString(data?[1]
+                                                            .contents!
+                                                            .body ??
+                                                        ""),
+                                                contentId:
+                                                    data?[1].contents?.id ?? "",
+                                                contentType: data?[1]
+                                                        .contentType
+                                                        ?.name ??
+                                                    "",
+                                                thumbnailUrl: data?[1]
+                                                        .contents
+                                                        ?.thumbnail ??
+                                                    "",
+                                              ))
+                                            : const Expanded(child: SizedBox())
+                                      ],
+                                    )
+                                  : const SizedBox();
+                            }),
+                            const SizedBox(
+                              height: 24,
+                            ),
                             Column(
                               children: [
                                 Row(
